@@ -12,7 +12,7 @@ import SnapKit
 final class MapView: MKMapView {
     
     lazy var cardCollectionView: UICollectionView = {
-        let cellWidth = self.frame.width - 50
+        let cellWidth = self.frame.width - 60
         let cellHeight = self.frame.height / 6
         
         let flowLayout = UICollectionViewFlowLayout()
@@ -24,6 +24,8 @@ final class MapView: MKMapView {
         flowLayout.scrollDirection = .horizontal
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        collectionView.layer.cornerRadius = 8.0
+        collectionView.backgroundColor = .clear
         
         return collectionView
     }()
@@ -31,6 +33,7 @@ final class MapView: MKMapView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUpCollectionView()
+        self.mapType = .standard
     }
     
     @available(*, unavailable) required init(coder: NSCoder) {
@@ -41,7 +44,7 @@ final class MapView: MKMapView {
         self.addSubview(cardCollectionView)
         
         cardCollectionView.snp.makeConstraints {
-            $0.leading.trailing.equalToSuperview()
+            $0.leading.trailing.equalToSuperview().inset(8.0)
             $0.bottom.equalTo(self.snp.bottom).inset(32.0)
         }
         

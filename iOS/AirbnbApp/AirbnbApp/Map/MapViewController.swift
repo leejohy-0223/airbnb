@@ -85,7 +85,7 @@ extension MapViewController: MKMapViewDelegate {
 }
 
 extension MapViewController: UICollectionViewDataSource {
-
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 5
     }
@@ -97,6 +97,7 @@ extension MapViewController: UICollectionViewDataSource {
         cell.setReviewLabel(rating: 4.72, reviewCount: 128)
         cell.setImage(image: UIImage(systemName: "house")!)
         cell.setPrice(price: 82587)
+        cell.setHouseName(houseName: "한국 어딘가 아주 좋은 킹왕짱 숙소 이름인데 조금 길어")
         return cell
     }
 }

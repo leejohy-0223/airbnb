@@ -10,5 +10,4 @@ import CoreLocation
 struct HouseInfo {
     let coordinate: CLLocationCoordinate2D
     let name: String
-    var address: String = " "
 }

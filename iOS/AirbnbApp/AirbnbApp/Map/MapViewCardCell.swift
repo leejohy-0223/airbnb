@@ -36,7 +36,6 @@ final class MapViewCardCell: UICollectionViewCell {
         label.numberOfLines = 2
         label.lineBreakMode = .byTruncatingTail
         label.font = .systemFont(ofSize: Constants.Label.mapCardHouseNameFontSize)
-        label.text = "가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가"
         return label
     }()
     
@@ -91,6 +90,10 @@ final class MapViewCardCell: UICollectionViewCell {
         self.imageView.image = image
     }
     
+    func setHouseName(houseName: String) {
+        self.houseNameLabel.text = houseName
+    }
+    
     func setPrice(price: Int) {
         let labelText = NSMutableAttributedString()
         
@@ -119,6 +122,7 @@ final class MapViewCardCell: UICollectionViewCell {
     }
     
     private func setUp() {
+        self.backgroundColor = .white
         let insetValue = 12.0
         
         self.imageView.snp.makeConstraints {
