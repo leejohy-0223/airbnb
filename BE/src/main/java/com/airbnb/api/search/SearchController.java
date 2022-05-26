@@ -1,11 +1,15 @@
 package com.airbnb.api.search;
 
-import com.airbnb.api.search.dto.HouseListResponse;
 import com.airbnb.api.search.dto.SearchConditionRequest;
+import com.airbnb.domain.House;
 import com.airbnb.service.HouseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.data.domain.Slice;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -17,9 +21,15 @@ public class SearchController {
     private HouseService houseService;
 
     @GetMapping("")
-    public List<HouseListResponse> findHouse(@RequestBody SearchConditionRequest request, Pageable pageable) {
-        List<HouseListResponse> results = houseService.findByCondition(request, pageable);
+    public String findHouse(@RequestBody SearchConditionRequest request, Pageable pageable) {
+        List<House> houseList = houseService.findByCondition(
+                request.getPosition(),
+                request.getMinFee(),
+                request.getMaxFee(),
+                pageable
+        );
+
         // TODO HATEAOS 적용
-        return results;
+        return "ok";
     }
 }

@@ -1,22 +1,23 @@
 package com.airbnb.api.search.dto;
 
-import com.airbnb.domain.Position;
+import org.locationtech.jts.geom.Point;
 
 import java.time.LocalDateTime;
 
 public class SearchConditionRequest {
 
-    private Position position;
+    private Point position;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
-    private int fee;
+    private Integer minFee;
+    private Integer maxFee;
     private int numberOfGuests;
 
-    public Position getPosition() {
+    public Point getPosition() {
         return position;
     }
 
-    public void setPosition(Position position) {
+    public void setPosition(Point position) {
         this.position = position;
     }
 
@@ -36,12 +37,20 @@ public class SearchConditionRequest {
         this.endDate = endDate;
     }
 
-    public int getFee() {
-        return fee;
+    public Integer getMinFee() {
+        return minFee;
     }
 
-    public void setFee(int fee) {
-        this.fee = fee;
+    public void setMinFee(Integer minFee) {
+        this.minFee = minFee;
+    }
+
+    public Integer getMaxFee() {
+        return maxFee;
+    }
+
+    public void setMaxFee(Integer maxFee) {
+        this.maxFee = maxFee;
     }
 
     public int getNumberOfGuests() {
