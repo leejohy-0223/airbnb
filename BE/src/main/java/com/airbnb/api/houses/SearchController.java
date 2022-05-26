@@ -1,12 +1,11 @@
-package com.airbnb.api.search;
+package com.airbnb.api.houses;
 
-import com.airbnb.api.search.dto.HouseDetailResponse;
-import com.airbnb.api.search.dto.SearchConditionRequest;
+import com.airbnb.api.houses.dto.HouseDetailResponse;
+import com.airbnb.api.houses.dto.SearchConditionRequest;
 import com.airbnb.domain.House;
 import com.airbnb.service.HouseService;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Slice;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/search")
+@RequestMapping("/api/houses")
 public class SearchController {
 
     private final HouseService houseService;
@@ -25,9 +24,9 @@ public class SearchController {
         this.houseService = houseService;
     }
 
-    @GetMapping("")
+    @GetMapping
     public String findHouse(@RequestBody SearchConditionRequest request, Pageable pageable) {
-        List<String> byCondition = houseService.findByCondition(
+        List<House> byCondition = houseService.findByCondition(
             request.getPosition(),
             request.getMinFee(),
             request.getMaxFee()
