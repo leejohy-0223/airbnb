@@ -11,7 +11,7 @@ import SnapKit
 
 final class MapView: MKMapView {
     
-    lazy var cardCollectionView: UICollectionView = {
+    lazy var collectionView: UICollectionView = {
         let cellWidth = self.frame.width - 60
         let cellHeight = self.frame.height / 6
         
@@ -32,15 +32,12 @@ final class MapView: MKMapView {
     
     private lazy var listButton: UIButton = {
         let button = UIButton()
+        let image = UIImage(systemName: "line.3.horizontal", withConfiguration: UIImage.SymbolConfiguration(pointSize: 26))
         
         button.backgroundColor = .systemBackground
+        button.layer.cornerRadius = Constants.Button.mapListButton / 2
         button.tintColor = .label
-        
-        let config = UIImage.SymbolConfiguration(pointSize: 30)
-        let image = UIImage(systemName: "line.3.horizontal", withConfiguration: config)
-        
         button.setImage(image, for: .normal)
-        button.layer.cornerRadius = Constants.ButtonSize.mapListButton / 2
         return button
     }()
 
@@ -57,23 +54,24 @@ final class MapView: MKMapView {
     }
     
     private func addViews() {
-        self.addSubview(cardCollectionView)
-        self.addSubview(listButton)
+        [collectionView, listButton].forEach {
+            self.addSubview($0)
+        }
     }
     
     private func setButton() {
         listButton.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(24)
             $0.top.equalToSuperview().inset(64)
-            $0.width.equalTo(Constants.ButtonSize.mapListButton)
-            $0.height.equalTo(Constants.ButtonSize.mapListButton)
+            $0.width.equalTo(Constants.Button.mapListButton)
+            $0.height.equalTo(Constants.Button.mapListButton)
         }
     }
     
     private func setCollectionView() {
-        self.cardCollectionView.register(MapViewCardCell.self, forCellWithReuseIdentifier: MapViewCardCell.ID)
+        self.collectionView.register(MapViewCardCell.self, forCellWithReuseIdentifier: MapViewCardCell.ID)
         
-        cardCollectionView.snp.makeConstraints {
+        collectionView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(8.0)
             $0.bottom.equalTo(self.snp.bottom).inset(32.0)
             $0.height.equalTo(self.frame.height / 6)

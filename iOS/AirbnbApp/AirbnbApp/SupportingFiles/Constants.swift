@@ -19,12 +19,10 @@ struct Constants {
         static let mapCardPriceFontSize = 16.0
     }
     
-    struct CellSize {
-        static let mapCardHeight = 120.0
-    }
-    
-    struct ButtonSize {
+    struct Button {
+        static let mapButtonWidth = 100.0
         static let mapListButton = 48.0
+        static let mapTitleFontSize = 18.0
     }
     
 }
