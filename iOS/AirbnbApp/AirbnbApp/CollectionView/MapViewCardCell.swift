@@ -174,11 +174,11 @@ final class MapViewCardCell: UICollectionViewCell {
         if heartButton.configuration?.image == UIImage(systemName: "heart") {
             heartButton.configuration?.image = UIImage(systemName: "heart.fill")
             heartButton.configuration?.baseForegroundColor = .red
-            delegate?.hearButtonIsTapped(cardIndex)
+            delegate?.heartButtonIsTapped(cardIndex)
         } else {
             heartButton.configuration?.image = UIImage(systemName: "heart")
             heartButton.configuration?.baseForegroundColor = .secondaryLabel
-            delegate?.hearButtonIsTapped(cardIndex)
+            delegate?.heartButtonIsTapped(cardIndex)
         }
     }
 }

@@ -8,5 +8,5 @@
 import Foundation
 
 protocol HeartButtonDelegate: AnyObject {
-    func hearButtonIsTapped(_ cardIndex: Int?)
+    func heartButtonIsTapped(_ cardIndex: Int?)
 }

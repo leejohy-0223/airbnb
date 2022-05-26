@@ -34,6 +34,7 @@ final class MapView: MKMapView {
         super.init(frame: frame)
         setUpCollectionView()
         self.mapType = .standard
+        
     }
     
     @available(*, unavailable) required init(coder: NSCoder) {
@@ -41,6 +42,8 @@ final class MapView: MKMapView {
     }
     
     private func setUpCollectionView() {
+        self.cardCollectionView.register(MapViewCardCell.self, forCellWithReuseIdentifier: MapViewCardCell.ID)
+        
         self.addSubview(cardCollectionView)
         
         cardCollectionView.snp.makeConstraints {
@@ -52,5 +55,4 @@ final class MapView: MKMapView {
             $0.height.equalTo(self.frame.height / 6)
         }
     }
-    
 }

@@ -28,6 +28,7 @@
 		8D9D1F5C283CE24300EEF33A /* PriceAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9D1F5B283CE24300EEF33A /* PriceAnnotationView.swift */; };
 		8D9D1F64283D355200EEF33A /* HouseInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9D1F63283D355200EEF33A /* HouseInfo.swift */; };
 		8DA35039283F26FF00B72BA9 /* HeartButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA35038283F26FF00B72BA9 /* HeartButtonDelegate.swift */; };
+		8DA3503B283F47D400B72BA9 /* MapCardCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA3503A283F47D400B72BA9 /* MapCardCollectionViewDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		8D9D1F5B283CE24300EEF33A /* PriceAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceAnnotationView.swift; sourceTree = "<group>"; };
 		8D9D1F63283D355200EEF33A /* HouseInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseInfo.swift; sourceTree = "<group>"; };
 		8DA35038283F26FF00B72BA9 /* HeartButtonDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartButtonDelegate.swift; sourceTree = "<group>"; };
+		8DA3503A283F47D400B72BA9 /* MapCardCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCardCollectionViewDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 			children = (
 				8D0AD767283C5EDD00575C3B /* MainViewController.swift */,
 				8D224200283CA7C2006A9043 /* Map */,
+				8DA3503D283F53C900B72BA9 /* CollectionView */,
 				8D6B3BFD283DD21F00E24CE8 /* Converter */,
 				8D6B3C0F283E096300E24CE8 /* Extension */,
 				8D0AD777283C600C00575C3B /* SupportingFiles */,
@@ -134,8 +137,6 @@
 				8D9D1F5B283CE24300EEF33A /* PriceAnnotationView.swift */,
 				8D9D1F63283D355200EEF33A /* HouseInfo.swift */,
 				8D224201283CB794006A9043 /* PriceLabel.swift */,
-				8D6B3BF9283DB79800E24CE8 /* MapViewCardCell.swift */,
-				8DA35038283F26FF00B72BA9 /* HeartButtonDelegate.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -163,6 +164,16 @@
 				8D6B3C0D283E095E00E24CE8 /* NSMutableAttributedString.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		8DA3503D283F53C900B72BA9 /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				8D6B3BF9283DB79800E24CE8 /* MapViewCardCell.swift */,
+				8DA3503A283F47D400B72BA9 /* MapCardCollectionViewDataSource.swift */,
+				8DA35038283F26FF00B72BA9 /* HeartButtonDelegate.swift */,
+			);
+			path = CollectionView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,6 +287,7 @@
 				8D224202283CB794006A9043 /* PriceLabel.swift in Sources */,
 				8D9D1F5C283CE24300EEF33A /* PriceAnnotationView.swift in Sources */,
 				8D9D1F64283D355200EEF33A /* HouseInfo.swift in Sources */,
+				8DA3503B283F47D400B72BA9 /* MapCardCollectionViewDataSource.swift in Sources */,
 				8D0AD768283C5EDD00575C3B /* MainViewController.swift in Sources */,
 				8D224204283CB7E4006A9043 /* PriceConverter.swift in Sources */,
 				8DA35039283F26FF00B72BA9 /* HeartButtonDelegate.swift in Sources */,

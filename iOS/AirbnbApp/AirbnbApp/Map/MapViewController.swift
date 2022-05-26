@@ -12,9 +12,11 @@ import CoreLocation
 final class MapViewController: UIViewController {
     
     private let mapView = MapView(frame: CGRect(origin: .zero, size: UIScreen.main.bounds.size))
+    private lazy var collectionView = mapView.cardCollectionView
+    private lazy var dataSource = MapCardCollectionViewDataSource(delegate: self)
+    private var currentCardIndex: Int?
     
     private let startCordinate = CLLocationCoordinate2D(latitude: 37.490765, longitude: 127.033433)
-    
     private var mockHouseInfo = [
         HouseInfo(name: "킹왕짱 숙소", detail: Detail(rating: 4.5, reviewCount: 101), price: 85000, hostingBy: "김씨", coordinate: CLLocationCoordinate2D(latitude: 37.490765, longitude: 127.033433)),
         HouseInfo(name: "킹왕 숙소", detail: Detail(rating: 4.45, reviewCount: 121), price: 75000, hostingBy: "박씨", coordinate: CLLocationCoordinate2D(latitude: 37.490765, longitude: 127.032433)),
@@ -30,9 +32,12 @@ final class MapViewController: UIViewController {
         setLocationManager()
         setMapView()
         addPins()
-        self.mapView.cardCollectionView.dataSource = self
-        self.mapView.cardCollectionView.register(MapViewCardCell.self, forCellWithReuseIdentifier: MapViewCardCell.ID)
-        
+        setCollectionView()
+    }
+    
+    private func setCollectionView() {
+        self.collectionView.dataSource = dataSource
+        self.dataSource.fetchHouseInfo(houseInfo: mockHouseInfo)
     }
     
     private func setMapView() {
@@ -64,6 +69,7 @@ final class MapViewController: UIViewController {
         
         self.mapView.addAnnotation(pin)
     }
+    
     // TODO: 사용자 위치 표시
     private func setLocationManager() {
         self.locationManager.delegate = self
@@ -86,31 +92,11 @@ extension MapViewController: MKMapViewDelegate {
     
 }
 
-extension MapViewController: UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return mockHouseInfo.count
-    }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MapViewCardCell.ID,
-                                                            for: indexPath) as? MapViewCardCell
-        else { return UICollectionViewCell() }
-        cell.delegate = self
-        cell.setCardID(index: indexPath.item)
-        cell.setReviewLabel(rating: mockHouseInfo[indexPath.item].detail.rating, reviewCount: mockHouseInfo[indexPath.item].detail.reviewCount)
-        cell.setImage(image: UIImage(systemName: "house")!)
-        cell.setPrice(price: mockHouseInfo[indexPath.item].price)
-        cell.setHouseName(houseName: mockHouseInfo[indexPath.item].name)
-        cell.setHeartButton(isWish: mockHouseInfo[indexPath.item].isWish)
-        return cell
-    }
-}
-
 extension MapViewController: HeartButtonDelegate {
-    func hearButtonIsTapped(_ cardIndex: Int?) {
+    func heartButtonIsTapped(_ cardIndex: Int?) {
         guard let cardIndex = cardIndex else { return }
         self.mockHouseInfo[cardIndex].isWish = !mockHouseInfo[cardIndex].isWish
+        self.dataSource.changeIsWish(at: cardIndex)
     }
 }
 
