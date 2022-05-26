@@ -1,9 +1,8 @@
 package com.airbnb.service;
 
-import com.airbnb.api.search.dto.HouseListResponse;
-import com.airbnb.api.search.dto.SearchConditionRequest;
 import com.airbnb.domain.House;
 import com.airbnb.repository.HouseRepository;
+import org.locationtech.jts.geom.Point;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -18,8 +17,12 @@ public class HouseService {
         this.houseRepository = houseRepository;
     }
 
-    public List<HouseListResponse> findByCondition(SearchConditionRequest request, Pageable pageable) {
-        List<House> houseList = houseRepository.findByCondition(request, pageable);
-        return null;
+    public List<House> findByCondition(Point point, Integer minFee, Integer maxFee, Pageable pageable) {
+        List<House> houses = houseRepository.searchByConditionNative(point, minFee, maxFee, pageable);
+        return houses;
+    }
+
+    public House save(House house) {
+        return houseRepository.save(house);
     }
 }
