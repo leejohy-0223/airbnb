@@ -23,4 +23,8 @@ struct Constants {
         static let mapCardHeight = 120.0
     }
     
+    struct ButtonSize {
+        static let mapListButton = 48.0
+    }
+    
 }

@@ -31,7 +31,6 @@ final class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setLocationManager()
         setMapView()
         addPins()
         setCollectionView()
@@ -71,15 +70,6 @@ final class MapViewController: UIViewController {
         
         self.mapView.addAnnotation(pin)
     }
-    
-    // TODO: 사용자 위치 표시
-    private func setLocationManager() {
-        self.locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
-        self.mapView.showsUserLocation = true
-        self.mapView.setUserTrackingMode(.follow, animated: true)
-    }
 }
 
 extension MapViewController: MKMapViewDelegate {
@@ -108,8 +98,4 @@ extension MapViewController: HeartButtonDelegate {
         self.mockHouseInfo[cardIndex].isWish = !mockHouseInfo[cardIndex].isWish
         self.dataSource.changeIsWish(at: cardIndex)
     }
-}
-
-extension MapViewController: CLLocationManagerDelegate {
-    
 }
