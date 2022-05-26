@@ -27,11 +27,10 @@ public class SearchController {
 
     @GetMapping("")
     public String findHouse(@RequestBody SearchConditionRequest request, Pageable pageable) {
-        List<House> houseList = houseService.findByCondition(
-                request.getPosition(),
-                request.getMinFee(),
-                request.getMaxFee(),
-                pageable
+        List<String> byCondition = houseService.findByCondition(
+            request.getPosition(),
+            request.getMinFee(),
+            request.getMaxFee()
         );
 
         // TODO HATEAOS 적용

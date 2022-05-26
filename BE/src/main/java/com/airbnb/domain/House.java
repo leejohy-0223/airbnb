@@ -21,7 +21,6 @@ public class House {
     @Embedded
     private DetailInfo detailInfo;
 
-    @Lob
     private Point point;
 
     @OneToMany(mappedBy = "house")

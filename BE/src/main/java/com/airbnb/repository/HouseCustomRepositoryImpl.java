@@ -34,51 +34,7 @@ public class HouseCustomRepositoryImpl implements HouseCustomRepository {
     }
 
     @Override
-    public Page<House> searchByCondition(Point position, Integer minFee, Integer maxFee, Pageable pageable) {
-        List<House> contents = queryFactory
-                .selectFrom(house)
-                .where(
-                        isValidPosition(position),
-                        priceRange(minFee, maxFee)
-                )
-                .offset(pageable.getOffset())
-                .limit(pageable.getPageSize())
-                .fetch();
-
-        JPAQuery<Long> countQuery = queryFactory
-                .select(Wildcard.count)
-                .from(house)
-                .where(
-                        isValidPosition(position),
-                        priceRange(minFee, maxFee)
-                );
-
-        return PageableExecutionUtils.getPage(contents, pageable, countQuery::fetchOne);
-    }
-
-    private BooleanBuilder isValidPosition(Point position) { // 좌표받음 + 1Km
-        return new BooleanBuilder();
-    }
-
-    private BooleanBuilder priceRange(Integer minFee, Integer maxFee) {
-        if (minFee > maxFee) {
-            return new BooleanBuilder();
-        }
-        if (minFee != null && maxFee != null) {
-            return new BooleanBuilder(house.price.between(minFee, maxFee));
-        }
-        if (minFee != null && maxFee == null) {
-            return new BooleanBuilder(house.price.goe(minFee));
-        }
-        if (minFee == null && maxFee != null) {
-            return new BooleanBuilder(house.price.loe(maxFee));
-        }
-
-        return new BooleanBuilder();
-    }
-
-    @Override
-    public List<House> searchByConditionNative(Point position, Integer minFee, Integer maxFee, Pageable pageable) {
+    public List<House> searchByConditionNative(Point position, Integer minFee, Integer maxFee) {
         double baseLatitude = position.getX(); // 내 위치 y
         double baseLongitude = position.getY(); // 내 위치 x
         double distance = 0.3; // km 단위
@@ -105,5 +61,30 @@ public class HouseCustomRepositoryImpl implements HouseCustomRepository {
         );
         return query.getResultList();
         //return PageableExecutionUtils.getPage(resultList, pageable, () -> (Long) countQuery.getSingleResult());
+    }
+
+    @Override
+    public List<String> searchByConditionNativeV2(Point position, Integer minFee, Integer maxFee) {
+        double baseLatitude = position.getX(); // 내 위치 y
+        double baseLongitude = position.getY(); // 내 위치 x
+        double distance = 1000; // m 단위
+
+        // native query 활용
+        Query query = em.createNativeQuery("" +
+                "SELECT h.name \n" +
+                "FROM house AS h \n" +
+                "WHERE (SELECT ST_Distance_Sphere(h.point, point(?1, ?2)) < ?3 or null)"
+        );
+        query.setParameter(1, baseLatitude);
+        query.setParameter(2, baseLongitude);
+        query.setParameter(3, distance);
+
+        List resultList = query.getResultList();
+
+        for (Object o : resultList) {
+            String homename = (String)o;
+            LOGGER.info("home name is : {}", homename);
+        }
+        return resultList;
     }
 }
