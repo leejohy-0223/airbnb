@@ -27,6 +27,7 @@
 		8D6B3C0E283E095E00E24CE8 /* NSMutableAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6B3C0D283E095E00E24CE8 /* NSMutableAttributedString.swift */; };
 		8D9D1F5C283CE24300EEF33A /* PriceAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9D1F5B283CE24300EEF33A /* PriceAnnotationView.swift */; };
 		8D9D1F64283D355200EEF33A /* HouseInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9D1F63283D355200EEF33A /* HouseInfo.swift */; };
+		8DA35039283F26FF00B72BA9 /* HeartButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA35038283F26FF00B72BA9 /* HeartButtonDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		8D6B3C0D283E095E00E24CE8 /* NSMutableAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedString.swift; sourceTree = "<group>"; };
 		8D9D1F5B283CE24300EEF33A /* PriceAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceAnnotationView.swift; sourceTree = "<group>"; };
 		8D9D1F63283D355200EEF33A /* HouseInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseInfo.swift; sourceTree = "<group>"; };
+		8DA35038283F26FF00B72BA9 /* HeartButtonDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartButtonDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 				8D9D1F63283D355200EEF33A /* HouseInfo.swift */,
 				8D224201283CB794006A9043 /* PriceLabel.swift */,
 				8D6B3BF9283DB79800E24CE8 /* MapViewCardCell.swift */,
+				8DA35038283F26FF00B72BA9 /* HeartButtonDelegate.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 				8D9D1F64283D355200EEF33A /* HouseInfo.swift in Sources */,
 				8D0AD768283C5EDD00575C3B /* MainViewController.swift in Sources */,
 				8D224204283CB7E4006A9043 /* PriceConverter.swift in Sources */,
+				8DA35039283F26FF00B72BA9 /* HeartButtonDelegate.swift in Sources */,
 				8D0AD764283C5EDD00575C3B /* AppDelegate.swift in Sources */,
 				8D2241FD283CA470006A9043 /* MapView.swift in Sources */,
 				8D6B3BFA283DB79800E24CE8 /* MapViewCardCell.swift in Sources */,

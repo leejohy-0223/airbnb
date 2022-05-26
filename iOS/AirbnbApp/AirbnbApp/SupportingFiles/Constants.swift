@@ -12,10 +12,6 @@ struct Constants {
         static let ID: String = "CustomPin"
     }
     
-    struct CellID {
-        static let map: String = "Map"
-    }
-    
     struct Label {
         static let mapCardRatingFontSize = 16.0
         static let mapCardReviewCountFontSize = 16.0

@@ -10,6 +10,11 @@ import SnapKit
 
 final class MapViewCardCell: UICollectionViewCell {
     
+    static let ID = "MapCell"
+    private var cardIndex: Int?
+    
+    weak var delegate: HeartButtonDelegate?
+    
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
@@ -25,7 +30,6 @@ final class MapViewCardCell: UICollectionViewCell {
     private lazy var heartButton: UIButton = {
         let button = UIButton()
         button.configuration = UIButton.Configuration.plain()
-        button.configuration?.image = UIImage(systemName: "heart")
         button.tintColor = .secondaryLabel
         button.addTarget(self, action: #selector(changeImage), for: .touchUpInside)
         return button
@@ -115,6 +119,20 @@ final class MapViewCardCell: UICollectionViewCell {
         self.pricePerDayLabel.attributedText = labelText
     }
     
+    func setHeartButton(isWish: Bool) {
+        if isWish {
+            heartButton.configuration?.image = UIImage(systemName: "heart.fill")
+            heartButton.configuration?.baseForegroundColor = .red
+        } else {
+            heartButton.configuration?.image = UIImage(systemName: "heart")
+            heartButton.configuration?.baseForegroundColor = .secondaryLabel
+        }
+    }
+    
+    func setCardID(index: Int) {
+        self.cardIndex = index
+    }
+    
     private func addViews() {
         [imageView, reviewLabel, heartButton, houseNameLabel,pricePerDayLabel].forEach {
             self.addSubview($0)
@@ -156,9 +174,11 @@ final class MapViewCardCell: UICollectionViewCell {
         if heartButton.configuration?.image == UIImage(systemName: "heart") {
             heartButton.configuration?.image = UIImage(systemName: "heart.fill")
             heartButton.configuration?.baseForegroundColor = .red
+            delegate?.hearButtonIsTapped(cardIndex)
         } else {
             heartButton.configuration?.image = UIImage(systemName: "heart")
             heartButton.configuration?.baseForegroundColor = .secondaryLabel
+            delegate?.hearButtonIsTapped(cardIndex)
         }
     }
 }

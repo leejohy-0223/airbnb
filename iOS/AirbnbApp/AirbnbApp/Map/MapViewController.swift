@@ -15,11 +15,12 @@ final class MapViewController: UIViewController {
     
     private let startCordinate = CLLocationCoordinate2D(latitude: 37.490765, longitude: 127.033433)
     
-    private let mockCordinates = [
-        HouseInfo(coordinate: CLLocationCoordinate2D(latitude: 37.490765, longitude: 127.033433), name: "킹왕짱 숙소"),
-        HouseInfo(coordinate: CLLocationCoordinate2D(latitude: 37.491545, longitude: 127.033433), name: "킹 숙소"),
-        HouseInfo(coordinate: CLLocationCoordinate2D(latitude: 37.492345, longitude: 127.033433), name: "왕 숙소"),
-        HouseInfo(coordinate: CLLocationCoordinate2D(latitude: 37.493455, longitude: 127.033433), name: "짱 숙소")
+    private var mockHouseInfo = [
+        HouseInfo(name: "킹왕짱 숙소", detail: Detail(rating: 4.5, reviewCount: 101), price: 85000, hostingBy: "김씨", coordinate: CLLocationCoordinate2D(latitude: 37.490765, longitude: 127.033433)),
+        HouseInfo(name: "킹왕 숙소", detail: Detail(rating: 4.45, reviewCount: 121), price: 75000, hostingBy: "박씨", coordinate: CLLocationCoordinate2D(latitude: 37.490765, longitude: 127.032433)),
+        HouseInfo(name: "킹짱 숙소", detail: Detail(rating: 4.3, reviewCount: 12112), price: 65430, hostingBy: "정씨", coordinate: CLLocationCoordinate2D(latitude: 37.48065, longitude: 127.031433)),
+        HouseInfo(name: "왕짱 숙소", detail: Detail(rating: 4.221, reviewCount: 1210), price: 12350, hostingBy: "송씨", coordinate: CLLocationCoordinate2D(latitude: 37.490765, longitude: 127.030433)),
+        HouseInfo(name: "킹왕짱 숙소", detail: Detail(rating: 4.33, reviewCount: 51), price: 12350, hostingBy: "이씨", coordinate: CLLocationCoordinate2D(latitude: 37.490765, longitude: 127.037433))
     ]
     
     private let locationManager = CLLocationManager()
@@ -30,7 +31,8 @@ final class MapViewController: UIViewController {
         setMapView()
         addPins()
         self.mapView.cardCollectionView.dataSource = self
-        self.mapView.cardCollectionView.register(MapViewCardCell.self, forCellWithReuseIdentifier: Constants.CellID.map)
+        self.mapView.cardCollectionView.register(MapViewCardCell.self, forCellWithReuseIdentifier: MapViewCardCell.ID)
+        
     }
     
     private func setMapView() {
@@ -46,7 +48,7 @@ final class MapViewController: UIViewController {
     }
     
     private func addPins() {
-        mockCordinates.forEach {
+        mockHouseInfo.forEach {
             addPin(houseInfo: $0)
         }
     }
@@ -87,18 +89,28 @@ extension MapViewController: MKMapViewDelegate {
 extension MapViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return mockHouseInfo.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CellID.map,
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MapViewCardCell.ID,
                                                             for: indexPath) as? MapViewCardCell
         else { return UICollectionViewCell() }
-        cell.setReviewLabel(rating: 4.72, reviewCount: 128)
+        cell.delegate = self
+        cell.setCardID(index: indexPath.item)
+        cell.setReviewLabel(rating: mockHouseInfo[indexPath.item].detail.rating, reviewCount: mockHouseInfo[indexPath.item].detail.reviewCount)
         cell.setImage(image: UIImage(systemName: "house")!)
-        cell.setPrice(price: 82587)
-        cell.setHouseName(houseName: "한국 어딘가 아주 좋은 킹왕짱 숙소 이름인데 조금 길어")
+        cell.setPrice(price: mockHouseInfo[indexPath.item].price)
+        cell.setHouseName(houseName: mockHouseInfo[indexPath.item].name)
+        cell.setHeartButton(isWish: mockHouseInfo[indexPath.item].isWish)
         return cell
+    }
+}
+
+extension MapViewController: HeartButtonDelegate {
+    func hearButtonIsTapped(_ cardIndex: Int?) {
+        guard let cardIndex = cardIndex else { return }
+        self.mockHouseInfo[cardIndex].isWish = !mockHouseInfo[cardIndex].isWish
     }
 }
 
