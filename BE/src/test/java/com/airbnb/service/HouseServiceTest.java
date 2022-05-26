@@ -64,10 +64,10 @@ class HouseServiceTest {
         houseService.save(house5); // 1km 보다 먼 거리
 
         // when
-        PageRequest pageRequest = PageRequest.of(0, 4);
-        List<House> houseList = houseService.findByCondition(nowPosition, 1000, 100000, pageRequest);
+        List<String> houseList = houseService.findByCondition(nowPosition, 1000, 100000);
 
         // then
-        assertThat(houseList).extracting("name").contains("house1", "house2", "house3");
+        assertThat(houseList.size()).isEqualTo(3);
+        assertThat(houseList).contains("house1", "house2", "house3");
     }
 }
