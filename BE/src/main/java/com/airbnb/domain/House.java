@@ -1,5 +1,7 @@
 package com.airbnb.domain;
 
+import org.locationtech.jts.geom.Point;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +20,9 @@ public class House {
     @Embedded
     private DetailInfo detailInfo;
 
+    @Lob
+    private Point point;
+
     @OneToMany(mappedBy = "house")
     private List<Reservation> reservations = new ArrayList<>();
 
@@ -30,13 +35,18 @@ public class House {
     @OneToMany(mappedBy = "house")
     private List<WishList> wishLists = new ArrayList<>();
 
-    public House(String name, int price, DetailInfo detailInfo) {
+    public House(String name, int price, DetailInfo detailInfo, Point point) {
         this.name = name;
         this.price = price;
         this.detailInfo = detailInfo;
+        this.point = point;
     }
 
     public House() {
+    }
+
+    public Point getPosition() {
+        return point;
     }
 
     public Long getId() {
