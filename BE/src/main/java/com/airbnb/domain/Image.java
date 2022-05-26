@@ -19,5 +19,7 @@ public class Image {
     @JoinColumn(name = "house_id")
     private House house;
 
-
+    public String getUrl() {
+        return url;
+    }
 }
