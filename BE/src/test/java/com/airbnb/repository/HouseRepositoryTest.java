@@ -23,7 +23,7 @@ class HouseRepositoryTest {
     @Test
     void save_house_info() {
         // given
-        House house = new House("house1", 10000, new DetailInfo(3, "oneRoom", "방입니다", 4.8, 100));
+        House house = new House("house1", 10000, new DetailInfo(3, "oneRoom", "방입니다", 4.8, 100), null);
 
         // when
         House save = houseRepository.save(house);
