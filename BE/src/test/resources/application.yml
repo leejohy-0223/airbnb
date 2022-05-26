@@ -1,11 +1,33 @@
+#spring:
+#  profiles:
+#    active: test
+#  datasource:
+#    url: jdbc:h2:mem:test
+#    driver-class-name: org.h2.Driver
+#    username: sa
+#    password:
+#
+#  jpa:
+#    hibernate:
+#      ddl-auto: create
+#    properties:
+#      hibernate:
+#        format_sql: true
+#
+#server:
+#  port: 80
+#
+#logging.level:
+#  org.hibernate.SQL: debug
+
 spring:
   profiles:
     active: test
   datasource:
-    url: jdbc:h2:mem:test
-    driver-class-name: org.h2.Driver
-    username: sa
-    password:
+    url: jdbc:mysql://localhost:3306/airbnb?allowLoadLocalInfile=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul&characterEncoding=UTF-8&useLegacyDatetimeCode=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: ${username}
+    password: ${password}
 
   jpa:
     hibernate:
@@ -13,6 +35,8 @@ spring:
     properties:
       hibernate:
         format_sql: true
+    database: mysql
+    database-platform: org.hibernate.spatial.dialect.mysql.MySQL56InnoDBSpatialDialect
 
 server:
   port: 80
