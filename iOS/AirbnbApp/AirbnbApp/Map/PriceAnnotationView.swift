@@ -21,8 +21,8 @@ final class PriceAnnotationView: MKAnnotationView {
     }
     
     private func setUp() {
-        self.backgroundColor = .white
-        
+        self.backgroundColor = .systemBackground
+        self.layer.cornerRadius = 8.0
         self.frame = priceLabel.frame   //Touch를 인식하기 위해 설정
         self.addSubview(priceLabel)
         

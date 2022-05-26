@@ -29,6 +29,7 @@
 		8D9D1F64283D355200EEF33A /* HouseInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9D1F63283D355200EEF33A /* HouseInfo.swift */; };
 		8DA35039283F26FF00B72BA9 /* HeartButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA35038283F26FF00B72BA9 /* HeartButtonDelegate.swift */; };
 		8DA3503B283F47D400B72BA9 /* MapCardCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA3503A283F47D400B72BA9 /* MapCardCollectionViewDataSource.swift */; };
+		8DA3503F283F630900B72BA9 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA3503E283F630900B72BA9 /* SearchResultViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		8D9D1F63283D355200EEF33A /* HouseInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseInfo.swift; sourceTree = "<group>"; };
 		8DA35038283F26FF00B72BA9 /* HeartButtonDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartButtonDelegate.swift; sourceTree = "<group>"; };
 		8DA3503A283F47D400B72BA9 /* MapCardCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCardCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		8DA3503E283F630900B72BA9 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				8D0AD767283C5EDD00575C3B /* MainViewController.swift */,
+				8DA3503E283F630900B72BA9 /* SearchResultViewController.swift */,
 				8D224200283CA7C2006A9043 /* Map */,
 				8DA3503D283F53C900B72BA9 /* CollectionView */,
 				8D6B3BFD283DD21F00E24CE8 /* Converter */,
@@ -298,6 +301,7 @@
 				8D6B3C0E283E095E00E24CE8 /* NSMutableAttributedString.swift in Sources */,
 				8D0AD781283C718200575C3B /* MapViewController.swift in Sources */,
 				8D224206283CB8AB006A9043 /* Constants.swift in Sources */,
+				8DA3503F283F630900B72BA9 /* SearchResultViewController.swift in Sources */,
 				8D6B3BFC283DCCE400E24CE8 /* AddressConverter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

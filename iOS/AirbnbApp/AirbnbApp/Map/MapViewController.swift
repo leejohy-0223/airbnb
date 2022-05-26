@@ -14,9 +14,11 @@ final class MapViewController: UIViewController {
     private let mapView = MapView(frame: CGRect(origin: .zero, size: UIScreen.main.bounds.size))
     private lazy var collectionView = mapView.cardCollectionView
     private lazy var dataSource = MapCardCollectionViewDataSource(delegate: self)
-    private var currentCardIndex: Int?
     
     private let startCordinate = CLLocationCoordinate2D(latitude: 37.490765, longitude: 127.033433)
+    private var currentLocation: CLLocation?
+    
+    
     private var mockHouseInfo = [
         HouseInfo(name: "킹왕짱 숙소", detail: Detail(rating: 4.5, reviewCount: 101), price: 85000, hostingBy: "김씨", coordinate: CLLocationCoordinate2D(latitude: 37.490765, longitude: 127.033433)),
         HouseInfo(name: "킹왕 숙소", detail: Detail(rating: 4.45, reviewCount: 121), price: 75000, hostingBy: "박씨", coordinate: CLLocationCoordinate2D(latitude: 37.490765, longitude: 127.032433)),
@@ -75,6 +77,8 @@ final class MapViewController: UIViewController {
         self.locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+        self.mapView.showsUserLocation = true
+        self.mapView.setUserTrackingMode(.follow, animated: true)
     }
 }
 
@@ -83,9 +87,15 @@ extension MapViewController: MKMapViewDelegate {
         guard !annotation.isKind(of: MKUserLocation.self),
               let dequeView = mapView.dequeueReusableAnnotationView(withIdentifier: Constants.Pin.ID)
                 as? PriceAnnotationView else { return nil }
-       
+        
         dequeView.annotation = annotation
-        dequeView.setPrice(price: 10000000)
+        
+        // 특정 집 정보 coordinate로 가져오기
+        let houseInfo = self.mockHouseInfo.first {
+            $0.coordinate == annotation.coordinate
+        }
+        
+        dequeView.setPrice(price: houseInfo?.price ?? 0)
         
         return dequeView
     }
@@ -103,4 +113,3 @@ extension MapViewController: HeartButtonDelegate {
 extension MapViewController: CLLocationManagerDelegate {
     
 }
-

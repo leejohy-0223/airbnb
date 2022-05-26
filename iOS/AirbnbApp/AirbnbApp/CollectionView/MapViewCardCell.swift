@@ -40,6 +40,7 @@ final class MapViewCardCell: UICollectionViewCell {
         label.numberOfLines = 2
         label.lineBreakMode = .byTruncatingTail
         label.font = .systemFont(ofSize: Constants.Label.mapCardHouseNameFontSize)
+        label.textColor = .label
         return label
     }()
     
@@ -66,7 +67,7 @@ final class MapViewCardCell: UICollectionViewCell {
         
         // 별표
         guard let starImage = UIImage(systemName: "star.fill") else { return }
-        let redStar = starImage.withTintColor(.red, renderingMode: .alwaysTemplate)
+        let redStar = starImage.withTintColor(.systemRed, renderingMode: .alwaysTemplate)
         let imageAttachment = NSTextAttachment(image: redStar)
         
         // 별점
@@ -77,15 +78,15 @@ final class MapViewCardCell: UICollectionViewCell {
                      color: .label)
         
         //후기 갯수
-        let reviewCountTest = NSMutableAttributedString()
+        let reviewCountText = NSMutableAttributedString()
             .setting(string: "후기 (\(reviewCount)개)",
                      fontSize: Constants.Label.mapCardReviewCountFontSize,
                      weight: .light,
-                     color: .secondaryLabel)
+                     color: .systemGray)
         
         labelText.append(NSAttributedString(attachment:imageAttachment))
         labelText.append(ratingText)
-        labelText.append(reviewCountTest)
+        labelText.append(reviewCountText)
         
         self.reviewLabel.attributedText = labelText
     }
@@ -140,7 +141,7 @@ final class MapViewCardCell: UICollectionViewCell {
     }
     
     private func setUp() {
-        self.backgroundColor = .white
+        self.backgroundColor = .systemBackground
         let insetValue = 12.0
         
         self.imageView.snp.makeConstraints {

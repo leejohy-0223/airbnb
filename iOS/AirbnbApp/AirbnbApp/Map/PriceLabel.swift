@@ -24,7 +24,7 @@ final class PriceLabel: UILabel {
         self.minimumScaleFactor = 0.5
         self.adjustsFontSizeToFitWidth = true
         
-        self.backgroundColor = .white
+        self.backgroundColor = .systemBackground
         self.frame = CGRect(origin: .zero,
                             size: CGSize(width: CGFloat(Constants.Pin.size.width),
                                          height: CGFloat(Constants.Pin.size.height)))
