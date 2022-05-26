@@ -9,5 +9,5 @@ import com.airbnb.domain.House;
 import java.util.List;
 
 public interface HouseRepository extends JpaRepository<House, Long> {
-    List<House> findByCondition(SearchConditionRequest request, Pageable pageable);
+    // List<House> findByCondition(SearchConditionRequest request, Pageable pageable);
 }

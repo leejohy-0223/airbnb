@@ -1,5 +1,6 @@
 package com.airbnb.service;
 
+import com.airbnb.api.search.dto.HouseDetailResponse;
 import com.airbnb.api.search.dto.HouseListResponse;
 import com.airbnb.api.search.dto.SearchConditionRequest;
 import com.airbnb.domain.House;
@@ -19,7 +20,13 @@ public class HouseService {
     }
 
     public List<HouseListResponse> findByCondition(SearchConditionRequest request, Pageable pageable) {
-        List<House> houseList = houseRepository.findByCondition(request, pageable);
         return null;
+    }
+
+    public HouseDetailResponse findHouseInformation(Long id) {
+        House house = houseRepository.findById(id)
+            .orElseThrow(() -> new IllegalArgumentException("찾을 수 없는 숙소 정보입니다."));
+
+        return new HouseDetailResponse(house);
     }
 }

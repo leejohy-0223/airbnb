@@ -1,7 +1,5 @@
 package com.airbnb.domain;
 
-import java.util.PriorityQueue;
-
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;

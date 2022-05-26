@@ -3,6 +3,7 @@ package com.airbnb.domain;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 public class House {
@@ -30,6 +31,10 @@ public class House {
     @OneToMany(mappedBy = "house")
     private List<WishList> wishLists = new ArrayList<>();
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(referencedColumnName = "user_id", name = "host_id")
+    private User host;
+
     public House(String name, int price, DetailInfo detailInfo) {
         this.name = name;
         this.price = price;
@@ -54,4 +59,15 @@ public class House {
     public DetailInfo getDetailInfo() {
         return detailInfo;
     }
+
+    public List<String> getImagesURL() {
+        return images.stream()
+            .map(Image::getUrl)
+            .collect(Collectors.toList());
+    }
+
+    public String getHostName() {
+        return host.getName();
+    }
+
 }
