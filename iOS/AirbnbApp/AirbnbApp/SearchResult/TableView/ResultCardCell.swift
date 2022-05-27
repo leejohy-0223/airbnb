@@ -37,12 +37,13 @@ final class ResultCardCell: UITableViewCell {
     
     private func addViews() {
         [houseImageView, houseInfoStackView].forEach {
-            self.addSubview($0)
+            self.contentView.addSubview($0)
         }
     }
     
     private func addHeartButton() {
-        self.addSubview(heartButton)
+        self.contentView.addSubview(heartButton)
+
         
         self.heartButton.snp.makeConstraints {
             $0.trailing.equalToSuperview().inset(16.0)
