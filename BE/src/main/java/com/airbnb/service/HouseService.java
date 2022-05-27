@@ -1,6 +1,5 @@
 package com.airbnb.service;
 
-import com.airbnb.api.houses.dto.HouseDetailResponse;
 import com.airbnb.domain.House;
 import com.airbnb.repository.HouseRepository;
 import org.locationtech.jts.geom.Point;
@@ -25,10 +24,8 @@ public class HouseService {
         return houseRepository.save(house);
     }
 
-    public HouseDetailResponse findHouseInformation(Long id) {
-        House house = houseRepository.findById(id)
+    public House findHouseInformation(Long id) {
+        return houseRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("찾을 수 없는 숙소 정보입니다."));
-
-        return new HouseDetailResponse(house);
     }
 }

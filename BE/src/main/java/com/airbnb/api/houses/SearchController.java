@@ -38,6 +38,7 @@ public class SearchController {
 
     @GetMapping("/{id}")
     public HouseDetailResponse findHouseInformation(@PathVariable Long id) {
-        return houseService.findHouseInformation(id);
+        House findHouse = houseService.findHouseInformation(id);
+        return new HouseDetailResponse(findHouse);
     }
 }
