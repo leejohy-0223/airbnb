@@ -25,15 +25,15 @@ public class SearchController {
     }
 
     @GetMapping
-    public String findHouse(@RequestBody SearchConditionRequest request, Pageable pageable) {
+    public List<House> findHouse(@RequestBody SearchConditionRequest request, Pageable pageable) {
         List<House> byCondition = houseService.findByCondition(
-            request.getPosition(),
-            request.getMinFee(),
-            request.getMaxFee()
+                request.getPoint(),
+                request.getMinFee(),
+                request.getMaxFee()
         );
 
         // TODO HATEAOS 적용
-        return "ok";
+        return byCondition;
     }
 
     @GetMapping("/{id}")

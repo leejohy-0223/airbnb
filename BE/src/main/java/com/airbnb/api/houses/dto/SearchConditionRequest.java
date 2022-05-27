@@ -1,24 +1,38 @@
 package com.airbnb.api.houses.dto;
 
+import com.airbnb.utils.GeometryUtils;
 import org.locationtech.jts.geom.Point;
 
 import java.time.LocalDateTime;
 
 public class SearchConditionRequest {
 
-    private Point position;
+    private Double longitude;
+    private Double latitude;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
     private Integer minFee;
     private Integer maxFee;
     private int numberOfGuests;
 
-    public Point getPosition() {
-        return position;
+    public Double getLongitude() {
+        return longitude;
     }
 
-    public void setPosition(Point position) {
-        this.position = position;
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public Point getPoint() {
+        return GeometryUtils.toPoint(longitude, latitude);
     }
 
     public LocalDateTime getStartDate() {
