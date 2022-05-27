@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 public class House {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "house_id")
     private Long id;
 
