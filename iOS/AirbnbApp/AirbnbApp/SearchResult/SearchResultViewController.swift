@@ -12,7 +12,7 @@ import MapKit
 
 final class SearchResultViewController: UIViewController {
     
-    private var housInfo: [HouseInfo] = [
+    private var houseInfoBundle: [HouseInfo] = [
         HouseInfo(name: "킹왕짱 숙소", detail: Detail(rating: 4.5, reviewCount: 101), price: 85000, hostingBy: "김씨", coordinate: CLLocationCoordinate2D(latitude: 37.490765, longitude: 127.033433)),
         HouseInfo(name: "킹왕 숙소", detail: Detail(rating: 4.45, reviewCount: 121), price: 75000, hostingBy: "박씨", coordinate: CLLocationCoordinate2D(latitude: 37.490765, longitude: 127.032433)),
         HouseInfo(name: "킹짱 숙소", detail: Detail(rating: 4.3, reviewCount: 12112), price: 65430, hostingBy: "정씨", coordinate: CLLocationCoordinate2D(latitude: 37.48065, longitude: 127.031433)),
@@ -50,7 +50,7 @@ final class SearchResultViewController: UIViewController {
         
         let action = UIAction { [weak self] _  in
             let mapVC = MapViewController()
-            mapVC.fetchHouseInfo(houseInfo: self?.housInfo ?? [])
+            mapVC.fetchHouseInfo(houseInfoBundle: self?.houseInfoBundle ?? [])
             self?.present(mapVC, animated: true)
         }
         
@@ -74,5 +74,4 @@ final class SearchResultViewController: UIViewController {
             $0.width.equalTo(Constants.Button.mapButtonWidth)
         }
     }
-    
 }

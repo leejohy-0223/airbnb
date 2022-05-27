@@ -19,8 +19,12 @@
 		8D224202283CB794006A9043 /* PriceLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D224201283CB794006A9043 /* PriceLabel.swift */; };
 		8D224204283CB7E4006A9043 /* PriceConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D224203283CB7E4006A9043 /* PriceConverter.swift */; };
 		8D224206283CB8AB006A9043 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D224205283CB8AB006A9043 /* Constants.swift */; };
+		8D554791284055E200C4D9D9 /* HeartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D554790284055E200C4D9D9 /* HeartButton.swift */; };
+		8D55479328405FE300C4D9D9 /* HouseNameLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D55479228405FE300C4D9D9 /* HouseNameLabel.swift */; };
 		8D6465E8283FAA1E0021C782 /* ResultCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6465E7283FAA1E0021C782 /* ResultCardCell.swift */; };
 		8D6465EC28404A5D0021C782 /* ListButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6465EB28404A5D0021C782 /* ListButtonDelegate.swift */; };
+		8D6465EE284051DF0021C782 /* ReviewLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6465ED284051DF0021C782 /* ReviewLabel.swift */; };
+		8D6465F0284051E70021C782 /* PricePerDayLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6465EF284051E70021C782 /* PricePerDayLabel.swift */; };
 		8D6B3BFA283DB79800E24CE8 /* MapViewCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6B3BF9283DB79800E24CE8 /* MapViewCardCell.swift */; };
 		8D6B3BFC283DCCE400E24CE8 /* AddressConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6B3BFB283DCCE400E24CE8 /* AddressConverter.swift */; };
 		8D6B3C05283DE6BB00E24CE8 /* ConverterUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6B3C04283DE6BB00E24CE8 /* ConverterUnitTest.swift */; };
@@ -57,8 +61,12 @@
 		8D224201283CB794006A9043 /* PriceLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceLabel.swift; sourceTree = "<group>"; };
 		8D224203283CB7E4006A9043 /* PriceConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceConverter.swift; sourceTree = "<group>"; };
 		8D224205283CB8AB006A9043 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		8D554790284055E200C4D9D9 /* HeartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartButton.swift; sourceTree = "<group>"; };
+		8D55479228405FE300C4D9D9 /* HouseNameLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseNameLabel.swift; sourceTree = "<group>"; };
 		8D6465E7283FAA1E0021C782 /* ResultCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCardCell.swift; sourceTree = "<group>"; };
 		8D6465EB28404A5D0021C782 /* ListButtonDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListButtonDelegate.swift; sourceTree = "<group>"; };
+		8D6465ED284051DF0021C782 /* ReviewLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewLabel.swift; sourceTree = "<group>"; };
+		8D6465EF284051E70021C782 /* PricePerDayLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricePerDayLabel.swift; sourceTree = "<group>"; };
 		8D6B3BF9283DB79800E24CE8 /* MapViewCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewCardCell.swift; sourceTree = "<group>"; };
 		8D6B3BFB283DCCE400E24CE8 /* AddressConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressConverter.swift; sourceTree = "<group>"; };
 		8D6B3C02283DE6BB00E24CE8 /* ConverterUnitTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConverterUnitTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,6 +124,7 @@
 				8D6465E6283FAA040021C782 /* SearchResult */,
 				8D224200283CA7C2006A9043 /* Map */,
 				8DA3503D283F53C900B72BA9 /* CollectionView */,
+				8D55478F284054C700C4D9D9 /* ReuseableView */,
 				8D6B3BFD283DD21F00E24CE8 /* Converter */,
 				8D6B3C0F283E096300E24CE8 /* Extension */,
 				8D0AD777283C600C00575C3B /* SupportingFiles */,
@@ -147,6 +156,17 @@
 				8D6465EB28404A5D0021C782 /* ListButtonDelegate.swift */,
 			);
 			path = Map;
+			sourceTree = "<group>";
+		};
+		8D55478F284054C700C4D9D9 /* ReuseableView */ = {
+			isa = PBXGroup;
+			children = (
+				8D6465ED284051DF0021C782 /* ReviewLabel.swift */,
+				8D6465EF284051E70021C782 /* PricePerDayLabel.swift */,
+				8D554790284055E200C4D9D9 /* HeartButton.swift */,
+				8D55479228405FE300C4D9D9 /* HouseNameLabel.swift */,
+			);
+			path = ReuseableView;
 			sourceTree = "<group>";
 		};
 		8D6465E6283FAA040021C782 /* SearchResult */ = {
@@ -303,6 +323,8 @@
 			files = (
 				8D6465E8283FAA1E0021C782 /* ResultCardCell.swift in Sources */,
 				8D224202283CB794006A9043 /* PriceLabel.swift in Sources */,
+				8D6465F0284051E70021C782 /* PricePerDayLabel.swift in Sources */,
+				8D6465EE284051DF0021C782 /* ReviewLabel.swift in Sources */,
 				8D9D1F5C283CE24300EEF33A /* PriceAnnotationView.swift in Sources */,
 				8D9D1F64283D355200EEF33A /* HouseInfo.swift in Sources */,
 				8DA3503B283F47D400B72BA9 /* MapCardCollectionViewDataSource.swift in Sources */,
@@ -317,8 +339,10 @@
 				8D6B3C0E283E095E00E24CE8 /* NSMutableAttributedString.swift in Sources */,
 				8D0AD781283C718200575C3B /* MapViewController.swift in Sources */,
 				8D224206283CB8AB006A9043 /* Constants.swift in Sources */,
+				8D55479328405FE300C4D9D9 /* HouseNameLabel.swift in Sources */,
 				8DA3503F283F630900B72BA9 /* SearchResultViewController.swift in Sources */,
 				8D6B3BFC283DCCE400E24CE8 /* AddressConverter.swift in Sources */,
+				8D554791284055E200C4D9D9 /* HeartButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

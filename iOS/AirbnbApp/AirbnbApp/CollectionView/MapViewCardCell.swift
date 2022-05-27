@@ -13,43 +13,16 @@ final class MapViewCardCell: UICollectionViewCell {
     static let ID = "MapCell"
     private var cardIndex: Int?
     
-    weak var delegate: HeartButtonDelegate?
-    
-    private lazy var imageView: UIImageView = {
+    private lazy var houseImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
-    private lazy var reviewLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .left
-        return label
-    }()
-    
-    private lazy var heartButton: UIButton = {
-        let button = UIButton()
-        button.configuration = UIButton.Configuration.plain()
-        button.tintColor = .secondaryLabel
-        button.addTarget(self, action: #selector(changeImage), for: .touchUpInside)
-        return button
-    }()
-    
-    private lazy var houseNameLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 2
-        label.lineBreakMode = .byTruncatingTail
-        label.font = .systemFont(ofSize: Constants.Label.mapCardHouseNameFontSize)
-        label.textColor = .label
-        return label
-    }()
-    
-    private lazy var pricePerDayLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .left
-        return label
-    }()
-    
+    private lazy var reviewLabel: ReviewLabel = ReviewLabel()
+    private lazy var pricePerDayLabel: PricePerDayLabel = PricePerDayLabel()
+    private lazy var houseNameLabel: HouseNameLabel = HouseNameLabel()
+    lazy var heartButton: HeartButton = HeartButton()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -61,81 +34,34 @@ final class MapViewCardCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // Text별 색상과 속성을 다르게 줌.
+    
     func setReviewLabel(rating: Double, reviewCount: Int) {
-        let labelText = NSMutableAttributedString()
-        
-        // 별표
-        guard let starImage = UIImage(systemName: "star.fill") else { return }
-        let redStar = starImage.withTintColor(.systemRed, renderingMode: .alwaysTemplate)
-        let imageAttachment = NSTextAttachment(image: redStar)
-        
-        // 별점
-        let ratingText = NSMutableAttributedString()
-            .setting(string: "\(rating)  ",
-                     fontSize: Constants.Label.mapCardRatingFontSize,
-                     weight: .regular,
-                     color: .label)
-        
-        //후기 갯수
-        let reviewCountText = NSMutableAttributedString()
-            .setting(string: "후기 (\(reviewCount)개)",
-                     fontSize: Constants.Label.mapCardReviewCountFontSize,
-                     weight: .light,
-                     color: .systemGray)
-        
-        labelText.append(NSAttributedString(attachment:imageAttachment))
-        labelText.append(ratingText)
-        labelText.append(reviewCountText)
-        
-        self.reviewLabel.attributedText = labelText
+        self.reviewLabel.setReviewLabel(rating: rating, reviewCount: reviewCount)
     }
     
     func setImage(image: UIImage) {
-        self.imageView.image = image
+        self.houseImageView.image = image
     }
     
-    func setHouseName(houseName: String) {
-        self.houseNameLabel.text = houseName
+    func setHouseName(numberOfLine: Int, fontSize: CGFloat, houseName: String) {
+        self.houseNameLabel.setHouseNameLabel(numberOfLine: numberOfLine, fontSize: fontSize, houseName: houseName)
     }
     
     func setPrice(price: Int) {
-        let labelText = NSMutableAttributedString()
-        
-        let pricePerDayText = NSMutableAttributedString()
-            .setting(string: PriceConvertor.toString(from: price),
-                     fontSize: Constants.Label.mapCardPriceFontSize,
-                     weight: .bold,
-                     color: .label)
-        
-        let perDayText = NSMutableAttributedString()
-            .setting(string: " / 박",
-                     fontSize: Constants.Label.mapCardPriceFontSize,
-                     weight: .light,
-                     color: .secondaryLabel)
-        
-        labelText.append(pricePerDayText)
-        labelText.append(perDayText)
-        
-        self.pricePerDayLabel.attributedText = labelText
+        self.pricePerDayLabel.setPrice(price: price)
     }
     
     func setHeartButton(isWish: Bool) {
-        if isWish {
-            heartButton.configuration?.image = UIImage(systemName: "heart.fill")
-            heartButton.configuration?.baseForegroundColor = .red
-        } else {
-            heartButton.configuration?.image = UIImage(systemName: "heart")
-            heartButton.configuration?.baseForegroundColor = .secondaryLabel
-        }
+        heartButton.setHeartButton(isWish: isWish)
+        heartButton.setCardIndex(index: self.cardIndex)
     }
     
-    func setCardID(index: Int) {
+    func setCardIndex(index: Int) {
         self.cardIndex = index
     }
     
     private func addViews() {
-        [imageView, reviewLabel, heartButton, houseNameLabel,pricePerDayLabel].forEach {
+        [houseImageView, reviewLabel, heartButton, houseNameLabel,pricePerDayLabel].forEach {
             self.addSubview($0)
         }
     }
@@ -144,13 +70,13 @@ final class MapViewCardCell: UICollectionViewCell {
         self.backgroundColor = .systemBackground
         let insetValue = 12.0
         
-        self.imageView.snp.makeConstraints {
+        self.houseImageView.snp.makeConstraints {
             $0.width.equalTo(self.frame.width / 3)
             $0.leading.height.bottom.equalToSuperview()
         }
         
         self.reviewLabel.snp.makeConstraints {
-            $0.leading.equalTo(self.imageView.snp.trailing).offset(insetValue)
+            $0.leading.equalTo(self.houseImageView.snp.trailing).offset(insetValue)
             $0.top.equalTo(self.snp.top).inset(insetValue)
         }
         
@@ -167,19 +93,6 @@ final class MapViewCardCell: UICollectionViewCell {
         self.pricePerDayLabel.snp.makeConstraints {
             $0.leading.equalTo(houseNameLabel)
             $0.bottom.equalToSuperview().inset(insetValue)
-        }
-        
-    }
-    
-    @objc private func changeImage() {
-        if heartButton.configuration?.image == UIImage(systemName: "heart") {
-            heartButton.configuration?.image = UIImage(systemName: "heart.fill")
-            heartButton.configuration?.baseForegroundColor = .red
-            delegate?.heartButtonIsTapped(cardIndex)
-        } else {
-            heartButton.configuration?.image = UIImage(systemName: "heart")
-            heartButton.configuration?.baseForegroundColor = .secondaryLabel
-            delegate?.heartButtonIsTapped(cardIndex)
         }
     }
 }

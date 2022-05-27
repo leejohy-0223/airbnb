@@ -18,11 +18,7 @@ final class MapViewController: UIViewController {
     private let startCordinate = CLLocationCoordinate2D(latitude: 37.490765, longitude: 127.033433)
     private var currentLocation: CLLocation?
     
-    private var housInfo:[HouseInfo] = []
-    
-    deinit {
-        print("deinit")
-    }
+    private var houseInfoBundle:[HouseInfo] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,13 +27,13 @@ final class MapViewController: UIViewController {
         setCollectionView()
     }
     
-    func fetchHouseInfo(houseInfo: [HouseInfo]) {
-        self.housInfo = houseInfo
+    func fetchHouseInfo(houseInfoBundle: [HouseInfo]) {
+        self.houseInfoBundle = houseInfoBundle
     }
     
     private func setCollectionView() {
         self.collectionView.dataSource = dataSource
-        self.dataSource.fetchHouseInfo(houseInfo: housInfo)
+        self.dataSource.fetchHouseInfo(houseInfo: houseInfoBundle)
     }
     
     private func setMapView() {
@@ -54,7 +50,7 @@ final class MapViewController: UIViewController {
     }
     
     private func addPins() {
-        housInfo.forEach {
+        houseInfoBundle.forEach {
             addPin(houseInfo: $0)
         }
     }
@@ -81,7 +77,7 @@ extension MapViewController: MKMapViewDelegate {
         dequeView.annotation = annotation
         
         // 특정 집 정보 coordinate로 가져오기
-        let houseInfo = self.housInfo.first {
+        let houseInfo = self.houseInfoBundle.first {
             $0.coordinate == annotation.coordinate
         }
         
@@ -95,7 +91,7 @@ extension MapViewController: MKMapViewDelegate {
 extension MapViewController: HeartButtonDelegate {
     func heartButtonIsTapped(_ cardIndex: Int?) {
         guard let cardIndex = cardIndex else { return }
-        self.housInfo[cardIndex].isWish = !housInfo[cardIndex].isWish
+        houseInfoBundle[cardIndex].isWish = !houseInfoBundle[cardIndex].isWish
         self.dataSource.changeIsWish(at: cardIndex)
     }
 }

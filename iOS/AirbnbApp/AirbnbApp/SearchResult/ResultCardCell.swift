@@ -10,4 +10,14 @@ import UIKit
 final class ResultCardCell: UICollectionViewCell {
     
     static let ID = "ResultCardCell"
+    
+//    private lazy var 
+    
+    private lazy var reviewLabel: ReviewLabel = ReviewLabel()
+    
+    private lazy var pricePerDayLabel: PricePerDayLabel = PricePerDayLabel()
+    
+    
+    
+    
 }

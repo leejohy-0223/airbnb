@@ -9,41 +9,41 @@ import UIKit
 
 final class MapCardCollectionViewDataSource: NSObject, UICollectionViewDataSource {
     
-    private var houseInfo:[HouseInfo] = []
-    private var buttonTappedDelegate: HeartButtonDelegate
+    private var houseInfoBundle:[HouseInfo] = []
+    private weak var buttonTappedDelegate: HeartButtonDelegate?
     
     init(delegate: HeartButtonDelegate) {
         self.buttonTappedDelegate = delegate
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return houseInfo.count
+        return houseInfoBundle.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MapViewCardCell.ID,for: indexPath) as? MapViewCardCell
               else { return UICollectionViewCell() }
-        cell.delegate = buttonTappedDelegate
+        cell.heartButton.delegate = buttonTappedDelegate
         configureCell(cell: cell, indexPath: indexPath)
         return cell
     }
     
     private func configureCell(cell: MapViewCardCell, indexPath: IndexPath) {
-        
-        cell.setCardID(index: indexPath.item)
-        cell.setReviewLabel(rating: houseInfo[indexPath.item].detail.rating, reviewCount: houseInfo[indexPath.item].detail.reviewCount)
+        let houseInfo = houseInfoBundle[indexPath.item]
+        cell.setCardIndex(index: indexPath.item)
+        cell.setReviewLabel(rating: houseInfo.detail.rating, reviewCount: houseInfo.detail.reviewCount)
         cell.setImage(image: UIImage(systemName: "house")!)
-        cell.setPrice(price: houseInfo[indexPath.item].price)
-        cell.setHouseName(houseName: houseInfo[indexPath.item].name)
-        cell.setHeartButton(isWish: houseInfo[indexPath.item].isWish)
+        cell.setPrice(price: houseInfo.price)
+        cell.setHouseName(numberOfLine: 2, fontSize: Constants.Label.mapCardHouseNameFontSize, houseName: houseInfo.name)
+        cell.setHeartButton(isWish: houseInfo.isWish)
     }
     
     func fetchHouseInfo(houseInfo: [HouseInfo]) {
-        self.houseInfo = houseInfo
+        self.houseInfoBundle = houseInfo
     }
     
     func changeIsWish(at cardIndex: Int?) {
         guard let cardIndex = cardIndex else { return }
-        houseInfo[cardIndex].isWish = !houseInfo[cardIndex].isWish
+        houseInfoBundle[cardIndex].isWish = !houseInfoBundle[cardIndex].isWish
     }
 }
