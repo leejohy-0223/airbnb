@@ -1,19 +1,21 @@
 package com.airbnb.repository;
 
+import static com.airbnb.domain.QHouse.*;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
+import org.locationtech.jts.geom.Point;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.airbnb.domain.House;
 import com.airbnb.domain.QHouse;
 import com.airbnb.utils.GeometryUtils;
 import com.querydsl.core.types.dsl.Expressions;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import org.locationtech.jts.geom.Point;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
-import java.util.List;
-
-import static com.airbnb.domain.QHouse.house;
 
 public class HouseCustomRepositoryImpl implements HouseCustomRepository {
 
@@ -28,28 +30,25 @@ public class HouseCustomRepositoryImpl implements HouseCustomRepository {
     }
 
     @Override
-    public List<String> searchByCondition(Point position, Integer minFee, Integer maxFee) {
-        double baseLatitude = position.getX(); // 내 위치 y
-        double baseLongitude = position.getY(); // 내 위치 x
+    public List<House> searchByCondition(Point position, Integer minFee, Integer maxFee) {
+        double baseLatitude = position.getX();
+        double baseLongitude = position.getY();
         double distance = 1000; // m 단위
 
-        // native query 활용
+        // TODO : *를 필드 명으로 변경해주기
         Query query = em.createNativeQuery("" +
-                "SELECT h.name \n" +
+                "SELECT * \n" +
                 "FROM house AS h \n" +
-                "WHERE (ST_Distance_Sphere(h.point, point(?1, ?2)) < ?3)"
-        );
+                "WHERE (ST_Distance_Sphere(h.point, point(?1, ?2)) < ?3) AND h.price >= ?4 AND h.price <= ?5"
+        , House.class);
+
         query.setParameter(1, baseLatitude);
         query.setParameter(2, baseLongitude);
         query.setParameter(3, distance);
+        query.setParameter(4, minFee);
+        query.setParameter(5, maxFee);
 
-        List resultList = query.getResultList();
-
-        for (Object o : resultList) {
-            String homename = (String) o;
-            LOGGER.info("home name is : {}", homename);
-        }
-        return resultList;
+        return query.getResultList();
     }
 
     @Override

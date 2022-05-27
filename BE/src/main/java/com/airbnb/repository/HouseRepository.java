@@ -1,12 +1,7 @@
 package com.airbnb.repository;
 
-import com.airbnb.api.search.dto.SearchConditionRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.JpaRepository;
-
 import com.airbnb.domain.House;
-
-import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface HouseRepository extends JpaRepository<House, Long>, HouseCustomRepository {
 }
