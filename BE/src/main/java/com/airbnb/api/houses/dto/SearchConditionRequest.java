@@ -1,4 +1,4 @@
-package com.airbnb.api.search.dto;
+package com.airbnb.api.houses.dto;
 
 import org.locationtech.jts.geom.Point;
 
@@ -60,4 +60,5 @@ public class SearchConditionRequest {
     public void setNumberOfGuests(int numberOfGuests) {
         this.numberOfGuests = numberOfGuests;
     }
+
 }

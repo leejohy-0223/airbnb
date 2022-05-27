@@ -1,10 +1,10 @@
-package com.airbnb.api.search.dto;
-
-import java.util.List;
-import java.util.stream.Collectors;
+package com.airbnb.api.houses.dto;
 
 import com.airbnb.domain.DetailInfo;
 import com.airbnb.domain.House;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class HouseDetailResponse {
 
@@ -21,9 +21,9 @@ public class HouseDetailResponse {
         this.price = house.getPrice();
         this.detailInfo = house.getDetailInfo();
         this.images = house.getImagesURL()
-            .stream()
-            .map(ImageResponse::new)
-            .collect(Collectors.toList());
+                .stream()
+                .map(ImageResponse::new)
+                .collect(Collectors.toList());
         this.hostName = house.getHostName();
     }
 
