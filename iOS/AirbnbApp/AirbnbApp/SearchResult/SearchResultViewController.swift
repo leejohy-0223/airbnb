@@ -21,6 +21,7 @@ final class SearchResultViewController: UIViewController {
     ]
     
     private let tabelView = UITableView(frame: .zero, style: .plain)
+    
     private var mapButton: UIButton = {
         let button = UIButton()
         return button
@@ -48,9 +49,9 @@ final class SearchResultViewController: UIViewController {
     private func setMapButton() {
         
         let action = UIAction { [weak self] _  in
-            let mapView = MapViewController()
-            mapView.fetchHouseInfo(houseInfo: self?.housInfo ?? [])
-            self?.present(MapViewController(), animated: true)
+            let mapVC = MapViewController()
+            mapVC.fetchHouseInfo(houseInfo: self?.housInfo ?? [])
+            self?.present(mapVC, animated: true)
         }
         
         var config = UIButton.Configuration.filled()

@@ -20,6 +20,7 @@
 		8D224204283CB7E4006A9043 /* PriceConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D224203283CB7E4006A9043 /* PriceConverter.swift */; };
 		8D224206283CB8AB006A9043 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D224205283CB8AB006A9043 /* Constants.swift */; };
 		8D6465E8283FAA1E0021C782 /* ResultCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6465E7283FAA1E0021C782 /* ResultCardCell.swift */; };
+		8D6465EC28404A5D0021C782 /* ListButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6465EB28404A5D0021C782 /* ListButtonDelegate.swift */; };
 		8D6B3BFA283DB79800E24CE8 /* MapViewCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6B3BF9283DB79800E24CE8 /* MapViewCardCell.swift */; };
 		8D6B3BFC283DCCE400E24CE8 /* AddressConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6B3BFB283DCCE400E24CE8 /* AddressConverter.swift */; };
 		8D6B3C05283DE6BB00E24CE8 /* ConverterUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6B3C04283DE6BB00E24CE8 /* ConverterUnitTest.swift */; };
@@ -57,6 +58,7 @@
 		8D224203283CB7E4006A9043 /* PriceConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceConverter.swift; sourceTree = "<group>"; };
 		8D224205283CB8AB006A9043 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8D6465E7283FAA1E0021C782 /* ResultCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCardCell.swift; sourceTree = "<group>"; };
+		8D6465EB28404A5D0021C782 /* ListButtonDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListButtonDelegate.swift; sourceTree = "<group>"; };
 		8D6B3BF9283DB79800E24CE8 /* MapViewCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewCardCell.swift; sourceTree = "<group>"; };
 		8D6B3BFB283DCCE400E24CE8 /* AddressConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressConverter.swift; sourceTree = "<group>"; };
 		8D6B3C02283DE6BB00E24CE8 /* ConverterUnitTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConverterUnitTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,6 +144,7 @@
 				8D9D1F5B283CE24300EEF33A /* PriceAnnotationView.swift */,
 				8D9D1F63283D355200EEF33A /* HouseInfo.swift */,
 				8D224201283CB794006A9043 /* PriceLabel.swift */,
+				8D6465EB28404A5D0021C782 /* ListButtonDelegate.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 				8D9D1F64283D355200EEF33A /* HouseInfo.swift in Sources */,
 				8DA3503B283F47D400B72BA9 /* MapCardCollectionViewDataSource.swift in Sources */,
 				8D0AD768283C5EDD00575C3B /* MainViewController.swift in Sources */,
+				8D6465EC28404A5D0021C782 /* ListButtonDelegate.swift in Sources */,
 				8D224204283CB7E4006A9043 /* PriceConverter.swift in Sources */,
 				8DA35039283F26FF00B72BA9 /* HeartButtonDelegate.swift in Sources */,
 				8D0AD764283C5EDD00575C3B /* AppDelegate.swift in Sources */,

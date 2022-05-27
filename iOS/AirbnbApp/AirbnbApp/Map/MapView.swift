@@ -11,6 +11,8 @@ import SnapKit
 
 final class MapView: MKMapView {
     
+    weak var listButtonDelegate: ListButtonDelegate?
+    
     lazy var collectionView: UICollectionView = {
         let cellWidth = self.frame.width - 60
         let cellHeight = self.frame.height / 6
@@ -40,7 +42,7 @@ final class MapView: MKMapView {
         button.setImage(image, for: .normal)
         return button
     }()
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.mapType = .standard
@@ -60,12 +62,18 @@ final class MapView: MKMapView {
     }
     
     private func setButton() {
+        listButton.addTarget(self, action: #selector(listButtonTapped), for: .touchUpInside)
+        
         listButton.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(24)
             $0.top.equalToSuperview().inset(64)
             $0.width.equalTo(Constants.Button.mapListButton)
             $0.height.equalTo(Constants.Button.mapListButton)
         }
+    }
+    
+    @objc private func listButtonTapped() {
+        listButtonDelegate?.listButtonisTapped()
     }
     
     private func setCollectionView() {
