@@ -49,7 +49,7 @@ public class House {
     public House() {
     }
 
-    public Point getPosition() {
+    public Point getPoint() {
         return point;
     }
 
@@ -71,8 +71,8 @@ public class House {
 
     public List<String> getImagesURL() {
         return images.stream()
-            .map(Image::getUrl)
-            .collect(Collectors.toList());
+                .map(Image::getUrl)
+                .collect(Collectors.toList());
     }
 
     public String getHostName() {
