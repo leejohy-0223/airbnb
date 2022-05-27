@@ -25,4 +25,8 @@ struct Constants {
         static let mapTitleFontSize = 18.0
     }
     
+    struct imageViewSize {
+        static let SearchResultImage = 160.0
+    }
+    
 }

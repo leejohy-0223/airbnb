@@ -16,7 +16,6 @@ final class MapViewController: UIViewController {
     private lazy var dataSource = MapCardCollectionViewDataSource(delegate: self)
     
     private let startCordinate = CLLocationCoordinate2D(latitude: 37.490765, longitude: 127.033433)
-    private var currentLocation: CLLocation?
     
     private var houseInfoBundle:[HouseInfo] = []
     

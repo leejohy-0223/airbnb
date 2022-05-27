@@ -13,16 +13,11 @@ final class MapViewCardCell: UICollectionViewCell {
     static let ID = "MapCell"
     private var cardIndex: Int?
     
-    private lazy var houseImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        return imageView
-    }()
-    
-    private lazy var reviewLabel: ReviewLabel = ReviewLabel()
-    private lazy var pricePerDayLabel: PricePerDayLabel = PricePerDayLabel()
-    private lazy var houseNameLabel: HouseNameLabel = HouseNameLabel()
-    lazy var heartButton: HeartButton = HeartButton()
+    private lazy var houseImageView: HouseImageView = HouseImageView(frame: .zero)
+    private lazy var reviewLabel: ReviewLabel = ReviewLabel(frame: .zero)
+    private lazy var pricePerDayLabel: PricePerDayLabel = PricePerDayLabel(frame: .zero)
+    private lazy var houseNameLabel: HouseNameLabel = HouseNameLabel(frame: .zero)
+    lazy var heartButton: HeartButton = HeartButton(frame: .zero)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -34,13 +29,12 @@ final class MapViewCardCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     func setReviewLabel(rating: Double, reviewCount: Int) {
         self.reviewLabel.setReviewLabel(rating: rating, reviewCount: reviewCount)
     }
     
     func setImage(image: UIImage) {
-        self.houseImageView.image = image
+        self.houseImageView.setImage(image: image)
     }
     
     func setHouseName(numberOfLine: Int, fontSize: CGFloat, houseName: String) {
