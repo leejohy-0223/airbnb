@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface HouseCustomRepository {
 
-    List<House> searchByConditionNative(Point position, Integer minFee, Integer maxFee);
+    List<String> searchByCondition(Point position, Integer minFee, Integer maxFee);
 
-    List<String> searchByConditionNativeV2(Point position, Integer minFee, Integer maxFee);
+    List<House> searchByConditionQueryDsl(Point position, Integer minFee, Integer maxFee);
 }
