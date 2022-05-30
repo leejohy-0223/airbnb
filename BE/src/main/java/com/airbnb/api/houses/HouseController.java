@@ -34,4 +34,9 @@ public class HouseController {
     public HouseDetailResponse findHouseInformation(@PathVariable Long id) {
         return houseService.findHouseInformation(id);
     }
+
+    @GetMapping("/hello")
+    public String hello() {
+        return "OK!";
+    }
 }
