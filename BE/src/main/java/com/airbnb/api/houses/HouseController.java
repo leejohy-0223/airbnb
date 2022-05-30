@@ -57,9 +57,4 @@ public class HouseController {
         log.info("test is called");
         return houseService.findTest();
     }
-
-    @GetMapping("/hello")
-    public String hello() {
-        return "OK!";
-    }
 }
