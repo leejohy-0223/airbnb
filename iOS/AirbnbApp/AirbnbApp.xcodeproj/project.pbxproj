@@ -23,6 +23,7 @@
 		8D3DBB972844BCDE007B6352 /* HouseInfoUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBB962844BCDE007B6352 /* HouseInfoUnitTest.swift */; };
 		8D3DBB9D2844BCFA007B6352 /* HouseInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBB8E28445E7D007B6352 /* HouseInfoManager.swift */; };
 		8D3DBB9E2844BD02007B6352 /* HouseInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9D1F63283D355200EEF33A /* HouseInfo.swift */; };
+		8D3DBB9F2844C1FB007B6352 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6B3C0D283E095E00E24CE8 /* Extensions.swift */; };
 		8D554791284055E200C4D9D9 /* HeartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D554790284055E200C4D9D9 /* HeartButton.swift */; };
 		8D55479328405FE300C4D9D9 /* HouseNameLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D55479228405FE300C4D9D9 /* HouseNameLabel.swift */; };
 		8D6465E8283FAA1E0021C782 /* ResultCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6465E7283FAA1E0021C782 /* ResultCardCell.swift */; };
@@ -432,6 +433,7 @@
 				8D3DBB9D2844BCFA007B6352 /* HouseInfoManager.swift in Sources */,
 				8D3DBB972844BCDE007B6352 /* HouseInfoUnitTest.swift in Sources */,
 				8D3DBB9E2844BD02007B6352 /* HouseInfo.swift in Sources */,
+				8D3DBB9F2844C1FB007B6352 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
