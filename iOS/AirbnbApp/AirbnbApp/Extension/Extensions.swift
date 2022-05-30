@@ -1,5 +1,5 @@
 //
-//  Extension.swift
+//  Extensions.swift
 //  AirbnbApp
 //
 //  Created by 박진섭 on 2022/05/25.
@@ -22,3 +22,11 @@ extension CLLocationCoordinate2D: Equatable {
         lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude
     }
 }
+
+extension Array {
+    func checkIsSafeIndex(index: Int) -> Bool {
+        return indices ~= index ? true : false
+    }
+}
+
+

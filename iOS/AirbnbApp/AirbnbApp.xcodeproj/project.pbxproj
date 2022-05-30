@@ -19,6 +19,7 @@
 		8D224202283CB794006A9043 /* PriceLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D224201283CB794006A9043 /* PriceLabel.swift */; };
 		8D224204283CB7E4006A9043 /* PriceConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D224203283CB7E4006A9043 /* PriceConverter.swift */; };
 		8D224206283CB8AB006A9043 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D224205283CB8AB006A9043 /* Constants.swift */; };
+		8D3DBB8F28445E7E007B6352 /* HouseInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBB8E28445E7D007B6352 /* HouseInfoManager.swift */; };
 		8D554791284055E200C4D9D9 /* HeartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D554790284055E200C4D9D9 /* HeartButton.swift */; };
 		8D55479328405FE300C4D9D9 /* HouseNameLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D55479228405FE300C4D9D9 /* HouseNameLabel.swift */; };
 		8D6465E8283FAA1E0021C782 /* ResultCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6465E7283FAA1E0021C782 /* ResultCardCell.swift */; };
@@ -30,7 +31,7 @@
 		8D6B3C05283DE6BB00E24CE8 /* ConverterUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6B3C04283DE6BB00E24CE8 /* ConverterUnitTest.swift */; };
 		8D6B3C0B283DE71100E24CE8 /* PriceConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D224203283CB7E4006A9043 /* PriceConverter.swift */; };
 		8D6B3C0C283DE71300E24CE8 /* AddressConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6B3BFB283DCCE400E24CE8 /* AddressConverter.swift */; };
-		8D6B3C0E283E095E00E24CE8 /* NSMutableAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6B3C0D283E095E00E24CE8 /* NSMutableAttributedString.swift */; };
+		8D6B3C0E283E095E00E24CE8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6B3C0D283E095E00E24CE8 /* Extensions.swift */; };
 		8D9D1F5C283CE24300EEF33A /* PriceAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9D1F5B283CE24300EEF33A /* PriceAnnotationView.swift */; };
 		8D9D1F64283D355200EEF33A /* HouseInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9D1F63283D355200EEF33A /* HouseInfo.swift */; };
 		8DA35039283F26FF00B72BA9 /* HeartButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA35038283F26FF00B72BA9 /* HeartButtonDelegate.swift */; };
@@ -63,6 +64,7 @@
 		8D224201283CB794006A9043 /* PriceLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceLabel.swift; sourceTree = "<group>"; };
 		8D224203283CB7E4006A9043 /* PriceConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceConverter.swift; sourceTree = "<group>"; };
 		8D224205283CB8AB006A9043 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		8D3DBB8E28445E7D007B6352 /* HouseInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseInfoManager.swift; sourceTree = "<group>"; };
 		8D554790284055E200C4D9D9 /* HeartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartButton.swift; sourceTree = "<group>"; };
 		8D55479228405FE300C4D9D9 /* HouseNameLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseNameLabel.swift; sourceTree = "<group>"; };
 		8D6465E7283FAA1E0021C782 /* ResultCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCardCell.swift; sourceTree = "<group>"; };
@@ -73,7 +75,7 @@
 		8D6B3BFB283DCCE400E24CE8 /* AddressConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressConverter.swift; sourceTree = "<group>"; };
 		8D6B3C02283DE6BB00E24CE8 /* ConverterUnitTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConverterUnitTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D6B3C04283DE6BB00E24CE8 /* ConverterUnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterUnitTest.swift; sourceTree = "<group>"; };
-		8D6B3C0D283E095E00E24CE8 /* NSMutableAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedString.swift; sourceTree = "<group>"; };
+		8D6B3C0D283E095E00E24CE8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		8D9D1F5B283CE24300EEF33A /* PriceAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceAnnotationView.swift; sourceTree = "<group>"; };
 		8D9D1F63283D355200EEF33A /* HouseInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseInfo.swift; sourceTree = "<group>"; };
 		8DA35038283F26FF00B72BA9 /* HeartButtonDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartButtonDelegate.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				8DA3503E283F630900B72BA9 /* SearchResultViewController.swift */,
+				8D3DBB8E28445E7D007B6352 /* HouseInfoManager.swift */,
 				8DF21CA528406F7000F2F8E9 /* TableView */,
 			);
 			path = SearchResult;
@@ -203,7 +206,7 @@
 		8D6B3C0F283E096300E24CE8 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				8D6B3C0D283E095E00E24CE8 /* NSMutableAttributedString.swift */,
+				8D6B3C0D283E095E00E24CE8 /* Extensions.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D3DBB8F28445E7E007B6352 /* HouseInfoManager.swift in Sources */,
 				8D6465E8283FAA1E0021C782 /* ResultCardCell.swift in Sources */,
 				8DF21C9E2840654D00F2F8E9 /* HouseImageView.swift in Sources */,
 				8D224202283CB794006A9043 /* PriceLabel.swift in Sources */,
@@ -351,7 +355,7 @@
 				8D2241FD283CA470006A9043 /* MapView.swift in Sources */,
 				8D6B3BFA283DB79800E24CE8 /* MapViewCardCell.swift in Sources */,
 				8D0AD766283C5EDD00575C3B /* SceneDelegate.swift in Sources */,
-				8D6B3C0E283E095E00E24CE8 /* NSMutableAttributedString.swift in Sources */,
+				8D6B3C0E283E095E00E24CE8 /* Extensions.swift in Sources */,
 				8D0AD781283C718200575C3B /* MapViewController.swift in Sources */,
 				8D224206283CB8AB006A9043 /* Constants.swift in Sources */,
 				8DF21CA428406F6800F2F8E9 /* SearchResultTableViewDataSource.swift in Sources */,

@@ -17,7 +17,7 @@ final class MapViewController: UIViewController {
     
     private let startCordinate = CLLocationCoordinate2D(latitude: 37.490765, longitude: 127.033433)
     
-    private var houseInfoBundle:[HouseInfo] = []
+    private var houseInfoManager: HouseInfoManager?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,13 +26,13 @@ final class MapViewController: UIViewController {
         setCollectionView()
     }
     
-    func fetchHouseInfo(houseInfoBundle: [HouseInfo]) {
-        self.houseInfoBundle = houseInfoBundle
+    func fetchHouseInfo(houseInfoManager: HouseInfoManager) {
+        self.houseInfoManager = houseInfoManager
     }
     
     private func setCollectionView() {
         self.collectionView.dataSource = dataSource
-        self.dataSource.fetchHouseInfo(houseInfo: houseInfoBundle)
+        self.dataSource.fetchHouseInfo(houseInfo: houseInfoManager?.houseInfoBundle ?? [])
     }
     
     private func setMapView() {
@@ -49,7 +49,7 @@ final class MapViewController: UIViewController {
     }
     
     private func addPins() {
-        houseInfoBundle.forEach {
+        houseInfoManager?.houseInfoBundle.forEach {
             addPin(houseInfo: $0)
         }
     }
@@ -74,14 +74,14 @@ extension MapViewController: MKMapViewDelegate {
                 as? PriceAnnotationView else { return nil }
         
         dequeView.annotation = annotation
-        
+
         // 특정 집 정보 coordinate로 가져오기
-        let houseInfo = self.houseInfoBundle.first {
+        let houseInfo = self.houseInfoManager?.houseInfoBundle.first {
             $0.coordinate == annotation.coordinate
         }
         
         dequeView.setPrice(price: houseInfo?.price ?? 0)
-        
+
         return dequeView
     }
     
@@ -89,9 +89,9 @@ extension MapViewController: MKMapViewDelegate {
 
 extension MapViewController: HeartButtonDelegate {
     func heartButtonIsTapped(_ cardIndex: Int?) {
-        guard let cardIndex = cardIndex else { return }
-        houseInfoBundle[cardIndex].isWish = !houseInfoBundle[cardIndex].isWish
-        self.dataSource.changeIsWish(at: cardIndex)
+        houseInfoManager?.didChangeIsWish(cardIndex, completionHandler: { houseInfoBundle in
+            self.dataSource.fetchHouseInfo(houseInfo: houseInfoBundle)
+        })
     }
 }
 

@@ -14,13 +14,14 @@ final class SearchResultViewController: UIViewController {
     
     private let tabelView = UITableView(frame: .zero, style: .plain)
     private lazy var dataSource: SearchResultTableViewDataSource = SearchResultTableViewDataSource(delegate: self)
+    private lazy var houseInfoManager: HouseInfoManager = HouseInfoManager(houseInfoBundle: self.houseInfoBundle)
     
     private var houseInfoBundle: [HouseInfo] = [
         HouseInfo(name: "킹왕짱 숙소", detail: Detail(rating: 4.5, reviewCount: 101), price: 85000, hostingBy: "김씨", coordinate: CLLocationCoordinate2D(latitude: 37.490765, longitude: 127.033433)),
         HouseInfo(name: "킹왕 숙소", detail: Detail(rating: 4.45, reviewCount: 121), price: 75000, hostingBy: "박씨", coordinate: CLLocationCoordinate2D(latitude: 37.490765, longitude: 127.032433)),
         HouseInfo(name: "킹짱 숙소", detail: Detail(rating: 4.3, reviewCount: 12112), price: 65430, hostingBy: "정씨", coordinate: CLLocationCoordinate2D(latitude: 37.48065, longitude: 127.031433)),
         HouseInfo(name: "왕짱 숙소", detail: Detail(rating: 4.221, reviewCount: 1210), price: 12350, hostingBy: "송씨", coordinate: CLLocationCoordinate2D(latitude: 37.490765, longitude: 127.030433)),
-        HouseInfo(name: "킹왕짱 숙소", detail: Detail(rating: 4.33, reviewCount: 51), price: 12350, hostingBy: "이씨", coordinate: CLLocationCoordinate2D(latitude: 37.490765, longitude: 127.037433))
+        HouseInfo(name: "한국 어딘가의 아주 근사한 숙소인데 이름이 조금 길어 근데 좋은데니까 한번 눌러", detail: Detail(rating: 4.33, reviewCount: 51), price: 12350, hostingBy: "이씨", coordinate: CLLocationCoordinate2D(latitude: 37.490765, longitude: 127.037433))
     ]
     
     private var mapButton: UIButton = {
@@ -47,7 +48,7 @@ final class SearchResultViewController: UIViewController {
         self.tabelView.rowHeight = UITableView.automaticDimension
         self.tabelView.estimatedRowHeight = 300
         
-        self.dataSource.fetchHouseInfo(houseInfo: self.houseInfoBundle)
+        self.dataSource.fetchHouseInfo(houseInfo: self.houseInfoManager.houseInfoBundle)
         tabelView.dataSource = self.dataSource
         
         tabelView.snp.makeConstraints {
@@ -58,9 +59,10 @@ final class SearchResultViewController: UIViewController {
     private func setMapButton() {
         
         let action = UIAction { [weak self] _  in
+            guard let self = self else { return }
             let mapVC = MapViewController()
-            mapVC.fetchHouseInfo(houseInfoBundle: self?.houseInfoBundle ?? [])
-            self?.present(mapVC, animated: true)
+            mapVC.fetchHouseInfo(houseInfoManager: self.houseInfoManager)
+            self.present(mapVC, animated: true)
         }
         
         var config = UIButton.Configuration.filled()
@@ -87,8 +89,8 @@ final class SearchResultViewController: UIViewController {
 
 extension SearchResultViewController: HeartButtonDelegate {
     func heartButtonIsTapped(_ cardIndex: Int?) {
-        guard let cardIndex = cardIndex else { return }
-        houseInfoBundle[cardIndex].isWish = !houseInfoBundle[cardIndex].isWish
-        self.dataSource.changeIsWish(at: cardIndex)
+        houseInfoManager.didChangeIsWish(cardIndex, completionHandler:  { houseInfoBundle in
+            self.dataSource.fetchHouseInfo(houseInfo: houseInfoBundle)
+        })
     }
 }

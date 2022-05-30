@@ -41,11 +41,10 @@ final class HeartButton: UIButton {
         if self.configuration?.image == UIImage(systemName: "heart") {
             self.configuration?.image = UIImage(systemName: "heart.fill")
             self.configuration?.baseForegroundColor = .red
-            delegate?.heartButtonIsTapped(cardIndex)
         } else {
             self.configuration?.image = UIImage(systemName: "heart")
             self.configuration?.baseForegroundColor = .secondaryLabel
-            delegate?.heartButtonIsTapped(cardIndex)
         }
+        delegate?.heartButtonIsTapped(cardIndex)
     }
 }
