@@ -56,10 +56,10 @@ final class MapViewController: UIViewController {
     
     private func addPin(houseInfo: HouseInfo) {
         let pin = MKPointAnnotation()
-        pin.coordinate = houseInfo.coordinate
+        let coordinate = CLLocationCoordinate2D(latitude: houseInfo.latitude, longitude: houseInfo.longitude)
+        pin.coordinate = coordinate
         pin.title = houseInfo.name
-        
-        AddressConverter.findAddressFromCoordinate(from: houseInfo.coordinate, isCompleted: { address in
+        AddressConverter.findAddressFromCoordinate(from: coordinate, isCompleted: { address in
             pin.subtitle = address
         })
         
@@ -77,7 +77,8 @@ extension MapViewController: MKMapViewDelegate {
 
         // 특정 집 정보 coordinate로 가져오기
         let houseInfo = self.houseInfoManager?.houseInfoBundle.first {
-            $0.coordinate == annotation.coordinate
+            let coordinate = CLLocationCoordinate2D(latitude: $0.latitude, longitude: $0.longitude)
+            return coordinate == annotation.coordinate
         }
         
         dequeView.setPrice(price: houseInfo?.price ?? 0)

@@ -5,15 +5,14 @@
 //  Created by 박진섭 on 2022/05/25.
 //
 
-import CoreLocation
-
 struct HouseInfo {
     let id: String = " "
     let name: String
     let detail: Detail
     let price: Int
     let hostingBy: String
-    let coordinate: CLLocationCoordinate2D
+    let latitude: Double
+    let longitude: Double
     var isWish: Bool = false
 }
 
