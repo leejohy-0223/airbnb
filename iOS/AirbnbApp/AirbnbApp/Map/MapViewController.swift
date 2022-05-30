@@ -12,30 +12,33 @@ import CoreLocation
 final class MapViewController: UIViewController {
     
     private let mapView = MapView(frame: CGRect(origin: .zero, size: UIScreen.main.bounds.size))
+    private lazy var collectionView = mapView.collectionView
+    private lazy var dataSource = MapCardCollectionViewDataSource(delegate: self)
     
     private let startCordinate = CLLocationCoordinate2D(latitude: 37.490765, longitude: 127.033433)
     
-    private let mockCordinates = [
-        HouseInfo(coordinate: CLLocationCoordinate2D(latitude: 37.490765, longitude: 127.033433), name: "킹왕짱 숙소"),
-        HouseInfo(coordinate: CLLocationCoordinate2D(latitude: 37.491545, longitude: 127.033433), name: "킹 숙소"),
-        HouseInfo(coordinate: CLLocationCoordinate2D(latitude: 37.492345, longitude: 127.033433), name: "왕 숙소"),
-        HouseInfo(coordinate: CLLocationCoordinate2D(latitude: 37.493455, longitude: 127.033433), name: "짱 숙소")
-    ]
-    
-    private let locationManager = CLLocationManager()
+    private var houseInfoBundle:[HouseInfo] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setLocationManager()
         setMapView()
         addPins()
-        self.mapView.cardCollectionView.dataSource = self
-        self.mapView.cardCollectionView.register(MapViewCardCell.self, forCellWithReuseIdentifier: Constants.CellID.map)
+        setCollectionView()
+    }
+    
+    func fetchHouseInfo(houseInfoBundle: [HouseInfo]) {
+        self.houseInfoBundle = houseInfoBundle
+    }
+    
+    private func setCollectionView() {
+        self.collectionView.dataSource = dataSource
+        self.dataSource.fetchHouseInfo(houseInfo: houseInfoBundle)
     }
     
     private func setMapView() {
         self.view = mapView
         self.mapView.delegate = self
+        self.mapView.listButtonDelegate = self
         mapView.register(PriceAnnotationView.self,
                          forAnnotationViewWithReuseIdentifier: Constants.Pin.ID)
         self.mapView.setRegion(MKCoordinateRegion(center: startCordinate,
@@ -46,7 +49,7 @@ final class MapViewController: UIViewController {
     }
     
     private func addPins() {
-        mockCordinates.forEach {
+        houseInfoBundle.forEach {
             addPin(houseInfo: $0)
         }
     }
@@ -62,12 +65,6 @@ final class MapViewController: UIViewController {
         
         self.mapView.addAnnotation(pin)
     }
-    // TODO: 사용자 위치 표시
-    private func setLocationManager() {
-        self.locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
-    }
 }
 
 extension MapViewController: MKMapViewDelegate {
@@ -75,33 +72,31 @@ extension MapViewController: MKMapViewDelegate {
         guard !annotation.isKind(of: MKUserLocation.self),
               let dequeView = mapView.dequeueReusableAnnotationView(withIdentifier: Constants.Pin.ID)
                 as? PriceAnnotationView else { return nil }
-       
+        
         dequeView.annotation = annotation
-        dequeView.setPrice(price: 10000000)
+        
+        // 특정 집 정보 coordinate로 가져오기
+        let houseInfo = self.houseInfoBundle.first {
+            $0.coordinate == annotation.coordinate
+        }
+        
+        dequeView.setPrice(price: houseInfo?.price ?? 0)
         
         return dequeView
     }
     
 }
 
-extension MapViewController: UICollectionViewDataSource {
-
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
-    }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CellID.map,
-                                                            for: indexPath) as? MapViewCardCell
-        else { return UICollectionViewCell() }
-        cell.setReviewLabel(rating: 4.72, reviewCount: 128)
-        cell.setImage(image: UIImage(systemName: "house")!)
-        cell.setPrice(price: 82587)
-        return cell
+extension MapViewController: HeartButtonDelegate {
+    func heartButtonIsTapped(_ cardIndex: Int?) {
+        guard let cardIndex = cardIndex else { return }
+        houseInfoBundle[cardIndex].isWish = !houseInfoBundle[cardIndex].isWish
+        self.dataSource.changeIsWish(at: cardIndex)
     }
 }
 
-extension MapViewController: CLLocationManagerDelegate {
-    
+extension MapViewController: ListButtonDelegate {
+    func listButtonisTapped() {
+        self.dismiss(animated: true)
+    }
 }
-

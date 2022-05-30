@@ -8,7 +8,19 @@
 import CoreLocation
 
 struct HouseInfo {
-    let coordinate: CLLocationCoordinate2D
+    let id: String = " "
     let name: String
-    var address: String = " "
+    let detail: Detail
+    let price: Int
+    let hostingBy: String
+    let coordinate: CLLocationCoordinate2D
+    var isWish: Bool = false
+}
+
+struct Detail {
+    let MaimumNumberOfPeople: Int = 10
+    let houseForm: String = "호텔"
+    let introduce: String = "반가워요 ^^"
+    let rating: Double
+    let reviewCount: Int
 }

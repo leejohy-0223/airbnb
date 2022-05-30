@@ -32,7 +32,7 @@ struct AddressConverter {
                 address += " "
                 address += name
                 }
-            isCompleted(address)
+                isCompleted(address)
             
             }
         )
