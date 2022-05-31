@@ -7,8 +7,6 @@ import com.airbnb.api.houses.dto.SearchConditionRequest;
 import com.airbnb.domain.House;
 import com.airbnb.repository.HouseRepository;
 import com.airbnb.repository.dto.HouseCount;
-
-import org.locationtech.jts.geom.Point;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,6 +18,7 @@ import java.util.stream.Collectors;
 @Service
 public class HouseService {
 
+    private static final int DISTANCE = 1000;
     private final HouseRepository houseRepository;
 
     public HouseService(HouseRepository houseRepository) {
@@ -28,8 +27,7 @@ public class HouseService {
 
     @Transactional(readOnly = true)
     public List<HouseDetailResponse> findByCondition(SearchConditionRequest request) {
-        List<House> houseList = houseRepository.searchByCondition(request.getPoint(), request.getMinFee(),
-            request.getMaxFee());
+        List<House> houseList = houseRepository.searchByCondition(request.getPoint(), DISTANCE, request.getMinFee(), request.getMaxFee());
 
         return houseList
             .stream()
