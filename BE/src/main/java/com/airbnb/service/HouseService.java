@@ -1,5 +1,11 @@
 package com.airbnb.service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.airbnb.api.houses.dto.HouseCountResponse;
 import com.airbnb.api.houses.dto.HouseDetailResponse;
 import com.airbnb.api.houses.dto.LocationInformationRequest;
@@ -7,13 +13,6 @@ import com.airbnb.api.houses.dto.SearchConditionRequest;
 import com.airbnb.domain.House;
 import com.airbnb.repository.HouseRepository;
 import com.airbnb.repository.dto.HouseCount;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 @Service
 public class HouseService {
@@ -48,27 +47,9 @@ public class HouseService {
         return new HouseDetailResponse(house);
     }
 
+    @Transactional
     public HouseCountResponse findHouseCountInLocation(LocationInformationRequest request) {
-        // List<HouseCount> houseCounts = houseRepository.numberOfHousesInTheRange(request.getPoint());
-        //
-        // for (HouseCount houseCount : houseCounts) {
-        //     System.out.println(houseCount);
-        // }
-
-        Map<Integer, Integer> houseMap = new HashMap<>();
-        // 10000 -> 몇개 ..
-        // 20000 -> 몇개 ..
-
-        return null;
-
-    }
-
-    public HouseCountResponse findTest() {
-        List<HouseCount> houseCounts = houseRepository.numberOfHousesInTheRange();
-
-        for (HouseCount houseCount : houseCounts) {
-            System.out.println(houseCount);
-        }
-        return null;
+        List<HouseCount> houseCounts = houseRepository.numberOfHousesInTheRange(request.getPoint(), DISTANCE);
+        return new HouseCountResponse(houseCounts);
     }
 }

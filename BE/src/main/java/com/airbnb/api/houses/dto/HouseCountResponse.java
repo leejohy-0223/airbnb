@@ -1,13 +1,13 @@
 package com.airbnb.api.houses.dto;
 
-import java.util.Map;
+import java.util.List;
+
+import com.airbnb.repository.dto.HouseCount;
 
 public class HouseCountResponse {
-    private Map<Integer, Integer> priceMap;
+    private List<HouseCount> houseCounts;
 
-    public HouseCountResponse(Map<Integer, Integer> priceMap) {
-        this.priceMap = priceMap;
-
-
+    public HouseCountResponse(List<HouseCount> houseCounts) {
+        this.houseCounts = houseCounts;
     }
 }

@@ -40,21 +40,8 @@ public class HouseController {
         return houseService.findHouseInformation(id);
     }
 
-    /**
-     * description : 가격 그래프를 그리기 위한 가격대 별 숙소 개수를 반환합니다.
-     * HTTP Method : GET
-     * 요청 API : /api/houses/price
-     * request : 위치 정보
-     * response : 가격대 별 숙소 개수 (10,000 ~ 1,000,000까지 만원 단위)
-     */
     @GetMapping("/price")
     public HouseCountResponse findHouseCount(@ModelAttribute LocationInformationRequest request) {
         return houseService.findHouseCountInLocation(request);
-    }
-
-    @GetMapping("/test")
-    public HouseCountResponse findHouseCount2() {
-        log.info("test is called");
-        return houseService.findTest();
     }
 }
