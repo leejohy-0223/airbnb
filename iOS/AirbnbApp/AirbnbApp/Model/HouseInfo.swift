@@ -5,7 +5,7 @@
 //  Created by 박진섭 on 2022/05/25.
 //
 
-struct HouseInfo {
+struct HouseInfo: Codable {
     let id: String = " "
     let name: String
     let detail: Detail
@@ -16,7 +16,7 @@ struct HouseInfo {
     var isWish: Bool = false
 }
 
-struct Detail {
+struct Detail: Codable {
     let MaimumNumberOfPeople: Int = 10
     let houseForm: String = "호텔"
     let introduce: String = "반가워요 ^^"

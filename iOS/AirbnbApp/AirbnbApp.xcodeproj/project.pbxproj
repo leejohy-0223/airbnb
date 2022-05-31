@@ -19,11 +19,24 @@
 		8D224202283CB794006A9043 /* PriceLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D224201283CB794006A9043 /* PriceLabel.swift */; };
 		8D224204283CB7E4006A9043 /* PriceConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D224203283CB7E4006A9043 /* PriceConverter.swift */; };
 		8D224206283CB8AB006A9043 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D224205283CB8AB006A9043 /* Constants.swift */; };
-		8D3DBB8F28445E7E007B6352 /* HouseInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBB8E28445E7D007B6352 /* HouseInfoManager.swift */; };
-		8D3DBB972844BCDE007B6352 /* HouseInfoUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBB962844BCDE007B6352 /* HouseInfoUnitTest.swift */; };
-		8D3DBB9D2844BCFA007B6352 /* HouseInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBB8E28445E7D007B6352 /* HouseInfoManager.swift */; };
-		8D3DBB9E2844BD02007B6352 /* HouseInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9D1F63283D355200EEF33A /* HouseInfo.swift */; };
+		8D3DBB8F28445E7E007B6352 /* HouseInfoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBB8E28445E7D007B6352 /* HouseInfoRepository.swift */; };
+		8D3DBB972844BCDE007B6352 /* HouseInfoRepositroyUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBB962844BCDE007B6352 /* HouseInfoRepositroyUnitTest.swift */; };
+		8D3DBB9D2844BCFA007B6352 /* HouseInfoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBB8E28445E7D007B6352 /* HouseInfoRepository.swift */; };
 		8D3DBB9F2844C1FB007B6352 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6B3C0D283E095E00E24CE8 /* Extensions.swift */; };
+		8D3DBBA12845AB39007B6352 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBBA02845AB39007B6352 /* NetworkManager.swift */; };
+		8D3DBBA42845B712007B6352 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBBA32845B712007B6352 /* EndPoint.swift */; };
+		8D3DBBA72845B728007B6352 /* NetworkManagable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBBA52845B728007B6352 /* NetworkManagable.swift */; };
+		8D3DBBC52845E8D6007B6352 /* NetworkManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBBC42845E8D6007B6352 /* NetworkManagerTest.swift */; };
+		8D3DBBCB2845E8EF007B6352 /* NetworkManagable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBBA52845B728007B6352 /* NetworkManagable.swift */; };
+		8D3DBBCC2845E8F3007B6352 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBBA02845AB39007B6352 /* NetworkManager.swift */; };
+		8D3DBBCD2845E8F5007B6352 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBBA32845B712007B6352 /* EndPoint.swift */; };
+		8D3DBBD12845E9A2007B6352 /* URLMockProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBBD02845E9A2007B6352 /* URLMockProtocol.swift */; };
+		8D3DBBD52845ECE1007B6352 /* MockDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBBD42845ECE1007B6352 /* MockDataModel.swift */; };
+		8D3DBBD62845EE1D007B6352 /* NetworkManagable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBBA52845B728007B6352 /* NetworkManagable.swift */; };
+		8D3DBBD72845EE1F007B6352 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBBA02845AB39007B6352 /* NetworkManager.swift */; };
+		8D3DBBD82845EE23007B6352 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBBA32845B712007B6352 /* EndPoint.swift */; };
+		8D3DBBD92845EE2B007B6352 /* HouseInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9D1F63283D355200EEF33A /* HouseInfo.swift */; };
+		8D3DBBDB2845F152007B6352 /* MockData.json in Resources */ = {isa = PBXBuildFile; fileRef = 8D3DBBDA2845F152007B6352 /* MockData.json */; };
 		8D554791284055E200C4D9D9 /* HeartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D554790284055E200C4D9D9 /* HeartButton.swift */; };
 		8D55479328405FE300C4D9D9 /* HouseNameLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D55479228405FE300C4D9D9 /* HouseNameLabel.swift */; };
 		8D6465E8283FAA1E0021C782 /* ResultCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6465E7283FAA1E0021C782 /* ResultCardCell.swift */; };
@@ -53,6 +66,13 @@
 			remoteGlobalIDString = 8D0AD75F283C5EDD00575C3B;
 			remoteInfo = AirbnbApp;
 		};
+		8D3DBBC62845E8D7007B6352 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8D0AD758283C5EDD00575C3B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8D0AD75F283C5EDD00575C3B;
+			remoteInfo = AirbnbApp;
+		};
 		8D6B3C06283DE6BB00E24CE8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8D0AD758283C5EDD00575C3B /* Project object */;
@@ -75,9 +95,17 @@
 		8D224201283CB794006A9043 /* PriceLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceLabel.swift; sourceTree = "<group>"; };
 		8D224203283CB7E4006A9043 /* PriceConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceConverter.swift; sourceTree = "<group>"; };
 		8D224205283CB8AB006A9043 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		8D3DBB8E28445E7D007B6352 /* HouseInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseInfoManager.swift; sourceTree = "<group>"; };
-		8D3DBB942844BCDE007B6352 /* HouseInfoUnitTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HouseInfoUnitTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8D3DBB962844BCDE007B6352 /* HouseInfoUnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseInfoUnitTest.swift; sourceTree = "<group>"; };
+		8D3DBB8E28445E7D007B6352 /* HouseInfoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseInfoRepository.swift; sourceTree = "<group>"; };
+		8D3DBB942844BCDE007B6352 /* HouseInfoRepositroyUnitTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HouseInfoRepositroyUnitTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D3DBB962844BCDE007B6352 /* HouseInfoRepositroyUnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseInfoRepositroyUnitTest.swift; sourceTree = "<group>"; };
+		8D3DBBA02845AB39007B6352 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		8D3DBBA32845B712007B6352 /* EndPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		8D3DBBA52845B728007B6352 /* NetworkManagable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManagable.swift; sourceTree = "<group>"; };
+		8D3DBBC22845E8D6007B6352 /* NetworkManagerTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkManagerTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D3DBBC42845E8D6007B6352 /* NetworkManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTest.swift; sourceTree = "<group>"; };
+		8D3DBBD02845E9A2007B6352 /* URLMockProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLMockProtocol.swift; sourceTree = "<group>"; };
+		8D3DBBD42845ECE1007B6352 /* MockDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataModel.swift; sourceTree = "<group>"; };
+		8D3DBBDA2845F152007B6352 /* MockData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MockData.json; sourceTree = "<group>"; };
 		8D554790284055E200C4D9D9 /* HeartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartButton.swift; sourceTree = "<group>"; };
 		8D55479228405FE300C4D9D9 /* HouseNameLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseNameLabel.swift; sourceTree = "<group>"; };
 		8D6465E7283FAA1E0021C782 /* ResultCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCardCell.swift; sourceTree = "<group>"; };
@@ -115,6 +143,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8D3DBBBF2845E8D6007B6352 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8D6B3BFF283DE6BB00E24CE8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -130,7 +165,8 @@
 			children = (
 				8D0AD762283C5EDD00575C3B /* AirbnbApp */,
 				8D6B3C03283DE6BB00E24CE8 /* ConverterUnitTest */,
-				8D3DBB952844BCDE007B6352 /* HouseInfoUnitTest */,
+				8D3DBB952844BCDE007B6352 /* HouseInfoRepositroyUnitTest */,
+				8D3DBBC32845E8D6007B6352 /* NetworkManagerTest */,
 				8D0AD761283C5EDD00575C3B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -140,7 +176,8 @@
 			children = (
 				8D0AD760283C5EDD00575C3B /* AirbnbApp.app */,
 				8D6B3C02283DE6BB00E24CE8 /* ConverterUnitTest.xctest */,
-				8D3DBB942844BCDE007B6352 /* HouseInfoUnitTest.xctest */,
+				8D3DBB942844BCDE007B6352 /* HouseInfoRepositroyUnitTest.xctest */,
+				8D3DBBC22845E8D6007B6352 /* NetworkManagerTest.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -148,11 +185,13 @@
 		8D0AD762283C5EDD00575C3B /* AirbnbApp */ = {
 			isa = PBXGroup;
 			children = (
-				8D0AD767283C5EDD00575C3B /* MainViewController.swift */,
-				8D6465E6283FAA040021C782 /* SearchResult */,
-				8D224200283CA7C2006A9043 /* Map */,
-				8DA3503D283F53C900B72BA9 /* CollectionView */,
+				8D3DBBAE2845E410007B6352 /* ViewController */,
+				8D3DBBAD2845E3F6007B6352 /* Model */,
+				8DF21CA528406F7000F2F8E9 /* View */,
+				8D6465E6283FAA040021C782 /* Repository */,
 				8D55478F284054C700C4D9D9 /* ReuseableView */,
+				8D3DBBA22845AB4F007B6352 /* Network */,
+				8D3DBBAF2845E4A3007B6352 /* Delegate */,
 				8D6B3BFD283DD21F00E24CE8 /* Converter */,
 				8D6B3C0F283E096300E24CE8 /* Extension */,
 				8D0AD777283C600C00575C3B /* SupportingFiles */,
@@ -176,22 +215,76 @@
 		8D224200283CA7C2006A9043 /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				8D0AD780283C718200575C3B /* MapViewController.swift */,
-				8D2241FC283CA470006A9043 /* MapView.swift */,
 				8D9D1F5B283CE24300EEF33A /* PriceAnnotationView.swift */,
-				8D9D1F63283D355200EEF33A /* HouseInfo.swift */,
 				8D224201283CB794006A9043 /* PriceLabel.swift */,
-				8D6465EB28404A5D0021C782 /* ListButtonDelegate.swift */,
+				8D2241FC283CA470006A9043 /* MapView.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
 		};
-		8D3DBB952844BCDE007B6352 /* HouseInfoUnitTest */ = {
+		8D3DBB952844BCDE007B6352 /* HouseInfoRepositroyUnitTest */ = {
 			isa = PBXGroup;
 			children = (
-				8D3DBB962844BCDE007B6352 /* HouseInfoUnitTest.swift */,
+				8D3DBB962844BCDE007B6352 /* HouseInfoRepositroyUnitTest.swift */,
 			);
-			path = HouseInfoUnitTest;
+			path = HouseInfoRepositroyUnitTest;
+			sourceTree = "<group>";
+		};
+		8D3DBBA22845AB4F007B6352 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				8D3DBBA02845AB39007B6352 /* NetworkManager.swift */,
+				8D3DBBA52845B728007B6352 /* NetworkManagable.swift */,
+				8D3DBBA32845B712007B6352 /* EndPoint.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		8D3DBBAD2845E3F6007B6352 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8D9D1F63283D355200EEF33A /* HouseInfo.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8D3DBBAE2845E410007B6352 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8D0AD767283C5EDD00575C3B /* MainViewController.swift */,
+				8DA3503E283F630900B72BA9 /* SearchResultViewController.swift */,
+				8D0AD780283C718200575C3B /* MapViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		8D3DBBAF2845E4A3007B6352 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				8DA35038283F26FF00B72BA9 /* HeartButtonDelegate.swift */,
+				8D6465EB28404A5D0021C782 /* ListButtonDelegate.swift */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		8D3DBBB02845E516007B6352 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				8DF21CA328406F6800F2F8E9 /* SearchResultTableViewDataSource.swift */,
+				8D6465E7283FAA1E0021C782 /* ResultCardCell.swift */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
+		8D3DBBC32845E8D6007B6352 /* NetworkManagerTest */ = {
+			isa = PBXGroup;
+			children = (
+				8D3DBBC42845E8D6007B6352 /* NetworkManagerTest.swift */,
+				8D3DBBD42845ECE1007B6352 /* MockDataModel.swift */,
+				8D3DBBDA2845F152007B6352 /* MockData.json */,
+				8D3DBBD02845E9A2007B6352 /* URLMockProtocol.swift */,
+			);
+			path = NetworkManagerTest;
 			sourceTree = "<group>";
 		};
 		8D55478F284054C700C4D9D9 /* ReuseableView */ = {
@@ -206,14 +299,12 @@
 			path = ReuseableView;
 			sourceTree = "<group>";
 		};
-		8D6465E6283FAA040021C782 /* SearchResult */ = {
+		8D6465E6283FAA040021C782 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				8DA3503E283F630900B72BA9 /* SearchResultViewController.swift */,
-				8D3DBB8E28445E7D007B6352 /* HouseInfoManager.swift */,
-				8DF21CA528406F7000F2F8E9 /* TableView */,
+				8D3DBB8E28445E7D007B6352 /* HouseInfoRepository.swift */,
 			);
-			path = SearchResult;
+			path = Repository;
 			sourceTree = "<group>";
 		};
 		8D6B3BFD283DD21F00E24CE8 /* Converter */ = {
@@ -246,18 +337,18 @@
 			children = (
 				8D6B3BF9283DB79800E24CE8 /* MapViewCardCell.swift */,
 				8DA3503A283F47D400B72BA9 /* MapCardCollectionViewDataSource.swift */,
-				8DA35038283F26FF00B72BA9 /* HeartButtonDelegate.swift */,
 			);
 			path = CollectionView;
 			sourceTree = "<group>";
 		};
-		8DF21CA528406F7000F2F8E9 /* TableView */ = {
+		8DF21CA528406F7000F2F8E9 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				8DF21CA328406F6800F2F8E9 /* SearchResultTableViewDataSource.swift */,
-				8D6465E7283FAA1E0021C782 /* ResultCardCell.swift */,
+				8D3DBBB02845E516007B6352 /* TableView */,
+				8DA3503D283F53C900B72BA9 /* CollectionView */,
+				8D224200283CA7C2006A9043 /* Map */,
 			);
-			path = TableView;
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -284,9 +375,9 @@
 			productReference = 8D0AD760283C5EDD00575C3B /* AirbnbApp.app */;
 			productType = "com.apple.product-type.application";
 		};
-		8D3DBB932844BCDE007B6352 /* HouseInfoUnitTest */ = {
+		8D3DBB932844BCDE007B6352 /* HouseInfoRepositroyUnitTest */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8D3DBB9C2844BCDE007B6352 /* Build configuration list for PBXNativeTarget "HouseInfoUnitTest" */;
+			buildConfigurationList = 8D3DBB9C2844BCDE007B6352 /* Build configuration list for PBXNativeTarget "HouseInfoRepositroyUnitTest" */;
 			buildPhases = (
 				8D3DBB902844BCDE007B6352 /* Sources */,
 				8D3DBB912844BCDE007B6352 /* Frameworks */,
@@ -297,9 +388,27 @@
 			dependencies = (
 				8D3DBB992844BCDE007B6352 /* PBXTargetDependency */,
 			);
-			name = HouseInfoUnitTest;
+			name = HouseInfoRepositroyUnitTest;
 			productName = HouseInfoUnitTest;
-			productReference = 8D3DBB942844BCDE007B6352 /* HouseInfoUnitTest.xctest */;
+			productReference = 8D3DBB942844BCDE007B6352 /* HouseInfoRepositroyUnitTest.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		8D3DBBC12845E8D6007B6352 /* NetworkManagerTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8D3DBBC82845E8D7007B6352 /* Build configuration list for PBXNativeTarget "NetworkManagerTest" */;
+			buildPhases = (
+				8D3DBBBE2845E8D6007B6352 /* Sources */,
+				8D3DBBBF2845E8D6007B6352 /* Frameworks */,
+				8D3DBBC02845E8D6007B6352 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8D3DBBC72845E8D7007B6352 /* PBXTargetDependency */,
+			);
+			name = NetworkManagerTest;
+			productName = NetworkManagerTest;
+			productReference = 8D3DBBC22845E8D6007B6352 /* NetworkManagerTest.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		8D6B3C01283DE6BB00E24CE8 /* ConverterUnitTest */ = {
@@ -337,6 +446,10 @@
 						CreatedOnToolsVersion = 13.4;
 						TestTargetID = 8D0AD75F283C5EDD00575C3B;
 					};
+					8D3DBBC12845E8D6007B6352 = {
+						CreatedOnToolsVersion = 13.4;
+						TestTargetID = 8D0AD75F283C5EDD00575C3B;
+					};
 					8D6B3C01283DE6BB00E24CE8 = {
 						CreatedOnToolsVersion = 13.4;
 						TestTargetID = 8D0AD75F283C5EDD00575C3B;
@@ -362,7 +475,8 @@
 			targets = (
 				8D0AD75F283C5EDD00575C3B /* AirbnbApp */,
 				8D6B3C01283DE6BB00E24CE8 /* ConverterUnitTest */,
-				8D3DBB932844BCDE007B6352 /* HouseInfoUnitTest */,
+				8D3DBB932844BCDE007B6352 /* HouseInfoRepositroyUnitTest */,
+				8D3DBBC12845E8D6007B6352 /* NetworkManagerTest */,
 			);
 		};
 /* End PBXProject section */
@@ -384,6 +498,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8D3DBBC02845E8D6007B6352 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D3DBBDB2845F152007B6352 /* MockData.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8D6B3C00283DE6BB00E24CE8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -398,7 +520,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D3DBB8F28445E7E007B6352 /* HouseInfoManager.swift in Sources */,
+				8D3DBB8F28445E7E007B6352 /* HouseInfoRepository.swift in Sources */,
 				8D6465E8283FAA1E0021C782 /* ResultCardCell.swift in Sources */,
 				8DF21C9E2840654D00F2F8E9 /* HouseImageView.swift in Sources */,
 				8D224202283CB794006A9043 /* PriceLabel.swift in Sources */,
@@ -410,11 +532,14 @@
 				8D0AD768283C5EDD00575C3B /* MainViewController.swift in Sources */,
 				8D6465EC28404A5D0021C782 /* ListButtonDelegate.swift in Sources */,
 				8D224204283CB7E4006A9043 /* PriceConverter.swift in Sources */,
+				8D3DBBA42845B712007B6352 /* EndPoint.swift in Sources */,
 				8DA35039283F26FF00B72BA9 /* HeartButtonDelegate.swift in Sources */,
 				8D0AD764283C5EDD00575C3B /* AppDelegate.swift in Sources */,
 				8D2241FD283CA470006A9043 /* MapView.swift in Sources */,
 				8D6B3BFA283DB79800E24CE8 /* MapViewCardCell.swift in Sources */,
+				8D3DBBA12845AB39007B6352 /* NetworkManager.swift in Sources */,
 				8D0AD766283C5EDD00575C3B /* SceneDelegate.swift in Sources */,
+				8D3DBBA72845B728007B6352 /* NetworkManagable.swift in Sources */,
 				8D6B3C0E283E095E00E24CE8 /* Extensions.swift in Sources */,
 				8D0AD781283C718200575C3B /* MapViewController.swift in Sources */,
 				8D224206283CB8AB006A9043 /* Constants.swift in Sources */,
@@ -430,10 +555,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D3DBB9D2844BCFA007B6352 /* HouseInfoManager.swift in Sources */,
-				8D3DBB972844BCDE007B6352 /* HouseInfoUnitTest.swift in Sources */,
-				8D3DBB9E2844BD02007B6352 /* HouseInfo.swift in Sources */,
+				8D3DBBD92845EE2B007B6352 /* HouseInfo.swift in Sources */,
+				8D3DBBD82845EE23007B6352 /* EndPoint.swift in Sources */,
+				8D3DBB9D2844BCFA007B6352 /* HouseInfoRepository.swift in Sources */,
+				8D3DBB972844BCDE007B6352 /* HouseInfoRepositroyUnitTest.swift in Sources */,
+				8D3DBBD72845EE1F007B6352 /* NetworkManager.swift in Sources */,
 				8D3DBB9F2844C1FB007B6352 /* Extensions.swift in Sources */,
+				8D3DBBD62845EE1D007B6352 /* NetworkManagable.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D3DBBBE2845E8D6007B6352 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D3DBBCC2845E8F3007B6352 /* NetworkManager.swift in Sources */,
+				8D3DBBC52845E8D6007B6352 /* NetworkManagerTest.swift in Sources */,
+				8D3DBBD12845E9A2007B6352 /* URLMockProtocol.swift in Sources */,
+				8D3DBBCD2845E8F5007B6352 /* EndPoint.swift in Sources */,
+				8D3DBBCB2845E8EF007B6352 /* NetworkManagable.swift in Sources */,
+				8D3DBBD52845ECE1007B6352 /* MockDataModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,6 +595,11 @@
 			isa = PBXTargetDependency;
 			target = 8D0AD75F283C5EDD00575C3B /* AirbnbApp */;
 			targetProxy = 8D3DBB982844BCDE007B6352 /* PBXContainerItemProxy */;
+		};
+		8D3DBBC72845E8D7007B6352 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8D0AD75F283C5EDD00575C3B /* AirbnbApp */;
+			targetProxy = 8D3DBBC62845E8D7007B6352 /* PBXContainerItemProxy */;
 		};
 		8D6B3C07283DE6BB00E24CE8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -678,6 +824,42 @@
 			};
 			name = Release;
 		};
+		8D3DBBC92845E8D7007B6352 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N6KUR9465F;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SeobJin.NetworkManagerTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AirbnbApp.app/AirbnbApp";
+			};
+			name = Debug;
+		};
+		8D3DBBCA2845E8D7007B6352 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N6KUR9465F;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SeobJin.NetworkManagerTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AirbnbApp.app/AirbnbApp";
+			};
+			name = Release;
+		};
 		8D6B3C09283DE6BB00E24CE8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -735,11 +917,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8D3DBB9C2844BCDE007B6352 /* Build configuration list for PBXNativeTarget "HouseInfoUnitTest" */ = {
+		8D3DBB9C2844BCDE007B6352 /* Build configuration list for PBXNativeTarget "HouseInfoRepositroyUnitTest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8D3DBB9A2844BCDE007B6352 /* Debug */,
 				8D3DBB9B2844BCDE007B6352 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8D3DBBC82845E8D7007B6352 /* Build configuration list for PBXNativeTarget "NetworkManagerTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8D3DBBC92845E8D7007B6352 /* Debug */,
+				8D3DBBCA2845E8D7007B6352 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

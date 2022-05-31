@@ -13,25 +13,28 @@ final class SearchResultViewController: UIViewController {
     
     private let tabelView = UITableView(frame: .zero, style: .plain)
     private lazy var dataSource: SearchResultTableViewDataSource = SearchResultTableViewDataSource(delegate: self)
-    private lazy var houseInfoManager: HouseInfoManager = HouseInfoManager(houseInfoBundle: self.houseInfoBundle)
     
-    private var houseInfoBundle: [HouseInfo] = [
-        HouseInfo(name: "킹왕짱 숙소", detail: Detail(rating: 4.45, reviewCount: 121), price: 101231, hostingBy: "김씨", latitude: 37.490765, longitude: 127.033433),
-        HouseInfo(name: "킹짱 숙소", detail: Detail(rating: 4.35, reviewCount: 121), price: 1032131, hostingBy: "김씨", latitude: 37.480765, longitude: 127.032433),
-        HouseInfo(name: "왕짱 숙소", detail: Detail(rating: 4.25, reviewCount: 121), price: 10141244, hostingBy: "김씨", latitude: 37.47065, longitude: 127.031433),
-        HouseInfo(name: "한국 어딘가의 아주 근사한 숙소인데 이름이 조금 길어 근데 좋은데니까 한번 눌러", detail: Detail(rating: 4.15, reviewCount: 121), price: 10001, hostingBy: "김씨", latitude: 37.490765, longitude: 127.037433)
-    ]
+    private let houseInfoManager: HouseInfoRepository = HouseInfoRepository(
+        networkManager: NetworkManager(sessionManager: .default))
     
-    private var mapButton: UIButton = {
+    private lazy var mapButton: UIButton = {
         let button = UIButton()
         return button
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchData()
         addViews()
         setTableView()
         setMapButton()
+    }
+    
+    private func fetchData() {
+        houseInfoManager.fetchHouseInfo(endpoint: EndPointCase.getHousesInfo.endpoint) { [weak self] (houseData: [HouseInfo]?) in
+            guard let self = self else { return }
+            self.dataSource.fetchHouseInfo(houseInfo: houseData ?? [])
+        }
     }
     
     private func addViews() {
@@ -46,7 +49,6 @@ final class SearchResultViewController: UIViewController {
         self.tabelView.rowHeight = UITableView.automaticDimension
         self.tabelView.estimatedRowHeight = 300
         
-        self.dataSource.fetchHouseInfo(houseInfo: self.houseInfoManager.houseInfoBundle)
         tabelView.dataSource = self.dataSource
         
         tabelView.snp.makeConstraints {
@@ -59,7 +61,7 @@ final class SearchResultViewController: UIViewController {
         let action = UIAction { [weak self] _  in
             guard let self = self else { return }
             let mapVC = MapViewController()
-            mapVC.fetchHouseInfo(houseInfoManager: self.houseInfoManager)
+            mapVC.getHouseInfoManager(houseInfoManager: self.houseInfoManager)
             self.present(mapVC, animated: true)
         }
         

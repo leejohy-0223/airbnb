@@ -17,7 +17,7 @@ final class MapViewController: UIViewController {
     
     private let startCordinate = CLLocationCoordinate2D(latitude: 37.490765, longitude: 127.033433)
     
-    private var houseInfoManager: HouseInfoManager?
+    private var houseInfoManager: HouseInfoRepository?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +26,7 @@ final class MapViewController: UIViewController {
         setCollectionView()
     }
     
-    func fetchHouseInfo(houseInfoManager: HouseInfoManager) {
+    func getHouseInfoManager(houseInfoManager: HouseInfoRepository) {
         self.houseInfoManager = houseInfoManager
     }
     
