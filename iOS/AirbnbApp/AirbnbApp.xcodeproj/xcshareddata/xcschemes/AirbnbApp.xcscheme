@@ -43,7 +43,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8D3DBB932844BCDE007B6352"
-               BuildableName = "HouseInfoRepositroyTest.xctest"
+               BuildableName = "HouseInfoRepositroyUnitTest.xctest"
                BlueprintName = "HouseInfoRepositroyUnitTest"
                ReferencedContainer = "container:AirbnbApp.xcodeproj">
             </BuildableReference>
