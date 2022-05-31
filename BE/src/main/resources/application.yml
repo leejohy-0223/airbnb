@@ -16,6 +16,11 @@ spring:
     database: mysql
     database-platform: org.hibernate.spatial.dialect.mysql.MySQL56InnoDBSpatialDialect
 
+  sql:
+    init:
+      mode: always
+      data-locations: classpath:sql/data.sql
+
 #server:
 #  port: 80
 
