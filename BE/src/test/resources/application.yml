@@ -2,7 +2,7 @@ spring:
   profiles:
     active: test
   datasource:
-    url: jdbc:mysql://localhost:3306/airbnb?allowLoadLocalInfile=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul&characterEncoding=UTF-8&useLegacyDatetimeCode=false
+    url: ${datasource}
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: ${username}
     password: ${password}
@@ -14,7 +14,7 @@ spring:
       hibernate:
         format_sql: true
     database: mysql
-    database-platform: org.hibernate.spatial.dialect.mysql.MySQL56InnoDBSpatialDialect
+    database-platform: org.hibernate.spatial.dialect.mysql.MySQL8SpatialDialect
 
 server:
   port: 80
