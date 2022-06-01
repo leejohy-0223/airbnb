@@ -23,4 +23,13 @@ public class UserProfileDto {
     public String getUserName() {
         return username;
     }
+
+    @Override
+    public String toString() {
+        return "UserProfileDto{" +
+            "id=" + id +
+            ", email='" + email + '\'' +
+            ", username='" + username + '\'' +
+            '}';
+    }
 }
