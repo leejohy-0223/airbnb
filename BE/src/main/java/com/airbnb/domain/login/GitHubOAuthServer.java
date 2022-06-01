@@ -7,8 +7,6 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
-import com.airbnb.api.login.oauth.dto.UserProfileDto;
-
 public class GitHubOAuthServer extends OAuthServerImpl {
 
     public GitHubOAuthServer(RestTemplate restTemplate) {

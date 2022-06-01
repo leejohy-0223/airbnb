@@ -5,11 +5,7 @@ import org.springframework.web.client.RestTemplate;
 
 public abstract class OAuthServerImpl implements OAuthServer {
 
-    private final RestTemplate restTemplate;
-
-    public OAuthServerImpl(RestTemplate restTemplate) {
-        this.restTemplate = restTemplate;
-    }
+    protected final RestTemplate restTemplate = new RestTemplate();
 
     protected HttpHeaders createHeaders(String accessToken) {
         HttpHeaders headers = new HttpHeaders();

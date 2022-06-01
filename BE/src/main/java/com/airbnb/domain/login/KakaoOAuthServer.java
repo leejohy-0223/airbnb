@@ -1,29 +1,17 @@
 package com.airbnb.domain.login;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-
-import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.RequestEntity;
-import org.springframework.http.ResponseEntity;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import org.springframework.http.*;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
-import org.springframework.web.client.RestTemplate;
-
-import com.airbnb.api.login.oauth.dto.UserProfileDto;
 
 public class KakaoOAuthServer extends OAuthServerImpl {
 
-    private static final String KAKAO_URI = "Https://kauth.kakao.com//oauth/token";
-
-    public KakaoOAuthServer(RestTemplate restTemplate) {
-        super(restTemplate);
-    }
+    private static final String KAKAO_TOKEN_SERVER_URI = "Https://kauth.kakao.com//oauth/token";
+    public static final String KAKAO_OAUTH_SERVER_URI = "https://kapi.kakao.com/v2/user/me";
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
     @Override
     public OauthToken getOAuthToken(String code) {
@@ -33,21 +21,35 @@ public class KakaoOAuthServer extends OAuthServerImpl {
         // code 를 통해 Kakao 쪽으로 다시 Access Token을 받기 위한 요청부분
         HttpEntity<MultiValueMap<String, String>> accessTokenRequest = new HttpEntity<>(params, headers);
 
-        ResponseEntity<KakaoToken> kakaoResponse = restTemplate.postForEntity(KAKAO_URI, accessTokenRequest,
-            KakaoToken.class);
+        ResponseEntity<KakaoToken> kakaoResponse = restTemplate.postForEntity(KAKAO_TOKEN_SERVER_URI, accessTokenRequest,
+                KakaoToken.class);
         return kakaoResponse.getBody();
     }
 
     @Override
     public UserProfileDto getUserProfile(OauthToken oAuthToken) {
-        Map<String, Object> userProfileMap = getUserProfileFromOAuthServer(token)
-            .orElseThrow(() -> new UserInformationNotFound("사용자 정보가 없습니다", HttpStatus.NOT_FOUND));
+        HttpHeaders headers = createHeaders(oAuthToken.getAccessToken()); // 헤더 만들기
 
-        return new UserProfileDto(
-            String.valueOf(userProfileMap.get("id")),
-            String.valueOf(userProfileMap.get("email")),
-            String.valueOf(userProfileMap.get("login")));
+        HttpEntity<MultiValueMap<String, String>> accessProfileRequest = new HttpEntity<>(headers);
+        ResponseEntity<String> response = restTemplate.exchange( // 사용자 정보 반환받기
+                KAKAO_OAUTH_SERVER_URI,
+                HttpMethod.POST,
+                accessProfileRequest,
+                String.class
+        );
 
+        objectMapper.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
+        KakaoProfile kakaoProfile;
+        try {
+            kakaoProfile = objectMapper.readValue(response.getBody(), KakaoProfile.class);
+        } catch (JsonProcessingException e) {
+            throw new IllegalStateException("변환할 수 없는 User 입니다.");
+        }
+
+        Long id = kakaoProfile.getId();
+        String email = kakaoProfile.kakaoAccount.getEmail();
+        String username = kakaoProfile.kakaoAccount.profile.getNickname();
+        return new UserProfileDto(id, email, username);
     }
 
     private MultiValueMap<String, String> createParams(String code) {
@@ -57,19 +59,5 @@ public class KakaoOAuthServer extends OAuthServerImpl {
         params.add("redirect_uri", "http://localhost:8080/api/login/oauth/kakao/callback");
         params.add("code", code);
         return params;
-    }
-
-    private Optional<Map<String, Object>> getUserProfileFromOAuthServer(OauthToken token) {
-        RequestEntity<Void> request = RequestEntity.get(userInfoUri)
-            .header("Authorization", token.getAuthorizationValue())
-            .accept(MediaType.APPLICATION_JSON)
-            .build();
-
-        ParameterizedTypeReference<HashMap<String, Object>> responseType = new ParameterizedTypeReference<>() {
-        };
-
-        Map<String, Object> userProfileMap = restTemplate.exchange(request, responseType).getBody();
-
-        return Optional.ofNullable(userProfileMap);
     }
 }
