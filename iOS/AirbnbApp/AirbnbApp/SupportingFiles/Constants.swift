@@ -17,6 +17,7 @@ struct Constants {
         static let mapCardReviewCountFontSize = 16.0
         static let mapCardHouseNameFontSize = 24.0
         static let mapCardPriceFontSize = 16.0
+        static let houseCountLabelFontSize = 32.0
     }
     
     struct Button {

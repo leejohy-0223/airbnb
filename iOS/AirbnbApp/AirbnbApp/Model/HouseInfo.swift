@@ -6,20 +6,21 @@
 //
 
 struct HouseInfo: Codable {
-    let id: String = " "
+    let id: Int
     let name: String
-    let detail: Detail
     let price: Int
-    let hostingBy: String
+    let detailInfo: DetailInfo
     let latitude: Double
     let longitude: Double
-    var isWish: Bool = false
+    let images: String?
+    let hostName: String
+    var isWish: Bool
 }
 
-struct Detail: Codable {
-    let MaimumNumberOfPeople: Int = 10
-    let houseForm: String = "호텔"
-    let introduce: String = "반가워요 ^^"
-    let rating: Double
-    let reviewCount: Int
+struct DetailInfo: Codable {
+    let maxNumber: Int
+    let type: String
+    let roomIntroduction: String
+    let rate: Double
+    let commentCount: Int
 }

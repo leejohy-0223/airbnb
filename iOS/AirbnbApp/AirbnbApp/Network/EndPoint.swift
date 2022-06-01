@@ -19,16 +19,22 @@ extension Endpointable {
     func getURL() -> URLConvertible {
         return getBaseURL().urlString + getPath().pathString
     }
+    
 }
 
 struct Endpoint: Endpointable {
-    private let httpMethod: HTTPMethod
+    private let httpMethod: Alamofire.HTTPMethod
     private let baseURL: BaseURL
     private let path: Path
-    private let headers: [String: String]?
+    private var headers: [String: String]
     private let body: [String: Any]?
     
-    init(httpMethod: HTTPMethod, baseURL: BaseURL, path: Path, headers: [String: String], body: [String: String]? = nil) {
+    init(httpMethod: HTTPMethod,
+         baseURL: BaseURL,
+         path: Path,
+         headers: [String: String] = ["Content-Type": "application/json"],
+         body: [String: String]? = nil)
+    {
         self.httpMethod = httpMethod
         self.baseURL = baseURL
         self.path = path
@@ -68,21 +74,18 @@ enum EndPointCase {
             return Endpoint(httpMethod: .get,
                             baseURL: .main,
                             path: .getHousesPirce,
-                            headers: ["Content-Type": "application/json"],
                             body: nil)
             
         case .getHousesInfo:
             return Endpoint(httpMethod: .get,
                             baseURL: .main,
                             path: .getHousesInfo,
-                            headers: ["Content-Type": "application/json"],
                             body: nil)
             
         case .getDetail(let hash):
             return Endpoint(httpMethod: .get,
                             baseURL: .main,
                             path: .getDetail(id: hash),
-                            headers: ["Content-Type": "application/json"],
                             body: nil)
         }
     }
@@ -94,7 +97,7 @@ enum BaseURL {
     var urlString: String {
         switch self {
         case .main:
-            return "http://54.180.156.158"
+            return "http://3.38.213.176"
         }
     }
 }
@@ -109,9 +112,11 @@ enum Path {
         case .getHousesPirce:
             return "api/houses/price"
         case .getHousesInfo:
-            return "api/houses"
+            return "/api/houses/11"
         case .getDetail(let id):
             return "api/houses/\(id)"
         }
     }
 }
+
+

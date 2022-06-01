@@ -54,6 +54,9 @@
 		8DA35039283F26FF00B72BA9 /* HeartButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA35038283F26FF00B72BA9 /* HeartButtonDelegate.swift */; };
 		8DA3503B283F47D400B72BA9 /* MapCardCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA3503A283F47D400B72BA9 /* MapCardCollectionViewDataSource.swift */; };
 		8DA3503F283F630900B72BA9 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA3503E283F630900B72BA9 /* SearchResultViewController.swift */; };
+		8DD56DE3284602AE00B357DA /* ResultHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD56DE2284602AE00B357DA /* ResultHeaderView.swift */; };
+		8DF10487284745B50005CCD5 /* URLMockProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBBD02845E9A2007B6352 /* URLMockProtocol.swift */; };
+		8DF10489284745D20005CCD5 /* MockHouseInfoData.json in Resources */ = {isa = PBXBuildFile; fileRef = 8DF10488284745D20005CCD5 /* MockHouseInfoData.json */; };
 		8DF21C9E2840654D00F2F8E9 /* HouseImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF21C9D2840654D00F2F8E9 /* HouseImageView.swift */; };
 		8DF21CA428406F6800F2F8E9 /* SearchResultTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF21CA328406F6800F2F8E9 /* SearchResultTableViewDataSource.swift */; };
 /* End PBXBuildFile section */
@@ -122,6 +125,8 @@
 		8DA35038283F26FF00B72BA9 /* HeartButtonDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartButtonDelegate.swift; sourceTree = "<group>"; };
 		8DA3503A283F47D400B72BA9 /* MapCardCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCardCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		8DA3503E283F630900B72BA9 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
+		8DD56DE2284602AE00B357DA /* ResultHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultHeaderView.swift; sourceTree = "<group>"; };
+		8DF10488284745D20005CCD5 /* MockHouseInfoData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MockHouseInfoData.json; sourceTree = "<group>"; };
 		8DF21C9D2840654D00F2F8E9 /* HouseImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseImageView.swift; sourceTree = "<group>"; };
 		8DF21CA328406F6800F2F8E9 /* SearchResultTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -203,6 +208,7 @@
 		8D0AD777283C600C00575C3B /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				8DF10488284745D20005CCD5 /* MockHouseInfoData.json */,
 				8D224205283CB8AB006A9043 /* Constants.swift */,
 				8D0AD763283C5EDD00575C3B /* AppDelegate.swift */,
 				8D0AD765283C5EDD00575C3B /* SceneDelegate.swift */,
@@ -272,6 +278,7 @@
 			children = (
 				8DF21CA328406F6800F2F8E9 /* SearchResultTableViewDataSource.swift */,
 				8D6465E7283FAA1E0021C782 /* ResultCardCell.swift */,
+				8DD56DE2284602AE00B357DA /* ResultHeaderView.swift */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -487,6 +494,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D0AD770283C5EE000575C3B /* LaunchScreen.storyboard in Resources */,
+				8DF10489284745D20005CCD5 /* MockHouseInfoData.json in Resources */,
 				8D0AD76D283C5EE000575C3B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -537,12 +545,14 @@
 				8D0AD764283C5EDD00575C3B /* AppDelegate.swift in Sources */,
 				8D2241FD283CA470006A9043 /* MapView.swift in Sources */,
 				8D6B3BFA283DB79800E24CE8 /* MapViewCardCell.swift in Sources */,
+				8DF10487284745B50005CCD5 /* URLMockProtocol.swift in Sources */,
 				8D3DBBA12845AB39007B6352 /* NetworkManager.swift in Sources */,
 				8D0AD766283C5EDD00575C3B /* SceneDelegate.swift in Sources */,
 				8D3DBBA72845B728007B6352 /* NetworkManagable.swift in Sources */,
 				8D6B3C0E283E095E00E24CE8 /* Extensions.swift in Sources */,
 				8D0AD781283C718200575C3B /* MapViewController.swift in Sources */,
 				8D224206283CB8AB006A9043 /* Constants.swift in Sources */,
+				8DD56DE3284602AE00B357DA /* ResultHeaderView.swift in Sources */,
 				8DF21CA428406F6800F2F8E9 /* SearchResultTableViewDataSource.swift in Sources */,
 				8D55479328405FE300C4D9D9 /* HouseNameLabel.swift in Sources */,
 				8DA3503F283F630900B72BA9 /* SearchResultViewController.swift in Sources */,
@@ -766,6 +776,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = N6KUR9465F;
@@ -782,6 +793,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.SeobJin.AirbnbApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
