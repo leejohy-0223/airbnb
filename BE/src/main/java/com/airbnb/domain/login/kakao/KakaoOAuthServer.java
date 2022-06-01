@@ -22,6 +22,8 @@ public class KakaoOAuthServer extends OAuthServerImpl {
 
     private static final String KAKAO_TOKEN_SERVER_URI = "https://kauth.kakao.com/oauth/token";
     public static final String KAKAO_OAUTH_SERVER_URI = "https://kapi.kakao.com/v2/user/me";
+    public static final String CLIENT_ID = "e274f62c505ebb4fe82d0feb387be030";
+    public static final String REDIRECT_URI = "http://localhost:8080/api/login/oauth/callback/kakao";
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     @Override
@@ -76,8 +78,8 @@ public class KakaoOAuthServer extends OAuthServerImpl {
     private MultiValueMap<String, String> createParams(String code) {
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
         params.add("grant_type", "authorization_code");
-        params.add("client_id", "e274f62c505ebb4fe82d0feb387be030");
-        params.add("redirect_uri", "http://localhost:8080/api/login/oauth/callback/kakao");
+        params.add("client_id", CLIENT_ID);
+        params.add("redirect_uri", REDIRECT_URI);
         params.add("code", code);
         return params;
     }
