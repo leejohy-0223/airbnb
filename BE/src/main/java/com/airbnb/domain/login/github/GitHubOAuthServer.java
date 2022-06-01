@@ -1,9 +1,12 @@
-package com.airbnb.domain.login;
+package com.airbnb.domain.login.github;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
+import com.airbnb.domain.login.OAuthServerImpl;
+import com.airbnb.domain.login.OauthToken;
+import com.airbnb.domain.login.dto.UserProfileDto;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.MediaType;

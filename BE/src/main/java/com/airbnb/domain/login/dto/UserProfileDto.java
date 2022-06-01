@@ -1,4 +1,4 @@
-package com.airbnb.domain.login;
+package com.airbnb.domain.login.dto;
 
 public class UserProfileDto {
 

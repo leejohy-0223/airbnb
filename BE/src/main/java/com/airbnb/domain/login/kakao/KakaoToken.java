@@ -1,5 +1,6 @@
-package com.airbnb.domain.login;
+package com.airbnb.domain.login.kakao;
 
+import com.airbnb.domain.login.OauthToken;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class KakaoToken implements OauthToken {

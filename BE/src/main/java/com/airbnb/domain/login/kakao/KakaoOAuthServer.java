@@ -1,6 +1,8 @@
-package com.airbnb.domain.login;
+package com.airbnb.domain.login.kakao;
 
-import com.airbnb.api.login.oauth.OAuthLoginController;
+import com.airbnb.domain.login.OAuthServerImpl;
+import com.airbnb.domain.login.OauthToken;
+import com.airbnb.domain.login.dto.UserProfileDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpEntity;

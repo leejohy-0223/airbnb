@@ -8,14 +8,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.airbnb.api.login.oauth.dto.LoginResponse;
-import com.airbnb.domain.login.GitHubOAuthServer;
-import com.airbnb.domain.login.KakaoOAuthServer;
+import com.airbnb.domain.login.github.GitHubOAuthServer;
+import com.airbnb.domain.login.kakao.KakaoOAuthServer;
 import com.airbnb.domain.login.OAuthServer;
 import com.airbnb.domain.login.OauthToken;
-import com.airbnb.domain.login.UserProfileDto;
+import com.airbnb.domain.login.dto.UserProfileDto;
 import com.airbnb.repository.UserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 
 @Service
 public class LoginService {
