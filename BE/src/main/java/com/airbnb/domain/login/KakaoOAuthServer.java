@@ -1,5 +1,8 @@
 package com.airbnb.domain.login;
 
+import com.airbnb.api.login.oauth.OAuthLoginController;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -13,7 +16,9 @@ import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 
 public class KakaoOAuthServer extends OAuthServerImpl {
 
-    private static final String KAKAO_TOKEN_SERVER_URI = "Https://kauth.kakao.com//oauth/token";
+    private static final Logger log = LoggerFactory.getLogger(KakaoOAuthServer.class);
+
+    private static final String KAKAO_TOKEN_SERVER_URI = "https://kauth.kakao.com/oauth/token";
     public static final String KAKAO_OAUTH_SERVER_URI = "https://kapi.kakao.com/v2/user/me";
     private final ObjectMapper objectMapper = new ObjectMapper();
 
@@ -25,9 +30,19 @@ public class KakaoOAuthServer extends OAuthServerImpl {
         // code 를 통해 Kakao 쪽으로 다시 Access Token을 받기 위한 요청부분
         HttpEntity<MultiValueMap<String, String>> accessTokenRequest = new HttpEntity<>(params, headers);
 
-        ResponseEntity<KakaoToken> kakaoResponse = restTemplate.postForEntity(KAKAO_TOKEN_SERVER_URI, accessTokenRequest,
-                KakaoToken.class);
-        return kakaoResponse.getBody();
+        ResponseEntity<String> response = restTemplate.exchange(
+                KAKAO_TOKEN_SERVER_URI,
+                HttpMethod.POST,
+                accessTokenRequest,
+                String.class
+        );
+        OauthToken oauthToken = null;
+        try {
+            oauthToken = objectMapper.readValue(response.getBody(), KakaoToken.class);
+        } catch (JsonProcessingException e) {
+            log.info("[ERROR] : getOauthToken 을 얻을수 없음");
+        }
+        return oauthToken;
     }
 
     @Override
@@ -60,7 +75,7 @@ public class KakaoOAuthServer extends OAuthServerImpl {
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
         params.add("grant_type", "authorization_code");
         params.add("client_id", "e274f62c505ebb4fe82d0feb387be030");
-        params.add("redirect_uri", "http://localhost:8080/api/login/oauth/kakao/callback");
+        params.add("redirect_uri", "http://localhost:8080/api/login/oauth/callback/kakao");
         params.add("code", code);
         return params;
     }

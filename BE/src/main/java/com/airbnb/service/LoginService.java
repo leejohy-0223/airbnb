@@ -3,6 +3,8 @@ package com.airbnb.service;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.airbnb.api.login.oauth.dto.LoginResponse;
@@ -17,6 +19,8 @@ import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 
 @Service
 public class LoginService {
+
+    private static final Logger log = LoggerFactory.getLogger(LoginService.class);
 
     private final UserRepository userRepository;
     private final ObjectMapper objectMapper;
@@ -35,20 +39,13 @@ public class LoginService {
 
         // oauthToken 받아오기
         OauthToken oAuthToken = oAuthServer.getOAuthToken(code);
+        log.info("[oauthToken] : {}", oAuthToken.getAccessToken());
 
         // oauthToken 안의 AccessToken을 통해 사용자 정보 받아오기
         UserProfileDto userProfileDto = oAuthServer.getUserProfile(oAuthToken);
+        log.info("[UserProfileDto] : {}", userProfileDto);
 
-        // userProfileDto로 User 만들기
-        objectMapper.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
-
-
-        System.out.println(userProfileDto);
-        // objectMapper.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
-        // KakaoProfile kakaoProfile = objectMapper.readValue(userProfileDto, KakaoProfile.class);
-
-        // save
-        // userRepository.save();
+        // TODO : dto로 사용자 가입시키기
 
         return null;
     }
