@@ -1,5 +1,7 @@
 package com.airbnb.domain.login.dto;
 
+import java.util.Objects;
+
 public class UserProfileDto {
 
     private Long id;
@@ -25,11 +27,18 @@ public class UserProfileDto {
     }
 
     @Override
-    public String toString() {
-        return "UserProfileDto{" +
-            "id=" + id +
-            ", email='" + email + '\'' +
-            ", username='" + username + '\'' +
-            '}';
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        UserProfileDto that = (UserProfileDto)o;
+        return Objects.equals(getId(), that.getId()) && Objects.equals(getEmail(), that.getEmail())
+            && Objects.equals(username, that.username);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getEmail(), username);
     }
 }

@@ -4,6 +4,7 @@ import com.airbnb.utils.GeometryUtils;
 import org.locationtech.jts.geom.Point;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 import javax.persistence.criteria.CriteriaBuilder;
 
@@ -84,4 +85,23 @@ public class SearchConditionRequest {
         this.numberOfGuests = numberOfGuests;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        SearchConditionRequest that = (SearchConditionRequest)o;
+        return getNumberOfGuests() == that.getNumberOfGuests() && Objects.equals(getLongitude(),
+            that.getLongitude()) && Objects.equals(getLatitude(), that.getLatitude()) && Objects.equals(
+            getStartLocalDateTime(), that.getStartLocalDateTime()) && Objects.equals(getEndLocalDateTime(),
+            that.getEndLocalDateTime()) && Objects.equals(getMinFee(), that.getMinFee())
+            && Objects.equals(getMaxFee(), that.getMaxFee());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getLongitude(), getLatitude(), getStartLocalDateTime(), getEndLocalDateTime(), getMinFee(),
+            getMaxFee(), getNumberOfGuests());
+    }
 }

@@ -1,5 +1,7 @@
 package com.airbnb.api.houses.dto;
 
+import java.util.Objects;
+
 import org.locationtech.jts.geom.Point;
 
 import com.airbnb.utils.GeometryUtils;
@@ -24,5 +26,21 @@ public class LocationInformationRequest {
 
     public Double getLatitude() {
         return latitude;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        LocationInformationRequest that = (LocationInformationRequest)o;
+        return Objects.equals(getLongitude(), that.getLongitude()) && Objects.equals(getLatitude(),
+            that.getLatitude());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getLongitude(), getLatitude());
     }
 }
