@@ -13,7 +13,13 @@ public class GitHubToken implements OauthToken {
 
     private String scope;
 
+    @Override
     public String getAccessToken() {
+        return accessToken;
+    }
+
+    @Override
+    public String getAccessTokenHeader() {
         return this.tokenType + " " + this.accessToken;
     }
 

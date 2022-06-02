@@ -21,6 +21,16 @@ public class KakaoToken implements OauthToken {
     private int refreshTokenExpiresIn;
     private String scope;
 
+    @Override
+    public String getAccessToken() {
+        return accessToken;
+    }
+
+    @Override
+    public String getAccessTokenHeader() {
+        return this.tokenType + " " + this.accessToken;
+    }
+
     public String getTokenType() {
         return tokenType;
     }
@@ -63,10 +73,5 @@ public class KakaoToken implements OauthToken {
 
     public void setScope(String scope) {
         this.scope = scope;
-    }
-
-    @Override
-    public String getAccessToken() {
-        return accessToken;
     }
 }

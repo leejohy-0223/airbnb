@@ -1,8 +1,5 @@
 package com.airbnb.domain.login.kakao;
 
-import com.airbnb.domain.login.OAuthServerImpl;
-import com.airbnb.domain.login.OauthToken;
-import com.airbnb.domain.login.dto.UserProfileDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpEntity;
@@ -11,12 +8,16 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.RestTemplate;
 
+import com.airbnb.domain.login.OAuthServer;
+import com.airbnb.domain.login.OauthToken;
+import com.airbnb.domain.login.dto.UserProfileDto;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 
-public class KakaoOAuthServer extends OAuthServerImpl {
+public class KakaoOAuthServer implements OAuthServer {
 
     private static final Logger log = LoggerFactory.getLogger(KakaoOAuthServer.class);
 
@@ -25,6 +26,7 @@ public class KakaoOAuthServer extends OAuthServerImpl {
     public static final String CLIENT_ID = "e274f62c505ebb4fe82d0feb387be030";
     public static final String REDIRECT_URI = "http://localhost:8080/api/login/oauth/callback/kakao";
     private final ObjectMapper objectMapper = new ObjectMapper();
+    protected final RestTemplate restTemplate = new RestTemplate();
 
     @Override
     public OauthToken getOAuthToken(String code) {
@@ -51,7 +53,7 @@ public class KakaoOAuthServer extends OAuthServerImpl {
 
     @Override
     public UserProfileDto getUserProfile(OauthToken oAuthToken) {
-        HttpHeaders headers = createHeaders(oAuthToken.getAccessToken()); // 헤더 만들기
+        HttpHeaders headers = createHeaders(oAuthToken.getAccessTokenHeader()); // 헤더 만들기
 
         HttpEntity<MultiValueMap<String, String>> accessProfileRequest = new HttpEntity<>(headers);
         ResponseEntity<String> response = restTemplate.exchange( // 사용자 정보 반환받기
@@ -82,5 +84,14 @@ public class KakaoOAuthServer extends OAuthServerImpl {
         params.add("redirect_uri", REDIRECT_URI);
         params.add("code", code);
         return params;
+    }
+
+    private HttpHeaders createHeaders(String tokenHeader) {
+        HttpHeaders headers = new HttpHeaders();
+        if (tokenHeader != null) {
+            headers.add("Authorization", tokenHeader);
+        }
+        headers.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
+        return headers;
     }
 }
