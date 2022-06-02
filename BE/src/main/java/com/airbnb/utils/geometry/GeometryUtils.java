@@ -1,4 +1,4 @@
-package com.airbnb.utils;
+package com.airbnb.utils.geometry;
 
 import org.locationtech.jts.geom.Point;
 import org.locationtech.jts.io.ParseException;
