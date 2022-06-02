@@ -2,7 +2,6 @@ package com.airbnb.utils.oauth;
 
 import io.jsonwebtoken.*;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -31,7 +30,7 @@ public class JwtTokenProvider {
                 .compact();
     }
 
-    public String getPayload(String token) {
+    public String parsePayload(String token) {
         try {
             return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().getSubject();
         } catch (ExpiredJwtException e) {
