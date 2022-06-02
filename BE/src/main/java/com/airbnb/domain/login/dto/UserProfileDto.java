@@ -27,14 +27,23 @@ public class UserProfileDto {
     }
 
     @Override
+    public String toString() {
+        return "UserProfileDto{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", username='" + username + '\'' +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o)
             return true;
         if (o == null || getClass() != o.getClass())
             return false;
-        UserProfileDto that = (UserProfileDto)o;
+        UserProfileDto that = (UserProfileDto) o;
         return Objects.equals(getId(), that.getId()) && Objects.equals(getEmail(), that.getEmail())
-            && Objects.equals(username, that.username);
+                && Objects.equals(username, that.username);
     }
 
     @Override
