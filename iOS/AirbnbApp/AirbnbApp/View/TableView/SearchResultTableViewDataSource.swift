@@ -38,13 +38,14 @@ final class SearchResultTableViewDataSource: NSObject, UITableViewDataSource {
         cell.setTotalPrice(price: 140000)
     }
     
-    func fetchHouseInfo(houseInfo: [HouseInfo]) {
-        self.houseInfoBundle = houseInfo
+    func fetchHouseInfoBundle(houseInfoBundle: [HouseInfo]) {
+        self.houseInfoBundle = houseInfoBundle
     }
     
     func changeIsWish(at cardIndex: Int?) {
         guard let cardIndex = cardIndex else { return }
-        houseInfoBundle[cardIndex].isWish = !houseInfoBundle[cardIndex].isWish
+        if houseInfoBundle.checkIsSafeIndex(index: cardIndex) {
+            houseInfoBundle[cardIndex].isWish = !houseInfoBundle[cardIndex].isWish
+        }
     }
-    
 }

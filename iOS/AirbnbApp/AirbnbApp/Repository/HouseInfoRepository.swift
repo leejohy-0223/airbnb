@@ -18,13 +18,13 @@ final class HouseInfoRepository {
     
     private(set) var houseInfoBundle: [HouseInfo] = []
     
-    func didChangeIsWish(_ cardIndex: Int?, completionHandler: ([HouseInfo]) -> Void) {
+    func didChangeIsWish(_ cardIndex: Int?, completionHandler: () -> Void) {
         guard let cardIndex = cardIndex else { return }
         // out of range 방지
         if houseInfoBundle.checkIsSafeIndex(index: cardIndex) {
             houseInfoBundle[cardIndex].isWish = !houseInfoBundle[cardIndex].isWish
+            completionHandler()
         }
-        completionHandler(houseInfoBundle)
     }
     
     func fetchHouseInfo<T: Codable>(endpoint: Endpointable, onCompleted: @escaping (T?) -> Void) {

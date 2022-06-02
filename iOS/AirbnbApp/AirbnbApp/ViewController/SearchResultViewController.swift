@@ -14,8 +14,7 @@ final class SearchResultViewController: UIViewController {
     
     private let tabelView = UITableView(frame: .zero, style: .grouped)
     private lazy var dataSource: SearchResultTableViewDataSource = SearchResultTableViewDataSource(delegate: self)
-    
-    private var houseInfoRepository: HouseInfoRepository = HouseInfoRepository(networkManager: NetworkManager(sessionManager: .default))
+    private var houseInfoBundleViewModel: HouseInfoBundleViewModel?
     
     private lazy var mapButton: UIButton = {
         let button = UIButton()
@@ -24,50 +23,28 @@ final class SearchResultViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setMockProcotol()
-        fetchData()
+        setMockRepository()
         addViews()
         setTableView()
         setMapButton()
-    }
-    
-    private func setMockProcotol() {
-        let bundle = Bundle(for: Self.self)
+        fetchData()
         
-        guard let mockDataURL = bundle.url(forResource: "MockHouseInfoData", withExtension: "json"),
-              let mockData = try? Data(contentsOf: mockDataURL) else { return }
-        
-        // mockURL
-        let mockEndpoint = EndPointCase.getHousesInfo.endpoint
-        guard let mockURL = try? mockEndpoint.getURL().asURL() else { return }
-
-        // Mock loadingHander 설정
-        URLMockProtocol.loadingHandler = { request in
-            let response = HTTPURLResponse(
-                url: mockURL,
-                statusCode: 200,
-                httpVersion: nil,
-                headerFields: nil)!
-            
-            if request.url == mockURL {
-                return (response, mockData, nil)
-            } else {
-                return (response, nil, nil)
+        // 특정 Cell의 HeartButton State를 reload
+        houseInfoBundleViewModel?.changedHeartIndex.bind({[weak self] index in
+            guard let index = index,
+                  let self = self else { return }
+            self.dataSource.changeIsWish(at: index)
+            DispatchQueue.main.async {
+                self.tabelView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
             }
-        }
-        
-        // Mock URLProtocol 주입
-        let config = URLSessionConfiguration.ephemeral
-        config.protocolClasses = [URLMockProtocol.self]
-        
-        houseInfoRepository = HouseInfoRepository(networkManager: NetworkManager(sessionManager: Session(configuration: config)))
+        })
     }
     
     private func fetchData() {
-        houseInfoRepository.fetchHouseInfo(endpoint: EndPointCase.getHousesInfo.endpoint) { [weak self] (houseData: [HouseInfo]?) in
-            guard let self = self else { return }
-            self.dataSource.fetchHouseInfo(houseInfo: houseData ?? [])
-            self.tabelView.reloadData()
+        self.houseInfoBundleViewModel?
+            .fetchData(endpoint: EndPointCase.getHousesInfo.endpoint) { [weak self] houseInfoBundle in
+                self?.dataSource.fetchHouseInfoBundle(houseInfoBundle: houseInfoBundle ?? [])
+                self?.tabelView.reloadData()
         }
     }
     
@@ -95,9 +72,11 @@ final class SearchResultViewController: UIViewController {
     private func setMapButton() {
         
         let action = UIAction { [weak self] _  in
-            guard let self = self else { return }
+            guard let self = self,
+                  let viewModel = self.houseInfoBundleViewModel
+            else { return }
             let mapVC = MapViewController()
-            mapVC.getHouseInfoManager(houseInfoManager: self.houseInfoRepository)
+            mapVC.getHouseInfoBundleViewModel(houseInfoBundleViewModel: viewModel)
             self.present(mapVC, animated: true)
         }
         
@@ -125,19 +104,53 @@ final class SearchResultViewController: UIViewController {
 
 extension SearchResultViewController: HeartButtonDelegate {
     func heartButtonIsTapped(_ cardIndex: Int?) {
-        houseInfoRepository.didChangeIsWish(cardIndex, completionHandler:  { houseInfoBundle in
-            self.dataSource.fetchHouseInfo(houseInfo: houseInfoBundle)
-        })
+        houseInfoBundleViewModel?.changeIsWish(cardIndex)
     }
 }
 
-
+// Header
 extension SearchResultViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: ResultHeaderView.ID)
                 as? ResultHeaderView else { return nil }
-        headerView.setHouseCountLabel(houseCount: houseInfoRepository.houseInfoBundle.count)
+        headerView.setHouseCountLabel(houseCount: dataSource.tableView(tableView, numberOfRowsInSection: 0))
         headerView.setInputValueLabel(location: "양재", startDate: 5, endDate: 5, peopleCount: 3)
         return headerView
+    }
+}
+
+
+// Set Mock Data
+extension SearchResultViewController {
+    private func setMockRepository() {
+        let bundle = Bundle(for: Self.self)
+        
+        guard let mockDataURL = bundle.url(forResource: "MockHouseInfoData", withExtension: "json"),
+              let mockData = try? Data(contentsOf: mockDataURL) else { return }
+        
+        // mockURL
+        let mockEndpoint = EndPointCase.getHousesInfo.endpoint
+        guard let mockURL = try? mockEndpoint.getURL().asURL() else { return }
+
+        // Mock loadingHander 설정
+        URLMockProtocol.loadingHandler = { request in
+            let response = HTTPURLResponse(
+                url: mockURL,
+                statusCode: 200,
+                httpVersion: nil,
+                headerFields: nil)!
+            
+            if request.url == mockURL {
+                return (response, mockData, nil)
+            } else {
+                return (response, nil, nil)
+            }
+        }
+        
+        // Mock URLProtocol 주입
+        let config = URLSessionConfiguration.ephemeral
+        config.protocolClasses = [URLMockProtocol.self]
+        houseInfoBundleViewModel = HouseInfoBundleViewModel(
+            repository: HouseInfoRepository(networkManager: NetworkManager(sessionManager: Session(configuration: config))))
     }
 }

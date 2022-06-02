@@ -57,6 +57,8 @@
 		8DD56DE3284602AE00B357DA /* ResultHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD56DE2284602AE00B357DA /* ResultHeaderView.swift */; };
 		8DF10487284745B50005CCD5 /* URLMockProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBBD02845E9A2007B6352 /* URLMockProtocol.swift */; };
 		8DF10489284745D20005CCD5 /* MockHouseInfoData.json in Resources */ = {isa = PBXBuildFile; fileRef = 8DF10488284745D20005CCD5 /* MockHouseInfoData.json */; };
+		8DF1048D28476BB50005CCD5 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF1048C28476BB50005CCD5 /* Observable.swift */; };
+		8DF1048F284783680005CCD5 /* HouseInfoBundleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF1048E284783680005CCD5 /* HouseInfoBundleViewModel.swift */; };
 		8DF21C9E2840654D00F2F8E9 /* HouseImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF21C9D2840654D00F2F8E9 /* HouseImageView.swift */; };
 		8DF21CA428406F6800F2F8E9 /* SearchResultTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF21CA328406F6800F2F8E9 /* SearchResultTableViewDataSource.swift */; };
 /* End PBXBuildFile section */
@@ -127,6 +129,8 @@
 		8DA3503E283F630900B72BA9 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		8DD56DE2284602AE00B357DA /* ResultHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultHeaderView.swift; sourceTree = "<group>"; };
 		8DF10488284745D20005CCD5 /* MockHouseInfoData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MockHouseInfoData.json; sourceTree = "<group>"; };
+		8DF1048C28476BB50005CCD5 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		8DF1048E284783680005CCD5 /* HouseInfoBundleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseInfoBundleViewModel.swift; sourceTree = "<group>"; };
 		8DF21C9D2840654D00F2F8E9 /* HouseImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseImageView.swift; sourceTree = "<group>"; };
 		8DF21CA328406F6800F2F8E9 /* SearchResultTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -191,11 +195,12 @@
 			isa = PBXGroup;
 			children = (
 				8D3DBBAE2845E410007B6352 /* ViewController */,
-				8D3DBBAD2845E3F6007B6352 /* Model */,
+				8DF104902847938F0005CCD5 /* ViewModel */,
 				8DF21CA528406F7000F2F8E9 /* View */,
-				8D6465E6283FAA040021C782 /* Repository */,
 				8D55478F284054C700C4D9D9 /* ReuseableView */,
-				8D3DBBA22845AB4F007B6352 /* Network */,
+				8D3DBBAD2845E3F6007B6352 /* Model */,
+				8D6465E6283FAA040021C782 /* Repository */,
+				8D3DBBA22845AB4F007B6352 /* NetworkService */,
 				8D3DBBAF2845E4A3007B6352 /* Delegate */,
 				8D6B3BFD283DD21F00E24CE8 /* Converter */,
 				8D6B3C0F283E096300E24CE8 /* Extension */,
@@ -236,14 +241,14 @@
 			path = HouseInfoRepositroyUnitTest;
 			sourceTree = "<group>";
 		};
-		8D3DBBA22845AB4F007B6352 /* Network */ = {
+		8D3DBBA22845AB4F007B6352 /* NetworkService */ = {
 			isa = PBXGroup;
 			children = (
 				8D3DBBA02845AB39007B6352 /* NetworkManager.swift */,
 				8D3DBBA52845B728007B6352 /* NetworkManagable.swift */,
 				8D3DBBA32845B712007B6352 /* EndPoint.swift */,
 			);
-			path = Network;
+			path = NetworkService;
 			sourceTree = "<group>";
 		};
 		8D3DBBAD2845E3F6007B6352 /* Model */ = {
@@ -346,6 +351,15 @@
 				8DA3503A283F47D400B72BA9 /* MapCardCollectionViewDataSource.swift */,
 			);
 			path = CollectionView;
+			sourceTree = "<group>";
+		};
+		8DF104902847938F0005CCD5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8DF1048E284783680005CCD5 /* HouseInfoBundleViewModel.swift */,
+				8DF1048C28476BB50005CCD5 /* Observable.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		8DF21CA528406F7000F2F8E9 /* View */ = {
@@ -543,7 +557,9 @@
 				8D3DBBA42845B712007B6352 /* EndPoint.swift in Sources */,
 				8DA35039283F26FF00B72BA9 /* HeartButtonDelegate.swift in Sources */,
 				8D0AD764283C5EDD00575C3B /* AppDelegate.swift in Sources */,
+				8DF1048F284783680005CCD5 /* HouseInfoBundleViewModel.swift in Sources */,
 				8D2241FD283CA470006A9043 /* MapView.swift in Sources */,
+				8DF1048D28476BB50005CCD5 /* Observable.swift in Sources */,
 				8D6B3BFA283DB79800E24CE8 /* MapViewCardCell.swift in Sources */,
 				8DF10487284745B50005CCD5 /* URLMockProtocol.swift in Sources */,
 				8D3DBBA12845AB39007B6352 /* NetworkManager.swift in Sources */,
