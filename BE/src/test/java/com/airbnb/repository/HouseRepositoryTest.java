@@ -21,7 +21,7 @@ import com.airbnb.domain.DetailInfo;
 import com.airbnb.domain.House;
 import com.airbnb.domain.Role;
 import com.airbnb.domain.User;
-import com.airbnb.repository.dto.HouseCount;
+import com.airbnb.api.houses.dto.HouseCount;
 import com.airbnb.utils.GeometryUtils;
 
 @ExtendWith(SpringExtension.class)

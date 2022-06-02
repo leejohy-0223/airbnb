@@ -12,7 +12,7 @@ import com.airbnb.api.houses.dto.LocationInformationRequest;
 import com.airbnb.api.houses.dto.SearchConditionRequest;
 import com.airbnb.domain.House;
 import com.airbnb.repository.HouseRepository;
-import com.airbnb.repository.dto.HouseCount;
+import com.airbnb.api.houses.dto.HouseCount;
 
 @Service
 public class HouseService {

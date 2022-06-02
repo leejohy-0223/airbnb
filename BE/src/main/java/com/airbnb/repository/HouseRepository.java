@@ -8,11 +8,11 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.airbnb.domain.House;
-import com.airbnb.repository.dto.HouseCount;
+import com.airbnb.api.houses.dto.HouseCount;
 
 public interface HouseRepository extends JpaRepository<House, Long> {
 
-    @Query("SELECT NEW com.airbnb.repository.dto.HouseCount(FUNCTION('FLOOR', (h.price / 10000)), count(h.id)) "
+    @Query("SELECT NEW com.airbnb.api.houses.dto.HouseCount(FUNCTION('FLOOR', (h.price / 10000)), count(h.id)) "
         + "FROM House h "
         + "WHERE FUNCTION('ST_Distance_Sphere', h.point, :point) < :distance "
         + "GROUP BY FUNCTION('FLOOR', (h.price / 10000)) "

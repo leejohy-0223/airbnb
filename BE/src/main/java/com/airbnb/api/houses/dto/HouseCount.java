@@ -1,4 +1,4 @@
-package com.airbnb.repository.dto;
+package com.airbnb.api.houses.dto;
 
 public class HouseCount {
     private Integer price;
