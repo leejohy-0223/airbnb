@@ -31,6 +31,7 @@ public class KakaoToken implements OauthToken {
         return this.tokenType + " " + this.accessToken;
     }
 
+    @Override
     public String getTokenType() {
         return tokenType;
     }

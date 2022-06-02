@@ -1,12 +1,10 @@
 package com.airbnb.api.houses.dto;
 
-import com.airbnb.utils.GeometryUtils;
+import com.airbnb.utils.geometry.GeometryUtils;
 import org.locationtech.jts.geom.Point;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
-
-import javax.persistence.criteria.CriteriaBuilder;
 
 public class SearchConditionRequest {
 

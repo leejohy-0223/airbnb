@@ -27,6 +27,7 @@ public class GitHubToken implements OauthToken {
         this.accessToken = accessToken;
     }
 
+    @Override
     public String getTokenType() {
         return tokenType;
     }

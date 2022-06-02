@@ -22,7 +22,7 @@ import com.airbnb.domain.DetailInfo;
 import com.airbnb.domain.House;
 import com.airbnb.domain.Role;
 import com.airbnb.domain.User;
-import com.airbnb.utils.GeometryUtils;
+import com.airbnb.utils.geometry.GeometryUtils;
 
 @ExtendWith(SpringExtension.class)
 @DataJpaTest

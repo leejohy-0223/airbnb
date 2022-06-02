@@ -26,8 +26,7 @@ public class OAuthLoginController {
     @GetMapping("/callback/{vendor}")
     public LoginResponse OAuthLogin(@RequestParam String code, @PathVariable String vendor) {
         log.info("vendor {} server is called", vendor);
-        loginService.login(code, vendor);
-        return null;
+        return loginService.login(code, vendor);
     }
 
 }

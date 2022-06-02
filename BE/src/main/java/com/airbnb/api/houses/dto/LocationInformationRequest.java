@@ -4,7 +4,7 @@ import java.util.Objects;
 
 import org.locationtech.jts.geom.Point;
 
-import com.airbnb.utils.GeometryUtils;
+import com.airbnb.utils.geometry.GeometryUtils;
 
 public class LocationInformationRequest {
 
