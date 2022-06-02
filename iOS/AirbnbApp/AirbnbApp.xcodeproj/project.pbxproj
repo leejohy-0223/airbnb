@@ -7,9 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D05F2C128486F4E00796609 /* HouseInfoBundleViewModelUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D05F2C028486F4E00796609 /* HouseInfoBundleViewModelUnitTest.swift */; };
+		8D05F2C72848709800796609 /* HouseInfoBundleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF1048E284783680005CCD5 /* HouseInfoBundleViewModel.swift */; };
+		8D05F2C82848709B00796609 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF1048C28476BB50005CCD5 /* Observable.swift */; };
+		8D05F2C9284870BF00796609 /* HouseInfoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBB8E28445E7D007B6352 /* HouseInfoRepository.swift */; };
+		8D05F2CA284870C700796609 /* HouseInfoRepoitoriable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFE2766284859650003D226 /* HouseInfoRepoitoriable.swift */; };
+		8D05F2CB2848710C00796609 /* MockHouseInfoData.json in Resources */ = {isa = PBXBuildFile; fileRef = 8DF10488284745D20005CCD5 /* MockHouseInfoData.json */; };
+		8D05F2CC2848711E00796609 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBBA02845AB39007B6352 /* NetworkManager.swift */; };
+		8D05F2CD2848712000796609 /* NetworkManagable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBBA52845B728007B6352 /* NetworkManagable.swift */; };
+		8D05F2CE2848712100796609 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBBA32845B712007B6352 /* EndPoint.swift */; };
+		8D05F2CF2848713700796609 /* URLMockProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBBD02845E9A2007B6352 /* URLMockProtocol.swift */; };
+		8D05F2D0284871E300796609 /* HouseInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9D1F63283D355200EEF33A /* HouseInfo.swift */; };
+		8D05F2D12848720D00796609 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6B3C0D283E095E00E24CE8 /* Extensions.swift */; };
+		8D05F2D3284880F400796609 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D05F2D2284880F400796609 /* MainViewController.swift */; };
+		8D05F2D52848824A00796609 /* WishListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D05F2D42848824A00796609 /* WishListViewController.swift */; };
+		8D05F2D72848825700796609 /* ReservationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D05F2D62848825700796609 /* ReservationViewController.swift */; };
 		8D0AD764283C5EDD00575C3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0AD763283C5EDD00575C3B /* AppDelegate.swift */; };
 		8D0AD766283C5EDD00575C3B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0AD765283C5EDD00575C3B /* SceneDelegate.swift */; };
-		8D0AD768283C5EDD00575C3B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0AD767283C5EDD00575C3B /* MainViewController.swift */; };
+		8D0AD768283C5EDD00575C3B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0AD767283C5EDD00575C3B /* TabBarController.swift */; };
 		8D0AD76D283C5EE000575C3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D0AD76C283C5EE000575C3B /* Assets.xcassets */; };
 		8D0AD770283C5EE000575C3B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D0AD76E283C5EE000575C3B /* LaunchScreen.storyboard */; };
 		8D0AD77A283C61D700575C3B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 8D0AD779283C61D700575C3B /* Alamofire */; };
@@ -20,9 +35,6 @@
 		8D224204283CB7E4006A9043 /* PriceConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D224203283CB7E4006A9043 /* PriceConverter.swift */; };
 		8D224206283CB8AB006A9043 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D224205283CB8AB006A9043 /* Constants.swift */; };
 		8D3DBB8F28445E7E007B6352 /* HouseInfoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBB8E28445E7D007B6352 /* HouseInfoRepository.swift */; };
-		8D3DBB972844BCDE007B6352 /* HouseInfoRepositroyUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBB962844BCDE007B6352 /* HouseInfoRepositroyUnitTest.swift */; };
-		8D3DBB9D2844BCFA007B6352 /* HouseInfoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBB8E28445E7D007B6352 /* HouseInfoRepository.swift */; };
-		8D3DBB9F2844C1FB007B6352 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6B3C0D283E095E00E24CE8 /* Extensions.swift */; };
 		8D3DBBA12845AB39007B6352 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBBA02845AB39007B6352 /* NetworkManager.swift */; };
 		8D3DBBA42845B712007B6352 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBBA32845B712007B6352 /* EndPoint.swift */; };
 		8D3DBBA72845B728007B6352 /* NetworkManagable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBBA52845B728007B6352 /* NetworkManagable.swift */; };
@@ -32,10 +44,6 @@
 		8D3DBBCD2845E8F5007B6352 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBBA32845B712007B6352 /* EndPoint.swift */; };
 		8D3DBBD12845E9A2007B6352 /* URLMockProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBBD02845E9A2007B6352 /* URLMockProtocol.swift */; };
 		8D3DBBD52845ECE1007B6352 /* MockDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBBD42845ECE1007B6352 /* MockDataModel.swift */; };
-		8D3DBBD62845EE1D007B6352 /* NetworkManagable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBBA52845B728007B6352 /* NetworkManagable.swift */; };
-		8D3DBBD72845EE1F007B6352 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBBA02845AB39007B6352 /* NetworkManager.swift */; };
-		8D3DBBD82845EE23007B6352 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBBA32845B712007B6352 /* EndPoint.swift */; };
-		8D3DBBD92845EE2B007B6352 /* HouseInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9D1F63283D355200EEF33A /* HouseInfo.swift */; };
 		8D3DBBDB2845F152007B6352 /* MockData.json in Resources */ = {isa = PBXBuildFile; fileRef = 8D3DBBDA2845F152007B6352 /* MockData.json */; };
 		8D554791284055E200C4D9D9 /* HeartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D554790284055E200C4D9D9 /* HeartButton.swift */; };
 		8D55479328405FE300C4D9D9 /* HouseNameLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D55479228405FE300C4D9D9 /* HouseNameLabel.swift */; };
@@ -61,10 +69,11 @@
 		8DF1048F284783680005CCD5 /* HouseInfoBundleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF1048E284783680005CCD5 /* HouseInfoBundleViewModel.swift */; };
 		8DF21C9E2840654D00F2F8E9 /* HouseImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF21C9D2840654D00F2F8E9 /* HouseImageView.swift */; };
 		8DF21CA428406F6800F2F8E9 /* SearchResultTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF21CA328406F6800F2F8E9 /* SearchResultTableViewDataSource.swift */; };
+		8DFE2767284859650003D226 /* HouseInfoRepoitoriable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFE2766284859650003D226 /* HouseInfoRepoitoriable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		8D3DBB982844BCDE007B6352 /* PBXContainerItemProxy */ = {
+		8D05F2C228486F4E00796609 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8D0AD758283C5EDD00575C3B /* Project object */;
 			proxyType = 1;
@@ -88,10 +97,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8D05F2BE28486F4E00796609 /* ViewModelUnitTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ViewModelUnitTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D05F2C028486F4E00796609 /* HouseInfoBundleViewModelUnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseInfoBundleViewModelUnitTest.swift; sourceTree = "<group>"; };
+		8D05F2D2284880F400796609 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		8D05F2D42848824A00796609 /* WishListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListViewController.swift; sourceTree = "<group>"; };
+		8D05F2D62848825700796609 /* ReservationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationViewController.swift; sourceTree = "<group>"; };
 		8D0AD760283C5EDD00575C3B /* AirbnbApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirbnbApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D0AD763283C5EDD00575C3B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D0AD765283C5EDD00575C3B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8D0AD767283C5EDD00575C3B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		8D0AD767283C5EDD00575C3B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		8D0AD76C283C5EE000575C3B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8D0AD76F283C5EE000575C3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8D0AD771283C5EE000575C3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -101,8 +115,6 @@
 		8D224203283CB7E4006A9043 /* PriceConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceConverter.swift; sourceTree = "<group>"; };
 		8D224205283CB8AB006A9043 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8D3DBB8E28445E7D007B6352 /* HouseInfoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseInfoRepository.swift; sourceTree = "<group>"; };
-		8D3DBB942844BCDE007B6352 /* HouseInfoRepositroyUnitTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HouseInfoRepositroyUnitTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8D3DBB962844BCDE007B6352 /* HouseInfoRepositroyUnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseInfoRepositroyUnitTest.swift; sourceTree = "<group>"; };
 		8D3DBBA02845AB39007B6352 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		8D3DBBA32845B712007B6352 /* EndPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		8D3DBBA52845B728007B6352 /* NetworkManagable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManagable.swift; sourceTree = "<group>"; };
@@ -133,22 +145,23 @@
 		8DF1048E284783680005CCD5 /* HouseInfoBundleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseInfoBundleViewModel.swift; sourceTree = "<group>"; };
 		8DF21C9D2840654D00F2F8E9 /* HouseImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseImageView.swift; sourceTree = "<group>"; };
 		8DF21CA328406F6800F2F8E9 /* SearchResultTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewDataSource.swift; sourceTree = "<group>"; };
+		8DFE2766284859650003D226 /* HouseInfoRepoitoriable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseInfoRepoitoriable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		8D05F2BB28486F4E00796609 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8D0AD75D283C5EDD00575C3B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				8D0AD77A283C61D700575C3B /* Alamofire in Frameworks */,
 				8D0AD77D283C62F800575C3B /* SnapKit in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8D3DBB912844BCDE007B6352 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,13 +182,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8D05F2BF28486F4E00796609 /* ViewModelUnitTest */ = {
+			isa = PBXGroup;
+			children = (
+				8D05F2C028486F4E00796609 /* HouseInfoBundleViewModelUnitTest.swift */,
+			);
+			path = ViewModelUnitTest;
+			sourceTree = "<group>";
+		};
 		8D0AD757283C5EDD00575C3B = {
 			isa = PBXGroup;
 			children = (
 				8D0AD762283C5EDD00575C3B /* AirbnbApp */,
 				8D6B3C03283DE6BB00E24CE8 /* ConverterUnitTest */,
-				8D3DBB952844BCDE007B6352 /* HouseInfoRepositroyUnitTest */,
 				8D3DBBC32845E8D6007B6352 /* NetworkManagerTest */,
+				8D05F2BF28486F4E00796609 /* ViewModelUnitTest */,
 				8D0AD761283C5EDD00575C3B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -185,8 +206,8 @@
 			children = (
 				8D0AD760283C5EDD00575C3B /* AirbnbApp.app */,
 				8D6B3C02283DE6BB00E24CE8 /* ConverterUnitTest.xctest */,
-				8D3DBB942844BCDE007B6352 /* HouseInfoRepositroyUnitTest.xctest */,
 				8D3DBBC22845E8D6007B6352 /* NetworkManagerTest.xctest */,
+				8D05F2BE28486F4E00796609 /* ViewModelUnitTest.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -233,14 +254,6 @@
 			path = Map;
 			sourceTree = "<group>";
 		};
-		8D3DBB952844BCDE007B6352 /* HouseInfoRepositroyUnitTest */ = {
-			isa = PBXGroup;
-			children = (
-				8D3DBB962844BCDE007B6352 /* HouseInfoRepositroyUnitTest.swift */,
-			);
-			path = HouseInfoRepositroyUnitTest;
-			sourceTree = "<group>";
-		};
 		8D3DBBA22845AB4F007B6352 /* NetworkService */ = {
 			isa = PBXGroup;
 			children = (
@@ -262,7 +275,10 @@
 		8D3DBBAE2845E410007B6352 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				8D0AD767283C5EDD00575C3B /* MainViewController.swift */,
+				8D0AD767283C5EDD00575C3B /* TabBarController.swift */,
+				8D05F2D42848824A00796609 /* WishListViewController.swift */,
+				8D05F2D62848825700796609 /* ReservationViewController.swift */,
+				8D05F2D2284880F400796609 /* MainViewController.swift */,
 				8DA3503E283F630900B72BA9 /* SearchResultViewController.swift */,
 				8D0AD780283C718200575C3B /* MapViewController.swift */,
 			);
@@ -315,6 +331,7 @@
 			isa = PBXGroup;
 			children = (
 				8D3DBB8E28445E7D007B6352 /* HouseInfoRepository.swift */,
+				8DFE2766284859650003D226 /* HouseInfoRepoitoriable.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -375,6 +392,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		8D05F2BD28486F4E00796609 /* ViewModelUnitTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8D05F2C428486F4E00796609 /* Build configuration list for PBXNativeTarget "ViewModelUnitTest" */;
+			buildPhases = (
+				8D05F2BA28486F4E00796609 /* Sources */,
+				8D05F2BB28486F4E00796609 /* Frameworks */,
+				8D05F2BC28486F4E00796609 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8D05F2C328486F4E00796609 /* PBXTargetDependency */,
+			);
+			name = ViewModelUnitTest;
+			productName = ViewModelUnitTest;
+			productReference = 8D05F2BE28486F4E00796609 /* ViewModelUnitTest.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		8D0AD75F283C5EDD00575C3B /* AirbnbApp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8D0AD774283C5EE000575C3B /* Build configuration list for PBXNativeTarget "AirbnbApp" */;
@@ -395,24 +430,6 @@
 			productName = AirbnbApp;
 			productReference = 8D0AD760283C5EDD00575C3B /* AirbnbApp.app */;
 			productType = "com.apple.product-type.application";
-		};
-		8D3DBB932844BCDE007B6352 /* HouseInfoRepositroyUnitTest */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 8D3DBB9C2844BCDE007B6352 /* Build configuration list for PBXNativeTarget "HouseInfoRepositroyUnitTest" */;
-			buildPhases = (
-				8D3DBB902844BCDE007B6352 /* Sources */,
-				8D3DBB912844BCDE007B6352 /* Frameworks */,
-				8D3DBB922844BCDE007B6352 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				8D3DBB992844BCDE007B6352 /* PBXTargetDependency */,
-			);
-			name = HouseInfoRepositroyUnitTest;
-			productName = HouseInfoUnitTest;
-			productReference = 8D3DBB942844BCDE007B6352 /* HouseInfoRepositroyUnitTest.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		8D3DBBC12845E8D6007B6352 /* NetworkManagerTest */ = {
 			isa = PBXNativeTarget;
@@ -460,12 +477,12 @@
 				LastSwiftUpdateCheck = 1340;
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
-					8D0AD75F283C5EDD00575C3B = {
-						CreatedOnToolsVersion = 13.4;
-					};
-					8D3DBB932844BCDE007B6352 = {
+					8D05F2BD28486F4E00796609 = {
 						CreatedOnToolsVersion = 13.4;
 						TestTargetID = 8D0AD75F283C5EDD00575C3B;
+					};
+					8D0AD75F283C5EDD00575C3B = {
+						CreatedOnToolsVersion = 13.4;
 					};
 					8D3DBBC12845E8D6007B6352 = {
 						CreatedOnToolsVersion = 13.4;
@@ -496,13 +513,21 @@
 			targets = (
 				8D0AD75F283C5EDD00575C3B /* AirbnbApp */,
 				8D6B3C01283DE6BB00E24CE8 /* ConverterUnitTest */,
-				8D3DBB932844BCDE007B6352 /* HouseInfoRepositroyUnitTest */,
 				8D3DBBC12845E8D6007B6352 /* NetworkManagerTest */,
+				8D05F2BD28486F4E00796609 /* ViewModelUnitTest */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		8D05F2BC28486F4E00796609 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D05F2CB2848710C00796609 /* MockHouseInfoData.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8D0AD75E283C5EDD00575C3B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -510,13 +535,6 @@
 				8D0AD770283C5EE000575C3B /* LaunchScreen.storyboard in Resources */,
 				8DF10489284745D20005CCD5 /* MockHouseInfoData.json in Resources */,
 				8D0AD76D283C5EE000575C3B /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8D3DBB922844BCDE007B6352 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -538,20 +556,41 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		8D05F2BA28486F4E00796609 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D05F2D0284871E300796609 /* HouseInfo.swift in Sources */,
+				8D05F2CC2848711E00796609 /* NetworkManager.swift in Sources */,
+				8D05F2C9284870BF00796609 /* HouseInfoRepository.swift in Sources */,
+				8D05F2CE2848712100796609 /* EndPoint.swift in Sources */,
+				8D05F2C128486F4E00796609 /* HouseInfoBundleViewModelUnitTest.swift in Sources */,
+				8D05F2C82848709B00796609 /* Observable.swift in Sources */,
+				8D05F2CF2848713700796609 /* URLMockProtocol.swift in Sources */,
+				8D05F2C72848709800796609 /* HouseInfoBundleViewModel.swift in Sources */,
+				8D05F2CD2848712000796609 /* NetworkManagable.swift in Sources */,
+				8D05F2D12848720D00796609 /* Extensions.swift in Sources */,
+				8D05F2CA284870C700796609 /* HouseInfoRepoitoriable.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8D0AD75C283C5EDD00575C3B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				8D3DBB8F28445E7E007B6352 /* HouseInfoRepository.swift in Sources */,
+				8D05F2D52848824A00796609 /* WishListViewController.swift in Sources */,
 				8D6465E8283FAA1E0021C782 /* ResultCardCell.swift in Sources */,
 				8DF21C9E2840654D00F2F8E9 /* HouseImageView.swift in Sources */,
 				8D224202283CB794006A9043 /* PriceLabel.swift in Sources */,
 				8D6465F0284051E70021C782 /* PricePerDayLabel.swift in Sources */,
 				8D6465EE284051DF0021C782 /* ReviewLabel.swift in Sources */,
 				8D9D1F5C283CE24300EEF33A /* PriceAnnotationView.swift in Sources */,
+				8D05F2D3284880F400796609 /* MainViewController.swift in Sources */,
 				8D9D1F64283D355200EEF33A /* HouseInfo.swift in Sources */,
 				8DA3503B283F47D400B72BA9 /* MapCardCollectionViewDataSource.swift in Sources */,
-				8D0AD768283C5EDD00575C3B /* MainViewController.swift in Sources */,
+				8D05F2D72848825700796609 /* ReservationViewController.swift in Sources */,
+				8D0AD768283C5EDD00575C3B /* TabBarController.swift in Sources */,
 				8D6465EC28404A5D0021C782 /* ListButtonDelegate.swift in Sources */,
 				8D224204283CB7E4006A9043 /* PriceConverter.swift in Sources */,
 				8D3DBBA42845B712007B6352 /* EndPoint.swift in Sources */,
@@ -573,21 +612,8 @@
 				8D55479328405FE300C4D9D9 /* HouseNameLabel.swift in Sources */,
 				8DA3503F283F630900B72BA9 /* SearchResultViewController.swift in Sources */,
 				8D6B3BFC283DCCE400E24CE8 /* AddressConverter.swift in Sources */,
+				8DFE2767284859650003D226 /* HouseInfoRepoitoriable.swift in Sources */,
 				8D554791284055E200C4D9D9 /* HeartButton.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8D3DBB902844BCDE007B6352 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8D3DBBD92845EE2B007B6352 /* HouseInfo.swift in Sources */,
-				8D3DBBD82845EE23007B6352 /* EndPoint.swift in Sources */,
-				8D3DBB9D2844BCFA007B6352 /* HouseInfoRepository.swift in Sources */,
-				8D3DBB972844BCDE007B6352 /* HouseInfoRepositroyUnitTest.swift in Sources */,
-				8D3DBBD72845EE1F007B6352 /* NetworkManager.swift in Sources */,
-				8D3DBB9F2844C1FB007B6352 /* Extensions.swift in Sources */,
-				8D3DBBD62845EE1D007B6352 /* NetworkManagable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -617,10 +643,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		8D3DBB992844BCDE007B6352 /* PBXTargetDependency */ = {
+		8D05F2C328486F4E00796609 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 8D0AD75F283C5EDD00575C3B /* AirbnbApp */;
-			targetProxy = 8D3DBB982844BCDE007B6352 /* PBXContainerItemProxy */;
+			targetProxy = 8D05F2C228486F4E00796609 /* PBXContainerItemProxy */;
 		};
 		8D3DBBC72845E8D7007B6352 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -646,6 +672,42 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		8D05F2C528486F4E00796609 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N6KUR9465F;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SeobJin.ViewModelUnitTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AirbnbApp.app/AirbnbApp";
+			};
+			name = Debug;
+		};
+		8D05F2C628486F4E00796609 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N6KUR9465F;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SeobJin.ViewModelUnitTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AirbnbApp.app/AirbnbApp";
+			};
+			name = Release;
+		};
 		8D0AD772283C5EE000575C3B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -816,42 +878,6 @@
 			};
 			name = Release;
 		};
-		8D3DBB9A2844BCDE007B6352 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = N6KUR9465F;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.SeobJin.HouseInfoUnitTest;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AirbnbApp.app/AirbnbApp";
-			};
-			name = Debug;
-		};
-		8D3DBB9B2844BCDE007B6352 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = N6KUR9465F;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.SeobJin.HouseInfoUnitTest;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AirbnbApp.app/AirbnbApp";
-			};
-			name = Release;
-		};
 		8D3DBBC92845E8D7007B6352 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -927,6 +953,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		8D05F2C428486F4E00796609 /* Build configuration list for PBXNativeTarget "ViewModelUnitTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8D05F2C528486F4E00796609 /* Debug */,
+				8D05F2C628486F4E00796609 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		8D0AD75B283C5EDD00575C3B /* Build configuration list for PBXProject "AirbnbApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -941,15 +976,6 @@
 			buildConfigurations = (
 				8D0AD775283C5EE000575C3B /* Debug */,
 				8D0AD776283C5EE000575C3B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		8D3DBB9C2844BCDE007B6352 /* Build configuration list for PBXNativeTarget "HouseInfoRepositroyUnitTest" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				8D3DBB9A2844BCDE007B6352 /* Debug */,
-				8D3DBB9B2844BCDE007B6352 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
