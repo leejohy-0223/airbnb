@@ -5,16 +5,13 @@
 //  Created by 박진섭 on 2022/06/01.
 //
 
-import Foundation
-import Alamofire
-
 final class HouseInfoBundleViewModel {
     private(set) var houseInfoBundle: [HouseInfo] = []
     private(set) var changedHeartIndex: Observable<Int> = Observable(0)
     
-    private var repository: HouseInfoRepository = HouseInfoRepository(networkManager: NetworkManager(sessionManager: .default))
+    private var repository: HouseInfoRepoitoriable?
     
-    init(repository: HouseInfoRepository) {
+    init(repository: HouseInfoRepoitoriable) {
         self.repository = repository
     }
     
@@ -30,7 +27,7 @@ final class HouseInfoBundleViewModel {
     }
     
     func fetchData(endpoint: Endpointable, onCompleted: @escaping ([HouseInfo]?) -> Void) {
-        repository.fetchHouseInfo(endpoint: endpoint) { [weak self] (houseData: [HouseInfo]?) in
+        repository?.fetchHouseInfo(endpoint: endpoint) { [weak self] (houseData: [HouseInfo]?) in
             guard let self = self else { return }
             self.houseInfoBundle = houseData ?? []
             onCompleted(houseData)

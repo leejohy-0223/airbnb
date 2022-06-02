@@ -68,6 +68,16 @@
                ReferencedContainer = "container:AirbnbApp.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "8DFE275A284855860003D226"
+               BuildableName = "ViewModelUnitTest.xctest"
+               BlueprintName = "ViewModelUnitTest"
+               ReferencedContainer = "container:AirbnbApp.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

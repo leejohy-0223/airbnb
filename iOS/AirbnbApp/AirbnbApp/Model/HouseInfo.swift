@@ -5,7 +5,7 @@
 //  Created by 박진섭 on 2022/05/25.
 //
 
-struct HouseInfo: Codable {
+struct HouseInfo: Codable, Equatable {
     let id: Int
     let name: String
     let price: Int
@@ -17,7 +17,7 @@ struct HouseInfo: Codable {
     var isWish: Bool
 }
 
-struct DetailInfo: Codable {
+struct DetailInfo: Codable, Equatable {
     let maxNumber: Int
     let type: String
     let roomIntroduction: String

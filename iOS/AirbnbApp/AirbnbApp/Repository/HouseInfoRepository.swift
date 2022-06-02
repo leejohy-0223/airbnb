@@ -8,27 +8,18 @@
 import Alamofire
 import OSLog
 
-final class HouseInfoRepository {
+final class HouseInfoRepository: HouseInfoRepoitoriable {
     
-    private var networkManager:NetworkManagable = NetworkManager(sessionManager: .default)
+    private(set) var networkManager:NetworkManagable?
+    
+    private(set) var houseInfoBundle: [HouseInfo] = []
     
     init(networkManager: NetworkManagable) {
         self.networkManager = networkManager
     }
     
-    private(set) var houseInfoBundle: [HouseInfo] = []
-    
-    func didChangeIsWish(_ cardIndex: Int?, completionHandler: () -> Void) {
-        guard let cardIndex = cardIndex else { return }
-        // out of range 방지
-        if houseInfoBundle.checkIsSafeIndex(index: cardIndex) {
-            houseInfoBundle[cardIndex].isWish = !houseInfoBundle[cardIndex].isWish
-            completionHandler()
-        }
-    }
-    
     func fetchHouseInfo<T: Codable>(endpoint: Endpointable, onCompleted: @escaping (T?) -> Void) {
-        networkManager.request(endpoint: endpoint) { [weak self]  (result: DataResponse<T?, AFError>) in
+        networkManager?.request(endpoint: endpoint) { [weak self]  (result: DataResponse<T?, AFError>) in
             guard let self = self else { return }
             switch result.result {
             case .success(let data):
