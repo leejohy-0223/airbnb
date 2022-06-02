@@ -6,13 +6,13 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.airbnb.api.houses.dto.HouseCountResponse;
+import com.airbnb.api.houses.dto.NumberOfHousesByPriceResponse;
 import com.airbnb.api.houses.dto.HouseDetailResponse;
 import com.airbnb.api.houses.dto.LocationInformationRequest;
+import com.airbnb.api.houses.dto.NumberOfHousesByPrice;
 import com.airbnb.api.houses.dto.SearchConditionRequest;
 import com.airbnb.domain.House;
 import com.airbnb.repository.HouseRepository;
-import com.airbnb.repository.dto.HouseCount;
 
 @Service
 public class HouseService {
@@ -48,8 +48,8 @@ public class HouseService {
     }
 
     @Transactional
-    public HouseCountResponse findHouseCountInLocation(LocationInformationRequest request) {
-        List<HouseCount> houseCounts = houseRepository.numberOfHousesInTheRange(request.getPoint(), DISTANCE);
-        return new HouseCountResponse(houseCounts);
+    public NumberOfHousesByPriceResponse findHouseCountInLocation(LocationInformationRequest request) {
+        List<NumberOfHousesByPrice> houseCounts = houseRepository.numberOfHousesInTheRange(request.getPoint(), DISTANCE);
+        return new NumberOfHousesByPriceResponse(houseCounts);
     }
 }

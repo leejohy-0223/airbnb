@@ -7,7 +7,7 @@ import com.airbnb.domain.House;
 import com.airbnb.domain.Role;
 import com.airbnb.domain.User;
 import com.airbnb.repository.UserRepository;
-import com.airbnb.utils.GeometryUtils;
+import com.airbnb.utils.geometry.GeometryUtils;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

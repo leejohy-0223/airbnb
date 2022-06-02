@@ -4,6 +4,7 @@ import com.airbnb.domain.DetailInfo;
 import com.airbnb.domain.House;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class HouseDetailResponse {
@@ -49,5 +50,23 @@ public class HouseDetailResponse {
 
     public String getHostName() {
         return hostName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        HouseDetailResponse that = (HouseDetailResponse)o;
+        return getPrice() == that.getPrice() && Objects.equals(getId(), that.getId()) && Objects.equals(
+            getName(), that.getName()) && Objects.equals(getDetailInfo(), that.getDetailInfo())
+            && Objects.equals(getImages(), that.getImages()) && Objects.equals(getHostName(),
+            that.getHostName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getName(), getPrice(), getDetailInfo(), getImages(), getHostName());
     }
 }

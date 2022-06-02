@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.airbnb.api.houses.dto.HouseCountResponse;
+import com.airbnb.api.houses.dto.NumberOfHousesByPriceResponse;
 import com.airbnb.api.houses.dto.HouseDetailResponse;
 import com.airbnb.api.houses.dto.LocationInformationRequest;
 import com.airbnb.api.houses.dto.SearchConditionRequest;
@@ -41,7 +41,7 @@ public class HouseController {
     }
 
     @GetMapping("/price")
-    public HouseCountResponse findHouseCount(@ModelAttribute LocationInformationRequest request) {
+    public NumberOfHousesByPriceResponse findHouseCount(@ModelAttribute LocationInformationRequest request) {
         return houseService.findHouseCountInLocation(request);
     }
 }

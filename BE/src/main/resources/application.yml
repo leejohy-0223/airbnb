@@ -9,16 +9,17 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: create
     properties:
       hibernate:
         format_sql: true
     database: mysql
     database-platform: org.hibernate.spatial.dialect.mysql.MySQL8SpatialDialect
-
+    defer-datasource-initialization: true
   sql:
     init:
       mode: always
+      schema-locations:
       data-locations: classpath:sql/data.sql
 
 #server:
@@ -27,3 +28,8 @@ spring:
 logging.level:
   org.hibernate.SQL: debug
   com.airbnb: debug
+
+jwt:
+  token:
+    validate-time: 1800
+    token-secret: "Shine-Lucid"
