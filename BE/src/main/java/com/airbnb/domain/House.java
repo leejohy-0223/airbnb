@@ -3,8 +3,14 @@ package com.airbnb.domain;
 import org.locationtech.jts.geom.Point;
 
 import javax.persistence.*;
+
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 @Entity
@@ -47,6 +53,11 @@ public class House {
     public House() {
     }
 
+    public void addDiscountPolicy(DiscountPolicy discountPolicy) {
+        HouseDiscountPolicy houseDiscountPolicy = new HouseDiscountPolicy(this, discountPolicy);
+        houseDiscountPolicies.add(houseDiscountPolicy);
+    }
+
     public Point getPoint() {
         return point;
     }
@@ -69,11 +80,21 @@ public class House {
 
     public List<String> getImagesURL() {
         return images.stream()
-                .map(Image::getUrl)
-                .collect(Collectors.toList());
+            .map(Image::getUrl)
+            .collect(Collectors.toList());
     }
 
     public String getHostName() {
         return host.getName();
+    }
+
+    public int calculateDiscountAmount(int duration) {
+        int maxDiscountPercent = houseDiscountPolicies
+            .stream()
+            .mapToInt(HouseDiscountPolicy::getDiscountPercent)
+            .max()
+            .orElseThrow(() -> new NoSuchElementException("할인 정보가 없습니다."));
+
+        return (int)(price * ((maxDiscountPercent) * 0.01) * duration);
     }
 }

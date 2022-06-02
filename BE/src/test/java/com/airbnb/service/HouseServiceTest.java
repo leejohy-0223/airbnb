@@ -1,82 +1,60 @@
 package com.airbnb.service;
 
-import com.airbnb.api.houses.dto.HouseDetailResponse;
-import com.airbnb.api.houses.dto.SearchConditionRequest;
-import com.airbnb.domain.DetailInfo;
-import com.airbnb.domain.House;
-import com.airbnb.domain.Role;
-import com.airbnb.domain.User;
-import com.airbnb.repository.UserRepository;
-import com.airbnb.utils.geometry.GeometryUtils;
+import static org.mockito.ArgumentMatchers.*;
+import static org.mockito.BDDMockito.*;
 
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+import java.util.Optional;
+
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.locationtech.jts.geom.Point;
 import org.locationtech.jts.io.ParseException;
-import org.locationtech.jts.io.WKTReader;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.transaction.annotation.Transactional;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.List;
+import com.airbnb.api.houses.dto.AccommodationCostResponse;
+import com.airbnb.domain.DiscountPolicy;
+import com.airbnb.domain.House;
+import com.airbnb.repository.HouseRepository;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-@SpringBootTest
-@Transactional
+@ExtendWith(MockitoExtension.class)
 class HouseServiceTest {
 
-    @Autowired
+    @InjectMocks
     private HouseService houseService;
 
-    @Autowired
-    private UserRepository userRepository;
+    @Mock
+    private HouseRepository houseRepository;
 
-    Point nowPosition;
+    private House house;
 
     @BeforeEach
     void init() throws ParseException {
-        Double latitude = 37.549214;
-        Double longitude = 126.914016;
-        String pointWKT = String.format("POINT(%s %s)", longitude, latitude);
 
-        // WKTReader를 통해 WKT를 실제 타입으로 변환합니다.
-        nowPosition = (Point)new WKTReader().read(pointWKT);
     }
 
+    @DisplayName("할인 가격을 계산한다.")
     @Test
-    public void position_search_test() {
-
-        User host = new User("user1", "email", Role.HOST);
-        userRepository.save(host);
-
+    void calculate_discount_fee() {
         // given
-        House house1 = new House("house1", 55000, new DetailInfo(10, "oneRoom1", "방입니다", 4.8, 10),
-            GeometryUtils.toPoint(37.5492, 126.9113), host);
-        houseService.save(house1); // 1km 내부 거리
-
-        House house2 = new House("house2", 65000, new DetailInfo(10, "oneRoom2", "방입니다", 4.8, 10),
-            GeometryUtils.toPoint(37.549391, 126.911755), host);
-        houseService.save(house2); // 1km 내부 거리
-
-        House house3 = new House("house3", 75000, new DetailInfo(10, "oneRoom3", "방입니다", 4.8, 10),
-            GeometryUtils.toPoint(37.549421, 126.912656), host);
-        houseService.save(house3); // 1km 내부 거리
-
-        House house4 = new House("house4", 85000, new DetailInfo(10, "oneRoom4", "방입니다", 4.8, 10),
-            GeometryUtils.toPoint(37.552469, 126.933644), host);
-        houseService.save(house4); // 1km 보다 먼 거리
-
-        House house5 = new House("house5", 95000, new DetailInfo(10, "oneRoom5", "방입니다", 4.8, 10),
-            GeometryUtils.toPoint(37.552469, 126.933650), host);
-        houseService.save(house5); // 1km 보다 먼 거리
+        house = new House("house1", 10000, null, null, null);
+        house.addDiscountPolicy(new DiscountPolicy("정책1", 30));
+        given(houseRepository.findById(any()))
+            .willReturn(Optional.of(house));
 
         // when
-        List<HouseDetailResponse> houseDetailResponseList = houseService.findByCondition(
-            new SearchConditionRequest(37.549214, 126.914016, 1000, 80000));
+        AccommodationCostResponse response = houseService.calculateFee(1L, LocalDateTime.now(),
+            LocalDateTime.now().plus(10, ChronoUnit.DAYS));
 
         // then
-        assertThat(houseDetailResponseList.size()).isEqualTo(3);
-        assertThat(houseDetailResponseList).extracting("name").contains("house1", "house2", "house3");
+        Assertions.assertThat(response.getDiscountFee()).isEqualTo(30000);
+        Assertions.assertThat(response.getPrice()).isEqualTo(100000);
+
     }
 }
