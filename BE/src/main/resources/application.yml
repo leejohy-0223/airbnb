@@ -9,17 +9,18 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: create
     properties:
       hibernate:
         format_sql: true
     database: mysql
     database-platform: org.hibernate.spatial.dialect.mysql.MySQL8SpatialDialect
-
-#  sql:
-#    init:
-#      mode: always
-#      data-locations: classpath:sql/data.sql
+    defer-datasource-initialization: true
+  sql:
+    init:
+      mode: always
+      schema-locations:
+      data-locations: classpath:sql/data.sql
 
 #server:
 #  port: 80
