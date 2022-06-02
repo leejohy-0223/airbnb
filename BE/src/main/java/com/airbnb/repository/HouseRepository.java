@@ -7,17 +7,17 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import com.airbnb.api.houses.dto.NumberOfHousesByPrice;
 import com.airbnb.domain.House;
-import com.airbnb.api.houses.dto.HouseCount;
 
 public interface HouseRepository extends JpaRepository<House, Long> {
 
-    @Query("SELECT NEW com.airbnb.api.houses.dto.HouseCount(FUNCTION('FLOOR', (h.price / 10000)), count(h.id)) "
+    @Query("SELECT NEW com.airbnb.api.houses.dto.NumberOfHousesByPrice(FUNCTION('FLOOR', (h.price / 10000)), count(h.id)) "
         + "FROM House h "
         + "WHERE FUNCTION('ST_Distance_Sphere', h.point, :point) < :distance "
         + "GROUP BY FUNCTION('FLOOR', (h.price / 10000)) "
         + "ORDER BY FUNCTION('FLOOR', (h.price / 10000))")
-    List<HouseCount> numberOfHousesInTheRange(@Param("point") Point point, @Param("distance") int distance);
+    List<NumberOfHousesByPrice> numberOfHousesInTheRange(@Param("point") Point point, @Param("distance") int distance);
 
     @Query("SELECT h " +
             "FROM House h " +

@@ -17,11 +17,11 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import com.airbnb.api.houses.dto.NumberOfHousesByPrice;
 import com.airbnb.domain.DetailInfo;
 import com.airbnb.domain.House;
 import com.airbnb.domain.Role;
 import com.airbnb.domain.User;
-import com.airbnb.api.houses.dto.HouseCount;
 import com.airbnb.utils.GeometryUtils;
 
 @ExtendWith(SpringExtension.class)
@@ -88,7 +88,8 @@ class HouseRepositoryTest {
     @Test
     void number_of_house_test() {
         // when
-        List<HouseCount> houseCounts = houseRepository.numberOfHousesInTheRange(nowPosition, 1000);
+        List<NumberOfHousesByPrice> houseCounts = houseRepository.numberOfHousesInTheRange(nowPosition,
+            1000);
 
         // then
         assertThat(houseCounts.size()).isEqualTo(2);

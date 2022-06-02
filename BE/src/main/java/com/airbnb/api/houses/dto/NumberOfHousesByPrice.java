@@ -1,15 +1,15 @@
 package com.airbnb.api.houses.dto;
 
-public class HouseCount {
+public class NumberOfHousesByPrice {
     private Integer price;
     private Long count;
 
-    public HouseCount(Integer price, Long count) {
+    public NumberOfHousesByPrice(Integer price, Long count) {
         this.price = price * 10000;
         this.count = count;
     }
 
-    public HouseCount() {
+    public NumberOfHousesByPrice() {
     }
 
     public Integer getPrice() {

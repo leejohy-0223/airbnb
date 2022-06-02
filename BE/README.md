@@ -18,8 +18,8 @@
 ---
 
 # 3차 PR todo list
-- [ ] Spring Actuator 학습
-- [ ] HouseCountResponse 이름 변경
+- [X] Spring Actuator 학습
+- [X] HouseCountResponse 이름 변경
 - [ ] DTO -> equals & hashcode override
 - [ ] 테스트에서 하우스 생성 부분을 팩토리 메서드로 구현
 - [ ] test에서 파라미터를 변수명으로 추출(10, 100 등)
