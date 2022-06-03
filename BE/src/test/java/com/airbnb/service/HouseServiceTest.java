@@ -46,15 +46,31 @@ class HouseServiceTest {
         house = new House("house1", 10000, null, null, null);
         house.addDiscountPolicy(new DiscountPolicy("정책1", 30));
         given(houseRepository.findById(any()))
-            .willReturn(Optional.of(house));
+                .willReturn(Optional.of(house));
 
         // when
         AccommodationCostResponse response = houseService.calculateFee(1L, LocalDateTime.now(),
-            LocalDateTime.now().plus(10, ChronoUnit.DAYS));
+                LocalDateTime.now().plus(10, ChronoUnit.DAYS));
 
         // then
         Assertions.assertThat(response.getDiscountFee()).isEqualTo(30000);
         Assertions.assertThat(response.getPrice()).isEqualTo(100000);
+    }
 
+    @DisplayName("할인 정책이 없는 경우 할인금액이 0으로 반환")
+    @Test
+    void calculate_without_discount_fee() {
+        // given
+        house = new House("house1", 10000, null, null, null);
+        given(houseRepository.findById(any()))
+                .willReturn(Optional.of(house));
+
+        // when
+        AccommodationCostResponse response = houseService.calculateFee(1L, LocalDateTime.now(),
+                LocalDateTime.now().plus(10, ChronoUnit.DAYS));
+
+        // then
+        Assertions.assertThat(response.getDiscountFee()).isEqualTo(0);
+        Assertions.assertThat(response.getPrice()).isEqualTo(100000);
     }
 }

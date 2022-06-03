@@ -90,10 +90,9 @@ public class House {
 
     public int calculateDiscountAmount(int duration) {
         int maxDiscountPercent = houseDiscountPolicies
-            .stream()
-            .mapToInt(HouseDiscountPolicy::getDiscountPercent)
-            .max()
-            .orElseThrow(() -> new NoSuchElementException("할인 정보가 없습니다."));
+                .stream()
+                .mapToInt(HouseDiscountPolicy::getDiscountPercent)
+                .max().orElse(0);
 
         return (int)(price * ((maxDiscountPercent) * 0.01) * duration);
     }
