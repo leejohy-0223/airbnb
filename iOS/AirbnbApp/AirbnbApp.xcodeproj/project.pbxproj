@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8D05F2C128486F4E00796609 /* HouseInfoBundleViewModelUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D05F2C028486F4E00796609 /* HouseInfoBundleViewModelUnitTest.swift */; };
-		8D05F2C72848709800796609 /* HouseInfoBundleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF1048E284783680005CCD5 /* HouseInfoBundleViewModel.swift */; };
+		8D05F2C72848709800796609 /* SearchResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF1048E284783680005CCD5 /* SearchResultViewModel.swift */; };
 		8D05F2C82848709B00796609 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF1048C28476BB50005CCD5 /* Observable.swift */; };
 		8D05F2C9284870BF00796609 /* HouseInfoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBB8E28445E7D007B6352 /* HouseInfoRepository.swift */; };
 		8D05F2CA284870C700796609 /* HouseInfoRepoitoriable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFE2766284859650003D226 /* HouseInfoRepoitoriable.swift */; };
@@ -22,6 +22,9 @@
 		8D05F2D3284880F400796609 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D05F2D2284880F400796609 /* MainViewController.swift */; };
 		8D05F2D52848824A00796609 /* WishListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D05F2D42848824A00796609 /* WishListViewController.swift */; };
 		8D05F2D72848825700796609 /* ReservationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D05F2D62848825700796609 /* ReservationViewController.swift */; };
+		8D05F2DB284898E600796609 /* HeroImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D05F2DA284898E600796609 /* HeroImageView.swift */; };
+		8D05F2DD28489DF800796609 /* HeroImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D05F2DC28489DF800796609 /* HeroImageViewCell.swift */; };
+		8D05F2E12848ABBA00796609 /* NearSpotOverViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D05F2E02848ABBA00796609 /* NearSpotOverViewCell.swift */; };
 		8D0AD764283C5EDD00575C3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0AD763283C5EDD00575C3B /* AppDelegate.swift */; };
 		8D0AD766283C5EDD00575C3B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0AD765283C5EDD00575C3B /* SceneDelegate.swift */; };
 		8D0AD768283C5EDD00575C3B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0AD767283C5EDD00575C3B /* TabBarController.swift */; };
@@ -66,10 +69,13 @@
 		8DF10487284745B50005CCD5 /* URLMockProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBBD02845E9A2007B6352 /* URLMockProtocol.swift */; };
 		8DF10489284745D20005CCD5 /* MockHouseInfoData.json in Resources */ = {isa = PBXBuildFile; fileRef = 8DF10488284745D20005CCD5 /* MockHouseInfoData.json */; };
 		8DF1048D28476BB50005CCD5 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF1048C28476BB50005CCD5 /* Observable.swift */; };
-		8DF1048F284783680005CCD5 /* HouseInfoBundleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF1048E284783680005CCD5 /* HouseInfoBundleViewModel.swift */; };
+		8DF1048F284783680005CCD5 /* SearchResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF1048E284783680005CCD5 /* SearchResultViewModel.swift */; };
 		8DF21C9E2840654D00F2F8E9 /* HouseImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF21C9D2840654D00F2F8E9 /* HouseImageView.swift */; };
 		8DF21CA428406F6800F2F8E9 /* SearchResultTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF21CA328406F6800F2F8E9 /* SearchResultTableViewDataSource.swift */; };
 		8DFE2767284859650003D226 /* HouseInfoRepoitoriable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFE2766284859650003D226 /* HouseInfoRepoitoriable.swift */; };
+		8DFF04862849B1E900EEA0F3 /* MainHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFF04852849B1E900EEA0F3 /* MainHeaderView.swift */; };
+		8DFF04882849B82300EEA0F3 /* RecommendCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFF04872849B82300EEA0F3 /* RecommendCardCell.swift */; };
+		8DFF048A2849BCF600EEA0F3 /* MainCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFF04892849BCF600EEA0F3 /* MainCollectionViewDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +108,9 @@
 		8D05F2D2284880F400796609 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		8D05F2D42848824A00796609 /* WishListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListViewController.swift; sourceTree = "<group>"; };
 		8D05F2D62848825700796609 /* ReservationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationViewController.swift; sourceTree = "<group>"; };
+		8D05F2DA284898E600796609 /* HeroImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroImageView.swift; sourceTree = "<group>"; };
+		8D05F2DC28489DF800796609 /* HeroImageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroImageViewCell.swift; sourceTree = "<group>"; };
+		8D05F2E02848ABBA00796609 /* NearSpotOverViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearSpotOverViewCell.swift; sourceTree = "<group>"; };
 		8D0AD760283C5EDD00575C3B /* AirbnbApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirbnbApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D0AD763283C5EDD00575C3B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D0AD765283C5EDD00575C3B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -142,10 +151,13 @@
 		8DD56DE2284602AE00B357DA /* ResultHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultHeaderView.swift; sourceTree = "<group>"; };
 		8DF10488284745D20005CCD5 /* MockHouseInfoData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MockHouseInfoData.json; sourceTree = "<group>"; };
 		8DF1048C28476BB50005CCD5 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
-		8DF1048E284783680005CCD5 /* HouseInfoBundleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseInfoBundleViewModel.swift; sourceTree = "<group>"; };
+		8DF1048E284783680005CCD5 /* SearchResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewModel.swift; sourceTree = "<group>"; };
 		8DF21C9D2840654D00F2F8E9 /* HouseImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseImageView.swift; sourceTree = "<group>"; };
 		8DF21CA328406F6800F2F8E9 /* SearchResultTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewDataSource.swift; sourceTree = "<group>"; };
 		8DFE2766284859650003D226 /* HouseInfoRepoitoriable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseInfoRepoitoriable.swift; sourceTree = "<group>"; };
+		8DFF04852849B1E900EEA0F3 /* MainHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHeaderView.swift; sourceTree = "<group>"; };
+		8DFF04872849B82300EEA0F3 /* RecommendCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCardCell.swift; sourceTree = "<group>"; };
+		8DFF04892849BCF600EEA0F3 /* MainCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,9 +288,10 @@
 			isa = PBXGroup;
 			children = (
 				8D0AD767283C5EDD00575C3B /* TabBarController.swift */,
+				8D05F2D2284880F400796609 /* MainViewController.swift */,
+				8DFF04892849BCF600EEA0F3 /* MainCollectionViewDataSource.swift */,
 				8D05F2D42848824A00796609 /* WishListViewController.swift */,
 				8D05F2D62848825700796609 /* ReservationViewController.swift */,
-				8D05F2D2284880F400796609 /* MainViewController.swift */,
 				8DA3503E283F630900B72BA9 /* SearchResultViewController.swift */,
 				8D0AD780283C718200575C3B /* MapViewController.swift */,
 			);
@@ -373,7 +386,7 @@
 		8DF104902847938F0005CCD5 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				8DF1048E284783680005CCD5 /* HouseInfoBundleViewModel.swift */,
+				8DF1048E284783680005CCD5 /* SearchResultViewModel.swift */,
 				8DF1048C28476BB50005CCD5 /* Observable.swift */,
 			);
 			path = ViewModel;
@@ -382,6 +395,11 @@
 		8DF21CA528406F7000F2F8E9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8D05F2E02848ABBA00796609 /* NearSpotOverViewCell.swift */,
+				8DFF04872849B82300EEA0F3 /* RecommendCardCell.swift */,
+				8D05F2DC28489DF800796609 /* HeroImageViewCell.swift */,
+				8D05F2DA284898E600796609 /* HeroImageView.swift */,
+				8DFF04852849B1E900EEA0F3 /* MainHeaderView.swift */,
 				8D3DBBB02845E516007B6352 /* TableView */,
 				8DA3503D283F53C900B72BA9 /* CollectionView */,
 				8D224200283CA7C2006A9043 /* Map */,
@@ -567,7 +585,7 @@
 				8D05F2C128486F4E00796609 /* HouseInfoBundleViewModelUnitTest.swift in Sources */,
 				8D05F2C82848709B00796609 /* Observable.swift in Sources */,
 				8D05F2CF2848713700796609 /* URLMockProtocol.swift in Sources */,
-				8D05F2C72848709800796609 /* HouseInfoBundleViewModel.swift in Sources */,
+				8D05F2C72848709800796609 /* SearchResultViewModel.swift in Sources */,
 				8D05F2CD2848712000796609 /* NetworkManagable.swift in Sources */,
 				8D05F2D12848720D00796609 /* Extensions.swift in Sources */,
 				8D05F2CA284870C700796609 /* HouseInfoRepoitoriable.swift in Sources */,
@@ -578,6 +596,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DFF048A2849BCF600EEA0F3 /* MainCollectionViewDataSource.swift in Sources */,
+				8DFF04862849B1E900EEA0F3 /* MainHeaderView.swift in Sources */,
 				8D3DBB8F28445E7E007B6352 /* HouseInfoRepository.swift in Sources */,
 				8D05F2D52848824A00796609 /* WishListViewController.swift in Sources */,
 				8D6465E8283FAA1E0021C782 /* ResultCardCell.swift in Sources */,
@@ -596,10 +616,14 @@
 				8D3DBBA42845B712007B6352 /* EndPoint.swift in Sources */,
 				8DA35039283F26FF00B72BA9 /* HeartButtonDelegate.swift in Sources */,
 				8D0AD764283C5EDD00575C3B /* AppDelegate.swift in Sources */,
-				8DF1048F284783680005CCD5 /* HouseInfoBundleViewModel.swift in Sources */,
+				8DF1048F284783680005CCD5 /* SearchResultViewModel.swift in Sources */,
 				8D2241FD283CA470006A9043 /* MapView.swift in Sources */,
+				8DFF04882849B82300EEA0F3 /* RecommendCardCell.swift in Sources */,
+				8D05F2DB284898E600796609 /* HeroImageView.swift in Sources */,
 				8DF1048D28476BB50005CCD5 /* Observable.swift in Sources */,
+				8D05F2DD28489DF800796609 /* HeroImageViewCell.swift in Sources */,
 				8D6B3BFA283DB79800E24CE8 /* MapViewCardCell.swift in Sources */,
+				8D05F2E12848ABBA00796609 /* NearSpotOverViewCell.swift in Sources */,
 				8DF10487284745B50005CCD5 /* URLMockProtocol.swift in Sources */,
 				8D3DBBA12845AB39007B6352 /* NetworkManager.swift in Sources */,
 				8D0AD766283C5EDD00575C3B /* SceneDelegate.swift in Sources */,

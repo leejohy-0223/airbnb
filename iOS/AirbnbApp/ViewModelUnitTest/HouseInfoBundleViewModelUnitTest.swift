@@ -10,7 +10,7 @@ import Alamofire
 
 class HouseInfoBundleViewModelUnitTest: XCTestCase {
 
-    var sut: HouseInfoBundleViewModel!
+    var sut: SearchResultViewModel!
     
     override func setUpWithError() throws {
         try super.setUpWithError()
@@ -94,7 +94,7 @@ class HouseInfoBundleViewModelUnitTest: XCTestCase {
         // Mock URLProtocol 주입
         let config = URLSessionConfiguration.ephemeral
         config.protocolClasses = [URLMockProtocol.self]
-        self.sut = HouseInfoBundleViewModel(
+        self.sut = SearchResultViewModel(
             repository: HouseInfoRepository(networkManager: NetworkManager(sessionManager: Session(configuration: config))))
     
     }

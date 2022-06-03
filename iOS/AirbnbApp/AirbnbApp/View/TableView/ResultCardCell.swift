@@ -56,7 +56,7 @@ final class ResultCardCell: UITableViewCell {
         self.houseImageView.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview().inset(insetValue)
             $0.bottom.lessThanOrEqualToSuperview()
-            $0.height.equalTo(Constants.imageViewSize.SearchResultImage)
+            $0.height.equalTo(Constants.ImageViewSize.SearchResultImage)
         }
     }
     

@@ -7,6 +7,5 @@
 
 protocol HouseInfoRepoitoriable {
     var networkManager: NetworkManagable? { get }
-    var houseInfoBundle: [HouseInfo] { get }
     func fetchHouseInfo<T: Codable>(endpoint: Endpointable, onCompleted: @escaping (T?) -> Void)
 }

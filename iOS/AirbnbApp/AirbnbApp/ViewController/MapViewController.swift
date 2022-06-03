@@ -16,7 +16,7 @@ final class MapViewController: UIViewController {
     private lazy var dataSource = MapCardCollectionViewDataSource(delegate: self)
     private let startCordinate = CLLocationCoordinate2D(latitude: 37.490765, longitude: 127.033433)
     
-    private var houseInfoBundleViewModel: HouseInfoBundleViewModel?
+    private var houseInfoBundleViewModel: SearchResultViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +25,7 @@ final class MapViewController: UIViewController {
         setCollectionView()
     }
     
-    func getHouseInfoBundleViewModel(houseInfoBundleViewModel: HouseInfoBundleViewModel) {
+    func getHouseInfoBundleViewModel(houseInfoBundleViewModel: SearchResultViewModel) {
         self.houseInfoBundleViewModel = houseInfoBundleViewModel
     }
     

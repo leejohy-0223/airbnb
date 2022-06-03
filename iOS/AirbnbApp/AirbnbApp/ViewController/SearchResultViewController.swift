@@ -14,7 +14,7 @@ final class SearchResultViewController: UIViewController {
     
     private let tabelView = UITableView(frame: .zero, style: .grouped)
     private lazy var dataSource: SearchResultTableViewDataSource = SearchResultTableViewDataSource(delegate: self)
-    private var houseInfoBundleViewModel: HouseInfoBundleViewModel?
+    private var houseInfoBundleViewModel: SearchResultViewModel?
     
     private lazy var mapButton: UIButton = {
         let button = UIButton()
@@ -150,7 +150,7 @@ extension SearchResultViewController {
         // Mock URLProtocol 주입
         let config = URLSessionConfiguration.ephemeral
         config.protocolClasses = [URLMockProtocol.self]
-        houseInfoBundleViewModel = HouseInfoBundleViewModel(
+        houseInfoBundleViewModel = SearchResultViewModel(
             repository: HouseInfoRepository(networkManager: NetworkManager(sessionManager: Session(configuration: config))))
     }
 }

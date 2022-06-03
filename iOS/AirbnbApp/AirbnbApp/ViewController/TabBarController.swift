@@ -6,16 +6,11 @@
 //
 
 import UIKit
-import SnapKit
 
 final class TabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         
         // Create Tab Items
         let mainVC = MainViewController()
@@ -35,6 +30,7 @@ final class TabBarController: UITabBarController {
         
         self.viewControllers = [mainVC, wishVC, reservationVC]
     }
+
 }
 
 

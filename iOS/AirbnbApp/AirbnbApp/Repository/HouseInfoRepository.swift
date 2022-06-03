@@ -12,18 +12,14 @@ final class HouseInfoRepository: HouseInfoRepoitoriable {
     
     private(set) var networkManager:NetworkManagable?
     
-    private(set) var houseInfoBundle: [HouseInfo] = []
-    
     init(networkManager: NetworkManagable) {
         self.networkManager = networkManager
     }
     
     func fetchHouseInfo<T: Codable>(endpoint: Endpointable, onCompleted: @escaping (T?) -> Void) {
-        networkManager?.request(endpoint: endpoint) { [weak self]  (result: DataResponse<T?, AFError>) in
-            guard let self = self else { return }
+        networkManager?.request(endpoint: endpoint) { (result: DataResponse<T?, AFError>) in
             switch result.result {
             case .success(let data):
-                self.houseInfoBundle = data as? [HouseInfo] ?? []
                 onCompleted(data)
             case .failure(let error):
                 os_log(.error, "\(error.localizedDescription)")

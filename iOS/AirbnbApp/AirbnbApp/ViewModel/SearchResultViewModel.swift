@@ -5,7 +5,7 @@
 //  Created by 박진섭 on 2022/06/01.
 //
 
-final class HouseInfoBundleViewModel {
+final class SearchResultViewModel {
     private(set) var houseInfoBundle: [HouseInfo] = []
     private(set) var changedHeartIndex: Observable<Int> = Observable(0)
     
