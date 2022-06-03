@@ -16,4 +16,16 @@ public class HouseDiscountPolicy {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "discount_policy_id")
     private DiscountPolicy discountPolicy;
+
+    public HouseDiscountPolicy() {
+    }
+
+    public HouseDiscountPolicy(House house, DiscountPolicy discountPolicy) {
+        this.house = house;
+        this.discountPolicy = discountPolicy;
+    }
+
+    public int getDiscountPercent() {
+        return discountPolicy.getDiscountPercent();
+    }
 }
