@@ -1,15 +1,16 @@
 package com.airbnb.api.users;
 
-import java.time.LocalDateTime;
-
-import com.airbnb.api.houses.HouseController;
+import com.airbnb.api.houses.dto.AccommodationCostResponse;
+import com.airbnb.service.HouseService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-import com.airbnb.api.houses.dto.AccommodationCostResponse;
-import com.airbnb.service.HouseService;
+import java.time.LocalDateTime;
 
 @RestController
 @RequestMapping("/api/users")
@@ -28,7 +29,4 @@ public class UserController {
         log.info("[time] {}, {}", startDateTime, endDateTime);
         return houseService.calculateFee(houseId, startDateTime, endDateTime);
     }
-
-//    @PostMapping("/reservation")
-//    public String bookHouse()
 }
