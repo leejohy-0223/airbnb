@@ -1,5 +1,6 @@
 package com.airbnb.service;
 
+import com.airbnb.api.wish.dto.WishResponse;
 import com.airbnb.domain.House;
 import com.airbnb.domain.User;
 import com.airbnb.domain.Wish;
@@ -9,7 +10,9 @@ import com.airbnb.repository.WishRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -32,5 +35,13 @@ public class WishService {
                 .orElseThrow(() -> new NoSuchElementException("해당 User를 찾을 수 없습니다."));
 
         return wishRepository.save(new Wish(findHouse, findMember));
+    }
+
+    @Transactional(readOnly = true)
+    public List<WishResponse> getWishListByEmail(String userEmail) {
+        List<Wish> wishList = userRepository.findUserWishListByEmail(userEmail);
+        return wishList.stream()
+                .map(WishResponse::new)
+                .collect(Collectors.toList());
     }
 }
