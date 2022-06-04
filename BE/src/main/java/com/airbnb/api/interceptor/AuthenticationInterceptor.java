@@ -39,7 +39,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
             return Optional.empty();
         }
         String[] parts = authorizationInfo.split(" ");
-        if (parts.length == 2 && parts[0].equals("Bearer")) {
+        if (parts.length == 2 && parts[0].equals("bearer")) {
             return Optional.ofNullable(parts[1]);
         }
         return Optional.empty();
