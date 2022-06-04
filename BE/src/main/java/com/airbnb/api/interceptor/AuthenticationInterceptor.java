@@ -24,6 +24,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         Optional<String> optionalToken = resolveToken(request);
         if (optionalToken.isEmpty()) {
+            log.info("[preHandle][JWT Token 에러 발생]");
             throw new IllegalStateException("토큰이 없습니다. 로그인 먼저 해주세요.");
         }
         String userEmail = tokenProvider.parsePayload(optionalToken.get());
@@ -39,7 +40,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
             return Optional.empty();
         }
         String[] parts = authorizationInfo.split(" ");
-        if (parts.length == 2 && parts[0].equals("bearer")) {
+        if (parts.length == 2 && parts[0].equals("Bearer")) {
             return Optional.ofNullable(parts[1]);
         }
         return Optional.empty();

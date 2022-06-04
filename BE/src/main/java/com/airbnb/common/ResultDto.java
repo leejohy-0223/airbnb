@@ -1,4 +1,4 @@
-package com.airbnb.api.wish.dto;
+package com.airbnb.common;
 
 import org.springframework.http.HttpStatus;
 
