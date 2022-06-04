@@ -1,5 +1,7 @@
 package com.airbnb.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,16 +20,26 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "user")
     private List<Reservation> reservations = new ArrayList<>();
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "user")
-    private List<WishList> wishLists = new ArrayList<>();
+    private List<Wish> wishLists = new ArrayList<>();
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "host")
     private List<House> houses = new ArrayList<>();
 
     public User(String name, String email, Role role) {
+        this.name = name;
+        this.email = email;
+        this.role = role;
+    }
+
+    public User(long id, String name, String email, Role role) {
+        this.id = id;
         this.name = name;
         this.email = email;
         this.role = role;
@@ -56,11 +68,15 @@ public class User {
         return reservations;
     }
 
-    public List<WishList> getWishLists() {
+    public List<Wish> getWishLists() {
         return wishLists;
     }
 
     public List<House> getHouses() {
         return houses;
+    }
+
+    public boolean isSameId(long userId) {
+        return this.id == userId;
     }
 }
