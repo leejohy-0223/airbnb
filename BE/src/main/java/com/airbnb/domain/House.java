@@ -1,16 +1,12 @@
 package com.airbnb.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.locationtech.jts.geom.Point;
 
 import javax.persistence.*;
-
-import java.time.Duration;
-import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 @Entity
@@ -29,15 +25,19 @@ public class House {
 
     private Point point;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "house")
     private List<Reservation> reservations = new ArrayList<>();
 
+    @JsonBackReference
     @OneToMany(mappedBy = "house")
     private List<Image> images = new ArrayList<>();
 
+    @JsonBackReference
     @OneToMany(mappedBy = "house")
     private List<HouseDiscountPolicy> houseDiscountPolicies = new ArrayList<>();
 
+    @JsonManagedReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(referencedColumnName = "user_id", name = "host_id")
     private User host;
