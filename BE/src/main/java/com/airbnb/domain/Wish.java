@@ -25,6 +25,12 @@ public class Wish {
         this.user = user;
     }
 
+    public Wish(Long id, House house, User user) {
+        this.id = id;
+        this.house = house;
+        this.user = user;
+    }
+
     public Long getId() {
         return id;
     }
