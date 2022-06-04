@@ -14,3 +14,12 @@
 - [X] HouseController 에서 사용하는 Service계층에서 dto반환하기
 - [X] GeometryUtils Point 변환 함수의 예외처리
 - [X] application.yml(test용) 주석 지우기
+
+---
+
+# 3차 PR todo list
+- [X] Spring Actuator 학습
+- [X] HouseCountResponse 이름 변경
+- [X] DTO -> equals & hashcode override
+- [X] 테스트에서 하우스 생성 부분을 팩토리 메서드로 구현
+- [X] test에서 파라미터를 변수명으로 추출(10, 100 등)

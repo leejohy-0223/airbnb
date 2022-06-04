@@ -1,11 +1,10 @@
 package com.airbnb.api.houses.dto;
 
-import com.airbnb.utils.GeometryUtils;
+import com.airbnb.utils.geometry.GeometryUtils;
 import org.locationtech.jts.geom.Point;
 
 import java.time.LocalDateTime;
-
-import javax.persistence.criteria.CriteriaBuilder;
+import java.util.Objects;
 
 public class SearchConditionRequest {
 
@@ -84,4 +83,23 @@ public class SearchConditionRequest {
         this.numberOfGuests = numberOfGuests;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        SearchConditionRequest that = (SearchConditionRequest)o;
+        return getNumberOfGuests() == that.getNumberOfGuests() && Objects.equals(getLongitude(),
+            that.getLongitude()) && Objects.equals(getLatitude(), that.getLatitude()) && Objects.equals(
+            getStartLocalDateTime(), that.getStartLocalDateTime()) && Objects.equals(getEndLocalDateTime(),
+            that.getEndLocalDateTime()) && Objects.equals(getMinFee(), that.getMinFee())
+            && Objects.equals(getMaxFee(), that.getMaxFee());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getLongitude(), getLatitude(), getStartLocalDateTime(), getEndLocalDateTime(), getMinFee(),
+            getMaxFee(), getNumberOfGuests());
+    }
 }

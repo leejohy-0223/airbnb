@@ -1,21 +1,15 @@
 package com.airbnb.api.houses;
 
-import java.util.List;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.airbnb.api.houses.dto.HouseCountResponse;
 import com.airbnb.api.houses.dto.HouseDetailResponse;
 import com.airbnb.api.houses.dto.LocationInformationRequest;
+import com.airbnb.api.houses.dto.NumberOfHousesByPriceResponse;
 import com.airbnb.api.houses.dto.SearchConditionRequest;
 import com.airbnb.service.HouseService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/houses")
@@ -41,7 +35,7 @@ public class HouseController {
     }
 
     @GetMapping("/price")
-    public HouseCountResponse findHouseCount(@ModelAttribute LocationInformationRequest request) {
+    public NumberOfHousesByPriceResponse findHouseCount(@ModelAttribute LocationInformationRequest request) {
         return houseService.findHouseCountInLocation(request);
     }
 }

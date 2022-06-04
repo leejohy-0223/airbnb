@@ -1,9 +1,10 @@
 package com.airbnb.domain;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class DiscountPolicy {
@@ -17,7 +18,23 @@ public class DiscountPolicy {
 
     private int discountPercent;
 
-    @OneToMany(mappedBy = "discountPolicy")
-    private List<HouseDiscountPolicy> houseDiscountPolicies = new ArrayList<>();
+    public DiscountPolicy(String name, int discountPercent) {
+        this.name = name;
+        this.discountPercent = discountPercent;
+    }
 
+    public DiscountPolicy() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getDiscountPercent() {
+        return discountPercent;
+    }
 }

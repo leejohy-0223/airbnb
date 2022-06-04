@@ -1,21 +1,31 @@
 package com.airbnb.service;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.airbnb.api.houses.dto.HouseCountResponse;
+import com.airbnb.api.houses.dto.AccommodationCostResponse;
+import com.airbnb.api.houses.dto.NumberOfHousesByPriceResponse;
 import com.airbnb.api.houses.dto.HouseDetailResponse;
 import com.airbnb.api.houses.dto.LocationInformationRequest;
+import com.airbnb.api.houses.dto.NumberOfHousesByPrice;
 import com.airbnb.api.houses.dto.SearchConditionRequest;
 import com.airbnb.domain.House;
+import com.airbnb.domain.HouseDiscountPolicy;
+import com.airbnb.domain.QDiscountPolicy;
 import com.airbnb.repository.HouseRepository;
-import com.airbnb.repository.dto.HouseCount;
 
 @Service
 public class HouseService {
+
+    private static final Logger log = LoggerFactory.getLogger(HouseService.class);
 
     private static final int DISTANCE = 1000;
     private final HouseRepository houseRepository;
@@ -26,7 +36,8 @@ public class HouseService {
 
     @Transactional(readOnly = true)
     public List<HouseDetailResponse> findByCondition(SearchConditionRequest request) {
-        List<House> houseList = houseRepository.searchByCondition(request.getPoint(), DISTANCE, request.getMinFee(), request.getMaxFee());
+        List<House> houseList = houseRepository.searchByCondition(request.getPoint(), DISTANCE, request.getMinFee(),
+            request.getMaxFee());
 
         return houseList
             .stream()
@@ -48,8 +59,24 @@ public class HouseService {
     }
 
     @Transactional
-    public HouseCountResponse findHouseCountInLocation(LocationInformationRequest request) {
-        List<HouseCount> houseCounts = houseRepository.numberOfHousesInTheRange(request.getPoint(), DISTANCE);
-        return new HouseCountResponse(houseCounts);
+    public NumberOfHousesByPriceResponse findHouseCountInLocation(LocationInformationRequest request) {
+        List<NumberOfHousesByPrice> houseCounts = houseRepository.numberOfHousesInTheRange(request.getPoint(),
+            DISTANCE);
+        return new NumberOfHousesByPriceResponse(houseCounts);
+    }
+
+    public AccommodationCostResponse calculateFee(Long houseId, LocalDateTime startDateTime,
+        LocalDateTime endDateTime) {
+
+        House house = houseRepository.findById(houseId)
+            .orElseThrow(() -> new IllegalArgumentException("찾을 수 없는 숙소 정보입니다."));
+
+        int duration = (int)ChronoUnit.DAYS.between(startDateTime, endDateTime);
+        int discountAmount = house.calculateDiscountAmount(duration);
+
+        log.info("duration : {}", duration);
+        log.info("discountAmount : {}", discountAmount);
+
+        return new AccommodationCostResponse(house.getPrice() * duration, discountAmount);
     }
 }
