@@ -1,4 +1,4 @@
-package com.airbnb.service.wish.unit;
+package com.airbnb.wish.unit;
 
 import com.airbnb.api.wish.dto.WishResponse;
 import com.airbnb.domain.House;
@@ -63,7 +63,7 @@ class WishServiceTest {
     }
 
     @Test
-    @DisplayName("존재하지 않는 방의 번호가 넘어올 경우 예외를 던진다.")
+    @DisplayName("숙소를 찜 할때 존재하지 않는 방의 번호가 넘어올 경우 예외를 던진다.")
     public void create_wish_not_exists_house_test() {
         // given
         User user = new User("Shine", "test@gamil.com", Role.GUEST);
@@ -77,7 +77,7 @@ class WishServiceTest {
     }
 
     @Test
-    @DisplayName("존재하지 않는 회원 번호가 넘어올 경우 예외를 던진다.")
+    @DisplayName("숙소를 찜 할때 존재하지 않는 회원 번호가 넘어올 경우 예외를 던진다.")
     public void create_wish_not_exists_user_test() {
         // given
         House wantHouse = new House("house1", 10000, null, null, null);
@@ -113,7 +113,7 @@ class WishServiceTest {
     }
 
     @Test
-    @DisplayName("회원의 id값과 wish의 id값으로 찜을 삭제한다.")
+    @DisplayName("찜을 삭제할떄 회원의 id값과 wish의 id값으로 삭제한다.")
     public void delete_wish_list_test() {
         // given
         User user = new User(1L, "Shine", "test@gamil.com", Role.GUEST);
@@ -128,5 +128,20 @@ class WishServiceTest {
         // then
         then(deletedWish.getUser()).isEqualTo(user);
         then(deletedWish.getHouse()).isEqualTo(wantHouse);
+    }
+
+    @Test
+    @DisplayName("찜을 삭제할때 존재하지 않는 wish 번호가 넘어올 경우 예외를 던진다.")
+    public void delete_wish_not_exists_wish_test() {
+        // given
+        User user = new User(1L, "Shine", "test@gamil.com", Role.GUEST);
+        House wantHouse = new House("house1", 10000, null, null, null);
+        given(wishRepository.findById(any())).willReturn(Optional.ofNullable(null));
+
+        // when
+        Throwable throwable = catchThrowable(() -> wishService.deleteWish(user.getId(), 2L));
+
+        // then
+        then(throwable).isInstanceOf(NoSuchElementException.class);
     }
 }
