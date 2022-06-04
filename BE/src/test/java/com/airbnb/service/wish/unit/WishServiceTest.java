@@ -111,4 +111,22 @@ class WishServiceTest {
         // then
         then(wishList).extracting("name").containsExactly("house1", "house3");
     }
+
+    @Test
+    @DisplayName("회원의 id값과 wish의 id값으로 찜을 삭제한다.")
+    public void delete_wish_list_test() {
+        // given
+        User user = new User(1L, "Shine", "test@gamil.com", Role.GUEST);
+        House wantHouse = new House("house1", 10000, null, null, null);
+        Wish wish = new Wish(2L, wantHouse, user);
+
+        given(wishRepository.findById(any())).willReturn(Optional.of(wish));
+
+        // when
+        Wish deletedWish = wishService.deleteWish(user.getId(), wish.getId());
+
+        // then
+        then(deletedWish.getUser()).isEqualTo(user);
+        then(deletedWish.getHouse()).isEqualTo(wantHouse);
+    }
 }

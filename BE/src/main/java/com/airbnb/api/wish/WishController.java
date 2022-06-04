@@ -2,6 +2,7 @@ package com.airbnb.api.wish;
 
 import com.airbnb.api.wish.dto.ResultDto;
 import com.airbnb.api.wish.dto.WishCreateRequest;
+import com.airbnb.api.wish.dto.WishDeleteRequest;
 import com.airbnb.api.wish.dto.WishResponse;
 import com.airbnb.service.WishService;
 import org.springframework.validation.annotation.Validated;
@@ -35,5 +36,11 @@ public class WishController {
             throw new NoSuchElementException(NOT_FOUND_USER_EXECEPTION);
         }
         return wishService.getWishListByEmail(userEmail);
+    }
+
+    @DeleteMapping
+    public ResultDto deleteWish(@Validated @RequestBody WishDeleteRequest request) {
+        wishService.deleteWish(request.getUserId(), request.getWishId());
+        return ResultDto.ok();
     }
 }

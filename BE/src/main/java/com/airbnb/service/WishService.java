@@ -17,6 +17,9 @@ import java.util.stream.Collectors;
 @Service
 @Transactional
 public class WishService {
+    public static final String NOT_FOUND_USER_EXCEPTION = "해당 User를 찾을 수 없습니다.";
+    public static final String NOT_FOUND_HOUSE_EXCEPTION = "해당 숙소를 찾을 수 없습니다.";
+    public static final String NOT_FOUND_WISH_EXCEPTION = "해당 위시 리스트를 찾을 수 없습니다.";
     private final UserRepository userRepository;
     private final HouseRepository houseRepository;
     private final WishRepository wishRepository;
@@ -29,10 +32,10 @@ public class WishService {
 
     public Wish addWish(Long userId, Long houseId) {
         House findHouse = houseRepository.findById(houseId)
-                .orElseThrow(() -> new NoSuchElementException("해당 숙소를 찾을 수 없습니다."));
+                .orElseThrow(() -> new NoSuchElementException(NOT_FOUND_HOUSE_EXCEPTION));
 
         User findMember = userRepository.findById(userId)
-                .orElseThrow(() -> new NoSuchElementException("해당 User를 찾을 수 없습니다."));
+                .orElseThrow(() -> new NoSuchElementException(NOT_FOUND_USER_EXCEPTION));
 
         return wishRepository.save(new Wish(findHouse, findMember));
     }
@@ -43,5 +46,21 @@ public class WishService {
         return wishList.stream()
                 .map(WishResponse::new)
                 .collect(Collectors.toList());
+    }
+
+    public Wish deleteWish(long userId, long wishId) {
+        Wish findWish = wishRepository.findById(wishId)
+                .orElseThrow(() -> new NoSuchElementException(NOT_FOUND_WISH_EXCEPTION));
+
+        if (!isValidUser(userId, findWish.getUser())) {
+            throw new NoSuchElementException(NOT_FOUND_USER_EXCEPTION);
+        }
+
+        wishRepository.deleteById(wishId);
+        return findWish;
+    }
+
+    private boolean isValidUser(long userId, User user) {
+        return user.isSameId(userId);
     }
 }
