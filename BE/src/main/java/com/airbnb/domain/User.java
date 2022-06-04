@@ -1,5 +1,7 @@
 package com.airbnb.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,12 +20,15 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "user")
     private List<Reservation> reservations = new ArrayList<>();
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "user")
     private List<Wish> wishLists = new ArrayList<>();
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "host")
     private List<House> houses = new ArrayList<>();
 
