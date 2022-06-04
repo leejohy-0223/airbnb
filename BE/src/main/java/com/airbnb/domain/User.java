@@ -22,7 +22,7 @@ public class User {
     private List<Reservation> reservations = new ArrayList<>();
 
     @OneToMany(mappedBy = "user")
-    private List<WishList> wishLists = new ArrayList<>();
+    private List<Wish> wishLists = new ArrayList<>();
 
     @OneToMany(mappedBy = "host")
     private List<House> houses = new ArrayList<>();
@@ -56,7 +56,7 @@ public class User {
         return reservations;
     }
 
-    public List<WishList> getWishLists() {
+    public List<Wish> getWishLists() {
         return wishLists;
     }
 
