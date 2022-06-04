@@ -1,5 +1,6 @@
 package com.airbnb.service.wish.unit;
 
+import com.airbnb.api.wish.dto.WishResponse;
 import com.airbnb.domain.House;
 import com.airbnb.domain.Role;
 import com.airbnb.domain.User;
@@ -15,6 +16,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -87,5 +89,26 @@ class WishServiceTest {
 
         // then
         then(throwable).isInstanceOf(NoSuchElementException.class);
+    }
+
+    @Test
+    @DisplayName("회원의 이메일로 회원이 찜한 숙소 리스트를 조회할 수 있다.")
+    public void get_wish_list_test() {
+        // given
+        User user = new User("Shine", "test@gamil.com", Role.GUEST);
+        House wantHouse1 = new House("house1", 10000, null, null, null);
+        House wantHouse2 = new House("house2", 20000, null, null, null);
+        House wantHouse3 = new House("house3", 30000, null, null, null);
+
+        Wish wish1 = new Wish(wantHouse1, user);
+        Wish wish3 = new Wish(wantHouse3, user);
+
+        given(userRepository.findUserWishListByEmail(user.getEmail())).willReturn(List.of(wish1, wish3));
+
+        // when
+        List<WishResponse> wishList = wishService.getWishListByEmail(user.getEmail());
+
+        // then
+        then(wishList).extracting("name").containsExactly("house1", "house3");
     }
 }
