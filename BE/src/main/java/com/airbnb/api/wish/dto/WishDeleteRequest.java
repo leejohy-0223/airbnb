@@ -1,6 +1,7 @@
 package com.airbnb.api.wish.dto;
 
 import javax.validation.constraints.NotNull;
+import java.util.Objects;
 
 public class WishDeleteRequest {
 
@@ -24,5 +25,18 @@ public class WishDeleteRequest {
 
     public long getWishId() {
         return wishId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        WishDeleteRequest that = (WishDeleteRequest) o;
+        return getUserId() == that.getUserId() && getWishId() == that.getWishId();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getUserId(), getWishId());
     }
 }
