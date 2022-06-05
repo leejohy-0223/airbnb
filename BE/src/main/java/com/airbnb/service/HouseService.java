@@ -118,10 +118,17 @@ public class HouseService {
     }
 
     @Transactional(readOnly = true)
-    public ReservationDetailResponse findReservation(Long id) {
-        Reservation reservation = reservationRepository.findById(id)
+    public ReservationDetailResponse findReservation(Long id, String userEmail) {
+        Reservation reservation = reservationRepository.findByIdAndEmail(id, userEmail)
             .orElseThrow(() -> new IllegalStateException("찾을 수 없는 예약입니다."));
 
         return new ReservationDetailResponse(reservation);
+    }
+
+    @Transactional
+    public void cancelReservation(Long id, String userEmail) {
+        Reservation reservation = reservationRepository.findByIdAndEmail(id, userEmail)
+            .orElseThrow(() -> new IllegalStateException("찾을 수 없는 예약입니다."));
+        reservationRepository.delete(reservation);
     }
 }

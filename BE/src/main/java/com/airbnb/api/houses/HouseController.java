@@ -9,6 +9,7 @@ import com.airbnb.api.houses.dto.ReservationInformationRequest;
 import com.airbnb.api.houses.dto.ReservationResponse;
 import com.airbnb.api.houses.dto.ReservationsResponse;
 import com.airbnb.api.houses.dto.SearchConditionRequest;
+import com.airbnb.common.ResultDto;
 import com.airbnb.service.HouseService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -54,41 +55,28 @@ public class HouseController {
         return houseService.calculateFee(id, startDateTime, endDateTime);
     }
 
-    /**
-     * 예약 진행 API
-     * POST /api/houses/{id}/reservation
-     * 입력 : start ~ endTime, 최종 요금, 인원
-     * 반환 : 숙소 이름, 사진, 체크인, 체크아웃, 호스트 정보, 가격 반환
-     */
     @PostMapping("/{id}/reservation")
     public ReservationResponse reserveHouse(@PathVariable Long id, @RequestBody ReservationInformationRequest request,
         @RequestAttribute("userEmail") String userEmail) {
         return houseService.reserveHouse(id, request, userEmail);
     }
 
-    /**
-     * 예약 확인 리스트 API
-     * GET /api/houses/reservation
-     * 입력 : void
-     * 반환 : List<Reservation> -> ReservationListResponse
-     */
     @GetMapping("/reservation")
     public ReservationsResponse ListReservation(@RequestAttribute("userEmail") String userEmail) {
         return houseService.showReservations(userEmail);
     }
 
     /**
-     * 예약 단건 조회 API
-     * GET /api/houses/{id}/reservation
+     * TODO: id를 통해 예약을 조회하는게 나을지? 아니면 userEmail도 함께 전달해서 체크해야 하는지?
      */
     @GetMapping("/{id}/reservation")
-    public ReservationDetailResponse findReservation(@PathVariable Long id) {
-        return houseService.findReservation(id);
+    public ReservationDetailResponse findReservation(@PathVariable Long id, @RequestAttribute String userEmail) {
+        return houseService.findReservation(id, userEmail);
     }
 
-
-    /**
-     * 예약 단건 취소 API
-     * DELETE /api/houses/{id}/reservation
-     */
+    @DeleteMapping("/{id}/reservation")
+    public ResultDto cancelReservation(@PathVariable Long id, @RequestAttribute String userEmail) {
+        houseService.cancelReservation(id, userEmail);
+        return ResultDto.ok();
+    }
 }

@@ -5,7 +5,12 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
+
 @Entity
+@Where(clause = "deleted = false")
+@SQLDelete(sql = "UPDATE reservation SET deleted = true WHERE reservation_id = ?")
 public class Reservation {
 
     @Id
@@ -28,6 +33,8 @@ public class Reservation {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "house_id")
     private House house;
+
+    private boolean deleted = false;
 
     public Reservation(int fee, int numberOfGuests, LocalDateTime startDate, LocalDateTime endDate,
         User user, House house) {
