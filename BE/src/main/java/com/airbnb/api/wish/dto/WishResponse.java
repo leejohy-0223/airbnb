@@ -5,6 +5,8 @@ import com.airbnb.domain.DetailInfo;
 import com.airbnb.domain.Wish;
 import org.springframework.hateoas.EntityModel;
 
+import java.util.Objects;
+
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 
 public class WishResponse extends EntityModel<Wish> {
@@ -38,5 +40,19 @@ public class WishResponse extends EntityModel<Wish> {
 
     public DetailInfo getDetailInfo() {
         return detailInfo;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        WishResponse that = (WishResponse) o;
+        return getPrice() == that.getPrice() && Objects.equals(getUserId(), that.getUserId()) && Objects.equals(getName(), that.getName()) && Objects.equals(getDetailInfo(), that.getDetailInfo());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), getUserId(), getName(), getPrice(), getDetailInfo());
     }
 }
