@@ -89,8 +89,8 @@ class HouseRepositoryTest {
         assertThat(houseCounts.get(1).getCount()).isEqualTo(1);
     }
 
-    private House createHouse(String houseName, int price, Double latitude, Double longtitude, User host) {
+    private House createHouse(String houseName, int price, Double latitude, Double longitude, User host) {
         return new House(houseName, price, new DetailInfo(10, "oneRoom", "방입니다", 4.8, 10),
-            GeometryUtils.toPoint(latitude, longtitude), host);
+            GeometryUtils.toPoint(latitude, longitude), host);
     }
 }
