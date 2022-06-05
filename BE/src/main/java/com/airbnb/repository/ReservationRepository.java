@@ -23,7 +23,7 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
         + " join fetch r.house h"
         + " join fetch h.host"
         + " left join fetch h.images"
-        + " where r.id = :id")
-    @NonNull
-    Optional<Reservation> findById(@NonNull @Param("id") Long id);
+        + " where r.id = :id"
+        + " and r.user.email = :userEmail")
+    Optional<Reservation> findByIdAndEmail(@Param("id") Long id, @Param("userEmail") String userEmail);
 }
