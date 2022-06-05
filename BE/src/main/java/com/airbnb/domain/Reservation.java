@@ -69,4 +69,8 @@ public class Reservation {
     public String getMainImageURL() {
         return house.getMainImageURL();
     }
+
+    public String getHostName() {
+        return house.getHostName();
+    }
 }

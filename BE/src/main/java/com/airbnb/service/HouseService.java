@@ -15,6 +15,7 @@ import com.airbnb.api.houses.dto.HouseDetailResponse;
 import com.airbnb.api.houses.dto.LocationInformationRequest;
 import com.airbnb.api.houses.dto.NumberOfHousesByPrice;
 import com.airbnb.api.houses.dto.NumberOfHousesByPriceResponse;
+import com.airbnb.api.houses.dto.ReservationDetailResponse;
 import com.airbnb.api.houses.dto.ReservationInformationRequest;
 import com.airbnb.api.houses.dto.ReservationResponse;
 import com.airbnb.api.houses.dto.ReservationsResponse;
@@ -90,9 +91,6 @@ public class HouseService {
         return new AccommodationCostResponse(house.getPrice() * duration, discountAmount);
     }
 
-    /**
-     * 반환 : 숙소 이름, 사진, 체크인, 체크아웃, 호스트 정보, 가격 반환
-     */
     @Transactional
     public ReservationResponse reserveHouse(Long id, ReservationInformationRequest request, String userEmail) {
         House house = houseRepository.findById(id)
@@ -117,5 +115,13 @@ public class HouseService {
         return new ReservationsResponse(reservations.stream()
             .map(ReservationResponse::new)
             .collect(Collectors.toList()));
+    }
+
+    @Transactional(readOnly = true)
+    public ReservationDetailResponse findReservation(Long id) {
+        Reservation reservation = reservationRepository.findById(id)
+            .orElseThrow(() -> new IllegalStateException("찾을 수 없는 예약입니다."));
+
+        return new ReservationDetailResponse(reservation);
     }
 }
