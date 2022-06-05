@@ -6,7 +6,7 @@ import org.locationtech.jts.io.WKTReader;
 
 public class GeometryUtils {
 
-    public static Point toPoint(Double latitude, Double longitude) {
+    public static Point toPoint(Double longitude, Double latitude) {
         String pointWKT = String.format("POINT(%s %s)", longitude, latitude);
         try {
             return (Point) new WKTReader().read(pointWKT);
