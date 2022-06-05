@@ -4,6 +4,8 @@ import com.airbnb.api.houses.dto.AccommodationCostResponse;
 import com.airbnb.api.houses.dto.HouseDetailResponse;
 import com.airbnb.api.houses.dto.LocationInformationRequest;
 import com.airbnb.api.houses.dto.NumberOfHousesByPriceResponse;
+import com.airbnb.api.houses.dto.ReservationInformationRequest;
+import com.airbnb.api.houses.dto.ReservationResponse;
 import com.airbnb.api.houses.dto.SearchConditionRequest;
 import com.airbnb.service.HouseService;
 import org.slf4j.Logger;
@@ -42,9 +44,37 @@ public class HouseController {
         return houseService.findHouseCountInLocation(request);
     }
 
-    @GetMapping("/{id}/reservation")
-    public AccommodationCostResponse calculateFee(@PathVariable Long id, @RequestParam @DateTimeFormat(pattern = "yyyyMMddHHmm") LocalDateTime startDateTime, @RequestParam @DateTimeFormat(pattern = "yyyyMMddHHmm") LocalDateTime endDateTime) {
+    @GetMapping("/{id}/calculate")
+    public AccommodationCostResponse calculateFee(@PathVariable Long id,
+        @RequestParam @DateTimeFormat(pattern = "yyyyMMddHHmm") LocalDateTime startDateTime,
+        @RequestParam @DateTimeFormat(pattern = "yyyyMMddHHmm") LocalDateTime endDateTime) {
         log.info("[time] {}, {}", startDateTime, endDateTime);
         return houseService.calculateFee(id, startDateTime, endDateTime);
     }
+
+    /**
+     * 예약 진행 API
+     * POST /api/houses/{id}/reservation
+     * 입력 : start ~ endTime, 최종 요금, 인원
+     * 반환 : 숙소 이름, 사진, 체크인, 체크아웃, 호스트 정보, 가격 반환
+     */
+    @PostMapping("/{id}/reservation")
+    public ReservationResponse reserveHouse(@PathVariable Long id, @RequestBody ReservationInformationRequest request, @RequestAttribute("userEmail") String userEmail) {
+        return houseService.reserveHouse(id, request, userEmail);
+    }
+
+    /**
+     * 예약 확인 리스트 API
+     * GET /api/houses/reservation
+     */
+
+    /**
+     * 예약 단건 조회 API
+     * GET /api/houses/{id}/reservation
+     */
+
+    /**
+     * 예약 단건 취소 API
+     * DELETE /api/houses/{id}/reservation
+     */
 }

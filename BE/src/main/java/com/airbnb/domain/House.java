@@ -84,6 +84,13 @@ public class House {
             .collect(Collectors.toList());
     }
 
+    public String getMainImageURL() {
+        return images.stream()
+            .map(Image::getUrl)
+            .findAny()
+            .orElse("Image is empty");
+    }
+
     public String getHostName() {
         return host.getName();
     }

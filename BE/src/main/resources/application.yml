@@ -9,17 +9,17 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: create
     properties:
       hibernate:
         format_sql: true
     database: mysql
     database-platform: org.hibernate.spatial.dialect.mysql.MySQL8SpatialDialect
     defer-datasource-initialization: true
+
   sql:
     init:
       mode: always
-      schema-locations:
       data-locations: classpath:sql/data.sql
 
 #server:
@@ -31,5 +31,5 @@ logging.level:
 
 jwt:
   token:
-    validate-time: 1800
+    validate-time: 18000
     token-secret: "Shine-Lucid"
