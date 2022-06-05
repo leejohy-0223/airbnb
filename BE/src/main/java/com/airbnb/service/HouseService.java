@@ -31,8 +31,8 @@ import com.airbnb.repository.UserRepository;
 public class HouseService {
 
     private static final Logger log = LoggerFactory.getLogger(HouseService.class);
-
     private static final int DISTANCE = 1000;
+
     private final HouseRepository houseRepository;
     private final ReservationRepository reservationRepository;
     private final UserRepository userRepository;
@@ -85,9 +85,6 @@ public class HouseService {
         int duration = (int)ChronoUnit.DAYS.between(startDateTime, endDateTime);
         int discountAmount = house.calculateDiscountAmount(duration);
 
-        log.info("duration : {}", duration);
-        log.info("discountAmount : {}", discountAmount);
-
         return new AccommodationCostResponse(house.getPrice() * duration, discountAmount);
     }
 
@@ -99,7 +96,9 @@ public class HouseService {
         User host = userRepository.findUserByEmail(userEmail)
             .orElseThrow(() -> new IllegalStateException("찾을 수 없는 유저입니다."));
 
-        Reservation reservation = new Reservation(request.getFee(), request.getNumberOfGuests(),
+        Reservation reservation = new Reservation(
+            request.getFee(),
+            request.getNumberOfGuests(),
             request.getStartDateTime(),
             request.getEndDateTime(), host, house);
 

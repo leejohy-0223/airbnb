@@ -20,6 +20,17 @@ public class ReservationInformationRequest {
     private int numberOfGuests;
     private int fee;
 
+    public ReservationInformationRequest(LocalDateTime startDateTime, LocalDateTime endDateTime, int numberOfGuests,
+        int fee) {
+        this.startDateTime = startDateTime;
+        this.endDateTime = endDateTime;
+        this.numberOfGuests = numberOfGuests;
+        this.fee = fee;
+    }
+
+    public ReservationInformationRequest() {
+    }
+
     public LocalDateTime getStartDateTime() {
         return startDateTime;
     }
