@@ -7,7 +7,6 @@ import com.airbnb.domain.Reservation;
 
 public class ReservationResponse {
 
-    // * 반환 : 숙소 이름, 사진, 체크인, 체크아웃, 호스트 정보, 가격 반환
     private Long reservationId;
     private String houseName;
     private String mainImageURL;

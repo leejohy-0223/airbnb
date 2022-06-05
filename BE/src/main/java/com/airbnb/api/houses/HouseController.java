@@ -6,6 +6,7 @@ import com.airbnb.api.houses.dto.LocationInformationRequest;
 import com.airbnb.api.houses.dto.NumberOfHousesByPriceResponse;
 import com.airbnb.api.houses.dto.ReservationInformationRequest;
 import com.airbnb.api.houses.dto.ReservationResponse;
+import com.airbnb.api.houses.dto.ReservationsResponse;
 import com.airbnb.api.houses.dto.SearchConditionRequest;
 import com.airbnb.service.HouseService;
 import org.slf4j.Logger;
@@ -59,14 +60,22 @@ public class HouseController {
      * 반환 : 숙소 이름, 사진, 체크인, 체크아웃, 호스트 정보, 가격 반환
      */
     @PostMapping("/{id}/reservation")
-    public ReservationResponse reserveHouse(@PathVariable Long id, @RequestBody ReservationInformationRequest request, @RequestAttribute("userEmail") String userEmail) {
+    public ReservationResponse reserveHouse(@PathVariable Long id, @RequestBody ReservationInformationRequest request,
+        @RequestAttribute("userEmail") String userEmail) {
         return houseService.reserveHouse(id, request, userEmail);
     }
 
     /**
      * 예약 확인 리스트 API
      * GET /api/houses/reservation
+     * 입력 : void
+     * 반환 : List<Reservation> -> ReservationListResponse
      */
+    @GetMapping("/reservation")
+    public ReservationsResponse ListReservation(@RequestAttribute("userEmail") String userEmail) {
+        return houseService.showReservations(userEmail);
+    }
+
 
     /**
      * 예약 단건 조회 API
