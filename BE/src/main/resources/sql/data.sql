@@ -1,7 +1,7 @@
-insert into user (email, name, role)
-VALUES ('test1@naver.com', 'test1', 'HOST'),
-       ('test2@naver.com', 'test2', 'HOST'),
-       ('test3@naver.com', 'test3', 'HOST');
+insert into user (user_id, email, name, role)
+VALUES (1, 'test1@naver.com', 'test1', 'HOST'),
+       (2, 'test2@naver.com', 'test2', 'HOST'),
+       (3, 'test3@naver.com', 'test3', 'HOST');
 
 insert into house (comment_count, max_number, rate, room_introduction, type, name, point, price, host_id)
 VALUES (3, 4, 4.5, '아늑한 집', '원룸1', 'house1', ST_GeomFromText('POINT(127.029371 37.495428)'), 75000, 1),
