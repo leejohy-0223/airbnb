@@ -1,37 +1,27 @@
 package com.airbnb.service;
 
-import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import com.airbnb.api.houses.dto.AccommodationCostResponse;
-import com.airbnb.api.houses.dto.HouseDetailResponse;
-import com.airbnb.api.houses.dto.LocationInformationRequest;
-import com.airbnb.api.houses.dto.NumberOfHousesByPrice;
-import com.airbnb.api.houses.dto.NumberOfHousesByPriceResponse;
-import com.airbnb.api.houses.dto.ReservationDetailResponse;
-import com.airbnb.api.houses.dto.ReservationInformationRequest;
-import com.airbnb.api.houses.dto.ReservationResponse;
-import com.airbnb.api.houses.dto.ReservationsResponse;
-import com.airbnb.api.houses.dto.SearchConditionRequest;
+import com.airbnb.api.houses.dto.*;
 import com.airbnb.domain.House;
 import com.airbnb.domain.Reservation;
 import com.airbnb.domain.User;
 import com.airbnb.repository.HouseRepository;
 import com.airbnb.repository.ReservationRepository;
 import com.airbnb.repository.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class HouseService {
 
     private static final Logger log = LoggerFactory.getLogger(HouseService.class);
-    private static final int DISTANCE = 1000;
+    private static final int UNIT_KILOMETER = 1000;
 
     private final HouseRepository houseRepository;
     private final ReservationRepository reservationRepository;
@@ -46,13 +36,18 @@ public class HouseService {
 
     @Transactional(readOnly = true)
     public List<HouseDetailResponse> findByCondition(SearchConditionRequest request) {
-        List<House> houseList = houseRepository.searchByCondition(request.getPoint(), DISTANCE, request.getMinFee(),
-            request.getMaxFee());
+        List<House> houseList = houseRepository.searchByCondition(request.getPoint(), UNIT_KILOMETER, request.getMinFee(),
+                request.getMaxFee());
+
+        log.info("[HouseService.findByCondition] size {}", houseList.size());
+        for (House house : houseList) {
+            log.info("[HouseService.findByCondition] house : {}", house);
+        }
 
         return houseList
-            .stream()
-            .map(HouseDetailResponse::new)
-            .collect(Collectors.toList());
+                .stream()
+                .map(HouseDetailResponse::new)
+                .collect(Collectors.toList());
     }
 
     @Transactional
@@ -71,7 +66,7 @@ public class HouseService {
     @Transactional
     public NumberOfHousesByPriceResponse findHouseCountInLocation(LocationInformationRequest request) {
         List<NumberOfHousesByPrice> houseCounts = houseRepository.numberOfHousesInTheRange(request.getPoint(),
-            DISTANCE);
+                UNIT_KILOMETER);
         return new NumberOfHousesByPriceResponse(houseCounts);
     }
 

@@ -29,7 +29,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
         }
         String userEmail = tokenProvider.parsePayload(optionalToken.get());
         log.debug("token is : {}", optionalToken.get());
-        log.debug("userId is : {}", userEmail);
+        log.debug("userEmail is : {}", userEmail);
         request.setAttribute("userEmail", userEmail);
         return true;
     }
