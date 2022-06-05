@@ -12,7 +12,8 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
 
     @Query("select r From Reservation r"
         + " join fetch r.user u"
-        + " join fetch r.house"
+        + " join fetch r.house h"
+        + " left join fetch h.images"
         + " where u.email = :userEmail")
     List<Reservation> findReservationsByEmail(@Param("userEmail") String userEmail);
 }
