@@ -4,6 +4,7 @@ import com.airbnb.api.houses.dto.AccommodationCostResponse;
 import com.airbnb.api.houses.dto.HouseDetailResponse;
 import com.airbnb.api.houses.dto.LocationInformationRequest;
 import com.airbnb.api.houses.dto.NumberOfHousesByPriceResponse;
+import com.airbnb.api.houses.dto.ReservationDetailResponse;
 import com.airbnb.api.houses.dto.ReservationInformationRequest;
 import com.airbnb.api.houses.dto.ReservationResponse;
 import com.airbnb.api.houses.dto.ReservationsResponse;
@@ -76,11 +77,15 @@ public class HouseController {
         return houseService.showReservations(userEmail);
     }
 
-
     /**
      * 예약 단건 조회 API
      * GET /api/houses/{id}/reservation
      */
+    @GetMapping("/{id}/reservation")
+    public ReservationDetailResponse findReservation(@PathVariable Long id) {
+        return houseService.findReservation(id);
+    }
+
 
     /**
      * 예약 단건 취소 API
