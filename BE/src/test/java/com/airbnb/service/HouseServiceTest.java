@@ -1,5 +1,6 @@
 package com.airbnb.service;
 
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.BDDMockito.*;
 
@@ -12,16 +13,22 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.locationtech.jts.geom.Point;
 import org.locationtech.jts.io.ParseException;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.airbnb.api.houses.dto.AccommodationCostResponse;
+import com.airbnb.api.houses.dto.ReservationInformationRequest;
+import com.airbnb.api.houses.dto.ReservationResponse;
 import com.airbnb.domain.DiscountPolicy;
 import com.airbnb.domain.House;
+import com.airbnb.domain.Reservation;
+import com.airbnb.domain.Role;
+import com.airbnb.domain.User;
 import com.airbnb.repository.HouseRepository;
+import com.airbnb.repository.ReservationRepository;
+import com.airbnb.repository.UserRepository;
 
 @ExtendWith(MockitoExtension.class)
 class HouseServiceTest {
@@ -32,10 +39,18 @@ class HouseServiceTest {
     @Mock
     private HouseRepository houseRepository;
 
+    @Mock
+    private UserRepository userRepository;
+
+    @Mock
+    private ReservationRepository reservationRepository;
+
     private House house;
+    private User user;
 
     @BeforeEach
     void init() throws ParseException {
+        user = new User("user1", "mail@mail", Role.GUEST);
         house = new House("house1", 10000, null, null, null);
     }
 
@@ -90,5 +105,75 @@ class HouseServiceTest {
         // then
         Assertions.assertThat(response.getDiscountFee()).isEqualTo(50000);
         Assertions.assertThat(response.getPrice()).isEqualTo(100000);
+    }
+
+    @DisplayName("유효한 숙소 id와 유저 id로 예약 요청이 오면 정상적으로 수행된다.")
+    @Test
+    void reservation_is_succeed() {
+        // given
+        ReservationInformationRequest request = new ReservationInformationRequest(
+            LocalDateTime.now(), LocalDateTime.now(), 1, 10000);
+
+        Reservation reservation = new Reservation(request.getFee(), request.getNumberOfGuests(),
+            request.getStartDateTime(), request.getEndDateTime(), null, house);
+
+        given(houseRepository.findById(anyLong()))
+            .willReturn(Optional.of(house));
+
+        given(userRepository.findUserByEmail(anyString()))
+            .willReturn(Optional.of(user));
+
+        given(reservationRepository.save(any(Reservation.class)))
+            .willReturn(reservation);
+
+        // when
+        ReservationResponse result = houseService.reserveHouse(1L, request, "email");
+
+        // then
+        Assertions.assertThat(result.getHouseName()).isEqualTo("house1");
+        verify(houseRepository, times(1)).findById(anyLong());
+        verify(userRepository, times(1)).findUserByEmail(anyString());
+        verify(reservationRepository, times(1)).save(any(Reservation.class));
+    }
+
+    @DisplayName("유효하지 않은 숙소 id라면 예약에 실패한다.")
+    @Test
+    void reservation_is_fail_because_house_id_invalid() {
+        // given
+        ReservationInformationRequest request = new ReservationInformationRequest(
+            LocalDateTime.now(), LocalDateTime.now(), 1, 10000);
+
+        given(houseRepository.findById(anyLong()))
+            .willReturn(Optional.empty());
+
+        // when
+        assertThrows(IllegalStateException.class, () -> houseService.reserveHouse(1L, request, "email"));
+
+        // then
+        verify(houseRepository, times(1)).findById(anyLong());
+        verify(userRepository, times(0)).findUserByEmail(anyString());
+        verify(reservationRepository, times(0)).save(any(Reservation.class));
+    }
+
+    @DisplayName("유효한 숙소 id이지만 유저 id가 유효하지 않다면 예약에 실패한다.")
+    @Test
+    void reservation_is_fail_because_user_id_invalid() {
+        // given
+        ReservationInformationRequest request = new ReservationInformationRequest(
+            LocalDateTime.now(), LocalDateTime.now(), 1, 10000);
+
+        given(houseRepository.findById(anyLong()))
+            .willReturn(Optional.of(house));
+
+        given(userRepository.findUserByEmail(anyString()))
+            .willReturn(Optional.empty());
+
+        // when
+        assertThrows(IllegalStateException.class, () -> houseService.reserveHouse(1L, request, "email"));
+
+        // then
+        verify(houseRepository, times(1)).findById(anyLong());
+        verify(userRepository, times(1)).findUserByEmail(anyString());
+        verify(reservationRepository, times(0)).save(any(Reservation.class));
     }
 }
