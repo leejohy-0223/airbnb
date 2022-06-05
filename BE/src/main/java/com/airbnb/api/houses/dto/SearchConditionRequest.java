@@ -16,6 +16,9 @@ public class SearchConditionRequest {
     private Integer maxFee;
     private int numberOfGuests;
 
+    public SearchConditionRequest() {
+    }
+
     public SearchConditionRequest(Double longitude, Double latitude, Integer minFee, Integer maxFee) {
         this.longitude = longitude;
         this.latitude = latitude;
@@ -84,22 +87,35 @@ public class SearchConditionRequest {
     }
 
     @Override
+    public String toString() {
+        return "SearchConditionRequest{" +
+                "longitude=" + longitude +
+                ", latitude=" + latitude +
+                ", startLocalDateTime=" + startLocalDateTime +
+                ", endLocalDateTime=" + endLocalDateTime +
+                ", minFee=" + minFee +
+                ", maxFee=" + maxFee +
+                ", numberOfGuests=" + numberOfGuests +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o)
             return true;
         if (o == null || getClass() != o.getClass())
             return false;
-        SearchConditionRequest that = (SearchConditionRequest)o;
+        SearchConditionRequest that = (SearchConditionRequest) o;
         return getNumberOfGuests() == that.getNumberOfGuests() && Objects.equals(getLongitude(),
-            that.getLongitude()) && Objects.equals(getLatitude(), that.getLatitude()) && Objects.equals(
-            getStartLocalDateTime(), that.getStartLocalDateTime()) && Objects.equals(getEndLocalDateTime(),
-            that.getEndLocalDateTime()) && Objects.equals(getMinFee(), that.getMinFee())
-            && Objects.equals(getMaxFee(), that.getMaxFee());
+                that.getLongitude()) && Objects.equals(getLatitude(), that.getLatitude()) && Objects.equals(
+                getStartLocalDateTime(), that.getStartLocalDateTime()) && Objects.equals(getEndLocalDateTime(),
+                that.getEndLocalDateTime()) && Objects.equals(getMinFee(), that.getMinFee())
+                && Objects.equals(getMaxFee(), that.getMaxFee());
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(getLongitude(), getLatitude(), getStartLocalDateTime(), getEndLocalDateTime(), getMinFee(),
-            getMaxFee(), getNumberOfGuests());
+                getMaxFee(), getNumberOfGuests());
     }
 }

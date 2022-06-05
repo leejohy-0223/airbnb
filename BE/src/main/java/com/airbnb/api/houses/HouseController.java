@@ -1,14 +1,6 @@
 package com.airbnb.api.houses;
 
-import com.airbnb.api.houses.dto.AccommodationCostResponse;
-import com.airbnb.api.houses.dto.HouseDetailResponse;
-import com.airbnb.api.houses.dto.LocationInformationRequest;
-import com.airbnb.api.houses.dto.NumberOfHousesByPriceResponse;
-import com.airbnb.api.houses.dto.ReservationDetailResponse;
-import com.airbnb.api.houses.dto.ReservationInformationRequest;
-import com.airbnb.api.houses.dto.ReservationResponse;
-import com.airbnb.api.houses.dto.ReservationsResponse;
-import com.airbnb.api.houses.dto.SearchConditionRequest;
+import com.airbnb.api.houses.dto.*;
 import com.airbnb.common.ResultDto;
 import com.airbnb.service.HouseService;
 import org.slf4j.Logger;
@@ -32,8 +24,8 @@ public class HouseController {
     }
 
     @GetMapping
-    public List<HouseDetailResponse> findHouse(@RequestBody SearchConditionRequest request) {
-        // TODO HATEAOS 적용
+    public List<HouseDetailResponse> findHouse(@ModelAttribute SearchConditionRequest request) {
+        log.info("[HouseController.findHouse] request : {}", request);
         return houseService.findByCondition(request);
     }
 
@@ -49,15 +41,15 @@ public class HouseController {
 
     @GetMapping("/{id}/calculate")
     public AccommodationCostResponse calculateFee(@PathVariable Long id,
-        @RequestParam @DateTimeFormat(pattern = "yyyyMMddHHmm") LocalDateTime startDateTime,
-        @RequestParam @DateTimeFormat(pattern = "yyyyMMddHHmm") LocalDateTime endDateTime) {
+                                                  @RequestParam @DateTimeFormat(pattern = "yyyyMMddHHmm") LocalDateTime startDateTime,
+                                                  @RequestParam @DateTimeFormat(pattern = "yyyyMMddHHmm") LocalDateTime endDateTime) {
         log.info("[time] {}, {}", startDateTime, endDateTime);
         return houseService.calculateFee(id, startDateTime, endDateTime);
     }
 
     @PostMapping("/{id}/reservation")
     public ReservationResponse reserveHouse(@PathVariable Long id, @RequestBody ReservationInformationRequest request,
-        @RequestAttribute("userEmail") String userEmail) {
+                                            @RequestAttribute("userEmail") String userEmail) {
         return houseService.reserveHouse(id, request, userEmail);
     }
 
