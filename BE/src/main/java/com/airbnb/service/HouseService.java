@@ -1,6 +1,5 @@
 package com.airbnb.service;
 
-import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
@@ -12,15 +11,19 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.airbnb.api.houses.dto.AccommodationCostResponse;
-import com.airbnb.api.houses.dto.NumberOfHousesByPriceResponse;
 import com.airbnb.api.houses.dto.HouseDetailResponse;
 import com.airbnb.api.houses.dto.LocationInformationRequest;
 import com.airbnb.api.houses.dto.NumberOfHousesByPrice;
+import com.airbnb.api.houses.dto.NumberOfHousesByPriceResponse;
+import com.airbnb.api.houses.dto.ReservationInformationRequest;
+import com.airbnb.api.houses.dto.ReservationResponse;
 import com.airbnb.api.houses.dto.SearchConditionRequest;
 import com.airbnb.domain.House;
-import com.airbnb.domain.HouseDiscountPolicy;
-import com.airbnb.domain.QDiscountPolicy;
+import com.airbnb.domain.Reservation;
+import com.airbnb.domain.User;
 import com.airbnb.repository.HouseRepository;
+import com.airbnb.repository.ReservationRepository;
+import com.airbnb.repository.UserRepository;
 
 @Service
 public class HouseService {
@@ -29,9 +32,14 @@ public class HouseService {
 
     private static final int DISTANCE = 1000;
     private final HouseRepository houseRepository;
+    private final ReservationRepository reservationRepository;
+    private final UserRepository userRepository;
 
-    public HouseService(HouseRepository houseRepository) {
+    public HouseService(HouseRepository houseRepository, ReservationRepository reservationRepository,
+        UserRepository userRepository) {
         this.houseRepository = houseRepository;
+        this.reservationRepository = reservationRepository;
+        this.userRepository = userRepository;
     }
 
     @Transactional(readOnly = true)
@@ -65,6 +73,7 @@ public class HouseService {
         return new NumberOfHousesByPriceResponse(houseCounts);
     }
 
+    @Transactional(readOnly = true)
     public AccommodationCostResponse calculateFee(Long houseId, LocalDateTime startDateTime,
         LocalDateTime endDateTime) {
 
@@ -78,5 +87,25 @@ public class HouseService {
         log.info("discountAmount : {}", discountAmount);
 
         return new AccommodationCostResponse(house.getPrice() * duration, discountAmount);
+    }
+
+    /**
+     * 반환 : 숙소 이름, 사진, 체크인, 체크아웃, 호스트 정보, 가격 반환
+     */
+    @Transactional
+    public ReservationResponse reserveHouse(Long id, ReservationInformationRequest request, String userEmail) {
+        House house = houseRepository.findById(id)
+            .orElseThrow(() -> new IllegalStateException("찾을 수 없는 숙소 정보입니다."));
+
+        User host = userRepository.findUserByEmail(userEmail)
+            .orElseThrow(() -> new IllegalStateException("찾을 수 없는 유저입니다."));
+
+        Reservation reservation = new Reservation(request.getFee(), request.getNumberOfGuests(),
+            request.getStartDateTime(),
+            request.getEndDateTime(), host, house);
+
+        Reservation save = reservationRepository.save(reservation);
+
+        return new ReservationResponse(save);
     }
 }
