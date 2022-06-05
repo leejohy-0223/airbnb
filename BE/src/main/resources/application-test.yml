@@ -1,0 +1,18 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        format_sql: true
+    database: mysql
+    database-platform: org.hibernate.spatial.dialect.mysql.MySQL8SpatialDialect
+
+logging.level:
+  org.hibernate.SQL: debug
+  com.airbnb: debug
+
+jwt:
+  token:
+    validate-time: 1800
+    token-secret: "Shine-Lucid"
