@@ -17,6 +17,7 @@ import com.airbnb.api.houses.dto.NumberOfHousesByPrice;
 import com.airbnb.api.houses.dto.NumberOfHousesByPriceResponse;
 import com.airbnb.api.houses.dto.ReservationInformationRequest;
 import com.airbnb.api.houses.dto.ReservationResponse;
+import com.airbnb.api.houses.dto.ReservationsResponse;
 import com.airbnb.api.houses.dto.SearchConditionRequest;
 import com.airbnb.domain.House;
 import com.airbnb.domain.Reservation;
@@ -107,5 +108,14 @@ public class HouseService {
         Reservation save = reservationRepository.save(reservation);
 
         return new ReservationResponse(save);
+    }
+
+    @Transactional(readOnly = true)
+    public ReservationsResponse showReservations(String userEmail) {
+        List<Reservation> reservations = reservationRepository.findReservationsByEmail(userEmail);
+
+        return new ReservationsResponse(reservations.stream()
+            .map(ReservationResponse::new)
+            .collect(Collectors.toList()));
     }
 }
