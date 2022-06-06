@@ -31,8 +31,8 @@
 - [X] Token parsing 부분 Optional 제거
 - [X] OAuthLoginController log 구체화
 - [X] calculateFee 메서드 위치 이동
-- [ ] OAuth property yml에 정의하기
-- [ ] RESTTemplate, ObjectMapper를 DI로 변경
+- [X] OAuth property yml에 정의하기
+- [X] RESTTemplate, ObjectMapper를 DI로 변경
 - [ ] setProperty(snakecase) 수정
-- [ ] concurrentHashMap으로 변경
-- [ ] OAuthServer Component로 변경
+- [X] concurrentHashMap으로 변경 -> Component Map 주입으로 변경
+- [X] OAuthServer Component로 변경

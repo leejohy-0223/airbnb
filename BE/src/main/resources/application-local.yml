@@ -18,7 +18,3 @@ logging.level:
   org.hibernate.SQL: debug
   com.airbnb: debug
 
-jwt:
-  token:
-    validate-time: 1800
-    token-secret: "Shine-Lucid"

@@ -6,3 +6,20 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: ${username}
     password: ${password}
+
+jwt:
+  token:
+    validate-time: 1800
+    token-secret: "Shine-Lucid"
+
+    kakao:
+      token-server-uri: "https://kauth.kakao.com/oauth/token"
+      oauth-server-uri: "https://kapi.kakao.com/v2/user/me"
+      client-id: ${KAKAO_CLIENT_ID}
+      redirect-uri: "http://localhost:8080/api/login/oauth/kakao/callback"
+
+    github:
+      token-server-uri: "https://github.com/login/oauth/access_token"
+      oauth-server-uri: "https://api.github.com/user"
+      client-id: ${GITHUB_CLIENT_ID}
+      client-secret: ${GITHUB_CLIENT_SECRET}

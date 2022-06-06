@@ -64,10 +64,10 @@ public class HouseService {
     }
 
     @Transactional
-    public NumberOfHousesByPriceResponse findHouseCountInLocation(LocationInformationRequest request) {
-        List<NumberOfHousesByPrice> houseCounts = houseRepository.numberOfHousesInTheRange(request.getPoint(),
+    public GraphResponse findHouseCountInLocation(LocationInformationRequest request) {
+        List<NumberOfHousesByPriceResponse> houseCounts = houseRepository.numberOfHousesInTheRange(request.getPoint(),
                 UNIT_KILOMETER);
-        return new NumberOfHousesByPriceResponse(houseCounts);
+        return new GraphResponse(houseCounts);
     }
 
     @Transactional(readOnly = true)

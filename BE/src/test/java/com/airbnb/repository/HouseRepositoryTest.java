@@ -1,6 +1,6 @@
 package com.airbnb.repository;
 
-import com.airbnb.api.houses.dto.NumberOfHousesByPrice;
+import com.airbnb.api.houses.dto.NumberOfHousesByPriceResponse;
 import com.airbnb.domain.DetailInfo;
 import com.airbnb.domain.House;
 import com.airbnb.domain.Role;
@@ -78,7 +78,7 @@ class HouseRepositoryTest {
     void number_of_house_test() {
         // when
         int range = 1000;
-        List<NumberOfHousesByPrice> houseCounts = houseRepository.numberOfHousesInTheRange(nowPosition, range);
+        List<NumberOfHousesByPriceResponse> houseCounts = houseRepository.numberOfHousesInTheRange(nowPosition, range);
 
         // then
         assertThat(houseCounts.size()).isEqualTo(2);
@@ -88,8 +88,8 @@ class HouseRepositoryTest {
         assertThat(houseCounts.get(1).getCount()).isEqualTo(1);
     }
 
-    private House createHouse(String houseName, int price, Double longitude, Double latitude, User host) {
+    private House createHouse(String houseName, int price, Double latitude, Double longitude, User host) {
         return new House(houseName, price, new DetailInfo(10, "oneRoom", "방입니다", 4.8, 10),
-                GeometryUtils.toPoint(latitude, longitude), host);
+                GeometryUtils.toPoint(longitude, latitude), host);
     }
 }

@@ -35,7 +35,7 @@ public class HouseController {
     }
 
     @GetMapping("/price")
-    public NumberOfHousesByPriceResponse findHouseCount(@ModelAttribute LocationInformationRequest request) {
+    public GraphResponse findHouseCount(@ModelAttribute LocationInformationRequest request) {
         return houseService.findHouseCountInLocation(request);
     }
 
