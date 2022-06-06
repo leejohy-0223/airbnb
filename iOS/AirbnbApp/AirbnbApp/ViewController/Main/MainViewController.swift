@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 final class MainViewController: UIViewController {
     
@@ -13,6 +14,12 @@ final class MainViewController: UIViewController {
         guard let layout = self.createLayout() else { return UICollectionView() }
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         return collectionView
+    }()
+    
+    private var searchBar: UISearchBar = {
+        let searchBar = UISearchBar(frame: .zero)
+        searchBar.placeholder = "어디로 여행가세요?"
+        return searchBar
     }()
     
     private let dataSource = MainCollectionViewDataSource()
@@ -23,13 +30,21 @@ final class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         addViews()
+        setLayouts()
         setCollectionView()
     }
     
     private func addViews() {
-        [collectionView].forEach {
+        [collectionView,searchBar].forEach {
             self.view.addSubview($0)
         }
+    }
+    
+    private func setSearchBar() {
+        let searchController = UISearchController(searchResultsController: SearchResultViewController())
+        searchController.searchBar.placeholder = "kim"
+        self.navigationItem.title = "숙소 찾기"
+        self.navigationItem.searchController = searchController
     }
     
     private func setCollectionView() {
@@ -40,11 +55,16 @@ final class MainViewController: UIViewController {
         self.collectionView.register(MainHeaderView.self,
                                      forSupplementaryViewOfKind: MainHeaderView.ID,
                                      withReuseIdentifier: MainHeaderView.ID)
+    }
+    
+    private func setLayouts() {
+        self.navigationItem.titleView = searchBar
         
         self.collectionView.snp.makeConstraints{
-            $0.edges.equalToSuperview()
+            $0.top.bottom.leading.trailing.equalToSuperview()
         }
     }
+    
     
     private func createLayout() -> UICollectionViewCompositionalLayout? {
         return UICollectionViewCompositionalLayout { sectionNumber, env in

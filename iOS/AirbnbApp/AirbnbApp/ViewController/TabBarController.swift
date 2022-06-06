@@ -13,7 +13,7 @@ final class TabBarController: UITabBarController {
         super.viewDidLoad()
         
         // Create Tab Items
-        let mainVC = MainViewController()
+        let mainVC = UINavigationController(rootViewController: MainViewController())
         let tabMainBarItem = UITabBarItem(title: "검색", image: UIImage(systemName: "magnifyingglass"), tag: 0)
         
         mainVC.tabBarItem = tabMainBarItem

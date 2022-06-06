@@ -64,7 +64,7 @@
 		8D8017CC284DB45D0068C655 /* HeroImageSectionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8017CB284DB45D0068C655 /* HeroImageSectionFactory.swift */; };
 		8D8017CE284DB6030068C655 /* NearSpotSectionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8017CD284DB6030068C655 /* NearSpotSectionFactory.swift */; };
 		8D8017D0284DB6480068C655 /* RecommendSectionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8017CF284DB6480068C655 /* RecommendSectionFactory.swift */; };
-		8D8017D2284DB9FF0068C655 /* SearchBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8017D1284DB9FF0068C655 /* SearchBarController.swift */; };
+		8D8017D2284DB9FF0068C655 /* SearchBarResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8017D1284DB9FF0068C655 /* SearchBarResultController.swift */; };
 		8D9D1F5C283CE24300EEF33A /* PriceAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9D1F5B283CE24300EEF33A /* PriceAnnotationView.swift */; };
 		8D9D1F64283D355200EEF33A /* HouseInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9D1F63283D355200EEF33A /* HouseInfo.swift */; };
 		8DA35039283F26FF00B72BA9 /* HeartButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA35038283F26FF00B72BA9 /* HeartButtonDelegate.swift */; };
@@ -152,7 +152,7 @@
 		8D8017CB284DB45D0068C655 /* HeroImageSectionFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroImageSectionFactory.swift; sourceTree = "<group>"; };
 		8D8017CD284DB6030068C655 /* NearSpotSectionFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearSpotSectionFactory.swift; sourceTree = "<group>"; };
 		8D8017CF284DB6480068C655 /* RecommendSectionFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendSectionFactory.swift; sourceTree = "<group>"; };
-		8D8017D1284DB9FF0068C655 /* SearchBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarController.swift; sourceTree = "<group>"; };
+		8D8017D1284DB9FF0068C655 /* SearchBarResultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarResultController.swift; sourceTree = "<group>"; };
 		8D9D1F5B283CE24300EEF33A /* PriceAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceAnnotationView.swift; sourceTree = "<group>"; };
 		8D9D1F63283D355200EEF33A /* HouseInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseInfo.swift; sourceTree = "<group>"; };
 		8DA35038283F26FF00B72BA9 /* HeartButtonDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartButtonDelegate.swift; sourceTree = "<group>"; };
@@ -388,10 +388,10 @@
 			isa = PBXGroup;
 			children = (
 				8D05F2D2284880F400796609 /* MainViewController.swift */,
+				8DFF04892849BCF600EEA0F3 /* MainCollectionViewDataSource.swift */,
 				8D8017CB284DB45D0068C655 /* HeroImageSectionFactory.swift */,
 				8D8017CD284DB6030068C655 /* NearSpotSectionFactory.swift */,
 				8D8017CF284DB6480068C655 /* RecommendSectionFactory.swift */,
-				8DFF04892849BCF600EEA0F3 /* MainCollectionViewDataSource.swift */,
 				8D8017C9284DB4070068C655 /* MainViewSectionCreator.swift */,
 			);
 			path = Main;
@@ -400,7 +400,7 @@
 		8D8017D3284DBA260068C655 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				8D8017D1284DB9FF0068C655 /* SearchBarController.swift */,
+				8D8017D1284DB9FF0068C655 /* SearchBarResultController.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -643,7 +643,7 @@
 				8D9D1F64283D355200EEF33A /* HouseInfo.swift in Sources */,
 				8DA3503B283F47D400B72BA9 /* MapCardCollectionViewDataSource.swift in Sources */,
 				8D05F2D72848825700796609 /* ReservationViewController.swift in Sources */,
-				8D8017D2284DB9FF0068C655 /* SearchBarController.swift in Sources */,
+				8D8017D2284DB9FF0068C655 /* SearchBarResultController.swift in Sources */,
 				8D0AD768283C5EDD00575C3B /* TabBarController.swift in Sources */,
 				8D6465EC28404A5D0021C782 /* ListButtonDelegate.swift in Sources */,
 				8D224204283CB7E4006A9043 /* PriceConverter.swift in Sources */,
