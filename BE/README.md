@@ -28,7 +28,7 @@
 
 # 4차 PR todo list
 - [X] call back url 수정
-- [ ] Token parsing 부분 Optional 제거
+- [X] Token parsing 부분 Optional 제거
 - [ ] OAuthLoginController log 구체화
 - [X] calculateFee 메서드 위치 이동
 - [ ] OAuth property yml에 정의하기
