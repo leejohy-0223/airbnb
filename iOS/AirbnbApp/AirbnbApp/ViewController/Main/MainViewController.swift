@@ -16,11 +16,7 @@ final class MainViewController: UIViewController {
         return collectionView
     }()
     
-    private var searchBar: UISearchBar = {
-        let searchBar = UISearchBar(frame: .zero)
-        searchBar.placeholder = "어디로 여행가세요?"
-        return searchBar
-    }()
+    private var searchVC: UISearchController?
     
     private let dataSource = MainCollectionViewDataSource()
     private var sections: [Int : MainViewSectionCreator.Type] = [0: HeroImageSectionFactory.self,
@@ -32,19 +28,26 @@ final class MainViewController: UIViewController {
         addViews()
         setLayouts()
         setCollectionView()
+        setSearchViewController()
+        setNavigationController()
     }
     
     private func addViews() {
-        [collectionView,searchBar].forEach {
+        [collectionView].forEach {
             self.view.addSubview($0)
         }
     }
     
-    private func setSearchBar() {
-        let searchController = UISearchController(searchResultsController: SearchResultViewController())
-        searchController.searchBar.placeholder = "kim"
-        self.navigationItem.title = "숙소 찾기"
-        self.navigationItem.searchController = searchController
+    private func setNavigationController() {
+        self.navigationItem.searchController = searchVC
+        self.navigationController?.hidesBarsOnSwipe = true
+    }
+    
+    private func setSearchViewController() {
+        searchVC = UISearchController(searchResultsController: SearchBarResultController())
+        searchVC?.searchBar.placeholder = "어디로 여행가세요?"
+        searchVC?.searchBar.showsCancelButton = false
+        searchVC?.delegate = self
     }
     
     private func setCollectionView() {
@@ -58,13 +61,10 @@ final class MainViewController: UIViewController {
     }
     
     private func setLayouts() {
-        self.navigationItem.titleView = searchBar
-        
         self.collectionView.snp.makeConstraints{
             $0.top.bottom.leading.trailing.equalToSuperview()
         }
     }
-    
     
     private func createLayout() -> UICollectionViewCompositionalLayout? {
         return UICollectionViewCompositionalLayout { sectionNumber, env in
@@ -72,4 +72,9 @@ final class MainViewController: UIViewController {
             return self.sections[sectionNumber]?.makeSectionLayout(insetValue: insetValue)
         }
     }
+}
+
+extension MainViewController: UISearchControllerDelegate {
+
+    
 }
