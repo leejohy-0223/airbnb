@@ -11,7 +11,7 @@ protocol Endpointable {
     func getHttpMethod() -> Alamofire.HTTPMethod
     func getBaseURL() -> BaseURL
     func getPath() -> Path
-    func getHeaders() -> [String: String]?
+    func getHeaders() -> [String: String]
     func getBody() -> [String: Any]?
 }
 
@@ -54,7 +54,7 @@ struct Endpoint: Endpointable {
         return self.path
     }
     
-    func getHeaders() -> [String: String]? {
+    func getHeaders() -> [String: String] {
         return self.headers
     }
     

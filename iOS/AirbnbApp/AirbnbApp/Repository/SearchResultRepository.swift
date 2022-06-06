@@ -8,7 +8,7 @@
 import Alamofire
 import OSLog
 
-final class HouseInfoRepository: HouseInfoRepoitoriable {
+final class SearchResultRepository: SearchResultRepoitoriable {
     
     private(set) var networkManager:NetworkManagable?
     

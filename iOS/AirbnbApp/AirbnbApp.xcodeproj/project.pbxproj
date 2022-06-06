@@ -10,8 +10,8 @@
 		8D05F2C128486F4E00796609 /* HouseInfoBundleViewModelUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D05F2C028486F4E00796609 /* HouseInfoBundleViewModelUnitTest.swift */; };
 		8D05F2C72848709800796609 /* SearchResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF1048E284783680005CCD5 /* SearchResultViewModel.swift */; };
 		8D05F2C82848709B00796609 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF1048C28476BB50005CCD5 /* Observable.swift */; };
-		8D05F2C9284870BF00796609 /* HouseInfoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBB8E28445E7D007B6352 /* HouseInfoRepository.swift */; };
-		8D05F2CA284870C700796609 /* HouseInfoRepoitoriable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFE2766284859650003D226 /* HouseInfoRepoitoriable.swift */; };
+		8D05F2C9284870BF00796609 /* SearchResultRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBB8E28445E7D007B6352 /* SearchResultRepository.swift */; };
+		8D05F2CA284870C700796609 /* SearchResultRepoitoriable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFE2766284859650003D226 /* SearchResultRepoitoriable.swift */; };
 		8D05F2CB2848710C00796609 /* MockHouseInfoData.json in Resources */ = {isa = PBXBuildFile; fileRef = 8DF10488284745D20005CCD5 /* MockHouseInfoData.json */; };
 		8D05F2CC2848711E00796609 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBBA02845AB39007B6352 /* NetworkManager.swift */; };
 		8D05F2CD2848712000796609 /* NetworkManagable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBBA52845B728007B6352 /* NetworkManagable.swift */; };
@@ -37,7 +37,7 @@
 		8D224202283CB794006A9043 /* PriceLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D224201283CB794006A9043 /* PriceLabel.swift */; };
 		8D224204283CB7E4006A9043 /* PriceConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D224203283CB7E4006A9043 /* PriceConverter.swift */; };
 		8D224206283CB8AB006A9043 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D224205283CB8AB006A9043 /* Constants.swift */; };
-		8D3DBB8F28445E7E007B6352 /* HouseInfoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBB8E28445E7D007B6352 /* HouseInfoRepository.swift */; };
+		8D3DBB8F28445E7E007B6352 /* SearchResultRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBB8E28445E7D007B6352 /* SearchResultRepository.swift */; };
 		8D3DBBA12845AB39007B6352 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBBA02845AB39007B6352 /* NetworkManager.swift */; };
 		8D3DBBA42845B712007B6352 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBBA32845B712007B6352 /* EndPoint.swift */; };
 		8D3DBBA72845B728007B6352 /* NetworkManagable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBBA52845B728007B6352 /* NetworkManagable.swift */; };
@@ -60,6 +60,11 @@
 		8D6B3C0B283DE71100E24CE8 /* PriceConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D224203283CB7E4006A9043 /* PriceConverter.swift */; };
 		8D6B3C0C283DE71300E24CE8 /* AddressConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6B3BFB283DCCE400E24CE8 /* AddressConverter.swift */; };
 		8D6B3C0E283E095E00E24CE8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6B3C0D283E095E00E24CE8 /* Extensions.swift */; };
+		8D8017CA284DB4070068C655 /* MainViewSectionCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8017C9284DB4070068C655 /* MainViewSectionCreator.swift */; };
+		8D8017CC284DB45D0068C655 /* HeroImageSectionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8017CB284DB45D0068C655 /* HeroImageSectionFactory.swift */; };
+		8D8017CE284DB6030068C655 /* NearSpotSectionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8017CD284DB6030068C655 /* NearSpotSectionFactory.swift */; };
+		8D8017D0284DB6480068C655 /* RecommendSectionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8017CF284DB6480068C655 /* RecommendSectionFactory.swift */; };
+		8D8017D2284DB9FF0068C655 /* SearchBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8017D1284DB9FF0068C655 /* SearchBarController.swift */; };
 		8D9D1F5C283CE24300EEF33A /* PriceAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9D1F5B283CE24300EEF33A /* PriceAnnotationView.swift */; };
 		8D9D1F64283D355200EEF33A /* HouseInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9D1F63283D355200EEF33A /* HouseInfo.swift */; };
 		8DA35039283F26FF00B72BA9 /* HeartButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA35038283F26FF00B72BA9 /* HeartButtonDelegate.swift */; };
@@ -72,7 +77,7 @@
 		8DF1048F284783680005CCD5 /* SearchResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF1048E284783680005CCD5 /* SearchResultViewModel.swift */; };
 		8DF21C9E2840654D00F2F8E9 /* HouseImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF21C9D2840654D00F2F8E9 /* HouseImageView.swift */; };
 		8DF21CA428406F6800F2F8E9 /* SearchResultTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF21CA328406F6800F2F8E9 /* SearchResultTableViewDataSource.swift */; };
-		8DFE2767284859650003D226 /* HouseInfoRepoitoriable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFE2766284859650003D226 /* HouseInfoRepoitoriable.swift */; };
+		8DFE2767284859650003D226 /* SearchResultRepoitoriable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFE2766284859650003D226 /* SearchResultRepoitoriable.swift */; };
 		8DFF04862849B1E900EEA0F3 /* MainHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFF04852849B1E900EEA0F3 /* MainHeaderView.swift */; };
 		8DFF04882849B82300EEA0F3 /* RecommendCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFF04872849B82300EEA0F3 /* RecommendCardCell.swift */; };
 		8DFF048A2849BCF600EEA0F3 /* MainCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFF04892849BCF600EEA0F3 /* MainCollectionViewDataSource.swift */; };
@@ -123,7 +128,7 @@
 		8D224201283CB794006A9043 /* PriceLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceLabel.swift; sourceTree = "<group>"; };
 		8D224203283CB7E4006A9043 /* PriceConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceConverter.swift; sourceTree = "<group>"; };
 		8D224205283CB8AB006A9043 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		8D3DBB8E28445E7D007B6352 /* HouseInfoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseInfoRepository.swift; sourceTree = "<group>"; };
+		8D3DBB8E28445E7D007B6352 /* SearchResultRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultRepository.swift; sourceTree = "<group>"; };
 		8D3DBBA02845AB39007B6352 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		8D3DBBA32845B712007B6352 /* EndPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		8D3DBBA52845B728007B6352 /* NetworkManagable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManagable.swift; sourceTree = "<group>"; };
@@ -143,6 +148,11 @@
 		8D6B3C02283DE6BB00E24CE8 /* ConverterUnitTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConverterUnitTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D6B3C04283DE6BB00E24CE8 /* ConverterUnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterUnitTest.swift; sourceTree = "<group>"; };
 		8D6B3C0D283E095E00E24CE8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		8D8017C9284DB4070068C655 /* MainViewSectionCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewSectionCreator.swift; sourceTree = "<group>"; };
+		8D8017CB284DB45D0068C655 /* HeroImageSectionFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroImageSectionFactory.swift; sourceTree = "<group>"; };
+		8D8017CD284DB6030068C655 /* NearSpotSectionFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearSpotSectionFactory.swift; sourceTree = "<group>"; };
+		8D8017CF284DB6480068C655 /* RecommendSectionFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendSectionFactory.swift; sourceTree = "<group>"; };
+		8D8017D1284DB9FF0068C655 /* SearchBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarController.swift; sourceTree = "<group>"; };
 		8D9D1F5B283CE24300EEF33A /* PriceAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceAnnotationView.swift; sourceTree = "<group>"; };
 		8D9D1F63283D355200EEF33A /* HouseInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseInfo.swift; sourceTree = "<group>"; };
 		8DA35038283F26FF00B72BA9 /* HeartButtonDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartButtonDelegate.swift; sourceTree = "<group>"; };
@@ -154,7 +164,7 @@
 		8DF1048E284783680005CCD5 /* SearchResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewModel.swift; sourceTree = "<group>"; };
 		8DF21C9D2840654D00F2F8E9 /* HouseImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseImageView.swift; sourceTree = "<group>"; };
 		8DF21CA328406F6800F2F8E9 /* SearchResultTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewDataSource.swift; sourceTree = "<group>"; };
-		8DFE2766284859650003D226 /* HouseInfoRepoitoriable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseInfoRepoitoriable.swift; sourceTree = "<group>"; };
+		8DFE2766284859650003D226 /* SearchResultRepoitoriable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultRepoitoriable.swift; sourceTree = "<group>"; };
 		8DFF04852849B1E900EEA0F3 /* MainHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHeaderView.swift; sourceTree = "<group>"; };
 		8DFF04872849B82300EEA0F3 /* RecommendCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCardCell.swift; sourceTree = "<group>"; };
 		8DFF04892849BCF600EEA0F3 /* MainCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewDataSource.swift; sourceTree = "<group>"; };
@@ -288,8 +298,8 @@
 			isa = PBXGroup;
 			children = (
 				8D0AD767283C5EDD00575C3B /* TabBarController.swift */,
-				8D05F2D2284880F400796609 /* MainViewController.swift */,
-				8DFF04892849BCF600EEA0F3 /* MainCollectionViewDataSource.swift */,
+				8D8017C8284DB3AD0068C655 /* Main */,
+				8D8017D3284DBA260068C655 /* Search */,
 				8D05F2D42848824A00796609 /* WishListViewController.swift */,
 				8D05F2D62848825700796609 /* ReservationViewController.swift */,
 				8DA3503E283F630900B72BA9 /* SearchResultViewController.swift */,
@@ -343,8 +353,8 @@
 		8D6465E6283FAA040021C782 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				8D3DBB8E28445E7D007B6352 /* HouseInfoRepository.swift */,
-				8DFE2766284859650003D226 /* HouseInfoRepoitoriable.swift */,
+				8D3DBB8E28445E7D007B6352 /* SearchResultRepository.swift */,
+				8DFE2766284859650003D226 /* SearchResultRepoitoriable.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -372,6 +382,27 @@
 				8D6B3C0D283E095E00E24CE8 /* Extensions.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		8D8017C8284DB3AD0068C655 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				8D05F2D2284880F400796609 /* MainViewController.swift */,
+				8D8017CB284DB45D0068C655 /* HeroImageSectionFactory.swift */,
+				8D8017CD284DB6030068C655 /* NearSpotSectionFactory.swift */,
+				8D8017CF284DB6480068C655 /* RecommendSectionFactory.swift */,
+				8DFF04892849BCF600EEA0F3 /* MainCollectionViewDataSource.swift */,
+				8D8017C9284DB4070068C655 /* MainViewSectionCreator.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		8D8017D3284DBA260068C655 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				8D8017D1284DB9FF0068C655 /* SearchBarController.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		8DA3503D283F53C900B72BA9 /* CollectionView */ = {
@@ -580,7 +611,7 @@
 			files = (
 				8D05F2D0284871E300796609 /* HouseInfo.swift in Sources */,
 				8D05F2CC2848711E00796609 /* NetworkManager.swift in Sources */,
-				8D05F2C9284870BF00796609 /* HouseInfoRepository.swift in Sources */,
+				8D05F2C9284870BF00796609 /* SearchResultRepository.swift in Sources */,
 				8D05F2CE2848712100796609 /* EndPoint.swift in Sources */,
 				8D05F2C128486F4E00796609 /* HouseInfoBundleViewModelUnitTest.swift in Sources */,
 				8D05F2C82848709B00796609 /* Observable.swift in Sources */,
@@ -588,7 +619,7 @@
 				8D05F2C72848709800796609 /* SearchResultViewModel.swift in Sources */,
 				8D05F2CD2848712000796609 /* NetworkManagable.swift in Sources */,
 				8D05F2D12848720D00796609 /* Extensions.swift in Sources */,
-				8D05F2CA284870C700796609 /* HouseInfoRepoitoriable.swift in Sources */,
+				8D05F2CA284870C700796609 /* SearchResultRepoitoriable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -598,18 +629,21 @@
 			files = (
 				8DFF048A2849BCF600EEA0F3 /* MainCollectionViewDataSource.swift in Sources */,
 				8DFF04862849B1E900EEA0F3 /* MainHeaderView.swift in Sources */,
-				8D3DBB8F28445E7E007B6352 /* HouseInfoRepository.swift in Sources */,
+				8D3DBB8F28445E7E007B6352 /* SearchResultRepository.swift in Sources */,
 				8D05F2D52848824A00796609 /* WishListViewController.swift in Sources */,
 				8D6465E8283FAA1E0021C782 /* ResultCardCell.swift in Sources */,
+				8D8017CA284DB4070068C655 /* MainViewSectionCreator.swift in Sources */,
 				8DF21C9E2840654D00F2F8E9 /* HouseImageView.swift in Sources */,
 				8D224202283CB794006A9043 /* PriceLabel.swift in Sources */,
 				8D6465F0284051E70021C782 /* PricePerDayLabel.swift in Sources */,
 				8D6465EE284051DF0021C782 /* ReviewLabel.swift in Sources */,
 				8D9D1F5C283CE24300EEF33A /* PriceAnnotationView.swift in Sources */,
+				8D8017CC284DB45D0068C655 /* HeroImageSectionFactory.swift in Sources */,
 				8D05F2D3284880F400796609 /* MainViewController.swift in Sources */,
 				8D9D1F64283D355200EEF33A /* HouseInfo.swift in Sources */,
 				8DA3503B283F47D400B72BA9 /* MapCardCollectionViewDataSource.swift in Sources */,
 				8D05F2D72848825700796609 /* ReservationViewController.swift in Sources */,
+				8D8017D2284DB9FF0068C655 /* SearchBarController.swift in Sources */,
 				8D0AD768283C5EDD00575C3B /* TabBarController.swift in Sources */,
 				8D6465EC28404A5D0021C782 /* ListButtonDelegate.swift in Sources */,
 				8D224204283CB7E4006A9043 /* PriceConverter.swift in Sources */,
@@ -627,7 +661,9 @@
 				8DF10487284745B50005CCD5 /* URLMockProtocol.swift in Sources */,
 				8D3DBBA12845AB39007B6352 /* NetworkManager.swift in Sources */,
 				8D0AD766283C5EDD00575C3B /* SceneDelegate.swift in Sources */,
+				8D8017D0284DB6480068C655 /* RecommendSectionFactory.swift in Sources */,
 				8D3DBBA72845B728007B6352 /* NetworkManagable.swift in Sources */,
+				8D8017CE284DB6030068C655 /* NearSpotSectionFactory.swift in Sources */,
 				8D6B3C0E283E095E00E24CE8 /* Extensions.swift in Sources */,
 				8D0AD781283C718200575C3B /* MapViewController.swift in Sources */,
 				8D224206283CB8AB006A9043 /* Constants.swift in Sources */,
@@ -636,7 +672,7 @@
 				8D55479328405FE300C4D9D9 /* HouseNameLabel.swift in Sources */,
 				8DA3503F283F630900B72BA9 /* SearchResultViewController.swift in Sources */,
 				8D6B3BFC283DCCE400E24CE8 /* AddressConverter.swift in Sources */,
-				8DFE2767284859650003D226 /* HouseInfoRepoitoriable.swift in Sources */,
+				8DFE2767284859650003D226 /* SearchResultRepoitoriable.swift in Sources */,
 				8D554791284055E200C4D9D9 /* HeartButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

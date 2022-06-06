@@ -17,9 +17,10 @@
     "hostName": "test1",
     "isWish": false
     },
+    
     {
     "id": 11,
-    "name": "house1",
+    "name": "짱짱맨",
     "price": 70000,
     "detailInfo": {
         "maxNumber": 4,

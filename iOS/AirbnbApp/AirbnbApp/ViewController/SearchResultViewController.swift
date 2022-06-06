@@ -14,7 +14,7 @@ final class SearchResultViewController: UIViewController {
     
     private let tabelView = UITableView(frame: .zero, style: .grouped)
     private lazy var dataSource: SearchResultTableViewDataSource = SearchResultTableViewDataSource(delegate: self)
-    private var houseInfoBundleViewModel: SearchResultViewModel?
+    private var searchResultViewModel: SearchResultViewModel?
     
     private lazy var mapButton: UIButton = {
         let button = UIButton()
@@ -30,18 +30,19 @@ final class SearchResultViewController: UIViewController {
         fetchData()
         
         // 특정 Cell의 HeartButton State를 reload
-        houseInfoBundleViewModel?.changedHeartIndex.bind({[weak self] index in
+        searchResultViewModel?.changedHeartIndex.bind({[weak self] index in
             guard let index = index,
                   let self = self else { return }
             self.dataSource.changeIsWish(at: index)
             DispatchQueue.main.async {
+                guard let index = index else { return }
                 self.tabelView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
             }
         })
     }
     
     private func fetchData() {
-        self.houseInfoBundleViewModel?
+        self.searchResultViewModel?
             .fetchData(endpoint: EndPointCase.getHousesInfo.endpoint) { [weak self] houseInfoBundle in
                 self?.dataSource.fetchHouseInfoBundle(houseInfoBundle: houseInfoBundle ?? [])
                 self?.tabelView.reloadData()
@@ -73,7 +74,7 @@ final class SearchResultViewController: UIViewController {
         
         let action = UIAction { [weak self] _  in
             guard let self = self,
-                  let viewModel = self.houseInfoBundleViewModel
+                  let viewModel = self.searchResultViewModel
             else { return }
             let mapVC = MapViewController()
             mapVC.getHouseInfoBundleViewModel(houseInfoBundleViewModel: viewModel)
@@ -104,7 +105,7 @@ final class SearchResultViewController: UIViewController {
 
 extension SearchResultViewController: HeartButtonDelegate {
     func heartButtonIsTapped(_ cardIndex: Int?) {
-        houseInfoBundleViewModel?.changeIsWish(cardIndex)
+        searchResultViewModel?.changeIsWish(cardIndex)
     }
 }
 
@@ -150,7 +151,7 @@ extension SearchResultViewController {
         // Mock URLProtocol 주입
         let config = URLSessionConfiguration.ephemeral
         config.protocolClasses = [URLMockProtocol.self]
-        houseInfoBundleViewModel = SearchResultViewModel(
-            repository: HouseInfoRepository(networkManager: NetworkManager(sessionManager: Session(configuration: config))))
+        searchResultViewModel = SearchResultViewModel(
+            repository: SearchResultRepository(networkManager: NetworkManager(sessionManager: Session(configuration: config))))
     }
 }

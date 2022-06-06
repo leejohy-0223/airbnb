@@ -5,7 +5,7 @@
 //  Created by 박진섭 on 2022/06/03.
 //
 
-import UIKit
+import UIKit.UICollectionView
 
 final class MainCollectionViewDataSource: NSObject, UICollectionViewDataSource {
     
@@ -55,6 +55,7 @@ final class MainCollectionViewDataSource: NSObject, UICollectionViewDataSource {
         case 1:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NearSpotOverViewCell.ID, for: indexPath) as?
                     NearSpotOverViewCell else { return UICollectionViewCell() }
+            
             return cell
         case 2:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendCardCell.ID, for: indexPath) as?

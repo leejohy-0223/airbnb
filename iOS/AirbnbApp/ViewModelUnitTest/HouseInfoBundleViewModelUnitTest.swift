@@ -95,7 +95,6 @@ class HouseInfoBundleViewModelUnitTest: XCTestCase {
         let config = URLSessionConfiguration.ephemeral
         config.protocolClasses = [URLMockProtocol.self]
         self.sut = SearchResultViewModel(
-            repository: HouseInfoRepository(networkManager: NetworkManager(sessionManager: Session(configuration: config))))
-    
+            repository: SearchResultRepository(networkManager: NetworkManager(sessionManager: Session(configuration: config))))
     }
 }

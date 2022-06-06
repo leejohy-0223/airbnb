@@ -53,7 +53,6 @@ final class RecommendCardCell: UICollectionViewCell {
         
         imageView.snp.makeConstraints {
             $0.leading.top.trailing.equalToSuperview()
-//            $0.leading.top.equalToSuperview().inset(insetValue)
             $0.height.equalTo(300)
         }
         

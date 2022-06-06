@@ -16,7 +16,7 @@ struct NetworkManager: NetworkManagable {
     }
     
     func request<T: Codable>(endpoint: Endpointable, completion: @escaping ((DataResponse<T?, AFError>) -> Void))  {
-        guard let headers = endpoint.getHeaders() else { return }
+        let headers = endpoint.getHeaders()
         let url = endpoint.getURL()
         let method = endpoint.getHttpMethod()
         let param = endpoint.getBody()

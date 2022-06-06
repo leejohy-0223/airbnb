@@ -7,11 +7,11 @@
 
 final class SearchResultViewModel {
     private(set) var houseInfoBundle: [HouseInfo] = []
-    private(set) var changedHeartIndex: Observable<Int> = Observable(0)
+    private(set) var changedHeartIndex: Observable<Int?> = Observable(nil)
     
-    private var repository: HouseInfoRepoitoriable?
+    private var repository: SearchResultRepoitoriable?
     
-    init(repository: HouseInfoRepoitoriable) {
+    init(repository: SearchResultRepoitoriable) {
         self.repository = repository
     }
     
