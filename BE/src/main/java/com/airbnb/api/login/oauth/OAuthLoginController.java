@@ -23,7 +23,7 @@ public class OAuthLoginController {
         this.loginService = loginService;
     }
 
-    @GetMapping("/callback/{vendor}")
+    @GetMapping("/{vendor}/callback")
     public LoginResponse OAuthLogin(@RequestParam String code, @PathVariable String vendor) {
         log.info("vendor {} server is called", vendor);
         return loginService.login(code, vendor);

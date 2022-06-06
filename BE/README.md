@@ -27,7 +27,7 @@
 --- 
 
 # 4차 PR todo list
-- [ ] call back url 수정
+- [X] call back url 수정
 - [ ] Token parsing 부분 Optional 제거
 - [ ] OAuthLoginController log 구체화
 - [X] calculateFee 메서드 위치 이동
