@@ -8,17 +8,18 @@
 import UIKit
 
 struct MainViewDataSourceManager {
-    private static var dataSource:UICollectionViewDiffableDataSource<Section, SectionDataSource>?
+    private static var dataSource:UICollectionViewDiffableDataSource<MainViewSection, MainViewSectionData>?
     
+    // regist Cell, configure Cell
     static func setDataSource(in collectionView: UICollectionView) {
         let heroCellRegistration = MainViewRegistrator.createHeroCellRegestration()
         let nearSpotCellRegistration = MainViewRegistrator.createNearSpotCellRegestration()
         let recommendResgistration = MainViewRegistrator.createRecommendSpotCellRegestration()
         let sectionHeaderResigtration = MainViewRegistrator.createHeaderRegistration()
         
-        let dataSource: UICollectionViewDiffableDataSource<Section, SectionDataSource>? =
+        let dataSource: UICollectionViewDiffableDataSource<MainViewSection, MainViewSectionData>? =
             .init(collectionView: collectionView) { collectionView, indexPath, data in
-                guard let section = Section(rawValue: indexPath.section) else { return  nil }
+                guard let section = MainViewSection(rawValue: indexPath.section) else { return  nil }
                 
                 switch section {
                 case .hero:
@@ -38,47 +39,36 @@ struct MainViewDataSourceManager {
                         using: recommendResgistration,
                         for: indexPath,
                         item: Recommend(image: data.image,
-                                        name: data.spotName ?? "")
-                )
+                                        name: data.spotName ?? ""))
+                }
             }
-        }
         
         dataSource?.supplementaryViewProvider = { collectionView, _, indexPath in
             collectionView.dequeueConfiguredReusableSupplementary(using: sectionHeaderResigtration, for: indexPath)
         }
         self.dataSource = dataSource
+            
     }
     
-    
-    static func snapshot(data: [SectionDataSource]) {
+    // Configure SnapShot From MainViewInfo
+    static func snapshot(data: MainViewInfo?) {
+        guard let data = data else {  return  }
         
-        var heroImages = [SectionDataSource]()
-        var nearSpots = [SectionDataSource]()
-        var recommends = [SectionDataSource]()
+        let heroSectionData = MainViewSectionData.hero(image: data.heroImage)
+        let nearSpotSectionData = data.NearSpot.map{ MainViewSectionData.nearSpot(spot: $0) }
+        let recommendSectionData = data.recommend.map { MainViewSectionData.recommend(recommend: $0)}
         
-        data.forEach { (data: SectionDataSource) in
-            switch data {
-            case .hero:
-                heroImages.append(data)
-            case .nearSpot:
-                nearSpots.append(data)
-            case .recommend:
-                recommends.append(data)
-            }
-        }
+        var heroImageSnapShot = NSDiffableDataSourceSectionSnapshot<MainViewSectionData>()
+        heroImageSnapShot.append([heroSectionData])
         
-        var heroImageSnapShot = NSDiffableDataSourceSectionSnapshot<SectionDataSource>()
-        heroImageSnapShot.append(heroImages)
-            
-        var nearSpotSnapShot = NSDiffableDataSourceSectionSnapshot<SectionDataSource>()
-        nearSpotSnapShot.append(nearSpots)
+        var nearSpotSnapShot = NSDiffableDataSourceSectionSnapshot<MainViewSectionData>()
+        nearSpotSnapShot.append(nearSpotSectionData)
         
-        var recommendSnapShot = NSDiffableDataSourceSectionSnapshot<SectionDataSource>()
-        recommendSnapShot.append(recommends)
+        var recommendSnapShot = NSDiffableDataSourceSectionSnapshot<MainViewSectionData>()
+        recommendSnapShot.append(recommendSectionData)
         
         self.dataSource?.apply(heroImageSnapShot, to: .hero, animatingDifferences: true)
         self.dataSource?.apply(nearSpotSnapShot, to: .nearSpot, animatingDifferences: true)
         self.dataSource?.apply(recommendSnapShot, to: .recommend, animatingDifferences: true)
     }
-    
 }

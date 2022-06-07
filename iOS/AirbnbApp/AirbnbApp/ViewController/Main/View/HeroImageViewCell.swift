@@ -16,7 +16,6 @@ final class HeroImageViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .blue
         setUp()
     }
     

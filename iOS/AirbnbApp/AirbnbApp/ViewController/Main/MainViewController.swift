@@ -17,20 +17,12 @@ final class MainViewController: UIViewController {
     }()
     
     private var searchVC: UISearchController?
-    private var sectionLayoutFactories: [Section: MainViewSectionCreator.Type] = [.hero: HeroImageSectionFactory.self,
+    private var sectionLayoutFactories: [MainViewSection: MainViewSectionCreator.Type] = [.hero: HeroImageSectionFactory.self,
                                                                                   .nearSpot: NearSpotSectionFactory.self,
                                                                                   .recommend: RecommendSectionFactory.self]
-        
-    private var dataSource: UICollectionViewDiffableDataSource<Section, SectionDataSource>?
 
     private var sectionHeaderViewModel: SectionHeaderViewModel = SectionHeaderViewModel()
-    private var imageViewManager: MainImageViewManager = MainImageViewManager(repository: Repository(networkManager: NetworkManager(sessionManager: .default)))
-    
-    private var mockData: [SectionDataSource] = [SectionDataSource.hero(image: HeroImage(image: "https://w7.pngwing.com/pngs/332/451/png-transparent-pepe-the-frog-pepe-4chan-television-face-leaf.png")),
-                                                 SectionDataSource.recommend(recommend: Recommend(image: "https://w7.pngwing.com/pngs/332/451/png-transparent-pepe-the-frog-pepe-4chan-television-face-leaf.png", name: "Good House")),
-                                                 SectionDataSource.nearSpot(spot: NearSpot(image: "https://w7.pngwing.com/pngs/332/451/png-transparent-pepe-the-frog-pepe-4chan-television-face-leaf.png", spotName: "Come~", distance: 30)),                                                 SectionDataSource.recommend(recommend: Recommend(image: "https://w7.pngwing.com/pngs/332/451/png-transparent-pepe-the-frog-pepe-4chan-television-face-leaf.png", name: "Come on")),                                                 SectionDataSource.nearSpot(spot: NearSpot(image: "https://w7.pngwing.com/pngs/332/451/png-transparent-pepe-the-frog-pepe-4chan-television-face-leaf.png", spotName: "좋지 않은 숙소", distance: 30))
-    ]
-    
+    private var sectionViewModel: MainViewSectionViewModel = MainViewSectionViewModel(repository: Repository(networkManager: NetworkManager(sessionManager: .default)))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,7 +61,7 @@ final class MainViewController: UIViewController {
     private func createLayout() -> UICollectionViewCompositionalLayout? {
         return UICollectionViewCompositionalLayout { sectionNumber, _ in
             let insetValue = 16.0
-            guard let section = Section(rawValue: sectionNumber) else { return nil }
+            guard let section = MainViewSection(rawValue: sectionNumber) else { return nil }
             return self.sectionLayoutFactories[section]?.makeSectionLayout(insetValue: insetValue)
         }
     }
@@ -77,52 +69,19 @@ final class MainViewController: UIViewController {
 
 // MARK: - Set Diffable DataSource
 extension MainViewController {
-    
     func setUpDataSource() {
         MainViewDataSourceManager.setDataSource(in: collectionView)
-        MainViewDataSourceManager.snapshot(data: mockData)
+
+        self.sectionViewModel.fetchMockData { data in
+            MainViewDataSourceManager.snapshot(data: data)
+        }
+        
+        
+        // API 구축시 fetch함수
+//        self.sectionViewModel.fetchData(endpoint: EndPointCase.getMainViewInfo.endpoint) { data in
+//            MainViewDataSourceManager.snapshot(data: data)
+//        }
     }
 }
 
-enum Section: Int, CaseIterable {
-    case hero
-    case nearSpot
-    case recommend
-}
 
-enum SectionDataSource: Hashable {
-    case hero(image: HeroImage)
-    case nearSpot(spot: NearSpot)
-    case recommend(recommend: Recommend)
-    
-    var image: String {
-        switch self {
-        case .hero(let image):
-            return image.image
-        case .nearSpot(let spot):
-            return spot.image
-        case .recommend(let recommend):
-            return recommend.image
-        }
-    }
-    
-    var spotName: String? {
-        switch self {
-        case .nearSpot(let spot):
-            return spot.spotName
-        case .recommend(let recommend):
-            return recommend.name
-        default:
-            return nil
-        }
-    }
-    
-    var distance: Int? {
-        switch self {
-        case .nearSpot(let spot):
-            return spot.distance
-        default:
-            return nil
-        }
-    }
-}

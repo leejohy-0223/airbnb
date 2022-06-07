@@ -1,5 +1,5 @@
 //
-//  HeroCellViewModel.swift
+//  MainViewImageViewManager.swift
 //  AirbnbApp
 //
 //  Created by 박진섭 on 2022/06/07.
@@ -8,7 +8,7 @@
 import Foundation
 import OSLog
 
-final class MainImageViewManager {
+final class MainViewImageViewManager {
     private var repository:Repoitoriable?
     
     init(repository: Repoitoriable) {

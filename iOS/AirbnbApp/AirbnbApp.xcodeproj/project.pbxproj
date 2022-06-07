@@ -33,9 +33,13 @@
 		8D0AD77D283C62F800575C3B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8D0AD77C283C62F800575C3B /* SnapKit */; };
 		8D0AD781283C718200575C3B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0AD780283C718200575C3B /* MapViewController.swift */; };
 		8D11DF54284F07320009BDB5 /* SectionHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D11DF53284F07320009BDB5 /* SectionHeaderViewModel.swift */; };
-		8D11DF57284F097E0009BDB5 /* MainImageViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D11DF56284F097E0009BDB5 /* MainImageViewManager.swift */; };
+		8D11DF57284F097E0009BDB5 /* MainViewImageViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D11DF56284F097E0009BDB5 /* MainViewImageViewManager.swift */; };
 		8D11DF62284F3A060009BDB5 /* MainViewRegistrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D11DF61284F3A060009BDB5 /* MainViewRegistrator.swift */; };
 		8D11DF64284F40180009BDB5 /* MainViewDataSourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D11DF63284F40180009BDB5 /* MainViewDataSourceManager.swift */; };
+		8D11DF66284F49630009BDB5 /* MainViewSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D11DF65284F49630009BDB5 /* MainViewSectionViewModel.swift */; };
+		8D11DF68284F4B4D0009BDB5 /* MainViewInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D11DF67284F4B4D0009BDB5 /* MainViewInfo.swift */; };
+		8D11DF6A284F6E050009BDB5 /* MainViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D11DF69284F6E050009BDB5 /* MainViewSection.swift */; };
+		8D11DF6C284F6E840009BDB5 /* MainViewSectionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D11DF6B284F6E840009BDB5 /* MainViewSectionData.swift */; };
 		8D2241FD283CA470006A9043 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2241FC283CA470006A9043 /* MapView.swift */; };
 		8D224202283CB794006A9043 /* PriceLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D224201283CB794006A9043 /* PriceLabel.swift */; };
 		8D224204283CB7E4006A9043 /* PriceConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D224203283CB7E4006A9043 /* PriceConverter.swift */; };
@@ -73,10 +77,7 @@
 		8DA35039283F26FF00B72BA9 /* HeartButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA35038283F26FF00B72BA9 /* HeartButtonDelegate.swift */; };
 		8DA3503B283F47D400B72BA9 /* MapCardCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA3503A283F47D400B72BA9 /* MapCardCollectionViewDataSource.swift */; };
 		8DA3503F283F630900B72BA9 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA3503E283F630900B72BA9 /* SearchResultViewController.swift */; };
-		8DD12F53284EF98A009866AC /* Recommend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD12F52284EF98A009866AC /* Recommend.swift */; };
-		8DD12F55284EF9E9009866AC /* HeroImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD12F54284EF9E9009866AC /* HeroImage.swift */; };
 		8DD56DE3284602AE00B357DA /* ResultHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD56DE2284602AE00B357DA /* ResultHeaderView.swift */; };
-		8DD723F6284E23B90084D048 /* NearSpot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD723F5284E23B90084D048 /* NearSpot.swift */; };
 		8DF10487284745B50005CCD5 /* URLMockProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DBBD02845E9A2007B6352 /* URLMockProtocol.swift */; };
 		8DF10489284745D20005CCD5 /* MockHouseInfoData.json in Resources */ = {isa = PBXBuildFile; fileRef = 8DF10488284745D20005CCD5 /* MockHouseInfoData.json */; };
 		8DF1048D28476BB50005CCD5 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF1048C28476BB50005CCD5 /* Observable.swift */; };
@@ -130,9 +131,13 @@
 		8D0AD771283C5EE000575C3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D0AD780283C718200575C3B /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		8D11DF53284F07320009BDB5 /* SectionHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderViewModel.swift; sourceTree = "<group>"; };
-		8D11DF56284F097E0009BDB5 /* MainImageViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainImageViewManager.swift; sourceTree = "<group>"; };
+		8D11DF56284F097E0009BDB5 /* MainViewImageViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewImageViewManager.swift; sourceTree = "<group>"; };
 		8D11DF61284F3A060009BDB5 /* MainViewRegistrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewRegistrator.swift; sourceTree = "<group>"; };
 		8D11DF63284F40180009BDB5 /* MainViewDataSourceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewDataSourceManager.swift; sourceTree = "<group>"; };
+		8D11DF65284F49630009BDB5 /* MainViewSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewSectionViewModel.swift; sourceTree = "<group>"; };
+		8D11DF67284F4B4D0009BDB5 /* MainViewInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewInfo.swift; sourceTree = "<group>"; };
+		8D11DF69284F6E050009BDB5 /* MainViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewSection.swift; sourceTree = "<group>"; };
+		8D11DF6B284F6E840009BDB5 /* MainViewSectionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewSectionData.swift; sourceTree = "<group>"; };
 		8D2241FC283CA470006A9043 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		8D224201283CB794006A9043 /* PriceLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceLabel.swift; sourceTree = "<group>"; };
 		8D224203283CB7E4006A9043 /* PriceConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceConverter.swift; sourceTree = "<group>"; };
@@ -167,10 +172,7 @@
 		8DA35038283F26FF00B72BA9 /* HeartButtonDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartButtonDelegate.swift; sourceTree = "<group>"; };
 		8DA3503A283F47D400B72BA9 /* MapCardCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCardCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		8DA3503E283F630900B72BA9 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
-		8DD12F52284EF98A009866AC /* Recommend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recommend.swift; sourceTree = "<group>"; };
-		8DD12F54284EF9E9009866AC /* HeroImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroImage.swift; sourceTree = "<group>"; };
 		8DD56DE2284602AE00B357DA /* ResultHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultHeaderView.swift; sourceTree = "<group>"; };
-		8DD723F5284E23B90084D048 /* NearSpot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearSpot.swift; sourceTree = "<group>"; };
 		8DF10488284745D20005CCD5 /* MockHouseInfoData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MockHouseInfoData.json; sourceTree = "<group>"; };
 		8DF1048C28476BB50005CCD5 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		8DF1048E284783680005CCD5 /* SearchResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewModel.swift; sourceTree = "<group>"; };
@@ -282,7 +284,8 @@
 			isa = PBXGroup;
 			children = (
 				8D11DF53284F07320009BDB5 /* SectionHeaderViewModel.swift */,
-				8D11DF56284F097E0009BDB5 /* MainImageViewManager.swift */,
+				8D11DF65284F49630009BDB5 /* MainViewSectionViewModel.swift */,
+				8D11DF56284F097E0009BDB5 /* MainViewImageViewManager.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -411,7 +414,7 @@
 				8D11DF61284F3A060009BDB5 /* MainViewRegistrator.swift */,
 				8D11DF63284F40180009BDB5 /* MainViewDataSourceManager.swift */,
 				8D11DF55284F096A0009BDB5 /* ViewModel */,
-				8DD12F56284EFA25009866AC /* SectionDataModel */,
+				8DD12F56284EFA25009866AC /* Model */,
 				8DD723F8284E2AA80084D048 /* View */,
 				8DD723EE284E1CDC0084D048 /* SectionLayoutFactory */,
 			);
@@ -436,14 +439,14 @@
 			path = CollectionView;
 			sourceTree = "<group>";
 		};
-		8DD12F56284EFA25009866AC /* SectionDataModel */ = {
+		8DD12F56284EFA25009866AC /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8DD12F52284EF98A009866AC /* Recommend.swift */,
-				8DD12F54284EF9E9009866AC /* HeroImage.swift */,
-				8DD723F5284E23B90084D048 /* NearSpot.swift */,
+				8D11DF67284F4B4D0009BDB5 /* MainViewInfo.swift */,
+				8D11DF69284F6E050009BDB5 /* MainViewSection.swift */,
+				8D11DF6B284F6E840009BDB5 /* MainViewSectionData.swift */,
 			);
-			path = SectionDataModel;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		8DD723EE284E1CDC0084D048 /* SectionLayoutFactory */ = {
@@ -677,6 +680,7 @@
 			files = (
 				8DFF04862849B1E900EEA0F3 /* MainHeaderView.swift in Sources */,
 				8D3DBB8F28445E7E007B6352 /* Repository.swift in Sources */,
+				8D11DF68284F4B4D0009BDB5 /* MainViewInfo.swift in Sources */,
 				8D05F2D52848824A00796609 /* WishListViewController.swift in Sources */,
 				8D6465E8283FAA1E0021C782 /* ResultCardCell.swift in Sources */,
 				8D8017CA284DB4070068C655 /* MainViewSectionCreator.swift in Sources */,
@@ -686,28 +690,27 @@
 				8D6465EE284051DF0021C782 /* ReviewLabel.swift in Sources */,
 				8D11DF64284F40180009BDB5 /* MainViewDataSourceManager.swift in Sources */,
 				8D9D1F5C283CE24300EEF33A /* PriceAnnotationView.swift in Sources */,
-				8DD12F55284EF9E9009866AC /* HeroImage.swift in Sources */,
-				8D11DF57284F097E0009BDB5 /* MainImageViewManager.swift in Sources */,
+				8D11DF57284F097E0009BDB5 /* MainViewImageViewManager.swift in Sources */,
 				8D8017CC284DB45D0068C655 /* HeroImageSectionFactory.swift in Sources */,
 				8D05F2D3284880F400796609 /* MainViewController.swift in Sources */,
 				8D11DF54284F07320009BDB5 /* SectionHeaderViewModel.swift in Sources */,
 				8D9D1F64283D355200EEF33A /* HouseInfo.swift in Sources */,
+				8D11DF66284F49630009BDB5 /* MainViewSectionViewModel.swift in Sources */,
 				8DA3503B283F47D400B72BA9 /* MapCardCollectionViewDataSource.swift in Sources */,
 				8D05F2D72848825700796609 /* ReservationViewController.swift in Sources */,
 				8D8017D2284DB9FF0068C655 /* SearchBarResultController.swift in Sources */,
 				8D0AD768283C5EDD00575C3B /* TabBarController.swift in Sources */,
-				8DD12F53284EF98A009866AC /* Recommend.swift in Sources */,
 				8D6465EC28404A5D0021C782 /* ListButtonDelegate.swift in Sources */,
 				8D224204283CB7E4006A9043 /* PriceConverter.swift in Sources */,
 				8D3DBBA42845B712007B6352 /* EndPoint.swift in Sources */,
 				8DA35039283F26FF00B72BA9 /* HeartButtonDelegate.swift in Sources */,
 				8D0AD764283C5EDD00575C3B /* AppDelegate.swift in Sources */,
 				8DF1048F284783680005CCD5 /* SearchResultViewModel.swift in Sources */,
+				8D11DF6A284F6E050009BDB5 /* MainViewSection.swift in Sources */,
 				8D2241FD283CA470006A9043 /* MapView.swift in Sources */,
 				8D11DF62284F3A060009BDB5 /* MainViewRegistrator.swift in Sources */,
 				8DFF04882849B82300EEA0F3 /* RecommendCardCell.swift in Sources */,
 				8D05F2DB284898E600796609 /* HeroImageView.swift in Sources */,
-				8DD723F6284E23B90084D048 /* NearSpot.swift in Sources */,
 				8DF1048D28476BB50005CCD5 /* Observable.swift in Sources */,
 				8D05F2DD28489DF800796609 /* HeroImageViewCell.swift in Sources */,
 				8D6B3BFA283DB79800E24CE8 /* MapViewCardCell.swift in Sources */,
@@ -722,6 +725,7 @@
 				8D0AD781283C718200575C3B /* MapViewController.swift in Sources */,
 				8D224206283CB8AB006A9043 /* Constants.swift in Sources */,
 				8DD56DE3284602AE00B357DA /* ResultHeaderView.swift in Sources */,
+				8D11DF6C284F6E840009BDB5 /* MainViewSectionData.swift in Sources */,
 				8DF21CA428406F6800F2F8E9 /* SearchResultTableViewDataSource.swift in Sources */,
 				8D55479328405FE300C4D9D9 /* HouseNameLabel.swift in Sources */,
 				8DA3503F283F630900B72BA9 /* SearchResultViewController.swift in Sources */,

@@ -13,7 +13,6 @@ final class RecommendCardCell: UICollectionViewCell {
     
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .blue
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
