@@ -6,6 +6,8 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: ${username}
     password: ${password}
+  jackson:
+    property-naming-strategy: SNAKE_CASE
 
 jwt:
   token:

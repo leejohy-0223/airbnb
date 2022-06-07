@@ -1,5 +1,10 @@
 package com.airbnb.domain.login.kakao;
 
+import com.airbnb.domain.login.OAuthServer;
+import com.airbnb.domain.login.OauthToken;
+import com.airbnb.domain.login.dto.UserProfileDto;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -11,13 +16,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
-
-import com.airbnb.domain.login.OAuthServer;
-import com.airbnb.domain.login.OauthToken;
-import com.airbnb.domain.login.dto.UserProfileDto;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 
 @Component(value = "kakao")
 public class KakaoOAuthServer implements OAuthServer {
@@ -81,8 +79,8 @@ public class KakaoOAuthServer implements OAuthServer {
             String.class
         );
 
-        objectMapper.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
         KakaoProfile kakaoProfile;
+
         try {
             kakaoProfile = objectMapper.readValue(response.getBody(), KakaoProfile.class);
         } catch (JsonProcessingException e) {
