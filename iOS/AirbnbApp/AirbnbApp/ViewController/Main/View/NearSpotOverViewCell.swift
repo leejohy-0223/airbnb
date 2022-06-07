@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 final class NearSpotOverViewCell: UICollectionViewCell {
-        
+
     static let ID = "NearSpotOverViewCell"
     
     private var imageView: UIImageView = {
@@ -47,6 +47,12 @@ final class NearSpotOverViewCell: UICollectionViewCell {
     
     @available(*, unavailable) required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func configure(image: Data?, title: String?, distance: Int?) {
+        self.imageView.image = UIImage(data: image ?? Data())
+        self.localLabel.text = title
+        self.distanceLabel.text = "\(distance ?? 0)"
     }
     
     private func addViews() {

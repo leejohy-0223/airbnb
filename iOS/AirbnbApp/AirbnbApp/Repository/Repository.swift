@@ -8,7 +8,7 @@
 import Alamofire
 import OSLog
 
-final class SearchResultRepository: SearchResultRepoitoriable {
+final class Repository: Repoitoriable {
     
     private(set) var networkManager:NetworkManagable?
     
@@ -16,7 +16,7 @@ final class SearchResultRepository: SearchResultRepoitoriable {
         self.networkManager = networkManager
     }
     
-    func fetchHouseInfo<T: Codable>(endpoint: Endpointable, onCompleted: @escaping (T?) -> Void) {
+    func fetchData<T: Codable>(endpoint: Endpointable, onCompleted: @escaping (T?) -> Void) {
         networkManager?.request(endpoint: endpoint) { (result: DataResponse<T?, AFError>) in
             switch result.result {
             case .success(let data):

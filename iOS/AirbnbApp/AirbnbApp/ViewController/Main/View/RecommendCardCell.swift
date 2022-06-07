@@ -8,6 +8,7 @@
 import UIKit
 
 final class RecommendCardCell: UICollectionViewCell {
+    
     static let ID = "RecommendCardCell"
     
     private lazy var imageView: UIImageView = {
@@ -17,7 +18,7 @@ final class RecommendCardCell: UICollectionViewCell {
         return imageView
     }()
     
-    private lazy var label: UILabel = {
+    private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 2
         label.font = .systemFont(ofSize: 32.0, weight: .bold)
@@ -35,17 +36,14 @@ final class RecommendCardCell: UICollectionViewCell {
     }
     
     private func addViews() {
-        [imageView, label].forEach {
+        [imageView, titleLabel].forEach {
             self.addSubview($0)
         }
     }
     
-    func setImage(image: UIImage) {
-        self.imageView.image = image
-    }
-    
-    func setLabel(text: String) {
-        self.label.text = text
+    func configure(image: Data?, title: String?) {
+        self.imageView.image = UIImage(data: image ?? Data())
+        self.titleLabel.text = title
     }
     
     private func setUp() {
@@ -56,7 +54,7 @@ final class RecommendCardCell: UICollectionViewCell {
             $0.height.equalTo(300)
         }
         
-        label.snp.makeConstraints {
+        titleLabel.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview()
             $0.top.equalTo(imageView.snp.bottom).offset(insetValue)
         }

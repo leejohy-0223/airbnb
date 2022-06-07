@@ -6,6 +6,7 @@
 //
 
 import Alamofire
+import Foundation.NSData
 
 struct NetworkManager: NetworkManagable {
 
@@ -25,6 +26,13 @@ struct NetworkManager: NetworkManagable {
             .request(url, method: method, parameters: param, encoding: URLEncoding.default, headers: HTTPHeaders(headers))
             .validate()
             .responseDecodable(completionHandler: completion)
+    }
+    
+    func requestImage(url: String, completion: @escaping ((DataResponse<Data?, AFError>) -> Void))  {
+        sessionManager
+            .request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil)
+            .validate()
+            .response(completionHandler: completion)
     }
 }
 

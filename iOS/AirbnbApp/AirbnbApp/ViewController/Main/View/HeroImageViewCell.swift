@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 
 final class HeroImageViewCell: UICollectionViewCell {
+    
     static let ID = "HeroImageViewCell"
     
     private let recommendImageView: HeroImageView = HeroImageView(frame: .zero)
@@ -23,8 +24,8 @@ final class HeroImageViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setImage(image: UIImage) {
-        self.recommendImageView.image = image
+    func configure(image: Data?) {
+        self.recommendImageView.image = UIImage(data: image ?? Data())
     }
     
     private func setUp() {

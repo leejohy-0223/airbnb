@@ -152,6 +152,6 @@ extension SearchResultViewController {
         let config = URLSessionConfiguration.ephemeral
         config.protocolClasses = [URLMockProtocol.self]
         searchResultViewModel = SearchResultViewModel(
-            repository: SearchResultRepository(networkManager: NetworkManager(sessionManager: Session(configuration: config))))
+            repository: Repository(networkManager: NetworkManager(sessionManager: Session(configuration: config))))
     }
 }

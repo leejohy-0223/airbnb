@@ -9,9 +9,9 @@ final class SearchResultViewModel {
     private(set) var houseInfoBundle: [HouseInfo] = []
     private(set) var changedHeartIndex: Observable<Int?> = Observable(nil)
     
-    private var repository: SearchResultRepoitoriable?
+    private var repository: Repoitoriable?
     
-    init(repository: SearchResultRepoitoriable) {
+    init(repository: Repoitoriable) {
         self.repository = repository
     }
     
@@ -27,7 +27,7 @@ final class SearchResultViewModel {
     }
     
     func fetchData(endpoint: Endpointable, onCompleted: @escaping ([HouseInfo]?) -> Void) {
-        repository?.fetchHouseInfo(endpoint: endpoint) { [weak self] (houseData: [HouseInfo]?) in
+        repository?.fetchData(endpoint: endpoint) { [weak self] (houseData: [HouseInfo]?) in
             guard let self = self else { return }
             self.houseInfoBundle = houseData ?? []
             onCompleted(houseData)
