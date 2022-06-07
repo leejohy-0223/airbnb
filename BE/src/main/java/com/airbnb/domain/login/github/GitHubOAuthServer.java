@@ -1,9 +1,8 @@
 package com.airbnb.domain.login.github;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-
+import com.airbnb.domain.login.OAuthServer;
+import com.airbnb.domain.login.OauthToken;
+import com.airbnb.domain.login.dto.UserProfileDto;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
@@ -15,9 +14,10 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
-import com.airbnb.domain.login.OAuthServer;
-import com.airbnb.domain.login.OauthToken;
-import com.airbnb.domain.login.dto.UserProfileDto;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Component(value = "github")
 public class GitHubOAuthServer implements OAuthServer {
@@ -68,7 +68,7 @@ public class GitHubOAuthServer implements OAuthServer {
     @Override
     public UserProfileDto getUserProfile(OauthToken token) {
         Map<String, Object> userProfileMap = getUserProfileFromOAuthServer(token)
-            .orElseThrow(() -> new IllegalArgumentException("사용자 정보가 없습니다"));
+                .orElseThrow(() -> new NoSuchElementException("사용자 정보가 없습니다"));
 
         return new UserProfileDto(
             Long.parseLong(String.valueOf(userProfileMap.get("id"))),
