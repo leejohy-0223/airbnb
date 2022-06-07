@@ -76,52 +76,14 @@ final class MainViewController: UIViewController {
     }
 }
 
-//MARK: - Regist Cell
-private extension MainViewController {
-    func createSectionHeaderRegistration() -> UICollectionView.SupplementaryRegistration<MainHeaderView> {
-        UICollectionView.SupplementaryRegistration<MainHeaderView>(elementKind: MainHeaderView.ID) {
-            [weak self] header, _ , indexPath in
-            guard let text = self?.sectionHeaderViewModel.getTitle(at: indexPath.section) else { return }
-            header.setLabel(text: text)
-        }
-    }
-    
-    func createHeroCellRegestration() -> UICollectionView.CellRegistration<HeroImageViewCell, HeroImage> {
-        UICollectionView.CellRegistration<HeroImageViewCell, HeroImage> {
-            [weak self] cell, _, image in
-            self?.imageViewManager.fetchImage(image: image.image , onCompleted: { data in
-                cell.configure(image: data)
-            })
-        }
-    }
-    
-    func createNearSpotCellRegestration() -> UICollectionView.CellRegistration<NearSpotOverViewCell, NearSpot> {
-        UICollectionView.CellRegistration<NearSpotOverViewCell, NearSpot> {
-            [weak self] cell, _, nearSpot in
-            self?.imageViewManager.fetchImage(image: nearSpot.image , onCompleted: { data in
-                cell.configure(image: data, title: nearSpot.spotName, distance: nearSpot.distance)
-            })
-        }
-    }
-    
-    func createRecommendCellRegestration() -> UICollectionView.CellRegistration<RecommendCardCell, Recommend> {
-        UICollectionView.CellRegistration<RecommendCardCell, Recommend> {
-            [weak self] cell, _, recommend in
-            self?.imageViewManager.fetchImage(image: recommend.image , onCompleted: { data in
-                cell.configure(image: data, title: recommend.name)
-            })
-        }
-    }
-}
-
 // MARK: - Set Diffable DataSource
 extension MainViewController {
     
     func setUpDataSource() {
-        let heroCellRegistration = createHeroCellRegestration()
-        let nearSpotCellRegistration = createNearSpotCellRegestration()
-        let recommendResgistration = createRecommendCellRegestration()
-        let sectionHeaderResigtration = createSectionHeaderRegistration()
+        let heroCellRegistration = MainViewRegistrator.createHeroCellRegestration()
+        let nearSpotCellRegistration = MainViewRegistrator.createNearSpotCellRegestration()
+        let recommendResgistration = MainViewRegistrator.createRecommendSpotCellRegestration()
+        let sectionHeaderResigtration = MainViewRegistrator.createHeaderRegistration()
         
         let dataSource: UICollectionViewDiffableDataSource<Section, SectionDataSource>? =
             .init(collectionView: collectionView) { collectionView, indexPath, data in
@@ -146,14 +108,14 @@ extension MainViewController {
                         for: indexPath,
                         item: Recommend(image: data.image,
                                         name: data.spotName ?? "")
-                    )
-                }
+                )
+            }
         }
         
         dataSource?.supplementaryViewProvider = { collectionView, _, indexPath in
             collectionView.dequeueConfiguredReusableSupplementary(using: sectionHeaderResigtration, for: indexPath)
         }
-        
+ 
         self.dataSource = dataSource
     }
     

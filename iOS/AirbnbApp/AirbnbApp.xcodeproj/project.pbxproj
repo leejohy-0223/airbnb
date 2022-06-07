@@ -34,6 +34,7 @@
 		8D0AD781283C718200575C3B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0AD780283C718200575C3B /* MapViewController.swift */; };
 		8D11DF54284F07320009BDB5 /* SectionHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D11DF53284F07320009BDB5 /* SectionHeaderViewModel.swift */; };
 		8D11DF57284F097E0009BDB5 /* MainImageViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D11DF56284F097E0009BDB5 /* MainImageViewManager.swift */; };
+		8D11DF62284F3A060009BDB5 /* MainViewRegistrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D11DF61284F3A060009BDB5 /* MainViewRegistrator.swift */; };
 		8D2241FD283CA470006A9043 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2241FC283CA470006A9043 /* MapView.swift */; };
 		8D224202283CB794006A9043 /* PriceLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D224201283CB794006A9043 /* PriceLabel.swift */; };
 		8D224204283CB7E4006A9043 /* PriceConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D224203283CB7E4006A9043 /* PriceConverter.swift */; };
@@ -129,6 +130,7 @@
 		8D0AD780283C718200575C3B /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		8D11DF53284F07320009BDB5 /* SectionHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderViewModel.swift; sourceTree = "<group>"; };
 		8D11DF56284F097E0009BDB5 /* MainImageViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainImageViewManager.swift; sourceTree = "<group>"; };
+		8D11DF61284F3A060009BDB5 /* MainViewRegistrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewRegistrator.swift; sourceTree = "<group>"; };
 		8D2241FC283CA470006A9043 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		8D224201283CB794006A9043 /* PriceLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceLabel.swift; sourceTree = "<group>"; };
 		8D224203283CB7E4006A9043 /* PriceConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceConverter.swift; sourceTree = "<group>"; };
@@ -404,6 +406,7 @@
 			isa = PBXGroup;
 			children = (
 				8D05F2D2284880F400796609 /* MainViewController.swift */,
+				8D11DF61284F3A060009BDB5 /* MainViewRegistrator.swift */,
 				8D11DF55284F096A0009BDB5 /* ViewModel */,
 				8DD12F56284EFA25009866AC /* SectionDataSource */,
 				8DD723F8284E2AA80084D048 /* View */,
@@ -697,6 +700,7 @@
 				8D0AD764283C5EDD00575C3B /* AppDelegate.swift in Sources */,
 				8DF1048F284783680005CCD5 /* SearchResultViewModel.swift in Sources */,
 				8D2241FD283CA470006A9043 /* MapView.swift in Sources */,
+				8D11DF62284F3A060009BDB5 /* MainViewRegistrator.swift in Sources */,
 				8DFF04882849B82300EEA0F3 /* RecommendCardCell.swift in Sources */,
 				8D05F2DB284898E600796609 /* HeroImageView.swift in Sources */,
 				8DD723F6284E23B90084D048 /* NearSpot.swift in Sources */,

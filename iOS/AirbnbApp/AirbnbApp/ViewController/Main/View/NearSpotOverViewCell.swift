@@ -52,7 +52,7 @@ final class NearSpotOverViewCell: UICollectionViewCell {
     func configure(image: Data?, title: String?, distance: Int?) {
         self.imageView.image = UIImage(data: image ?? Data())
         self.localLabel.text = title
-        self.distanceLabel.text = "\(distance ?? 0)"
+        self.distanceLabel.text = "\(distance ?? 0)분"
     }
     
     private func addViews() {
