@@ -1,6 +1,6 @@
 package com.airbnb.api.wish.dto;
 
-import com.airbnb.api.wish.WishController;
+import com.airbnb.api.houses.HouseController;
 import com.airbnb.domain.DetailInfo;
 import com.airbnb.domain.Wish;
 import org.springframework.hateoas.EntityModel;
@@ -8,6 +8,7 @@ import org.springframework.hateoas.EntityModel;
 import java.util.Objects;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 public class WishResponse extends EntityModel<Wish> {
 
@@ -23,7 +24,7 @@ public class WishResponse extends EntityModel<Wish> {
         this.price = wish.getHouse().getPrice();
         this.detailInfo = wish.getHouse().getDetailInfo();
 
-        add(linkTo(WishController.class).slash(wish.getId()).withRel("self"));
+        add(linkTo(methodOn(HouseController.class).findHouseInformation(wish.getHouse().getId())).withSelfRel());
     }
 
     public Long getUserId() {
