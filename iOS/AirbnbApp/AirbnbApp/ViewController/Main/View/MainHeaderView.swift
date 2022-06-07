@@ -16,6 +16,7 @@ final class MainHeaderView: UICollectionReusableView {
         let label = UILabel()
         label.textAlignment = .left
         label.textColor = .label
+        label.numberOfLines = 2
         label.font = .systemFont(ofSize: Constants.Label.mainHeaderViewLabelFontSize, weight: .bold)
         return label
     }()

@@ -6,7 +6,7 @@
 //
 
 
-import UIKit
+import UIKit.UICollectionView
 
 struct MainViewRegistrator {
     private static let imageViewManager: MainImageViewManager = MainImageViewManager(repository: Repository.init(networkManager: NetworkManager(sessionManager: .default)))

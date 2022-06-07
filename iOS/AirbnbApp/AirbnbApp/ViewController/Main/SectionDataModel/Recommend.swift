@@ -10,4 +10,5 @@ import Foundation
 struct Recommend: Hashable, Codable {
     let image: String
     let name: String
+    let ID = UUID()
 }

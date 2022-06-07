@@ -11,4 +11,5 @@ struct NearSpot: Hashable, Codable {
     let image: String
     let spotName: String
     let distance: Int
+    let ID = UUID()
 }
