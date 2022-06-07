@@ -2,6 +2,7 @@ package com.airbnb.api.wish;
 
 import com.airbnb.api.wish.dto.WishCreateRequest;
 import com.airbnb.api.wish.dto.WishDeleteRequest;
+import com.airbnb.api.wish.dto.WishListResponse;
 import com.airbnb.api.wish.dto.WishResponse;
 import com.airbnb.common.ResultDto;
 import com.airbnb.service.WishService;
@@ -46,12 +47,14 @@ public class WishController {
     }
 
     @GetMapping
-    public List<WishResponse> getWishList(HttpServletRequest request) {
+    public WishListResponse getWishList(HttpServletRequest request) {
         String userEmail = (String) request.getAttribute("userEmail");
         if (userEmail.isBlank()) {
             throw new NoSuchElementException(NOT_FOUND_USER_EXECEPTION);
         }
-        return wishService.getWishListByEmail(userEmail);
+        List<WishResponse> wishList = wishService.getWishListByEmail(userEmail);
+        return new WishListResponse(wishList);
+
     }
 
     @DeleteMapping

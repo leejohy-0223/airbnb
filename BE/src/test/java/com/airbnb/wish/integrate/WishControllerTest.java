@@ -181,10 +181,10 @@ class WishControllerTest {
         // when, then
         resultActions.andExpect(status().isOk())
                 .andExpect(header().string(HttpHeaders.CONTENT_TYPE, MediaTypes.HAL_JSON_VALUE))
-                .andExpect(jsonPath("$", hasSize(3)))
-                .andExpect(jsonPath("$[0].name").value("house1"))
-                .andExpect(jsonPath("$[1].name").value("house2"))
-                .andExpect(jsonPath("$[2].name").value("house3"))
+                .andExpect(jsonPath("$.wishList", hasSize(3)))
+                .andExpect(jsonPath("$.wishList[0].name").value("house1"))
+                .andExpect(jsonPath("$.wishList[1].name").value("house2"))
+                .andExpect(jsonPath("$.wishList[2].name").value("house3"))
                 .andDo(document("get-wish-list",
                         requestHeaders(
                                 headerWithName(HttpHeaders.ACCEPT).description("accept header")
@@ -193,15 +193,15 @@ class WishControllerTest {
                                 headerWithName(HttpHeaders.CONTENT_TYPE).description("Content type")
                         ),
                         relaxedResponseFields(
-                                fieldWithPath("[].id").description("Id of wish"),
-                                fieldWithPath("[].userId").description("Id of user"),
-                                fieldWithPath("[].name").description("Name of house"),
-                                fieldWithPath("[].price").description("Price of house"),
-                                fieldWithPath("[].detailInfo.maxNumber").description("Maximum allowable number of people"),
-                                fieldWithPath("[].detailInfo.type").description("Room type"),
-                                fieldWithPath("[].detailInfo.roomIntroduction").description("Short room introduction"),
-                                fieldWithPath("[].detailInfo.rate").description("Rate of house"),
-                                fieldWithPath("[].detailInfo.commentCount").description("Count of comment")
+                                fieldWithPath("wishList[].id").description("Id of wish"),
+                                fieldWithPath("wishList[].userId").description("Id of user"),
+                                fieldWithPath("wishList[].name").description("Name of house"),
+                                fieldWithPath("wishList[].price").description("Price of house"),
+                                fieldWithPath("wishList[].detailInfo.maxNumber").description("Maximum allowable number of people"),
+                                fieldWithPath("wishList[].detailInfo.type").description("Room type"),
+                                fieldWithPath("wishList[].detailInfo.roomIntroduction").description("Short room introduction"),
+                                fieldWithPath("wishList[].detailInfo.rate").description("Rate of house"),
+                                fieldWithPath("wishList[].detailInfo.commentCount").description("Count of comment")
                         )
                 ))
         ;
