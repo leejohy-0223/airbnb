@@ -1,14 +1,14 @@
 //
-//  SearchSpotViewLayoutFactoy.swift
+//  NearSearchSectionLayoutFactory.swift
 //  AirbnbApp
 //
-//  Created by 박진섭 on 2022/06/07.
+//  Created by 박진섭 on 2022/06/08.
 //
 
-import UIKit.UICollectionView
+import UIKit
 
-struct SearchSpotViewLayoutFactoy: SectionLayoutCreator {
-
+struct NearSearchSectionLayoutFactory: SectionLayoutCreator {
+    
     static func makeSectionLayout(insetValue: CGFloat) -> NSCollectionLayoutSection {
         let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
                                                                              heightDimension: .fractionalHeight(0.1)))
@@ -23,6 +23,13 @@ struct SearchSpotViewLayoutFactoy: SectionLayoutCreator {
 
         let section = NSCollectionLayoutSection(group: group)
 
+        section.boundarySupplementaryItems = [NSCollectionLayoutBoundarySupplementaryItem(layoutSize: NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .estimated(50)),
+            elementKind: MainHeaderView.ID,
+            alignment: .topLeading)]
+        
         return section
     }
+
 }

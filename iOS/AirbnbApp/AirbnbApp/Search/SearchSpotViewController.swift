@@ -9,16 +9,25 @@ import UIKit
 import SnapKit
 import MapKit
 
+typealias SearchedSpot = NearSpot
+
 final class SearchSpotViewController: UIViewController {
     
-    private lazy var collectionView: UICollectionView = {
-        guard let layout = self.createLayout() else { return UICollectionView() }
+    private lazy var searchCollectionView: UICollectionView = {
+        guard let layout = self.createLayout(.search) else { return UICollectionView() }
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         return collectionView
     }()
-
-    private var sectionLayoutFactory: SectionLayoutCreator.Type = SearchSpotViewLayoutFactoy.self
-
+    
+    private lazy var nearSpotCollectionView: UICollectionView = {
+        guard let layout = self.createLayout(.nearSpot) else { return UICollectionView() }
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        return collectionView
+    }()
+    
+    private var layoutFactories: [Layout: SectionLayoutCreator.Type] = [.search: SearchSpotViewLayoutFactoy.self,
+                                                                        .nearSpot: NearSearchSectionLayoutFactory.self]
+    
     private var searchCompleter = MKLocalSearchCompleter()
     private var searchResults = [MKLocalSearchCompletion]()
     
@@ -29,20 +38,21 @@ final class SearchSpotViewController: UIViewController {
         setDataSource()
     }
 
-    private func createLayout() -> UICollectionViewCompositionalLayout? {
+    private func createLayout(_ layout: Layout) -> UICollectionViewCompositionalLayout? {
         return UICollectionViewCompositionalLayout.init { _, _ in
-            self.sectionLayoutFactory.makeSectionLayout(insetValue: 16.0)
+            self.layoutFactories[layout]?.makeSectionLayout(insetValue: 16.0)
         }
     }
 
     private func setDataSource() {
-        SearchSpotViewSectionManager.setDataSource(in: collectionView)
+        SearchSpotViewSectionManager.setDataSource(in: searchCollectionView)
+        SearchSpotViewSectionManager.setDataSource(in: nearSpotCollectionView)
     }
 
     private func setCollectionView() {
-        self.view.addSubview(collectionView)
+        self.view.addSubview(searchCollectionView)
 
-        collectionView.snp.makeConstraints {
+        searchCollectionView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
     }
@@ -50,6 +60,11 @@ final class SearchSpotViewController: UIViewController {
     private func setSearchCompleter() {
         searchCompleter.delegate = self
         searchCompleter.resultTypes = .address
+    }
+    
+    private enum Layout: String {
+        case search
+        case nearSpot
     }
 }
 
@@ -70,3 +85,23 @@ extension SearchSpotViewController: UISearchResultsUpdating {
 enum SearchSpotViewSection: Int, CaseIterable {
     case searchResult
 }
+
+enum SearchSpotViewSectionData: Hashable {
+    case searchResult(searchSpot: SearchedSpot)
+    
+    var image: String {
+        switch self {
+        case .searchResult(let searchedSpot):
+            return searchedSpot.image
+        }
+    }
+    
+    var spotName: String {
+        switch self {
+        case .searchResult(let searchedSpot):
+            return searchedSpot.spotName
+        }
+    }
+}
+
+

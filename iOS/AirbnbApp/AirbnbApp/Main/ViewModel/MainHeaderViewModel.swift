@@ -1,5 +1,5 @@
 //
-//  SectionHeaderViewModel.swift
+//  MainHeaderViewModel.swift
 //  AirbnbApp
 //
 //  Created by 박진섭 on 2022/06/07.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class SectionHeaderViewModel {
+final class MainHeaderViewModel {
     private let heraderTitle:[String?] = [nil,
                                           "가까운 여행지 둘러보기",
                                           "어디에서나,여행은\n살아보는거야!"]

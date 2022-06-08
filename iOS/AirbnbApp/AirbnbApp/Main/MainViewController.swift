@@ -23,7 +23,7 @@ final class MainViewController: UIViewController {
                                                                                         .nearSpot: NearSpotSectionFactory.self,
                                                                                         .recommend: RecommendSectionFactory.self]
 
-    private var sectionHeaderViewModel: SectionHeaderViewModel = SectionHeaderViewModel()
+    private var sectionHeaderViewModel: MainHeaderViewModel = MainHeaderViewModel()
     
     private var sectionViewModel: MainViewSectionViewModel = MainViewSectionViewModel(repository: Repository(networkManager: NetworkManager(sessionManager: .default)))
     

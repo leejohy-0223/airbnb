@@ -12,7 +12,7 @@ struct CollectioinViewRegistrator {
     private static let imageViewModel: MainViewImageViewModel = MainViewImageViewModel(repository:Repository
         .init(networkManager:NetworkManager(sessionManager: .default)))
     
-    private static let MainViewHeaderViewModel: SectionHeaderViewModel = SectionHeaderViewModel()
+    private static let MainViewHeaderViewModel: MainHeaderViewModel = MainHeaderViewModel()
     
     // header
     static func createHeaderRegistration() -> UICollectionView.SupplementaryRegistration<MainHeaderView> {

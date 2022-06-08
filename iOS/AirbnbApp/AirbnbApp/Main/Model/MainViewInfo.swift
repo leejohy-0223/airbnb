@@ -20,7 +20,7 @@ struct HeroImage: Hashable,Codable {
 }
 
 struct NearSpot: Hashable, Codable {
-    var image: String = "https://www.google.com/imgres?imgurl=https%3A%2F%2Fimg.seoul.co.kr%2Fimg%2Fupload%2F2017%2F05%2F08%2FSSI_20170508145003.jpg&imgrefurl=https%3A%2F%2Fwww.seoul.co.kr%2Fnews%2FnewsView.php%3Fid%3D20170508500089&tbnid=xFVNP3uwjSR-_M&vet=12ahUKEwisk--ko534AhW1I6YKHbtiBFQQMygHegUIARDKAQ..i&docid=03UJrLKsj7TmwM&w=1200&h=632&q=%EC%8A%AC%ED%94%88%20%ED%8E%98%ED%8E%98&ved=2ahUKEwisk--ko534AhW1I6YKHbtiBFQQMygHegUIARDKAQ"
+    var image: String = "https://mblogthumb-phinf.pstatic.net/MjAxOTEwMTFfMjQ1/MDAxNTcwODA1MzU1ODkw.9ZyAgnbIhwtCLpKAPPucFyPbGJKPNcZTt1Lqj7VSd6Mg.JPNDYv6WLIfHKGUREKndPzhvxzqofhodkwdvIp3VAKUg.JPEG.sssss747/B069F215-7344-49C1-8548-70425427DC39-22206-0000104FDB5CA962_file.jpg?type=w800"
     let spotName: String
     var distance: Int? = nil
     var ID = UUID()
