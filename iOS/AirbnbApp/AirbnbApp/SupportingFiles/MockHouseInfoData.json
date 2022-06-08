@@ -1,0 +1,89 @@
+
+[
+    {
+    "id": 11,
+    "name": "house1",
+    "price": 75000,
+    "detailInfo": {
+        "maxNumber": 4,
+        "type": "원룸1",
+        "roomIntroduction": "아늑한 집",
+        "rate": 4.5,
+        "commentCount": 3
+    },
+    "latitude":37.490765,
+    "longitude":127.033433,
+    "images": "",
+    "hostName": "test1",
+    "isWish": false
+    },
+    
+    {
+    "id": 11,
+    "name": "짱짱맨",
+    "price": 70000,
+    "detailInfo": {
+        "maxNumber": 4,
+        "type": "원룸1",
+        "roomIntroduction": "아늑한 집",
+        "rate": 4.5,
+        "commentCount": 3
+    },
+    "latitude":37.480765,
+    "longitude":127.032433,
+    "images": "",
+    "hostName": "test1",
+    "isWish": false
+    },
+    {
+    "id": 11,
+    "name": "house1",
+    "price": 85000,
+    "detailInfo": {
+        "maxNumber": 4,
+        "type": "원룸1",
+        "roomIntroduction": "아늑한 집",
+        "rate": 4.1,
+        "commentCount": 3
+    },
+    "latitude":37.480765,
+    "longitude":127.023433,
+    "images": "",
+    "hostName": "test1",
+    "isWish": false
+    },
+    {
+    "id": 11,
+    "name": "house1",
+    "price": 95000,
+    "detailInfo": {
+        "maxNumber": 4,
+        "type": "원룸1",
+        "roomIntroduction": "아늑한 집",
+        "rate": 4.2,
+        "commentCount": 3
+    },
+    "latitude":37.390765,
+    "longitude":127.033433,
+    "images": "",
+    "hostName": "test1",
+    "isWish": false
+    },
+    {
+    "id": 11,
+    "name": "house1",
+    "price": 715000,
+    "detailInfo": {
+        "maxNumber": 4,
+        "type": "원룸1",
+        "roomIntroduction": "아늑한 집",
+        "rate": 4.5,
+        "commentCount": 3
+    },
+    "latitude":37.460765,
+    "longitude":127.023433,
+    "images": "",
+    "hostName": "test1",
+    "isWish": false
+    }
+]

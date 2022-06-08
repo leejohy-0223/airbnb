@@ -8,14 +8,13 @@
 
 import UIKit
 import SnapKit
+import Alamofire
 
 final class SearchResultViewController: UIViewController {
     
-    private let tabelView = UITableView(frame: .zero, style: .plain)
+    private let tabelView = UITableView(frame: .zero, style: .grouped)
     private lazy var dataSource: SearchResultTableViewDataSource = SearchResultTableViewDataSource(delegate: self)
-    
-    private let houseInfoManager: HouseInfoRepository = HouseInfoRepository(
-        networkManager: NetworkManager(sessionManager: .default))
+    private var searchResultViewModel: SearchResultViewModel?
     
     private lazy var mapButton: UIButton = {
         let button = UIButton()
@@ -24,16 +23,29 @@ final class SearchResultViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchData()
+        setMockRepository()
         addViews()
         setTableView()
         setMapButton()
+        fetchData()
+        
+        // 특정 Cell의 HeartButton State를 reload
+        searchResultViewModel?.changedHeartIndex.bind({[weak self] index in
+            guard let index = index,
+                  let self = self else { return }
+            self.dataSource.changeIsWish(at: index)
+            DispatchQueue.main.async {
+                guard let index = index else { return }
+                self.tabelView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
+            }
+        })
     }
     
     private func fetchData() {
-        houseInfoManager.fetchHouseInfo(endpoint: EndPointCase.getHousesInfo.endpoint) { [weak self] (houseData: [HouseInfo]?) in
-            guard let self = self else { return }
-            self.dataSource.fetchHouseInfo(houseInfo: houseData ?? [])
+        self.searchResultViewModel?
+            .fetchData(endpoint: EndPointCase.getHousesInfo.endpoint) { [weak self] houseInfoBundle in
+                self?.dataSource.fetchHouseInfoBundle(houseInfoBundle: houseInfoBundle ?? [])
+                self?.tabelView.reloadData()
         }
     }
     
@@ -45,11 +57,13 @@ final class SearchResultViewController: UIViewController {
     
     private func setTableView() {
         self.tabelView.register(ResultCardCell.self, forCellReuseIdentifier: ResultCardCell.ID)
+        self.tabelView.register(ResultHeaderView.self, forHeaderFooterViewReuseIdentifier: ResultHeaderView.ID)
         self.tabelView.separatorStyle = .none
         self.tabelView.rowHeight = UITableView.automaticDimension
         self.tabelView.estimatedRowHeight = 300
         
         tabelView.dataSource = self.dataSource
+        tabelView.delegate = self
         
         tabelView.snp.makeConstraints {
             $0.edges.equalToSuperview()
@@ -59,9 +73,11 @@ final class SearchResultViewController: UIViewController {
     private func setMapButton() {
         
         let action = UIAction { [weak self] _  in
-            guard let self = self else { return }
+            guard let self = self,
+                  let viewModel = self.searchResultViewModel
+            else { return }
             let mapVC = MapViewController()
-            mapVC.getHouseInfoManager(houseInfoManager: self.houseInfoManager)
+            mapVC.getHouseInfoBundleViewModel(houseInfoBundleViewModel: viewModel)
             self.present(mapVC, animated: true)
         }
         
@@ -89,8 +105,53 @@ final class SearchResultViewController: UIViewController {
 
 extension SearchResultViewController: HeartButtonDelegate {
     func heartButtonIsTapped(_ cardIndex: Int?) {
-        houseInfoManager.didChangeIsWish(cardIndex, completionHandler:  { houseInfoBundle in
-            self.dataSource.fetchHouseInfo(houseInfo: houseInfoBundle)
-        })
+        searchResultViewModel?.changeIsWish(cardIndex)
+    }
+}
+
+// Header
+extension SearchResultViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: ResultHeaderView.ID)
+                as? ResultHeaderView else { return nil }
+        headerView.setHouseCountLabel(houseCount: dataSource.tableView(tableView, numberOfRowsInSection: 0))
+        headerView.setInputValueLabel(location: "양재", startDate: 5, endDate: 5, peopleCount: 3)
+        return headerView
+    }
+}
+
+
+// Set Mock Data
+extension SearchResultViewController {
+    private func setMockRepository() {
+        let bundle = Bundle(for: Self.self)
+        
+        guard let mockDataURL = bundle.url(forResource: "MockHouseInfoData", withExtension: "json"),
+              let mockData = try? Data(contentsOf: mockDataURL) else { return }
+        
+        // mockURL
+        let mockEndpoint = EndPointCase.getHousesInfo.endpoint
+        guard let mockURL = try? mockEndpoint.getURL().asURL() else { return }
+
+        // Mock loadingHander 설정
+        URLMockProtocol.loadingHandler = { request in
+            let response = HTTPURLResponse(
+                url: mockURL,
+                statusCode: 200,
+                httpVersion: nil,
+                headerFields: nil)!
+            
+            if request.url == mockURL {
+                return (response, mockData, nil)
+            } else {
+                return (response, nil, nil)
+            }
+        }
+        
+        // Mock URLProtocol 주입
+        let config = URLSessionConfiguration.ephemeral
+        config.protocolClasses = [URLMockProtocol.self]
+        searchResultViewModel = SearchResultViewModel(
+            repository: Repository(networkManager: NetworkManager(sessionManager: Session(configuration: config))))
     }
 }

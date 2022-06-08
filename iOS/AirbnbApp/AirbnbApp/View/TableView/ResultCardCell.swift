@@ -13,13 +13,11 @@ final class ResultCardCell: UITableViewCell {
     private var cardIndex: Int?
     
     private lazy var houseInfoStackView: UIStackView = UIStackView(frame: .zero)
-    
     private lazy var houseImageView: HouseImageView = HouseImageView(frame: .zero)
     private lazy var reviewLabel: ReviewLabel = ReviewLabel(frame: .zero)
     private lazy var pricePerDayLabel: PricePerDayLabel = PricePerDayLabel(frame: .zero)
     private lazy var houseNameLabel: HouseNameLabel = HouseNameLabel(frame: .zero)
     private lazy var totalPrice: UILabel = UILabel(frame: .zero)
-    
     lazy var heartButton: HeartButton = HeartButton(frame: .zero)
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -43,7 +41,6 @@ final class ResultCardCell: UITableViewCell {
     
     private func addHeartButton() {
         self.contentView.addSubview(heartButton)
-
         
         self.heartButton.snp.makeConstraints {
             $0.trailing.equalToSuperview().inset(16.0)
@@ -59,7 +56,7 @@ final class ResultCardCell: UITableViewCell {
         self.houseImageView.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview().inset(insetValue)
             $0.bottom.lessThanOrEqualToSuperview()
-            $0.height.equalTo(Constants.imageViewSize.SearchResultImage)
+            $0.height.equalTo(Constants.ImageViewSize.SearchResultImage)
         }
     }
     

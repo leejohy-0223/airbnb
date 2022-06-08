@@ -30,7 +30,7 @@ final class SearchResultTableViewDataSource: NSObject, UITableViewDataSource {
     private func configureCell(cell: ResultCardCell, indexPath: IndexPath) {
         let houseInfo = houseInfoBundle[indexPath.row]
         cell.setCardIndex(index: indexPath.row)
-        cell.setReviewLabel(rating: houseInfo.detail.rating, reviewCount: houseInfo.detail.reviewCount)
+        cell.setReviewLabel(rating: houseInfo.detailInfo.rate, reviewCount: houseInfo.detailInfo.commentCount)
         cell.setImage(image: UIImage(systemName: "house")!)
         cell.setPrice(price: houseInfo.price)
         cell.setHouseName(numberOfLine: 1, fontSize: Constants.Label.mapCardHouseNameFontSize, houseName: houseInfo.name)
@@ -38,13 +38,14 @@ final class SearchResultTableViewDataSource: NSObject, UITableViewDataSource {
         cell.setTotalPrice(price: 140000)
     }
     
-    func fetchHouseInfo(houseInfo: [HouseInfo]) {
-        self.houseInfoBundle = houseInfo
+    func fetchHouseInfoBundle(houseInfoBundle: [HouseInfo]) {
+        self.houseInfoBundle = houseInfoBundle
     }
     
     func changeIsWish(at cardIndex: Int?) {
         guard let cardIndex = cardIndex else { return }
-        houseInfoBundle[cardIndex].isWish = !houseInfoBundle[cardIndex].isWish
+        if houseInfoBundle.checkIsSafeIndex(index: cardIndex) {
+            houseInfoBundle[cardIndex].isWish = !houseInfoBundle[cardIndex].isWish
+        }
     }
-    
 }

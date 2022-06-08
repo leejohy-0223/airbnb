@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct MockDataModel: Codable, Equatable {
     let userId: Int
     let id: Int

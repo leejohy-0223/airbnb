@@ -5,21 +5,22 @@
 //  Created by 박진섭 on 2022/05/25.
 //
 
-struct HouseInfo: Codable {
-    let id: String = " "
+struct HouseInfo: Codable, Equatable {
+    let id: Int
     let name: String
-    let detail: Detail
     let price: Int
-    let hostingBy: String
+    let detailInfo: DetailInfo
     let latitude: Double
     let longitude: Double
-    var isWish: Bool = false
+    let images: String?
+    let hostName: String
+    var isWish: Bool
 }
 
-struct Detail: Codable {
-    let MaimumNumberOfPeople: Int = 10
-    let houseForm: String = "호텔"
-    let introduce: String = "반가워요 ^^"
-    let rating: Double
-    let reviewCount: Int
+struct DetailInfo: Codable, Equatable {
+    let maxNumber: Int
+    let type: String
+    let roomIntroduction: String
+    let rate: Double
+    let commentCount: Int
 }

@@ -14,10 +14,9 @@ final class MapViewController: UIViewController {
     private let mapView = MapView(frame: CGRect(origin: .zero, size: UIScreen.main.bounds.size))
     private lazy var collectionView = mapView.collectionView
     private lazy var dataSource = MapCardCollectionViewDataSource(delegate: self)
-    
     private let startCordinate = CLLocationCoordinate2D(latitude: 37.490765, longitude: 127.033433)
     
-    private var houseInfoManager: HouseInfoRepository?
+    private var houseInfoBundleViewModel: SearchResultViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,13 +25,13 @@ final class MapViewController: UIViewController {
         setCollectionView()
     }
     
-    func getHouseInfoManager(houseInfoManager: HouseInfoRepository) {
-        self.houseInfoManager = houseInfoManager
+    func getHouseInfoBundleViewModel(houseInfoBundleViewModel: SearchResultViewModel) {
+        self.houseInfoBundleViewModel = houseInfoBundleViewModel
     }
     
     private func setCollectionView() {
         self.collectionView.dataSource = dataSource
-        self.dataSource.fetchHouseInfo(houseInfo: houseInfoManager?.houseInfoBundle ?? [])
+        self.dataSource.fetchHouseInfo(houseInfo: houseInfoBundleViewModel?.houseInfoBundle ?? [])
     }
     
     private func setMapView() {
@@ -49,7 +48,7 @@ final class MapViewController: UIViewController {
     }
     
     private func addPins() {
-        houseInfoManager?.houseInfoBundle.forEach {
+        houseInfoBundleViewModel?.houseInfoBundle.forEach {
             addPin(houseInfo: $0)
         }
     }
@@ -62,7 +61,7 @@ final class MapViewController: UIViewController {
         AddressConverter.findAddressFromCoordinate(from: coordinate, isCompleted: { address in
             pin.subtitle = address
         })
-        
+
         self.mapView.addAnnotation(pin)
     }
 }
@@ -76,7 +75,7 @@ extension MapViewController: MKMapViewDelegate {
         dequeView.annotation = annotation
 
         // 특정 집 정보 coordinate로 가져오기
-        let houseInfo = self.houseInfoManager?.houseInfoBundle.first {
+        let houseInfo = self.houseInfoBundleViewModel?.houseInfoBundle.first {
             let coordinate = CLLocationCoordinate2D(latitude: $0.latitude, longitude: $0.longitude)
             return coordinate == annotation.coordinate
         }
@@ -90,9 +89,7 @@ extension MapViewController: MKMapViewDelegate {
 
 extension MapViewController: HeartButtonDelegate {
     func heartButtonIsTapped(_ cardIndex: Int?) {
-        houseInfoManager?.didChangeIsWish(cardIndex, completionHandler: { houseInfoBundle in
-            self.dataSource.fetchHouseInfo(houseInfo: houseInfoBundle)
-        })
+        self.houseInfoBundleViewModel?.changeIsWish(cardIndex)
     }
 }
 
