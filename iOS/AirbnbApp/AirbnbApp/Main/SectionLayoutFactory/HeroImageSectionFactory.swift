@@ -7,7 +7,7 @@
 
 import UIKit.UICollectionView
 
-final class HeroImageSectionFactory: MainViewSectionCreator {
+final class HeroImageSectionFactory: SectionLayoutCreator {
     
     static func makeSectionLayout(insetValue: CGFloat) -> NSCollectionLayoutSection {
         

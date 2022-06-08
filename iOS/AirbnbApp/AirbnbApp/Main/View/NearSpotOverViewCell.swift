@@ -28,14 +28,12 @@ final class NearSpotOverViewCell: UICollectionViewCell {
     private var localLabel: UILabel = {
         let label = UILabel()
         label.textColor = .label
-        label.text = "서울"
         return label
     }()
     
     private var distanceLabel: UILabel = {
         let label = UILabel()
         label.textColor = .secondaryLabel
-        label.text = "차로 30분 거리"
         return label
     }()
     
@@ -49,10 +47,12 @@ final class NearSpotOverViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(image: Data?, title: String?, distance: Int?) {
+    func configure(image: Data?, title: String?, distance: Int? = nil) {
         self.imageView.image = UIImage(data: image ?? Data())
         self.localLabel.text = title
-        self.distanceLabel.text = "\(distance ?? 0)분"
+        if let distance = distance {
+            self.distanceLabel.text = "\(distance)"
+        }
     }
     
     private func addViews() {
@@ -68,7 +68,7 @@ final class NearSpotOverViewCell: UICollectionViewCell {
     private func setUp() {
         imageView.snp.makeConstraints {
             $0.leading.top.bottom.equalToSuperview()
-            $0.width.equalTo(self.frame.width / 3)
+            $0.width.equalTo(64)
         }
         
         InfoStackView.snp.makeConstraints {

@@ -17,11 +17,14 @@ final class MainViewController: UIViewController {
     }()
     
     private var searchVC: UISearchController?
-    private var sectionLayoutFactories: [MainViewSection: MainViewSectionCreator.Type] = [.hero: HeroImageSectionFactory.self,
-                                                                                  .nearSpot: NearSpotSectionFactory.self,
-                                                                                  .recommend: RecommendSectionFactory.self]
+    private var searchSpotViewController = SearchSpotViewController()
+    
+    private var sectionLayoutFactories: [MainViewSection: SectionLayoutCreator.Type] = [.hero: HeroImageSectionFactory.self,
+                                                                                        .nearSpot: NearSpotSectionFactory.self,
+                                                                                        .recommend: RecommendSectionFactory.self]
 
     private var sectionHeaderViewModel: SectionHeaderViewModel = SectionHeaderViewModel()
+    
     private var sectionViewModel: MainViewSectionViewModel = MainViewSectionViewModel(repository: Repository(networkManager: NetworkManager(sessionManager: .default)))
     
     override func viewDidLoad() {
@@ -45,12 +48,13 @@ final class MainViewController: UIViewController {
     }
     
     private func setSearchViewController() {
-        searchVC = UISearchController(searchResultsController: SearchBarResultController())
-        searchVC?.searchBar.placeholder = "어디로 여행가세요?"
-        searchVC?.searchBar.showsCancelButton = false
-//        searchVC?.delegate = self
+        self.searchVC = UISearchController(searchResultsController: self.searchSpotViewController)
+        self.searchVC?.searchResultsUpdater = searchSpotViewController
+        self.searchVC?.searchBar.placeholder = "어디로 여행가세요?"
+        self.searchVC?.searchBar.showsCancelButton = false
+        self.searchVC?.obscuresBackgroundDuringPresentation = true
+        searchVC?.delegate = self
     }
-
     
     private func setLayouts() {
         self.collectionView.snp.makeConstraints{
@@ -65,23 +69,18 @@ final class MainViewController: UIViewController {
             return self.sectionLayoutFactories[section]?.makeSectionLayout(insetValue: insetValue)
         }
     }
-}
-
-// MARK: - Set Diffable DataSource
-extension MainViewController {
-    func setUpDataSource() {
+    
+    private func setUpDataSource() {
         MainViewDataSourceManager.setDataSource(in: collectionView)
-
+        
+        // MainView의 ViewModel 설정
         self.sectionViewModel.fetchMockData { data in
             MainViewDataSourceManager.snapshot(data: data)
         }
-        
-        
-        // API 구축시 fetch함수
-//        self.sectionViewModel.fetchData(endpoint: EndPointCase.getMainViewInfo.endpoint) { data in
-//            MainViewDataSourceManager.snapshot(data: data)
-//        }
     }
 }
 
 
+extension MainViewController: UISearchControllerDelegate {
+    
+}

@@ -33,14 +33,35 @@ struct Constants {
     
     struct mockData {
         
-        static let mainViewInfo:MainViewInfo = MainViewInfo(heroImage: HeroImage(image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSScJq6wvU3LWzlIXMX3iR_SUALhwYE4nG0hw&usqp=CAU"), NearSpot: [NearSpot(image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1Q_Wx7Xpgk6Jt1FjQMamcW-0S749sYJQxlA&usqp=CAU", spotName: "서울", distance: 100),                                                                                                NearSpot(image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1Q_Wx7Xpgk6Jt1FjQMamcW-0S749sYJQxlA&usqp=CAU", spotName: "서울", distance: 100),
-            NearSpot(image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1Q_Wx7Xpgk6Jt1FjQMamcW-0S749sYJQxlA&usqp=CAU", spotName: "서울", distance: 100),
-            NearSpot(image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1Q_Wx7Xpgk6Jt1FjQMamcW-0S749sYJQxlA&usqp=CAU", spotName: "서울", distance: 100)],
-            recommend: [Recommend(image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRrlfj2YtujOz-X8WiYPzP-8S6ffsAruJpkw&usqp=CAU", name: "김해"),
-                Recommend(image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRrlfj2YtujOz-X8WiYPzP-8S6ffsAruJpkw&usqp=CAU", name: "김해"),
-                Recommend(image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRrlfj2YtujOz-X8WiYPzP-8S6ffsAruJpkw&usqp=CAU", name: "김해"),
-                Recommend(image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRrlfj2YtujOz-X8WiYPzP-8S6ffsAruJpkw&usqp=CAU", name: "김해"),
-                Recommend(image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRrlfj2YtujOz-X8WiYPzP-8S6ffsAruJpkw&usqp=CAU", name: "김해"),
-                Recommend(image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRrlfj2YtujOz-X8WiYPzP-8S6ffsAruJpkw&usqp=CAU", name: "김해")])
+        static let mainViewInfo:MainViewInfo = MainViewInfo(
+            heroImage: HeroImage(image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSScJq6wvU3LWzlIXMX3iR_SUALhwYE4nG0hw&usqp=CAU"),
+            NearSpot: [NearSpot(image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1Q_Wx7Xpgk6Jt1FjQMamcW-0S749sYJQxlA&usqp=CAU",
+                                spotName: "서울",
+                                distance: 100),
+                       NearSpot(image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1Q_Wx7Xpgk6Jt1FjQMamcW-0S749sYJQxlA&usqp=CAU",
+                                spotName: "서울",
+                                distance: 100),
+            
+                       NearSpot(image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1Q_Wx7Xpgk6Jt1FjQMamcW-0S749sYJQxlA&usqp=CAU",
+                                spotName: "서울",
+                                distance: 100),
+                       NearSpot(image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1Q_Wx7Xpgk6Jt1FjQMamcW-0S749sYJQxlA&usqp=CAU",
+                                spotName: "서울",
+                        distance: 100)],
+            recommend:
+                [
+                Recommend(image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRrlfj2YtujOz-X8WiYPzP-8S6ffsAruJpkw&usqp=CAU",
+                          name: "살기"),
+                Recommend(image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRrlfj2YtujOz-X8WiYPzP-8S6ffsAruJpkw&usqp=CAU",
+                          name: "좋은"),
+                Recommend(image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRrlfj2YtujOz-X8WiYPzP-8S6ffsAruJpkw&usqp=CAU",
+                          name: "우리"),
+                Recommend(image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRrlfj2YtujOz-X8WiYPzP-8S6ffsAruJpkw&usqp=CAU",
+                          name: "동네"),
+                Recommend(image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRrlfj2YtujOz-X8WiYPzP-8S6ffsAruJpkw&usqp=CAU",
+                          name: "김해"),
+                Recommend(image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRrlfj2YtujOz-X8WiYPzP-8S6ffsAruJpkw&usqp=CAU",
+                          name:"Welcome")
+                ])
     }
 }

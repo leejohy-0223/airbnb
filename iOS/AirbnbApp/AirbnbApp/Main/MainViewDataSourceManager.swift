@@ -8,14 +8,14 @@
 import UIKit
 
 struct MainViewDataSourceManager {
-    private static var dataSource:UICollectionViewDiffableDataSource<MainViewSection, MainViewSectionData>?
+    private static var dataSource: UICollectionViewDiffableDataSource<MainViewSection, MainViewSectionData>?
     
     // regist Cell, configure Cell
     static func setDataSource(in collectionView: UICollectionView) {
-        let heroCellRegistration = MainViewRegistrator.createHeroCellRegestration()
-        let nearSpotCellRegistration = MainViewRegistrator.createNearSpotCellRegestration()
-        let recommendResgistration = MainViewRegistrator.createRecommendSpotCellRegestration()
-        let sectionHeaderResigtration = MainViewRegistrator.createHeaderRegistration()
+        let heroCellRegistration = CollectioinViewRegistrator.createHeroCellRegestration()
+        let nearSpotCellRegistration = CollectioinViewRegistrator.createSpotViewCellRegestration()
+        let recommendResgistration = CollectioinViewRegistrator.createRecommendSpotCellRegestration()
+        let sectionHeaderResigtration = CollectioinViewRegistrator.createHeaderRegistration()
         
         let dataSource: UICollectionViewDiffableDataSource<MainViewSection, MainViewSectionData>? =
             .init(collectionView: collectionView) { collectionView, indexPath, data in
@@ -70,5 +70,6 @@ struct MainViewDataSourceManager {
         self.dataSource?.apply(heroImageSnapShot, to: .hero, animatingDifferences: true)
         self.dataSource?.apply(nearSpotSnapShot, to: .nearSpot, animatingDifferences: true)
         self.dataSource?.apply(recommendSnapShot, to: .recommend, animatingDifferences: true)
+        
     }
 }

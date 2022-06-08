@@ -7,7 +7,7 @@
 
 import UIKit.UICollectionView
 
-final class RecommendSectionFactory: MainViewSectionCreator {
+final class RecommendSectionFactory: SectionLayoutCreator {
     
     static func makeSectionLayout(insetValue: CGFloat) -> NSCollectionLayoutSection {
         let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
