@@ -11,9 +11,6 @@ public class NumberOfHousesByPriceResponse {
         this.count = count;
     }
 
-    public NumberOfHousesByPriceResponse() {
-    }
-
     public Integer getPrice() {
         return price;
     }

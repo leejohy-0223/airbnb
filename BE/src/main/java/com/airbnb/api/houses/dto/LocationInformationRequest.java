@@ -11,11 +11,6 @@ public class LocationInformationRequest {
     private Double longitude;
     private Double latitude;
 
-    public LocationInformationRequest(Double longitude, Double latitude) {
-        this.longitude = longitude;
-        this.latitude = latitude;
-    }
-
     public Point getPoint() {
         return GeometryUtils.toPoint(longitude, latitude);
     }
@@ -26,6 +21,14 @@ public class LocationInformationRequest {
 
     public Double getLatitude() {
         return latitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
     }
 
     @Override

@@ -10,6 +10,10 @@ public class GraphResponse {
         this.NumberOfHousesByPrice = NumberOfHousesByPrice;
     }
 
+    public List<NumberOfHousesByPriceResponse> getNumberOfHousesByPrice() {
+        return NumberOfHousesByPrice;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o)

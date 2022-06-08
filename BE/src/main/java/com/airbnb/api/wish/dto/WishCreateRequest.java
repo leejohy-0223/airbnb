@@ -1,6 +1,5 @@
 package com.airbnb.api.wish.dto;
 
-
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
@@ -12,11 +11,19 @@ public class WishCreateRequest {
     @NotNull(message = "숙소의 ID값은 필수 입니다.")
     private Long houseId;
 
+    public WishCreateRequest(Long userId, Long houseId) {
+        this.userId = userId;
+        this.houseId = houseId;
+    }
+
     public WishCreateRequest() {
     }
 
-    public WishCreateRequest(Long userId, Long houseId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
+    }
+
+    public void setHouseId(Long houseId) {
         this.houseId = houseId;
     }
 
