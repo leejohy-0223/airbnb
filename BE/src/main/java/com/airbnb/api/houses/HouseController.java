@@ -35,14 +35,14 @@ public class HouseController {
     }
 
     @GetMapping("/price")
-    public GraphResponse findHouseCount(@ModelAttribute LocationInformationRequest request) {
+    public HousePriceGraphResponse findHouseCount(@ModelAttribute LocationInformationRequest request) {
         return houseService.findHouseCountInLocation(request);
     }
 
     @GetMapping("/{id}/calculate")
     public AccommodationCostResponse calculateFee(@PathVariable Long id,
-                                                  @RequestParam @DateTimeFormat(pattern = "yyyyMMddHHmm") LocalDateTime startDateTime,
-                                                  @RequestParam @DateTimeFormat(pattern = "yyyyMMddHHmm") LocalDateTime endDateTime) {
+                                                  @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss") LocalDateTime startDateTime,
+                                                  @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss") LocalDateTime endDateTime) {
         log.info("[time] {}, {}", startDateTime, endDateTime);
         return houseService.calculateFee(id, startDateTime, endDateTime);
     }

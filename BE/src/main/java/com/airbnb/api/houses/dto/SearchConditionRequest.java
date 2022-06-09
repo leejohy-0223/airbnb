@@ -12,10 +12,10 @@ public class SearchConditionRequest {
     private Double longitude;
     private Double latitude;
 
-    @DateTimeFormat(pattern = "yyyyMMddHHmm")
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime startLocalDateTime;
 
-    @DateTimeFormat(pattern = "yyyyMMddHHmm")
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime endLocalDateTime;
 
     private Integer minFee;
