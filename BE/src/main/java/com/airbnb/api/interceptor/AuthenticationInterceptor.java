@@ -8,7 +8,6 @@ import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Optional;
 
 @Component
 public class AuthenticationInterceptor implements HandlerInterceptor {
@@ -33,18 +32,16 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
     private String resolveToken(HttpServletRequest request) {
         String authorizationInfo = request.getHeader("Authorization");
         if (authorizationInfo == null) {
-            log.info("[preHandle][JWT Token 에러 발생]");
             throw new IllegalStateException("토큰이 없습니다. 로그인 먼저 해주세요.");
         }
         String[] parts = authorizationInfo.split(" ");
-        if (isNotValidToken(parts)) {
-            log.info("[preHandle][JWT Token 에러 발생]");
+        if (isInvalidToken(parts)) {
             throw new IllegalStateException("정상적인 형태로 토큰을 전달해주세요.");
         }
         return parts[1];
     }
 
-    private boolean isNotValidToken(String[] parts) {
+    private boolean isInvalidToken(String[] parts) {
         return parts.length != 2 || !parts[0].equals("Bearer");
     }
 }
