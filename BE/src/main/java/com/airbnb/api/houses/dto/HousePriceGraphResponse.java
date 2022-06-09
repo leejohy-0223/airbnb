@@ -3,10 +3,10 @@ package com.airbnb.api.houses.dto;
 import java.util.List;
 import java.util.Objects;
 
-public class GraphResponse {
+public class HousePriceGraphResponse {
     private List<NumberOfHousesByPriceResponse> NumberOfHousesByPrice;
 
-    public GraphResponse(List<NumberOfHousesByPriceResponse> NumberOfHousesByPrice) {
+    public HousePriceGraphResponse(List<NumberOfHousesByPriceResponse> NumberOfHousesByPrice) {
         this.NumberOfHousesByPrice = NumberOfHousesByPrice;
     }
 
@@ -20,7 +20,7 @@ public class GraphResponse {
             return true;
         if (o == null || getClass() != o.getClass())
             return false;
-        GraphResponse that = (GraphResponse)o;
+        HousePriceGraphResponse that = (HousePriceGraphResponse)o;
         return Objects.equals(NumberOfHousesByPrice, that.NumberOfHousesByPrice);
     }
 
