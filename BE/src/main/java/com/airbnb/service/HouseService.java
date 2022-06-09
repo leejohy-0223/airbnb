@@ -39,11 +39,6 @@ public class HouseService {
         List<House> houseList = houseRepository.searchByCondition(request.getPoint(), UNIT_KILOMETER, request.getMinFee(),
                 request.getMaxFee());
 
-        log.info("[HouseService.findByCondition] size {}", houseList.size());
-        for (House house : houseList) {
-            log.info("[HouseService.findByCondition] house : {}", house);
-        }
-
         return houseList
                 .stream()
                 .map(HouseDetailResponse::new)
