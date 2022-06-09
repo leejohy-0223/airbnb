@@ -19,14 +19,7 @@ final class SearchSpotViewController: UIViewController {
         return collectionView
     }()
     
-    private lazy var nearSpotCollectionView: UICollectionView = {
-        guard let layout = self.createLayout(.nearSpot) else { return UICollectionView() }
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        return collectionView
-    }()
-    
-    private var layoutFactories: [Layout: SectionLayoutCreator.Type] = [.search: SearchSpotViewLayoutFactoy.self,
-                                                                        .nearSpot: NearSearchSectionLayoutFactory.self]
+    private var layoutFactories: [Layout: SectionLayoutCreator.Type] = [.search: SearchSpotViewLayoutFactoy.self]
     
     private var searchCompleter = MKLocalSearchCompleter()
     private var searchResults = [MKLocalSearchCompletion]()
@@ -46,7 +39,7 @@ final class SearchSpotViewController: UIViewController {
 
     private func setDataSource() {
         SearchSpotViewSectionManager.setDataSource(in: searchCollectionView)
-        SearchSpotViewSectionManager.setDataSource(in: nearSpotCollectionView)
+        
     }
 
     private func setCollectionView() {
@@ -64,7 +57,6 @@ final class SearchSpotViewController: UIViewController {
     
     private enum Layout: String {
         case search
-        case nearSpot
     }
 }
 
@@ -84,24 +76,6 @@ extension SearchSpotViewController: UISearchResultsUpdating {
 
 enum SearchSpotViewSection: Int, CaseIterable {
     case searchResult
-}
-
-enum SearchSpotViewSectionData: Hashable {
-    case searchResult(searchSpot: SearchedSpot)
-    
-    var image: String {
-        switch self {
-        case .searchResult(let searchedSpot):
-            return searchedSpot.image
-        }
-    }
-    
-    var spotName: String {
-        switch self {
-        case .searchResult(let searchedSpot):
-            return searchedSpot.spotName
-        }
-    }
 }
 
 
