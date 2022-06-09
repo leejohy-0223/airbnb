@@ -22,6 +22,7 @@ import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.hamcrest.Matchers.hasSize;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.restdocs.headers.HeaderDocumentation.*;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
@@ -122,35 +123,17 @@ class WishControllerTest {
         // 요청 dto 생성
         WishCreateRequest wishCreateRequest = new WishCreateRequest(user.getId(), house.getId());
 
+        // when
         ResultActions resultActions = mockMvc.perform(post("/api/wish")
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaTypes.HAL_JSON)
                         .content(objectMapper.writeValueAsString(wishCreateRequest)))
                 .andDo(print());
 
-        // when, then
-        resultActions.andExpect(status().isOk())
-                .andExpect(jsonPath("valid").value("false"))
-                .andExpect(jsonPath("message").exists())
-                .andExpect(header().string(HttpHeaders.CONTENT_TYPE, MediaTypes.HAL_JSON_VALUE))
-                .andDo(document("create-wish-list",
-                        requestHeaders(
-                                headerWithName(HttpHeaders.ACCEPT).description("accept header"),
-                                headerWithName(HttpHeaders.CONTENT_TYPE).description("header content type")
-                        ),
-                        requestFields(
-                                fieldWithPath("userId").description("id of user"),
-                                fieldWithPath("houseId").description("id of house")
-                        ),
-                        responseHeaders(
-                                headerWithName(HttpHeaders.CONTENT_TYPE).description("Content type")
-                        ),
-                        responseFields(
-                                fieldWithPath("valid").description("result validation"),
-                                fieldWithPath("message").description("result message")
-                        )
-                ))
-        ;
+        // then
+        resultActions.andExpect(
+                (rslt) -> assertTrue(rslt.getResolvedException().getClass().isAssignableFrom(IllegalStateException.class))
+        ).andReturn();
     }
 
     @Test
