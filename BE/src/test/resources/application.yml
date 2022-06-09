@@ -7,17 +7,19 @@ spring:
     username: ${username}
     password: ${password}
 
-  jpa:
-    hibernate:
-      ddl-auto: create
-    properties:
-      hibernate:
-        format_sql: true
-    database: mysql
-    database-platform: org.hibernate.spatial.dialect.mysql.MySQL8SpatialDialect
+jwt:
+  token:
+    validate-time: 1800
+    token-secret: "Shine-Lucid"
 
-server:
-  port: 80
+    kakao:
+      token-server-uri: "https://kauth.kakao.com/oauth/token"
+      oauth-server-uri: "https://kapi.kakao.com/v2/user/me"
+      client-id: ${KAKAO_CLIENT_ID}
+      redirect-uri: "http://localhost:8080/api/login/oauth/kakao/callback"
 
-logging.level:
-  org.hibernate.SQL: debug
+    github:
+      token-server-uri: "https://github.com/login/oauth/access_token"
+      oauth-server-uri: "https://api.github.com/user"
+      client-id: ${GITHUB_CLIENT_ID}
+      client-secret: ${GITHUB_CLIENT_SECRET}

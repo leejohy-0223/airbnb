@@ -2,6 +2,7 @@ package com.airbnb.api.houses.dto;
 
 import com.airbnb.utils.geometry.GeometryUtils;
 import org.locationtech.jts.geom.Point;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -10,17 +11,29 @@ public class SearchConditionRequest {
 
     private Double longitude;
     private Double latitude;
+
+    @DateTimeFormat(pattern = "yyyyMMddHHmm")
     private LocalDateTime startLocalDateTime;
+
+    @DateTimeFormat(pattern = "yyyyMMddHHmm")
     private LocalDateTime endLocalDateTime;
+
     private Integer minFee;
     private Integer maxFee;
     private int numberOfGuests;
 
-    public SearchConditionRequest(Double longitude, Double latitude, Integer minFee, Integer maxFee) {
+    public SearchConditionRequest() {
+    }
+
+    public SearchConditionRequest(Double longitude, Double latitude, LocalDateTime startLocalDateTime,
+        LocalDateTime endLocalDateTime, Integer minFee, Integer maxFee, int numberOfGuests) {
         this.longitude = longitude;
         this.latitude = latitude;
+        this.startLocalDateTime = startLocalDateTime;
+        this.endLocalDateTime = endLocalDateTime;
         this.minFee = minFee;
         this.maxFee = maxFee;
+        this.numberOfGuests = numberOfGuests;
     }
 
     public Double getLongitude() {
@@ -84,22 +97,35 @@ public class SearchConditionRequest {
     }
 
     @Override
+    public String toString() {
+        return "SearchConditionRequest{" +
+                "longitude=" + longitude +
+                ", latitude=" + latitude +
+                ", startLocalDateTime=" + startLocalDateTime +
+                ", endLocalDateTime=" + endLocalDateTime +
+                ", minFee=" + minFee +
+                ", maxFee=" + maxFee +
+                ", numberOfGuests=" + numberOfGuests +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o)
             return true;
         if (o == null || getClass() != o.getClass())
             return false;
-        SearchConditionRequest that = (SearchConditionRequest)o;
+        SearchConditionRequest that = (SearchConditionRequest) o;
         return getNumberOfGuests() == that.getNumberOfGuests() && Objects.equals(getLongitude(),
-            that.getLongitude()) && Objects.equals(getLatitude(), that.getLatitude()) && Objects.equals(
-            getStartLocalDateTime(), that.getStartLocalDateTime()) && Objects.equals(getEndLocalDateTime(),
-            that.getEndLocalDateTime()) && Objects.equals(getMinFee(), that.getMinFee())
-            && Objects.equals(getMaxFee(), that.getMaxFee());
+                that.getLongitude()) && Objects.equals(getLatitude(), that.getLatitude()) && Objects.equals(
+                getStartLocalDateTime(), that.getStartLocalDateTime()) && Objects.equals(getEndLocalDateTime(),
+                that.getEndLocalDateTime()) && Objects.equals(getMinFee(), that.getMinFee())
+                && Objects.equals(getMaxFee(), that.getMaxFee());
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(getLongitude(), getLatitude(), getStartLocalDateTime(), getEndLocalDateTime(), getMinFee(),
-            getMaxFee(), getNumberOfGuests());
+                getMaxFee(), getNumberOfGuests());
     }
 }

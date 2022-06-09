@@ -23,3 +23,16 @@
 - [X] DTO -> equals & hashcode override
 - [X] 테스트에서 하우스 생성 부분을 팩토리 메서드로 구현
 - [X] test에서 파라미터를 변수명으로 추출(10, 100 등)
+
+--- 
+
+# 4차 PR todo list
+- [X] call back url 수정
+- [X] Token parsing 부분 Optional 제거
+- [X] OAuthLoginController log 구체화
+- [X] calculateFee 메서드 위치 이동
+- [X] OAuth property yml에 정의하기
+- [X] RESTTemplate, ObjectMapper를 DI로 변경
+- [ ] setProperty(snakecase) 수정
+- [X] concurrentHashMap으로 변경 -> Component Map 주입으로 변경
+- [X] OAuthServer Component로 변경

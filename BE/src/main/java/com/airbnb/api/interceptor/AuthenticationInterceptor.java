@@ -22,26 +22,29 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        Optional<String> optionalToken = resolveToken(request);
-        if (optionalToken.isEmpty()) {
-            throw new IllegalStateException("토큰이 없습니다. 로그인 먼저 해주세요.");
-        }
-        String userEmail = tokenProvider.parsePayload(optionalToken.get());
-        log.debug("token is : {}", optionalToken.get());
-        log.debug("userId is : {}", userEmail);
+        String token = resolveToken(request);
+        String userEmail = tokenProvider.parsePayload(token);
+        log.debug("token is : {}", token);
+        log.debug("userEmail is : {}", userEmail);
         request.setAttribute("userEmail", userEmail);
         return true;
     }
 
-    private Optional<String> resolveToken(HttpServletRequest request) {
+    private String resolveToken(HttpServletRequest request) {
         String authorizationInfo = request.getHeader("Authorization");
         if (authorizationInfo == null) {
-            return Optional.empty();
+            log.info("[preHandle][JWT Token 에러 발생]");
+            throw new IllegalStateException("토큰이 없습니다. 로그인 먼저 해주세요.");
         }
         String[] parts = authorizationInfo.split(" ");
-        if (parts.length == 2 && parts[0].equals("Bearer")) {
-            return Optional.ofNullable(parts[1]);
+        if (isNotValidToken(parts)) {
+            log.info("[preHandle][JWT Token 에러 발생]");
+            throw new IllegalStateException("정상적인 형태로 토큰을 전달해주세요.");
         }
-        return Optional.empty();
+        return parts[1];
+    }
+
+    private boolean isNotValidToken(String[] parts) {
+        return parts.length != 2 || !parts[0].equals("Bearer");
     }
 }

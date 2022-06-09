@@ -1,0 +1,20 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        format_sql: true
+    database: mysql
+    database-platform: org.hibernate.spatial.dialect.mysql.MySQL8SpatialDialect
+    defer-datasource-initialization: true
+  sql:
+    init:
+      mode: never
+      schema-locations:
+      data-locations: classpath:sql/data.sql
+
+logging.level:
+  org.hibernate.SQL: debug
+  com.airbnb: debug
+

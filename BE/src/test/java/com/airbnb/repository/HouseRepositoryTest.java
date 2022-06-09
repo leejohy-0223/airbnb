@@ -1,10 +1,11 @@
 package com.airbnb.repository;
 
-import static org.assertj.core.api.Assertions.*;
-import static org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.*;
-
-import java.util.List;
-
+import com.airbnb.api.houses.dto.NumberOfHousesByPriceResponse;
+import com.airbnb.domain.DetailInfo;
+import com.airbnb.domain.House;
+import com.airbnb.domain.Role;
+import com.airbnb.domain.User;
+import com.airbnb.utils.geometry.GeometryUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -17,12 +18,10 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import com.airbnb.api.houses.dto.NumberOfHousesByPrice;
-import com.airbnb.domain.DetailInfo;
-import com.airbnb.domain.House;
-import com.airbnb.domain.Role;
-import com.airbnb.domain.User;
-import com.airbnb.utils.geometry.GeometryUtils;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
 
 @ExtendWith(SpringExtension.class)
 @DataJpaTest
@@ -79,7 +78,7 @@ class HouseRepositoryTest {
     void number_of_house_test() {
         // when
         int range = 1000;
-        List<NumberOfHousesByPrice> houseCounts = houseRepository.numberOfHousesInTheRange(nowPosition, range);
+        List<NumberOfHousesByPriceResponse> houseCounts = houseRepository.numberOfHousesInTheRange(nowPosition, range);
 
         // then
         assertThat(houseCounts.size()).isEqualTo(2);
@@ -89,8 +88,8 @@ class HouseRepositoryTest {
         assertThat(houseCounts.get(1).getCount()).isEqualTo(1);
     }
 
-    private House createHouse(String houseName, int price, Double latitude, Double longtitude, User host) {
+    private House createHouse(String houseName, int price, Double latitude, Double longitude, User host) {
         return new House(houseName, price, new DetailInfo(10, "oneRoom", "방입니다", 4.8, 10),
-            GeometryUtils.toPoint(latitude, longtitude), host);
+                GeometryUtils.toPoint(longitude, latitude), host);
     }
 }
