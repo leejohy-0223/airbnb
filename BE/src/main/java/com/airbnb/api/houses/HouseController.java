@@ -45,23 +45,23 @@ public class HouseController {
         return houseService.calculateFee(id, startDateTime, endDateTime);
     }
 
-    @PostMapping("/{id}/reservation")
+    @PostMapping("/{id}/reservations")
     public ReservationResponse reserveHouse(@PathVariable Long id, @RequestBody ReservationInformationRequest request,
                                             @RequestAttribute("userEmail") String userEmail) {
         return houseService.reserveHouse(id, request, userEmail);
     }
 
-    @GetMapping("/reservation")
+    @GetMapping("/reservations")
     public ReservationsResponse ListReservation(@RequestAttribute("userEmail") String userEmail) {
         return houseService.showReservations(userEmail);
     }
 
-    @GetMapping("/{id}/reservation")
+    @GetMapping("/{id}/reservations")
     public ReservationDetailResponse findReservation(@PathVariable Long id, @RequestAttribute String userEmail) {
         return houseService.findReservation(id, userEmail);
     }
 
-    @DeleteMapping("/{id}/reservation")
+    @DeleteMapping("/{id}/reservations")
     public ResultDto cancelReservation(@PathVariable Long id, @RequestAttribute String userEmail) {
         houseService.cancelReservation(id, userEmail);
         return ResultDto.ok();
