@@ -25,7 +25,6 @@ public class HouseController {
 
     @GetMapping
     public List<HouseDetailResponse> findHouse(@ModelAttribute SearchConditionRequest request) {
-        log.info("[HouseController.findHouse] request : {}", request);
         return houseService.findByCondition(request);
     }
 
@@ -43,7 +42,6 @@ public class HouseController {
     public AccommodationCostResponse calculateFee(@PathVariable Long id,
                                                   @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss") LocalDateTime startDateTime,
                                                   @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss") LocalDateTime endDateTime) {
-        log.info("[time] {}, {}", startDateTime, endDateTime);
         return houseService.calculateFee(id, startDateTime, endDateTime);
     }
 
@@ -58,9 +56,6 @@ public class HouseController {
         return houseService.showReservations(userEmail);
     }
 
-    /**
-     * TODO: id를 통해 예약을 조회하는게 나을지? 아니면 userEmail도 함께 전달해서 체크해야 하는지?
-     */
     @GetMapping("/{id}/reservation")
     public ReservationDetailResponse findReservation(@PathVariable Long id, @RequestAttribute String userEmail) {
         return houseService.findReservation(id, userEmail);
