@@ -6,8 +6,6 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: ${username}
     password: ${password}
-  jackson:
-    property-naming-strategy: SNAKE_CASE
 
 jwt:
   token:
@@ -18,7 +16,7 @@ jwt:
       token-server-uri: "https://kauth.kakao.com/oauth/token"
       oauth-server-uri: "https://kapi.kakao.com/v2/user/me"
       client-id: ${KAKAO_CLIENT_ID}
-      redirect-uri: "http://localhost:8080/api/login/oauth/kakao/callback"
+      redirect-uri: "http://3.38.93.166/api/login/oauth/kakao/callback"
 
     github:
       token-server-uri: "https://github.com/login/oauth/access_token"
